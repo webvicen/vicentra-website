@@ -1,7 +1,12 @@
 <?php
 
-use App\Http\Controllers\Pages\BerandaController;
 use Illuminate\Support\Facades\Route;
+
+// PAGES CONTROLLERS
+use App\Http\Controllers\Pages\{
+  BerandaController,
+  BlogController
+};
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

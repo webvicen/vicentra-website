@@ -2,11 +2,22 @@
 module.exports = {
   content: [
     "./resources/**/*.blade.php",
-    "./resources/**/*.js",
-    "./resources/**/*.vue",
+    "./resources/**/*.jsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        vicentra: {
+          blue: '#006DB8',
+          pink: '#E40081',
+          yellow: '#FFF100',
+          black: '#1F262A'
+        }
+      }
+    },
+    fontFamily: {
+      sans: ['Poppins', 'sans-serif']
+    }
   },
   plugins: [],
 }
