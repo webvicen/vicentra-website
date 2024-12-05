@@ -100,7 +100,7 @@ export default function PagesLayout({ children }) {
                     <div className="w-[80vw] mx-auto py-[1rem]">
                         <div className="flex items-center gap-2">
                             <Link
-                                href="/"
+                                href="/help"
                                 className="flex items-center gap-2 text-sm text-white capitalize"
                             >
                                 <FaInfoCircle className="text-xl font-semibold" />
@@ -146,8 +146,8 @@ export default function PagesLayout({ children }) {
                                 >
                                     beranda
                                 </Link>
-                                <a
-                                    href="#"
+                                <button
+                                    type="button"
                                     className="text-base text-white capitalize flex items-center gap-1 relative"
                                     onClick={toggleSubMenuCategory}
                                 >
@@ -162,7 +162,7 @@ export default function PagesLayout({ children }) {
                                     >
                                         <li>
                                             <Link
-                                                href="/"
+                                                href="/blog"
                                                 className="text-sm text-gray-800"
                                             >
                                                 kegiatan
@@ -170,7 +170,7 @@ export default function PagesLayout({ children }) {
                                         </li>
                                         <li>
                                             <Link
-                                                href="/"
+                                                href="/blog"
                                                 className="text-sm text-gray-800"
                                             >
                                                 peluang usaha
@@ -178,22 +178,22 @@ export default function PagesLayout({ children }) {
                                         </li>
                                         <li>
                                             <Link
-                                                href="/"
+                                                href="/blog"
                                                 className="text-sm text-gray-800"
                                             >
                                                 info
                                             </Link>
                                         </li>
                                     </ul>
-                                </a>
+                                </button>
                                 <Link
-                                    href="/"
+                                    href="/terms-and-conditions"
                                     className="text-base text-white capitalize"
                                 >
                                     layanan dan perbaikan
                                 </Link>
                                 <Link
-                                    href="/"
+                                    href="/about-us"
                                     className="text-base text-white capitalize"
                                 >
                                     tentang kami
@@ -221,9 +221,9 @@ export default function PagesLayout({ children }) {
                         />
                         <div className="flex items-center gap-[1.875rem]">
                             {subMenuProducts.map((product) => (
-                                <a
+                                <button
                                     key={product.id}
-                                    href="#"
+                                    type="button"
                                     className="text-base text-gray-800 capitalize flex items-center gap-1 relative"
                                     onClick={() =>
                                         toggleSubMenuProduct(product.id)
@@ -239,7 +239,7 @@ export default function PagesLayout({ children }) {
                                         {product.subMenu.map((subMenu) => (
                                             <li key={subMenu.id}>
                                                 <Link
-                                                    href="/"
+                                                    href={`/product/${subMenu.name}`}
                                                     className="text-sm text-gray-800"
                                                 >
                                                     {subMenu.name}
@@ -247,7 +247,7 @@ export default function PagesLayout({ children }) {
                                             </li>
                                         ))}
                                     </ul>
-                                </a>
+                                </button>
                             ))}
                         </div>
                     </div>

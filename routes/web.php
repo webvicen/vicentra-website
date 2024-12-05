@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 // PAGES CONTROLLERS
 use App\Http\Controllers\Pages\{
+  AboutUsController,
   BerandaController,
-  BlogController
+  BlogController,
+  HelpController,
+  ProductController,
+  TermsAndConditionsController
 };
 
 /*
@@ -19,5 +23,13 @@ use App\Http\Controllers\Pages\{
 |
 */
 
+// PAGES ROUTE
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/terms-and-conditions', [TermsAndConditionsController::class, 'index'])->name('terms-and-conditions.index');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
+Route::get('/help', [HelpController::class, 'index'])->name('help.index');
+Route::get('/product/{category}', [ProductController::class, 'category'])->name('product.category.index');
+Route::get('/product/{category}/{subCategory}', [ProductController::class, 'subCategory'])->name('product.sub-category.index');
+Route::get('/product/{category}/{subCategory}/{slug}', [ProductController::class, 'show'])->name('product.show');

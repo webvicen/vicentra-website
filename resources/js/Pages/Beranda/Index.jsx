@@ -19,14 +19,17 @@ export default function Beranda() {
     const [categoryProducts, setCategoryProducts] = useState([
         {
             id: 1,
+            name: "mesin",
             image: Category1,
         },
         {
             id: 2,
+            name: "bahan",
             image: Category2,
         },
         {
             id: 3,
+            name: "sparepart",
             image: Category3,
         },
     ]);
@@ -173,7 +176,10 @@ export default function Beranda() {
                 </div>
                 <div className="grid grid-cols-3 gap-[4rem] mt-[1.875rem]">
                     {categoryProducts.map((category) => (
-                        <Link href="#" key={category.id}>
+                        <Link
+                            href={`/product/${category.name}`}
+                            key={category.id}
+                        >
                             <img
                                 src={category.image}
                                 alt={`category ${category.id}`}

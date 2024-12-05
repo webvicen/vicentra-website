@@ -26,4 +26,12 @@
     height: 1rem !important;
     background-color: #e40081;
 }
+
+.swiper-brand-section-custom-pagination.swiper-pagination-clickable
+    .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    border-radius: 1rem !important;
+    width: 2rem !important;
+    height: 1rem !important;
+    background-color: #e40081;
+}
 /* SWIPERJS */
