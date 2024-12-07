@@ -17,7 +17,7 @@ export default function SubCategory({ category, subCategory }) {
                     Rekomendasi {`${category} ${subCategory}`} Kami
                 </h1>
                 <div className="mt-[1.875rem]">
-                    <div className="grid grid-cols-4 gap-[1.25rem]">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
                             <Link
                                 href="/product/mesin/mesin-cnc/mesin-xuli-eco-solvent"

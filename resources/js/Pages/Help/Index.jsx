@@ -12,7 +12,7 @@ export default function Help() {
                 <h1 className="text-xl text-center font-semibold text-gray-800">
                     Ada Yang Bisa Dibantu?
                 </h1>
-                <div className="w-[50%] mx-auto space-y-4 mt-[2.5rem]">
+                <div className="lg:w-[50%] mx-auto space-y-4 mt-[2.5rem]">
                     <input
                         type="text"
                         placeholder="Masukan Nama"

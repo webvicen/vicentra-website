@@ -5,8 +5,9 @@ import { useState } from "react";
 import Product from "../../assets/images/product/1.jpg";
 
 import Descriptions from "./components/Descriptions";
-import Video from "./components/Video";
-import FAQ from "./components/FAQ";
+import Specification from "./components/Specification";
+import Results from "./components/Results";
+import SalesCard from "./components/SalesCard";
 
 export default function ShowProduct({ category, subCategory }) {
     const [tabItems, setTabsItems] = useState([
@@ -20,14 +21,6 @@ export default function ShowProduct({ category, subCategory }) {
         },
         {
             name: "Hasil",
-            isActive: false,
-        },
-        {
-            name: "Video",
-            isActive: false,
-        },
-        {
-            name: "FAQ",
             isActive: false,
         },
     ]);
@@ -52,9 +45,11 @@ export default function ShowProduct({ category, subCategory }) {
             </Helmet>
 
             {/* PRODUCT SECTION */}
-            <section className="grid grid-cols-2 gap-[1.25rem]">
+            <section className="grid lg:grid-cols-2 gap-[1.25rem]">
                 <div>
-                    <img src={Product} alt="mesin-xuli-eco-solvent" />
+                    <div>
+                        <img src={Product} alt="mesin-xuli-eco-solvent" />
+                    </div>
                     <div className="grid grid-cols-3 gap-4 mt-[1.875rem]">
                         <img
                             src={Product}
@@ -98,12 +93,17 @@ export default function ShowProduct({ category, subCategory }) {
                             <span className="font-semibold">Brand: </span>Xuli
                         </h2>
                     </div>
+                    <div className="space-y-4 mt-[1.25rem]">
+                        <SalesCard />
+                        <SalesCard />
+                        <SalesCard />
+                    </div>
                 </div>
             </section>
             {/* PRODUCT SECTION */}
 
             {/* TAB SECTION SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="mt-[3.125rem] lg:mt-[6.25rem]">
                 <div className="space-x-2">
                     {tabItems.map((item, index) => (
                         <button
@@ -121,19 +121,19 @@ export default function ShowProduct({ category, subCategory }) {
                 </div>
                 <div className="mt-[1.875rem]">
                     {activeTab === "Deskripsi" && <Descriptions />}
-                    {activeTab === "Video" && <Video />}
-                    {activeTab === "FAQ" && <FAQ />}
+                    {activeTab === "Spesifikasi" && <Specification />}
+                    {activeTab === "Hasil" && <Results />}
                 </div>
             </section>
             {/* TAB SECTION SECTION */}
 
             {/* SIMILAR PRODUCTS SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="mt-[3.125rem] lg:mt-[6.25rem]">
                 <h1 className="text-xl capitalize font-semibold text-gray-800">
                     Rekomendasi Produk Yang Serupa
                 </h1>
                 <div className="mt-[1.875rem]">
-                    <div className="grid grid-cols-4 gap-[1.25rem]">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
                         {[1, 2, 3, 4].map((item) => (
                             <Link
                                 href="/product/mesin/mesin-cnc/mesin-xuli-eco-solvent"

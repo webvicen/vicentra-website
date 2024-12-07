@@ -14,7 +14,7 @@ export default function Blog() {
             {/* CONTENT */}
             <main className="grid grid-cols-12">
                 {/* SIDEBAR */}
-                <div className="col-span-3">
+                <div className="col-span-12 lg:col-span-3">
                     <div>
                         <h1 className="capitalize text-gray-800 font-semibold text-xl">
                             kategori
@@ -78,8 +78,8 @@ export default function Blog() {
                 {/* SIDEBAR */}
 
                 {/* BLOG CONTENT */}
-                <div className="col-span-9">
-                    <div className="grid grid-cols-3 gap-[1.25rem]">
+                <div className="col-span-12 lg:col-span-9 mt-[2rem] lg:mt-auto">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1.25rem]">
                         {[1, 2, 3, 4, 5, 6].map((item) => (
                             <BlogCard key={item} />
                         ))}

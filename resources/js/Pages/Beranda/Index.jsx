@@ -1,19 +1,15 @@
 import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
 import ReactPlayer from "react-player/lazy";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
-import "../../assets/css/custom.css";
 
 import Category1 from "../../assets/images/category/1.png";
 import Category2 from "../../assets/images/category/2.png";
 import Category3 from "../../assets/images/category/3.png";
+
+import Faq from "./components/Faq";
+import Testimonial from "./components/Testimonial";
+import Hero from "./components/Hero";
 
 export default function Beranda() {
     const [categoryProducts, setCategoryProducts] = useState([
@@ -44,42 +40,12 @@ export default function Beranda() {
 
             {/* HERO SECTION */}
             <section>
-                <Swiper
-                    modules={[Pagination, Autoplay]}
-                    spaceBetween={50}
-                    slidesPerView={1}
-                    autoplay
-                    pagination={{
-                        el: ".swiper-hero-section-custom-pagination",
-                        clickable: true,
-                    }}
-                    onSlideChange={() => console.log("slide change")}
-                    onSwiper={(swiper) => console.log(swiper)}
-                >
-                    <SwiperSlide>
-                        <div className="w-full h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                            <h1 className="text-white">Slide 1</h1>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                            <h1 className="text-white">Slide 2</h1>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="w-full h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                            <h1 className="text-white">Slide 3</h1>
-                        </div>
-                    </SwiperSlide>
-                </Swiper>
-                <div className="flex gap-2 justify-center items-center mt-4">
-                    <div className="swiper-hero-section-custom-pagination w-fit" />
-                </div>
+                <Hero />
             </section>
             {/* HERO SECTION */}
 
             {/* WHY VICENTRA SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-blue rounded-full px-4 py-2 shadow-md">
                         <h1 className="text-white font-semibold capitalize">
@@ -87,7 +53,7 @@ export default function Beranda() {
                         </h1>
                     </div>
                 </div>
-                <div className="mt-[1.875rem] grid grid-cols-3 gap-[4rem]">
+                <div className="mt-[1.875rem] grid grid-cols-2 lg:grid-cols-3 gap-[2rem] lg:gap-[4rem]">
                     <div>
                         <div className="flex justify-center">
                             <div className="w-[100px] h-[100px] bg-vicentra-blue rounded-xl"></div>
@@ -166,7 +132,7 @@ export default function Beranda() {
             {/* WHY VICENTRA SECTION */}
 
             {/* OUR PRODUCT SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-yellow rounded-full px-4 py-2 shadow-md">
                         <h1 className="text-gray-800 font-semibold capitalize">
@@ -174,7 +140,7 @@ export default function Beranda() {
                         </h1>
                     </div>
                 </div>
-                <div className="grid grid-cols-3 gap-[4rem] mt-[1.875rem]">
+                <div className="grid lg:grid-cols-3 gap-[2rem] mt-[1.875rem]">
                     {categoryProducts.map((category) => (
                         <Link
                             href={`/product/${category.name}`}
@@ -192,13 +158,13 @@ export default function Beranda() {
             {/* OUR PRODUCT SECTION */}
 
             {/* YOUTUBE SECTION */}
-            <section className="bg-gray-100 mt-[6.25rem] p-5 rounded-lg">
-                <div className="grid grid-cols-2 items-center">
+            <section className="bg-gray-100 my-[3.125rem] lg:my-[6.25rem] p-5 rounded-lg">
+                <div className="grid lg:grid-cols-2 gap-5 items-center">
                     <div>
                         <h1 className="text-lg font-semibold">
                             Galery Vicentra
                         </h1>
-                        <p className="w-[60%] text-sm font-normal mt-[0.625rem] mb-4">
+                        <p className="lg:w-[60%] text-sm font-normal mt-[0.625rem] mb-4">
                             Subscribe chanel Youtube kami untuk demo mesin dan
                             promo - promo Terbaru.
                         </p>
@@ -209,7 +175,7 @@ export default function Beranda() {
                             subscribe
                         </a>
                     </div>
-                    <div className="rounded-lg overflow-hidden">
+                    <div className="rounded-lg overflow-hidden order-first lg:order-none">
                         <ReactPlayer
                             url="https://www.youtube.com/watch?v=XnqEhpgT2Gk"
                             width={"100%"}
@@ -221,7 +187,7 @@ export default function Beranda() {
             {/* YOUTUBE SECTION */}
 
             {/* CUSTOMER TESTIMONIALS SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-pink rounded-full px-4 py-2 shadow-md">
                         <h1 className="text-white font-semibold capitalize">
@@ -230,109 +196,25 @@ export default function Beranda() {
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
-                    <Swiper
-                        modules={[Pagination, Autoplay]}
-                        spaceBetween={50}
-                        slidesPerView={3}
-                        autoplay
-                        pagination={{
-                            el: ".swiper-testimonial-section-custom-pagination",
-                            clickable: true,
-                        }}
-                        onSlideChange={() => console.log("slide change")}
-                        onSwiper={(swiper) => console.log(swiper)}
-                    >
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                                <div>
-                                    <h1 className="text-md font-semibold">
-                                        Architecture Cutting Surabaya
-                                    </h1>
-                                    <p className="text-sm font-normal mt-3">
-                                        Untuk mesinnya oke, pelayanan cukup
-                                        baik, tim teknisi juga oke memberikan
-                                        arahan dan solusi dengan baik.
-                                    </p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                    </Swiper>
-                    <div className="flex gap-2 justify-center items-center mt-4">
-                        <div className="swiper-testimonial-section-custom-pagination w-fit" />
-                    </div>
+                    <Testimonial />
                 </div>
             </section>
             {/* CUSTOMER TESTIMONIALS SECTION */}
+
+            {/* FAQ SECTION */}
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
+                <div className="flex justify-center">
+                    <div className="bg-vicentra-black rounded-full px-4 py-2 shadow-md">
+                        <h1 className="text-white font-semibold capitalize">
+                            FAQ
+                        </h1>
+                    </div>
+                </div>
+                <div className="mt-[1.875rem]">
+                    <Faq />
+                </div>
+            </section>
+            {/* FAQ SECTION */}
         </>
     );
 }

@@ -10,8 +10,12 @@ import {
     FaWhatsappSquare,
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
+import { IoMenu } from "react-icons/io5";
+import { HiMiniXMark } from "react-icons/hi2";
+
 import VicentraLogoBlack from "../assets/images/logo-vicentra-black.png";
 import VicentraLogoWhite from "../assets/images/logo-vicentra-white.png";
+import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.png";
 
 export default function PagesLayout({ children }) {
     const [isSubMenuCategoryOpen, setIsSubMenuCategoryOpen] = useState(false);
@@ -74,6 +78,7 @@ export default function PagesLayout({ children }) {
             ],
         },
     ]);
+    const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
 
     const toggleSubMenuCategory = () => {
         setIsSubMenuCategoryOpen(!isSubMenuCategoryOpen);
@@ -95,7 +100,7 @@ export default function PagesLayout({ children }) {
     return (
         <main>
             {/* HEADER */}
-            <header>
+            <header className="hidden lg:block shadow pb-[1rem]">
                 <div className="bg-vicentra-blue">
                     <div className="w-[80vw] mx-auto py-[1rem]">
                         <div className="flex items-center gap-2">
@@ -154,7 +159,7 @@ export default function PagesLayout({ children }) {
                                     blog
                                     <FaCaretDown className="text-vicentra-yellow text-xl" />
                                     <ul
-                                        className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
+                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
                                             isSubMenuCategoryOpen
                                                 ? "block"
                                                 : "hidden"
@@ -214,11 +219,13 @@ export default function PagesLayout({ children }) {
                 </div>
                 <div className="w-[80vw] mx-auto mt-[2.5rem]">
                     <div className="flex justify-between items-center">
-                        <img
-                            src={VicentraLogoBlack}
-                            alt="vicentra logo black"
-                            className="h-[3.75rem]"
-                        />
+                        <Link href="/">
+                            <img
+                                src={VicentraLogoBlack}
+                                alt="vicentra logo black"
+                                className="h-[3.75rem]"
+                            />
+                        </Link>
                         <div className="flex items-center gap-[1.875rem]">
                             {subMenuProducts.map((product) => (
                                 <button
@@ -253,21 +260,200 @@ export default function PagesLayout({ children }) {
                     </div>
                 </div>
             </header>
+            <header className="lg:hidden">
+                <div className="bg-vicentra-blue">
+                    <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[1rem] relative z-50">
+                        <div className="flex items-center gap-2">
+                            <Link
+                                href="/help"
+                                className="flex items-center gap-2 text-sm text-white capitalize"
+                            >
+                                <FaInfoCircle className="text-xl font-semibold" />
+                                bantuan
+                            </Link>
+                            <svg
+                                width={2}
+                                height={14}
+                                viewBox="0 0 2 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M1 1L1 13"
+                                    stroke="white"
+                                    strokeOpacity="0.5"
+                                    strokeWidth="0.8"
+                                    strokeLinecap="round"
+                                />
+                            </svg>
+                            <div className="flex items-center gap-2">
+                                <p className="text-sm capitalize text-white">
+                                    ikuti kami di
+                                </p>
+                                <div className="flex items-center gap-1">
+                                    <a href="#">
+                                        <FaFacebook className="text-white text-xl font-semibold" />
+                                    </a>
+                                    <a href="#">
+                                        <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                    </a>
+                                    <a href="#">
+                                        <FaYoutube className="text-white text-xl font-semibold" />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="flex justify-between items-center mt-[1rem]">
+                            <Link href="/">
+                                <img
+                                    src={VicentraLogoOutline}
+                                    alt="vicentra logo black"
+                                    className="h-[2.5rem]"
+                                />
+                            </Link>
+                            {!toggleMobileMenu ? (
+                                <IoMenu
+                                    className="text-white text-3xl hover:cursor-pointer"
+                                    onClick={() => {
+                                        setToggleMobileMenu(!toggleMobileMenu);
+                                    }}
+                                />
+                            ) : (
+                                <HiMiniXMark
+                                    className="text-white text-3xl hover:cursor-pointer"
+                                    onClick={() => {
+                                        setToggleMobileMenu(!toggleMobileMenu);
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <div
+                            className={`${
+                                toggleMobileMenu ? "block" : "hidden"
+                            } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-16.5rem] shadow-md`}
+                        >
+                            <div className="flex flex-col gap-[0.5rem]">
+                                <Link
+                                    href="/"
+                                    className="text-sm font-medium text-gray-800 capitalize"
+                                >
+                                    beranda
+                                </Link>
+                                <hr />
+                                <button
+                                    type="button"
+                                    className="text-sm font-medium text-gray-800 capitalize flex items-center gap-1 relative"
+                                    onClick={toggleSubMenuCategory}
+                                >
+                                    blog
+                                    <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                    <ul
+                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
+                                            isSubMenuCategoryOpen
+                                                ? "block"
+                                                : "hidden"
+                                        }`}
+                                    >
+                                        <li>
+                                            <Link
+                                                href="/blog"
+                                                className="text-sm text-gray-800"
+                                            >
+                                                kegiatan
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/blog"
+                                                className="text-sm text-gray-800"
+                                            >
+                                                peluang usaha
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link
+                                                href="/blog"
+                                                className="text-sm text-gray-800"
+                                            >
+                                                info
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </button>
+                                <hr />
+                                <Link
+                                    href="/terms-and-conditions"
+                                    className="text-sm font-medium text-gray-800 capitalize"
+                                >
+                                    layanan dan perbaikan
+                                </Link>
+                                <hr />
+                                <Link
+                                    href="/about-us"
+                                    className="text-sm font-medium text-gray-800 capitalize"
+                                >
+                                    tentang kami
+                                </Link>
+                                <hr />
+                            </div>
+                            <div className="flex flex-col gap-[0.5rem] justify-start mt-2">
+                                {subMenuProducts.map((product) => (
+                                    <div key={product.id}>
+                                        <button
+                                            type="button"
+                                            className="w-full text-sm text-gray-800 capitalize flex items-center gap-1 relative"
+                                            onClick={() =>
+                                                toggleSubMenuProduct(product.id)
+                                            }
+                                        >
+                                            {product.name}
+                                            <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                            <ul
+                                                className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
+                                                    product.isOpen
+                                                        ? "block"
+                                                        : "hidden"
+                                                } z-50`}
+                                            >
+                                                {product.subMenu.map(
+                                                    (subMenu) => (
+                                                        <li key={subMenu.id}>
+                                                            <Link
+                                                                href={`/product/${subMenu.name}`}
+                                                                className="text-sm text-gray-800"
+                                                            >
+                                                                {subMenu.name}
+                                                            </Link>
+                                                        </li>
+                                                    )
+                                                )}
+                                            </ul>
+                                        </button>
+                                        <hr className="mt-1" />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
             {/* HEADER */}
 
             {/* PAGES CONTENT */}
-            <div className="w-[80vw] mx-auto my-[6.25rem]">{children}</div>
+            <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto my-[3.125rem] lg:my-[6.25rem]">
+                {children}
+            </div>
             {/* PAGES CONTENT */}
 
             {/* FOOTER */}
             <footer className="bg-vicentra-black">
-                <div className="w-[80vw] mx-auto py-[2rem]">
+                <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[2rem]">
                     <img
                         src={VicentraLogoWhite}
                         alt="vicentra logo white"
                         className="h-[3.75rem]"
                     />
-                    <div className="grid grid-cols-3 gap-[4rem] mt-[1.25rem]">
+                    <div className="grid lg:grid-cols-3 gap-[2rem] lg:gap-[4rem] mt-[1.25rem]">
                         <div>
                             <div>
                                 <h1 className="text-white font-semibold">
@@ -295,7 +481,7 @@ export default function PagesLayout({ children }) {
                             <h1 className="text-white font-semibold">
                                 Informasi
                             </h1>
-                            <ul className="mt-[1.25rem]">
+                            <ul className="space-y-2 mt-[1.25rem]">
                                 <li>
                                     <Link
                                         href="/"
@@ -306,7 +492,7 @@ export default function PagesLayout({ children }) {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/"
+                                        href="/blog"
                                         className="text-white capitalize"
                                     >
                                         blog
@@ -314,7 +500,7 @@ export default function PagesLayout({ children }) {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/"
+                                        href="/terms-and-conditions"
                                         className="text-white capitalize"
                                     >
                                         layanan dan perbaikan
@@ -322,7 +508,7 @@ export default function PagesLayout({ children }) {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/"
+                                        href="/about-us"
                                         className="text-white capitalize"
                                     >
                                         tentang kami
@@ -330,7 +516,7 @@ export default function PagesLayout({ children }) {
                                 </li>
                                 <li>
                                     <Link
-                                        href="/"
+                                        href="/help"
                                         className="text-white capitalize"
                                     >
                                         bantuan
@@ -365,19 +551,19 @@ export default function PagesLayout({ children }) {
                                 <div className="flex items-center gap-1 mt-[1.25rem]">
                                     <a
                                         href="#"
-                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md hover:scale-105 duration-300"
+                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaFacebook className="text-white" />
                                     </a>
                                     <a
                                         href="#"
-                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md hover:scale-105 duration-300"
+                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaInstagramSquare className="text-white" />
                                     </a>
                                     <a
                                         href="#"
-                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md hover:scale-105 duration-300"
+                                        className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaYoutube className="text-white" />
                                     </a>

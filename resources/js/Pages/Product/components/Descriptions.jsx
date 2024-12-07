@@ -4,7 +4,7 @@ export default function Descriptions() {
             <h1 className="text-base font-semibold text-gray-800">
                 Deskripsi Mesin
             </h1>
-            <p className="text-sm font-normal text-gray-500  mt-4">
+            <p className="text-sm font-normal text-gray-500 mt-4">
                 Xuli X6-1880 Ecosolvent yang mengunakan print head Epson DX-5
                 180 nozzles*8 Lines*1,high quality up to 1440dpi dengan sistem
                 automatis damper untuk membersikan head, Jadi mempermudah

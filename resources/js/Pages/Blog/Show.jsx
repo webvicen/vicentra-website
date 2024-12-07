@@ -11,9 +11,9 @@ export default function ShowBlog() {
             </Helmet>
 
             {/* CONTENT */}
-            <main className="grid grid-cols-12">
+            <main className="grid lg:grid-cols-12">
                 {/* SIDEBAR */}
-                <div className="col-span-3">
+                <div className="col-span-12 lg:col-span-3 mt-[2rem] lg:mt-0">
                     <div>
                         <h1 className="capitalize text-gray-800 font-semibold text-xl">
                             Artikel Serupa
@@ -52,7 +52,7 @@ export default function ShowBlog() {
                 {/* SIDEBAR */}
 
                 {/* BLOG CONTENT */}
-                <div className="col-span-9">
+                <div className="col-span-12 lg:col-span-9 order-first lg:order-none">
                     <h1 className="text-2xl font-semibold text-gray-800">
                         Surabaya Printing Expo 2022
                     </h1>

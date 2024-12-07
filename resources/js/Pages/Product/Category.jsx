@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import SubCategory from "../../assets/images/category/1.png";
+import MesinBanner from "../../assets/images/banners/mesin.jpg";
 
 export default function Category({ category }) {
     return (
@@ -11,21 +12,27 @@ export default function Category({ category }) {
                 <title>Halaman Category Produk</title>
             </Helmet>
 
-            {/* HELP SECTION */}
+            {/* HERO SECTION */}
             <section>
                 <div>
-                    <div className="w-full h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl"></div>
+                    <div className="w-full flex justify-center items-center rounded-tl-[10px] rounded-tr-[10px] lg:rounded-tl-[20px] lg:rounded-tr-[20px] overflow-hidden">
+                        <img
+                            src={MesinBanner}
+                            alt="mesin banner"
+                            className="w-full h-full"
+                        />
+                    </div>
                 </div>
             </section>
-            {/* HELP SECTION */}
+            {/* HERO SECTION */}
 
             {/* SUB CATEGORY SECTION */}
-            <section className="mt-[6.25rem]">
+            <section className="mt-[3.125rem] lg:mt-[6.25rem]">
                 <h1 className="text-xl text-center capitalize font-semibold text-gray-800">
                     Rekomendasi Jenis {category} Kami
                 </h1>
                 <div className="mt-[1.875rem]">
-                    <div className="grid grid-cols-4 gap-[1.25rem]">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
                         {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
                             <Link
                                 href="/product/mesin/mesin-cnc"

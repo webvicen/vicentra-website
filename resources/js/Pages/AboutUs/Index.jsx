@@ -70,7 +70,7 @@ export default function TermsAndConditions() {
                 <h1 className="text-xl text-center font-semibold text-gray-800 mt-[1.25rem]">
                     Penyedia Kebutuhan Percetakan Terlengkap
                 </h1>
-                <div className="w-[80%] mx-auto text-base text-justify text-gray-500 mt-[1.875rem] space-y-4">
+                <div className="lg:w-[80%] mx-auto text-base text-justify text-gray-500 mt-[1.875rem] space-y-4">
                     <p>
                         Selamat datang di Vicentra, sumber nomor satu Anda untuk
                         semua kebutuhan percetakan. Kami berdedikasi untuk
@@ -112,7 +112,14 @@ export default function TermsAndConditions() {
                     <Swiper
                         modules={[Pagination, Autoplay]}
                         spaceBetween={50}
-                        slidesPerView={3}
+                        breakpoints={{
+                            576: {
+                                slidesPerView: 1,
+                            },
+                            1200: {
+                                slidesPerView: 3,
+                            },
+                        }}
                         autoplay
                         pagination={{
                             el: ".swiper-brand-section-custom-pagination",
@@ -145,7 +152,7 @@ export default function TermsAndConditions() {
                         </h1>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-[1.25rem] mt-[1.25rem]">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem] mt-[1.25rem]">
                     {[1, 2, 3, 4].map((item) => (
                         <TeamCard key={item} />
                     ))}
@@ -168,7 +175,7 @@ export default function TermsAndConditions() {
                         allowFullScreen
                         loading="lazy"
                         referrerPolicy="no-referrer-when-downgrade"
-                        className="w-full h-[30rem]"
+                        className="w-full h-[20rem] lg:h-[30rem]"
                     />
                 </div>
             </section>
