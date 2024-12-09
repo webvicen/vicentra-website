@@ -31,7 +31,7 @@ class CategoryPostResource extends Resource
                     ->schema([
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Kategori')
-                            ->live()
+                            ->live(debounce: 1000)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
                         Forms\Components\TextInput::make('slug')

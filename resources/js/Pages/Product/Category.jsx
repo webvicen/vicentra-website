@@ -2,7 +2,8 @@ import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import SubCategory from "../../assets/images/category/1.png";
+import SubCategory from "../../assets/images/category/2.png";
+import SubCategoryBlue from "../../assets/images/category/4.jpg";
 import MesinBanner from "../../assets/images/banners/mesin.jpg";
 
 export default function Category({ category }) {
@@ -41,6 +42,18 @@ export default function Category({ category }) {
                             >
                                 <img
                                     src={SubCategory}
+                                    alt="nama sub category"
+                                />
+                            </Link>
+                        ))}
+                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                            <Link
+                                href="/product/mesin/mesin-cnc"
+                                key={item}
+                                className="rounded-lg shadow-md overflow-hidden"
+                            >
+                                <img
+                                    src={SubCategoryBlue}
                                     alt="nama sub category"
                                 />
                             </Link>
