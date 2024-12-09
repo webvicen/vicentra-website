@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "../../../assets/css/custom.css";
 
-export default function Testimonial() {
+export default function Testimonial({ testimonials }) {
     return (
         <div>
             <Swiper
@@ -27,90 +27,20 @@ export default function Testimonial() {
                     clickable: true,
                 }}
             >
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
+                {testimonials.map((testimonial, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="w-full h-[12rem] flex items-start rounded-xl border-2 p-5">
+                            <div>
+                                <h1 className="text-md font-semibold">
+                                    {testimonial.person}
+                                </h1>
+                                <p className="text-sm font-normal mt-3">
+                                    {testimonial.content}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[12rem] flex items-center rounded-xl border-2 p-5">
-                        <div>
-                            <h1 className="text-md font-semibold">
-                                Architecture Cutting Surabaya
-                            </h1>
-                            <p className="text-sm font-normal mt-3">
-                                Untuk mesinnya oke, pelayanan cukup baik, tim
-                                teknisi juga oke memberikan arahan dan solusi
-                                dengan baik.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
+                    </SwiperSlide>
+                ))}
             </Swiper>
             <div className="flex gap-2 justify-center items-center mt-4">
                 <div className="swiper-testimonial-section-custom-pagination w-fit" />

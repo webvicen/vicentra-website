@@ -9,7 +9,7 @@ import Specification from "./components/Specification";
 import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
-export default function ShowProduct({ category, subCategory }) {
+export default function ShowProduct({ team_sales }) {
     const [tabItems, setTabsItems] = useState([
         {
             name: "Deskripsi",
@@ -94,9 +94,9 @@ export default function ShowProduct({ category, subCategory }) {
                         </h2>
                     </div>
                     <div className="space-y-4 mt-[1.25rem]">
-                        <SalesCard />
-                        <SalesCard />
-                        <SalesCard />
+                        {team_sales.map((sales, index) => (
+                            <SalesCard sales={sales} key={index} />
+                        ))}
                     </div>
                 </div>
             </section>

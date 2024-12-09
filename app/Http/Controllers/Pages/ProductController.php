@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\SalesPerson;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -25,10 +26,13 @@ class ProductController extends Controller
 
     public function show($category, $subCategory, $slug)
     {
+        $team_sales = SalesPerson::get(['name', 'image', 'phone', 'additional_sentence']);
+
         return Inertia::render('Pages/Product/Show', [
             'category' => $category,
             'subCategory' => $subCategory,
-            'slug' => $slug
+            'slug' => $slug,
+            'team_sales' => $team_sales
         ]);
     }
 }

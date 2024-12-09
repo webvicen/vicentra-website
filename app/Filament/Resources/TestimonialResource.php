@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class TestimonialResource extends Resource
 {
@@ -33,6 +34,15 @@ class TestimonialResource extends Resource
                         Forms\Components\Textarea::make('content')
                             ->label('Isi Testimoni')
                             ->required(),
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Bukti Testimoni')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
+                            )
+                            ->disk('public')
+                            ->directory('testimonial-images')
+                            ->visibility('public')
+                            ->required(),
                     ])
             ]);
     }
@@ -44,7 +54,10 @@ class TestimonialResource extends Resource
                 Tables\Columns\TextColumn::make('person')
                     ->label('Nama Customer'),
                 Tables\Columns\TextColumn::make('content')
-                    ->label('Isi Testimoni'),
+                    ->label('Isi Testimoni')
+                    ->limit(50),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label('Bukti Testimoni'),
             ])
             ->filters([
                 //

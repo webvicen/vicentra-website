@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "../../../assets/css/custom.css";
 
-export default function Hero() {
+export default function Hero({ sliders }) {
     return (
         <div>
             <Swiper
@@ -20,21 +20,17 @@ export default function Hero() {
                     clickable: true,
                 }}
             >
-                <SwiperSlide>
-                    <div className="w-full h-[50vh] lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                        <h1 className="text-white">Slide 1</h1>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[50vh] lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                        <h1 className="text-white">Slide 2</h1>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <div className="w-full h-[50vh] lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl">
-                        <h1 className="text-white">Slide 3</h1>
-                    </div>
-                </SwiperSlide>
+                {sliders.map((slider, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden">
+                            <img
+                                src={`/storage/${slider.image}`}
+                                alt={slider.name}
+                                className="h-full"
+                            />
+                        </div>
+                    </SwiperSlide>
+                ))}
             </Swiper>
             <div className="flex gap-2 justify-center items-center mt-4">
                 <div className="swiper-hero-section-custom-pagination w-fit" />

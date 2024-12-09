@@ -15,7 +15,7 @@ export default function Faq() {
             <Accordion open={open === 1}>
                 <AccordionHeader
                     onClick={() => handleOpen(1)}
-                    className="text-base border-b"
+                    className="text-base border-b py-4"
                 >
                     What is Material Tailwind?
                 </AccordionHeader>

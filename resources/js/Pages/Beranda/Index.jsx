@@ -11,7 +11,7 @@ import Faq from "./components/Faq";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 
-export default function Beranda() {
+export default function Beranda({ sliders, testimonials }) {
     const [categoryProducts, setCategoryProducts] = useState([
         {
             id: 1,
@@ -40,7 +40,7 @@ export default function Beranda() {
 
             {/* HERO SECTION */}
             <section>
-                <Hero />
+                <Hero sliders={sliders} />
             </section>
             {/* HERO SECTION */}
 
@@ -196,7 +196,7 @@ export default function Beranda() {
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
-                    <Testimonial />
+                    <Testimonial testimonials={testimonials} />
                 </div>
             </section>
             {/* CUSTOMER TESTIMONIALS SECTION */}
