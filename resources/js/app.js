@@ -1,6 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { createInertiaApp } from "@inertiajs/inertia-react";
+import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import PagesLayout from "./Layouts/PagesLayout";
 

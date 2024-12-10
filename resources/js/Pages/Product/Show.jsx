@@ -1,15 +1,46 @@
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
+import ReactPlayer from "react-player/lazy";
 
 import Product from "../../assets/images/product/1.jpg";
+
+import Product1 from "../../assets/images/product/1.jpg";
+import Product2 from "../../assets/images/product/2.jpg";
+import Product3 from "../../assets/images/product/3.jpg";
 
 import Descriptions from "./components/Descriptions";
 import Specification from "./components/Specification";
 import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
-export default function ShowProduct({ team_sales }) {
+export default function ShowProduct({ teamSales }) {
+    const [activeProductItem, setActiveProductItem] = useState({
+        id: 1,
+        file: Product1,
+        type: "image",
+        isActive: true,
+    });
+    const [listProductAssets, setListProductAssets] = useState([
+        {
+            id: 1,
+            file: Product1,
+            type: "image",
+            isActive: true,
+        },
+        {
+            id: 2,
+            file: Product2,
+            type: "image",
+            isActive: false,
+        },
+        {
+            id: 3,
+            file: "https://www.youtube.com/watch?v=s6iEtVcwR7U",
+            type: "video",
+            isActive: false,
+        },
+    ]);
     const [tabItems, setTabsItems] = useState([
         {
             name: "Deskripsi",
@@ -37,6 +68,17 @@ export default function ShowProduct({ team_sales }) {
         setTabsItems(updatedTabItems);
         setActiveTab(tabItems[index].name);
     };
+    const toogleActiveProductItem = (index) => {
+        const updatedListProductAssets = [...listProductAssets];
+        updatedListProductAssets[index].isActive = true;
+        updatedListProductAssets.forEach((item, i) => {
+            if (i !== index) {
+                item.isActive = false;
+            }
+        });
+        setListProductAssets(updatedListProductAssets);
+        setActiveProductItem(updatedListProductAssets[index]);
+    };
 
     return (
         <div>
@@ -48,24 +90,63 @@ export default function ShowProduct({ team_sales }) {
             <section className="grid lg:grid-cols-2 gap-[1.25rem]">
                 <div>
                     <div>
-                        <img src={Product} alt="mesin-xuli-eco-solvent" />
+                        {activeProductItem.type === "image" ? (
+                            <img
+                                src={activeProductItem.file}
+                                alt="mesin-xuli-eco-solvent"
+                            />
+                        ) : (
+                            <ReactPlayer
+                                url={activeProductItem.file}
+                                light={true}
+                                width={"100%"}
+                                height={"37.5rem"}
+                                controls={true}
+                            />
+                        )}
                     </div>
-                    <div className="grid grid-cols-3 gap-4 mt-[1.875rem]">
-                        <img
-                            src={Product}
-                            alt="mesin-xuli-eco-solvent"
-                            className="hover:cursor-pointer border-2 border-gray-600 rounded-lg"
-                        />
-                        <img
-                            src={Product}
-                            alt="mesin-xuli-eco-solvent"
-                            className="hover:cursor-pointer rounded-lg"
-                        />
-                        <img
-                            src={Product}
-                            alt="mesin-xuli-eco-solvent"
-                            className="hover:cursor-pointer rounded-lg"
-                        />
+                    <div className="grid grid-cols-3 gap-3 mt-[1.875rem]">
+                        {listProductAssets.map((item, index) => {
+                            if (item.type === "image") {
+                                return (
+                                    <img
+                                        key={item.id}
+                                        src={item.file}
+                                        alt="mesin-xuli-eco-solvent"
+                                        className={`w-full h-[12rem] hover:cursor-pointer ${
+                                            item.isActive
+                                                ? "border-2 border-gray-600"
+                                                : ""
+                                        } object-contain`}
+                                        onClick={() =>
+                                            toogleActiveProductItem(index)
+                                        }
+                                    />
+                                );
+                            } else if (item.type === "video") {
+                                return (
+                                    <div
+                                        key={item.id}
+                                        className={`hover:cursor-pointer ${
+                                            item.isActive
+                                                ? "border-2 border-gray-600"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            toogleActiveProductItem(index)
+                                        }
+                                    >
+                                        <ReactPlayer
+                                            url={item.file}
+                                            light={true}
+                                            width={"100%"}
+                                            height={"12rem"}
+                                            style={{ pointerEvents: "none" }}
+                                        />
+                                    </div>
+                                );
+                            }
+                        })}
                     </div>
                 </div>
                 <div>
@@ -94,7 +175,7 @@ export default function ShowProduct({ team_sales }) {
                         </h2>
                     </div>
                     <div className="space-y-4 mt-[1.25rem]">
-                        {team_sales.map((sales, index) => (
+                        {teamSales.map((sales, index) => (
                             <SalesCard sales={sales} key={index} />
                         ))}
                     </div>

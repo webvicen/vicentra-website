@@ -1,5 +1,5 @@
 import { Link } from "@inertiajs/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
     FaInfoCircle,
     FaFacebook,
@@ -128,11 +128,11 @@ export default function PagesLayout({ children }) {
         },
     ]);
     const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
+    const [categoryPost, setCategoryPost] = useState([]);
 
     const toggleSubMenuCategory = () => {
         setIsSubMenuCategoryOpen(!isSubMenuCategoryOpen);
     };
-
     const toogleSubSubMenuCategory = (productName, SubSubMenuName) => {
         setSubMenuProducts(
             subMenuProducts.map((product) => {
@@ -153,9 +153,7 @@ export default function PagesLayout({ children }) {
                 return product;
             })
         );
-        console.log(productName, SubSubMenuName);
     };
-
     const toggleSubMenuProduct = (name) => {
         setSubMenuProducts(
             subMenuProducts.map((product) => {
@@ -170,6 +168,16 @@ export default function PagesLayout({ children }) {
         );
         console.log(name);
     };
+
+    const fetchSiteData = async () => {
+        const response = await fetch("/api/helpers/get-site-data");
+        const data = await response.json();
+        setCategoryPost([...data.categoryPost]);
+    };
+
+    useEffect(() => {
+        fetchSiteData();
+    }, []);
 
     return (
         <main>
@@ -240,30 +248,18 @@ export default function PagesLayout({ children }) {
                                                 : "hidden"
                                         }`}
                                     >
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                kegiatan
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                peluang usaha
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                info
-                                            </Link>
-                                        </li>
+                                        {categoryPost?.map(
+                                            (category, index) => (
+                                                <li key={index}>
+                                                    <Link
+                                                        href={`/blog/${category.slug}`}
+                                                        className="text-sm text-gray-800"
+                                                    >
+                                                        {category.name}
+                                                    </Link>
+                                                </li>
+                                            )
+                                        )}
                                     </ul>
                                 </button>
                                 <Link

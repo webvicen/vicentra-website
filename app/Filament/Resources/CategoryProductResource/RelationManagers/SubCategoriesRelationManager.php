@@ -47,8 +47,7 @@ class SubCategoriesRelationManager extends RelationManager
                                 Forms\Components\TextInput::make('name')
                                     ->label('Nama Sub Sub Kategori Produk')
                                     ->live(debounce: 1000)
-                                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                                    ->required(),
+                                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state))),
                                 Forms\Components\TextInput::make('slug')
                                     ->label('Slug Sub Sub Kategori Produk')
                                     ->readOnly(),
@@ -59,8 +58,7 @@ class SubCategoriesRelationManager extends RelationManager
                                     )
                                     ->disk('public')
                                     ->directory('product-sub-sub-category-thumbnails')
-                                    ->visibility('public')
-                                    ->required(),
+                                    ->visibility('public'),
                             ])
                     ])
             ]);

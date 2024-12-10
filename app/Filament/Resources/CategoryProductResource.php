@@ -55,8 +55,7 @@ class CategoryProductResource extends Resource
                             )
                             ->disk('public')
                             ->directory('product-category-banners')
-                            ->visibility('public')
-                            ->required(),
+                            ->visibility('public'),
                     ])
             ]);
     }

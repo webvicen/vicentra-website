@@ -26,13 +26,13 @@ class ProductController extends Controller
 
     public function show($category, $subCategory, $slug)
     {
-        $team_sales = SalesPerson::get(['name', 'image', 'phone', 'additional_sentence']);
+        $teamSales = SalesPerson::get(['name', 'image', 'phone', 'additional_sentence']);
 
         return Inertia::render('Pages/Product/Show', [
             'category' => $category,
             'subCategory' => $subCategory,
             'slug' => $slug,
-            'team_sales' => $team_sales
+            'teamSales' => $teamSales
         ]);
     }
 }
