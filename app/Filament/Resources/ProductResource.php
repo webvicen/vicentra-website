@@ -67,7 +67,7 @@ class ProductResource extends Resource
                         Forms\Components\RichEditor::make('description')
                             ->label('Deskripsi Lengkap Produk')
                             ->required(),
-                        Forms\Components\MarkdownEditor::make('specification')
+                        Forms\Components\TextArea::make('specification')
                             ->label('Spesifikasi Produk')
                             ->required(),
                         Forms\Components\FileUpload::make('work_result')
@@ -89,6 +89,8 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Produk'),
+                Tables\Columns\TextColumn::make('sku')
+                    ->label('SKU Produk'),
                 Tables\Columns\TextColumn::make('categoryable.name')
                     ->badge()
                     ->label('Kategori Produk'),

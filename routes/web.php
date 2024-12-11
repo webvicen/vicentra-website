@@ -25,8 +25,8 @@ use App\Http\Controllers\Pages\{
 
 // PAGES ROUTE
 Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/{category}', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{category}/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/terms-and-conditions', [TermsAndConditionsController::class, 'index'])->name('terms-and-conditions.index');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
 Route::get('/help', [HelpController::class, 'index'])->name('help.index');

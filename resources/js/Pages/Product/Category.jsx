@@ -5,7 +5,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import SubCategory from "../../assets/images/category/2.png";
 import MesinBanner from "../../assets/images/banners/mesin.jpg";
 
-export default function Category({ category }) {
+export default function Category({ category, subCategory }) {
     return (
         <div>
             <Helmet>
@@ -17,8 +17,8 @@ export default function Category({ category }) {
                 <div>
                     <div className="w-full flex justify-center items-center rounded-tl-[10px] rounded-tr-[10px] lg:rounded-tl-[20px] lg:rounded-tr-[20px] overflow-hidden">
                         <img
-                            src={MesinBanner}
-                            alt="mesin banner"
+                            src={`/storage/${category.banner}`}
+                            alt={category.slug}
                             className="w-full h-full"
                         />
                     </div>
@@ -29,19 +29,19 @@ export default function Category({ category }) {
             {/* SUB CATEGORY SECTION */}
             <section className="mt-[3.125rem] lg:mt-[6.25rem]">
                 <h1 className="text-xl text-center capitalize font-semibold text-gray-800">
-                    Rekomendasi Jenis {category} Kami
+                    Kategori {category.name} Kami
                 </h1>
                 <div className="mt-[1.875rem]">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                        {subCategory.data.map((item, index) => (
                             <Link
-                                href="/product/mesin/mesin-cnc"
-                                key={item}
+                                href={`/product/${item.category.slug}/${item.slug}`}
+                                key={index}
                                 className="rounded-lg shadow-md overflow-hidden"
                             >
                                 <img
-                                    src={SubCategory}
-                                    alt="nama sub category"
+                                    src={`/storage/${item.thumbnail}`}
+                                    alt={item.slug}
                                 />
                             </Link>
                         ))}
@@ -49,36 +49,53 @@ export default function Category({ category }) {
                     {/* PAGINATION */}
                     <div className="flex justify-end mt-[3.125rem]">
                         <div className="flex gap-2">
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                <FaChevronLeft />
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-vicentra-blue text-white rounded-lg"
-                            >
-                                1
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                2
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                3
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                <FaChevronRight />
-                            </button>
+                            {subCategory.links.map((link, index) => {
+                                if (index === 0) {
+                                    return (
+                                        <Link
+                                            key={index}
+                                            href={link.url}
+                                            className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                                link.active
+                                                    ? `bg-vicentra-blue text-white`
+                                                    : `bg-gray-200 text-gray-800`
+                                            } rounded-lg`}
+                                        >
+                                            <FaChevronLeft />
+                                        </Link>
+                                    );
+                                }
+
+                                if (index === subCategory.links.length - 1) {
+                                    return (
+                                        <Link
+                                            key={index}
+                                            href={link.url}
+                                            className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                                link.active
+                                                    ? `bg-vicentra-blue text-white`
+                                                    : `bg-gray-200 text-gray-800`
+                                            } rounded-lg`}
+                                        >
+                                            <FaChevronRight />
+                                        </Link>
+                                    );
+                                }
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={link.url}
+                                        className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                            link.active
+                                                ? `bg-vicentra-blue text-white`
+                                                : `bg-gray-200 text-gray-800`
+                                        } rounded-lg`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                     {/* PAGINATION */}

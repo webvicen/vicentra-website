@@ -234,9 +234,8 @@ export default function PagesLayout({ children }) {
                                 >
                                     beranda
                                 </Link>
-                                <button
-                                    type="button"
-                                    className="text-base text-white capitalize flex items-center gap-1 relative"
+                                <div
+                                    className="text-base text-white capitalize flex items-center gap-1 hover:cursor-pointer relative"
                                     onClick={toggleSubMenuCategory}
                                 >
                                     blog
@@ -261,7 +260,7 @@ export default function PagesLayout({ children }) {
                                             )
                                         )}
                                     </ul>
-                                </button>
+                                </div>
                                 <Link
                                     href="/terms-and-conditions"
                                     className="text-base text-white capitalize"
@@ -299,10 +298,9 @@ export default function PagesLayout({ children }) {
                         </Link>
                         <div className="flex items-start gap-[1.875rem]">
                             {subMenuProducts.map((product) => (
-                                <button
+                                <div
                                     key={product.id}
-                                    type="button"
-                                    className="text-base text-gray-800 capitalize flex items-center gap-1 relative"
+                                    className="text-base text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
                                 >
                                     {product.name}
                                     <FaCaretDown
@@ -320,10 +318,7 @@ export default function PagesLayout({ children }) {
                                             if (subMenu.subSubMenu.length > 0) {
                                                 return (
                                                     <li key={subMenu.id}>
-                                                        <button
-                                                            type="button"
-                                                            className="text-sm text-gray-800 capitalize flex items-center gap-1 relative"
-                                                        >
+                                                        <div className="text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative">
                                                             {subMenu.name}
                                                             <FaCaretDown
                                                                 className="text-vicentra-yellow text-xl"
@@ -363,7 +358,7 @@ export default function PagesLayout({ children }) {
                                                                     )
                                                                 )}
                                                             </ul>
-                                                        </button>
+                                                        </div>
                                                     </li>
                                                 );
                                             } else {
@@ -383,7 +378,7 @@ export default function PagesLayout({ children }) {
                                             }
                                         })}
                                     </ul>
-                                </button>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -471,9 +466,8 @@ export default function PagesLayout({ children }) {
                                     beranda
                                 </Link>
                                 <hr />
-                                <button
-                                    type="button"
-                                    className="text-sm font-medium text-gray-800 capitalize flex items-center gap-1 relative"
+                                <div
+                                    className="text-sm font-medium text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
                                     onClick={toggleSubMenuCategory}
                                 >
                                     blog
@@ -510,7 +504,7 @@ export default function PagesLayout({ children }) {
                                             </Link>
                                         </li>
                                     </ul>
-                                </button>
+                                </div>
                                 <hr />
                                 <Link
                                     href="/terms-and-conditions"
@@ -530,10 +524,7 @@ export default function PagesLayout({ children }) {
                             <div className="flex flex-col gap-[0.5rem] justify-start mt-2">
                                 {subMenuProducts.map((product) => (
                                     <div key={product.id}>
-                                        <button
-                                            type="button"
-                                            className="w-full text-sm text-gray-800 capitalize flex items-center gap-1 relative"
-                                        >
+                                        <div className="w-full text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative">
                                             {product.name}
                                             <FaCaretDown
                                                 className="text-vicentra-yellow text-xl"
@@ -562,10 +553,7 @@ export default function PagesLayout({ children }) {
                                                                         subMenu.id
                                                                     }
                                                                 >
-                                                                    <button
-                                                                        type="button"
-                                                                        className="text-sm text-gray-800 capitalize flex items-center gap-1 relative"
-                                                                    >
+                                                                    <div className="text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative">
                                                                         {
                                                                             subMenu.name
                                                                         }
@@ -607,7 +595,7 @@ export default function PagesLayout({ children }) {
                                                                                 )
                                                                             )}
                                                                         </ul>
-                                                                    </button>
+                                                                    </div>
                                                                 </li>
                                                             );
                                                         } else {
@@ -632,7 +620,7 @@ export default function PagesLayout({ children }) {
                                                     }
                                                 )}
                                             </ul>
-                                        </button>
+                                        </div>
                                         <hr className="mt-1" />
                                     </div>
                                 ))}

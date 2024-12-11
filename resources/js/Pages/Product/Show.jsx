@@ -1,4 +1,4 @@
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
 import ReactPlayer from "react-player/lazy";
@@ -14,33 +14,24 @@ import Specification from "./components/Specification";
 import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
-export default function ShowProduct({ teamSales }) {
-    const [activeProductItem, setActiveProductItem] = useState({
-        id: 1,
-        file: Product1,
-        type: "image",
-        isActive: true,
-    });
-    const [listProductAssets, setListProductAssets] = useState([
-        {
-            id: 1,
-            file: Product1,
-            type: "image",
-            isActive: true,
-        },
-        {
-            id: 2,
-            file: Product2,
-            type: "image",
-            isActive: false,
-        },
-        {
-            id: 3,
-            file: "https://www.youtube.com/watch?v=s6iEtVcwR7U",
-            type: "video",
-            isActive: false,
-        },
-    ]);
+export default function ShowProduct({ product, teamSales, similarProducts }) {
+    const { url } = usePage();
+    const urlSegments = url.split("/");
+    const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
+    const breadcrumbUrlResult = urlTarget
+        .split("/")
+        .map((segment) =>
+            segment
+                .split("-")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")
+        )
+        .join("/");
+
+    const [activeProductItem, setActiveProductItem] = useState(
+        product.media[1]
+    );
+    const [listProductAssets, setListProductAssets] = useState(product.media);
     const [tabItems, setTabsItems] = useState([
         {
             name: "Deskripsi",
@@ -92,8 +83,9 @@ export default function ShowProduct({ teamSales }) {
                     <div>
                         {activeProductItem.type === "image" ? (
                             <img
-                                src={activeProductItem.file}
-                                alt="mesin-xuli-eco-solvent"
+                                src={`/storage/${activeProductItem.file}`}
+                                alt={activeProductItem.slug}
+                                className="w-full lg:h-[37.5rem] object-contain"
                             />
                         ) : (
                             <ReactPlayer
@@ -111,12 +103,12 @@ export default function ShowProduct({ teamSales }) {
                                 return (
                                     <img
                                         key={item.id}
-                                        src={item.file}
+                                        src={`/storage/${item.file}`}
                                         alt="mesin-xuli-eco-solvent"
-                                        className={`w-full h-[12rem] hover:cursor-pointer ${
+                                        className={`w-full lg:h-[12rem] hover:cursor-pointer ${
                                             item.isActive
                                                 ? "border-2 border-gray-600"
-                                                : ""
+                                                : "border-2 border-white"
                                         } object-contain`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
@@ -130,7 +122,7 @@ export default function ShowProduct({ teamSales }) {
                                         className={`hover:cursor-pointer ${
                                             item.isActive
                                                 ? "border-2 border-gray-600"
-                                                : ""
+                                                : "border-2 border-white"
                                         }`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
@@ -151,24 +143,21 @@ export default function ShowProduct({ teamSales }) {
                 </div>
                 <div>
                     <h1 className="text-2xl font-semibold text-gray-800">
-                        Mesin Xuli Eco Solvent
+                        {product.name}
                     </h1>
-                    <p className="text-sm text-justify text-gray-500 mt-[1.25rem]">
-                        Xuli X6-1880 Ecosolvent yang mengunakan print head Epson
-                        DX-5 180 nozzles*8 Lines*1,high quality up to 1440dpi
-                        dengan sistem automatis damper untuk membersikan
-                        head, Jadi mempermudah perawatan dan mesin ini bisa
-                        mencetak di bahan bahan sebagai berikut Seperti Inkjet
-                        Paper, Photo Paper, Canvas, Albatros, Pvc, Backlite Film
-                        Duratrans, dll.
-                    </p>
+                    <div
+                        className="text-sm text-justify text-gray-500 mt-[1.25rem]"
+                        dangerouslySetInnerHTML={{
+                            __html: product.shortDescription,
+                        }}
+                    ></div>
                     <div className="mt-[1.25rem]">
                         <h2 className="text-base font-semibold">
-                            Mesin / Digital Printing
+                            {breadcrumbUrlResult}
                         </h2>
                         <h2 className="text-base">
                             <span className="font-semibold">SKU: </span>
-                            MPAS-100017
+                            {product.sku}
                         </h2>
                         <h2 className="text-base">
                             <span className="font-semibold">Brand: </span>Xuli
@@ -201,9 +190,13 @@ export default function ShowProduct({ teamSales }) {
                     ))}
                 </div>
                 <div className="mt-[1.875rem]">
-                    {activeTab === "Deskripsi" && <Descriptions />}
-                    {activeTab === "Spesifikasi" && <Specification />}
-                    {activeTab === "Hasil" && <Results />}
+                    {activeTab === "Deskripsi" && (
+                        <Descriptions product={product} />
+                    )}
+                    {activeTab === "Spesifikasi" && (
+                        <Specification product={product} />
+                    )}
+                    {activeTab === "Hasil" && <Results product={product} />}
                 </div>
             </section>
             {/* TAB SECTION SECTION */}
@@ -215,14 +208,19 @@ export default function ShowProduct({ teamSales }) {
                 </h1>
                 <div className="mt-[1.875rem]">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {[1, 2, 3, 4].map((item) => (
+                        {similarProducts.map((item, index) => (
                             <Link
-                                href="/product/mesin/mesin-cnc/mesin-xuli-eco-solvent"
-                                key={item}
+                                key={index}
+                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`}
+                                className="rounded-lg overflow-hidden"
                             >
-                                <img src={Product} alt="nama product" />
+                                <img
+                                    src={`/storage/${item.thumbnail}`}
+                                    alt={item.slug}
+                                    className="rounded-lg"
+                                />
                                 <h1 className="text-center text-base font-medium mt-2">
-                                    Mesin Xuli Eco Solvent
+                                    {item.name}
                                 </h1>
                             </Link>
                         ))}

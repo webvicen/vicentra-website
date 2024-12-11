@@ -1,0 +1,12 @@
+.post-main-content p,
+.post-main-content {
+    @apply text-sm font-normal text-gray-800 mb-4;
+}
+
+.post-main-content figure {
+    @apply mb-4;
+}
+
+.post-main-content figure figcaption {
+    @apply text-xs font-normal text-center text-gray-800;
+}

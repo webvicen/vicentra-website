@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Product from "../../assets/images/product/1.jpg";
 
-export default function SubCategory({ category, subCategory }) {
+export default function SubCategory({ category, subCategory, products }) {
     return (
         <div>
             <Helmet>
@@ -14,18 +14,23 @@ export default function SubCategory({ category, subCategory }) {
             {/* LIST PRODUCT SECTION */}
             <section>
                 <h1 className="text-xl text-center capitalize font-semibold text-gray-800">
-                    Rekomendasi {`${category} ${subCategory}`} Kami
+                    Rekomendasi {`${category.name} ${subCategory.name}`} Kami
                 </h1>
                 <div className="mt-[1.875rem]">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+                        {products.data.map((item, index) => (
                             <Link
-                                href="/product/mesin/mesin-cnc/mesin-xuli-eco-solvent"
-                                key={item}
+                                key={index}
+                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`}
+                                className="rounded-lg overflow-hidden"
                             >
-                                <img src={Product} alt="nama product" />
+                                <img
+                                    src={`/storage/${item.thumbnail}`}
+                                    alt={item.slug}
+                                    className="rounded-lg"
+                                />
                                 <h1 className="text-center text-base font-medium mt-2">
-                                    Mesin Xuli Eco Solvent
+                                    {item.name}
                                 </h1>
                             </Link>
                         ))}
@@ -33,36 +38,53 @@ export default function SubCategory({ category, subCategory }) {
                     {/* PAGINATION */}
                     <div className="flex justify-end mt-[3.125rem]">
                         <div className="flex gap-2">
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                <FaChevronLeft />
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-vicentra-blue text-white rounded-lg"
-                            >
-                                1
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                2
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                3
-                            </button>
-                            <button
-                                type="button"
-                                className="w-[2.5rem] h-[2.5rem] flex justify-center items-center bg-gray-200 text-gray-800 rounded-lg"
-                            >
-                                <FaChevronRight />
-                            </button>
+                            {products.links.map((link, index) => {
+                                if (index === 0) {
+                                    return (
+                                        <Link
+                                            key={index}
+                                            href={link.url}
+                                            className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                                link.active
+                                                    ? `bg-vicentra-blue text-white`
+                                                    : `bg-gray-200 text-gray-800`
+                                            } rounded-lg`}
+                                        >
+                                            <FaChevronLeft />
+                                        </Link>
+                                    );
+                                }
+
+                                if (index === products.links.length - 1) {
+                                    return (
+                                        <Link
+                                            key={index}
+                                            href={link.url}
+                                            className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                                link.active
+                                                    ? `bg-vicentra-blue text-white`
+                                                    : `bg-gray-200 text-gray-800`
+                                            } rounded-lg`}
+                                        >
+                                            <FaChevronRight />
+                                        </Link>
+                                    );
+                                }
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={link.url}
+                                        className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
+                                            link.active
+                                                ? `bg-vicentra-blue text-white`
+                                                : `bg-gray-200 text-gray-800`
+                                        } rounded-lg`}
+                                    >
+                                        {link.label}
+                                    </Link>
+                                );
+                            })}
                         </div>
                     </div>
                     {/* PAGINATION */}

@@ -54,6 +54,10 @@ class PostResource extends Resource
                             ->directory('post-thumbnails')
                             ->visibility('public')
                             ->required(),
+                        Forms\Components\TextInput::make('short_description')
+                            ->label('Deskripsi Singkat Post')
+                            ->maxLength(150)
+                            ->required(),
                         Forms\Components\RichEditor::make('content')
                             ->label('Isi Post')
                             ->required(),
