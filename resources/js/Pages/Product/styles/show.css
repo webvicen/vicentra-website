@@ -1,0 +1,5 @@
+.swiper-wrapper .swiper-slide,
+.swiper-wrapper .swiper-slide .react-player__preview {
+    width: 10rem !important;
+    height: 10rem !important;
+}

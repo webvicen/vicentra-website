@@ -2,14 +2,13 @@ import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-import SubCategory from "../../assets/images/category/2.png";
-import MesinBanner from "../../assets/images/banners/mesin.jpg";
+import Layout from "../../Layouts/PagesLayout";
 
-export default function Category({ category, subCategory }) {
+const Category = ({ category, subCategory }) => {
     return (
         <div>
             <Helmet>
-                <title>Halaman Category Produk</title>
+                <title>Vicentra - Produk {category.name}</title>
             </Helmet>
 
             {/* HERO SECTION */}
@@ -104,4 +103,7 @@ export default function Category({ category, subCategory }) {
             {/* SUB CATEGORY SECTION */}
         </div>
     );
-}
+};
+
+Category.layout = (page) => <Layout children={page} />;
+export default Category;

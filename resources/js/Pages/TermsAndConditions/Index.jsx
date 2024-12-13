@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet";
 
-export default function TermsAndConditions() {
+import Layout from "../../Layouts/PagesLayout";
+
+const TermsAndConditions = () => {
     return (
         <div>
             <Helmet>
-                <title>Halaman Syarat & Ketentuan Perbaikan Mesin</title>
+                <title>Vicentra - Syarat & Ketentuan Perbaikan Mesin</title>
             </Helmet>
 
             {/* TERMS AND CONDITIONS SECTION */}
@@ -97,4 +99,7 @@ export default function TermsAndConditions() {
             {/* TERMS AND CONDITIONS SECTION */}
         </div>
     );
-}
+};
+
+TermsAndConditions.layout = (page) => <Layout children={page} />;
+export default TermsAndConditions;

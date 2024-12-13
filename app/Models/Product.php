@@ -12,8 +12,11 @@ class Product extends Model
     protected $fillable = [
         'categoryable_id',
         'categoryable_type',
+        'brand_product_id',
         'slug',
         'name',
+        'another_name',
+        'is_out_of_stock',
         'sku',
         'thumbnail',
         'short_description',
@@ -22,9 +25,18 @@ class Product extends Model
         'work_result'
     ];
 
+    protected $casts = [
+        'is_out_of_stock' => 'boolean',
+    ];
+
     public function categoryable()
     {
         return $this->morphTo();
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(BrandProduct::class);
     }
 
     public function media()

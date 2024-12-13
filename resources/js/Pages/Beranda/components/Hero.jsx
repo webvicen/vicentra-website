@@ -22,13 +22,21 @@ export default function Hero({ sliders }) {
             >
                 {sliders.map((slider, index) => (
                     <SwiperSlide key={index}>
-                        <div className="w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden">
+                        <a
+                            href={
+                                slider.type === "promo"
+                                    ? `/showcase/${slider.slug}`
+                                    : slider.link
+                            }
+                            target="_blank"
+                            className="w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
+                        >
                             <img
                                 src={`/storage/${slider.image}`}
                                 alt={slider.name}
                                 className="h-full"
                             />
-                        </div>
+                        </a>
                     </SwiperSlide>
                 ))}
             </Swiper>

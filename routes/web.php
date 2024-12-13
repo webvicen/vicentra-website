@@ -9,6 +9,7 @@ use App\Http\Controllers\Pages\{
   BlogController,
   HelpController,
   ProductController,
+  ShowCaseController,
   TermsAndConditionsController
 };
 
@@ -30,6 +31,8 @@ Route::get('/blog/{category}/{slug}', [BlogController::class, 'show'])->name('bl
 Route::get('/terms-and-conditions', [TermsAndConditionsController::class, 'index'])->name('terms-and-conditions.index');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
 Route::get('/help', [HelpController::class, 'index'])->name('help.index');
+Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 Route::get('/product/{category}', [ProductController::class, 'category'])->name('product.category.index');
 Route::get('/product/{category}/{subCategory}', [ProductController::class, 'subCategory'])->name('product.sub-category.index');
 Route::get('/product/{category}/{subCategory}/{slug}', [ProductController::class, 'show'])->name('product.show');
+Route::get('/showcase/{slug}', [ShowCaseController::class, 'show'])->name('showcase.show');

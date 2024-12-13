@@ -1,20 +1,20 @@
 import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import ReactPlayer from "react-player/lazy";
 
-import Product from "../../assets/images/product/1.jpg";
+// Import Swiper styles
+import "swiper/css";
+import "./styles/show.css";
 
-import Product1 from "../../assets/images/product/1.jpg";
-import Product2 from "../../assets/images/product/2.jpg";
-import Product3 from "../../assets/images/product/3.jpg";
-
+import Layout from "../../Layouts/PagesLayout";
 import Descriptions from "./components/Descriptions";
 import Specification from "./components/Specification";
 import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
-export default function ShowProduct({ product, teamSales, similarProducts }) {
+const ShowProduct = ({ product, teamSales, similarProducts }) => {
     const { url } = usePage();
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
@@ -85,66 +85,99 @@ export default function ShowProduct({ product, teamSales, similarProducts }) {
                             <img
                                 src={`/storage/${activeProductItem.file}`}
                                 alt={activeProductItem.slug}
-                                className="w-full lg:h-[37.5rem] object-contain"
+                                className="lg:w-full h-[29.375rem] lg:h-[37.5rem] object-contain"
                             />
                         ) : (
-                            <ReactPlayer
-                                url={activeProductItem.file}
-                                light={true}
-                                width={"100%"}
-                                height={"37.5rem"}
-                                controls={true}
-                            />
+                            <div className="lg:w-full h-[29.375rem] lg:h-[37.5rem]">
+                                <ReactPlayer
+                                    url={activeProductItem.file}
+                                    light={true}
+                                    width={"100%"}
+                                    height={"100%"}
+                                    controls={true}
+                                />
+                            </div>
                         )}
                     </div>
-                    <div className="grid grid-cols-3 gap-3 mt-[1.875rem]">
-                        {listProductAssets.map((item, index) => {
-                            if (item.type === "image") {
-                                return (
-                                    <img
-                                        key={item.id}
-                                        src={`/storage/${item.file}`}
-                                        alt="mesin-xuli-eco-solvent"
-                                        className={`w-full lg:h-[12rem] hover:cursor-pointer ${
-                                            item.isActive
-                                                ? "border-2 border-gray-600"
-                                                : "border-2 border-white"
-                                        } object-contain`}
-                                        onClick={() =>
-                                            toogleActiveProductItem(index)
-                                        }
-                                    />
-                                );
-                            } else if (item.type === "video") {
-                                return (
-                                    <div
-                                        key={item.id}
-                                        className={`hover:cursor-pointer ${
-                                            item.isActive
-                                                ? "border-2 border-gray-600"
-                                                : "border-2 border-white"
-                                        }`}
-                                        onClick={() =>
-                                            toogleActiveProductItem(index)
-                                        }
-                                    >
-                                        <ReactPlayer
-                                            url={item.file}
-                                            light={true}
-                                            width={"100%"}
-                                            height={"12rem"}
-                                            style={{ pointerEvents: "none" }}
-                                        />
-                                    </div>
-                                );
-                            }
-                        })}
+                    <div className="mt-[1.875rem]">
+                        <Swiper
+                            spaceBetween="5rem"
+                            slidesPerView={3}
+                            className="w-[29rem] lg:w-auto"
+                        >
+                            {listProductAssets.map((item, index) => {
+                                if (item.type === "image") {
+                                    return (
+                                        <SwiperSlide
+                                            key={index}
+                                            style={{
+                                                width: "10rem",
+                                                height: "10rem",
+                                            }}
+                                        >
+                                            <img
+                                                src={`/storage/${item.file}`}
+                                                alt="mesin-xuli-eco-solvent"
+                                                className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
+                                                    item.isActive
+                                                        ? "border-2 border-gray-600"
+                                                        : "border-2 border-white"
+                                                } object-contain`}
+                                                onClick={() =>
+                                                    toogleActiveProductItem(
+                                                        index
+                                                    )
+                                                }
+                                            />
+                                        </SwiperSlide>
+                                    );
+                                } else if (item.type === "video") {
+                                    return (
+                                        <SwiperSlide
+                                            key={index}
+                                            style={{
+                                                width: "10rem",
+                                                height: "10rem",
+                                            }}
+                                        >
+                                            <div
+                                                className={`hover:cursor-pointer ${
+                                                    item.isActive
+                                                        ? "border-2 border-gray-600"
+                                                        : "border-2 border-white"
+                                                }`}
+                                                onClick={() =>
+                                                    toogleActiveProductItem(
+                                                        index
+                                                    )
+                                                }
+                                            >
+                                                <ReactPlayer
+                                                    url={item.file}
+                                                    light={true}
+                                                    width={"100%"}
+                                                    height={"100%"}
+                                                    style={{
+                                                        pointerEvents: "none",
+                                                    }}
+                                                />
+                                            </div>
+                                        </SwiperSlide>
+                                    );
+                                }
+                            })}
+                        </Swiper>
                     </div>
                 </div>
                 <div>
-                    <h1 className="text-2xl font-semibold text-gray-800">
-                        {product.name}
-                    </h1>
+                    <div>
+                        <h1 className="text-sm font-bold text-gray-800">
+                            {product.name}
+                        </h1>
+                        <h2 className="text-2xl font-normal text-gray-600">
+                            {product.another_name}
+                        </h2>
+                    </div>
                     <div
                         className="text-sm text-justify text-gray-500 mt-[1.25rem]"
                         dangerouslySetInnerHTML={{
@@ -165,7 +198,13 @@ export default function ShowProduct({ product, teamSales, similarProducts }) {
                     </div>
                     <div className="space-y-4 mt-[1.25rem]">
                         {teamSales.map((sales, index) => (
-                            <SalesCard sales={sales} key={index} />
+                            <SalesCard
+                                product={product}
+                                sales={sales}
+                                url={url}
+                                breadcrumbUrlResult={breadcrumbUrlResult}
+                                key={index}
+                            />
                         ))}
                     </div>
                 </div>
@@ -214,14 +253,27 @@ export default function ShowProduct({ product, teamSales, similarProducts }) {
                                 href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`}
                                 className="rounded-lg overflow-hidden"
                             >
-                                <img
-                                    src={`/storage/${item.thumbnail}`}
-                                    alt={item.slug}
-                                    className="rounded-lg"
-                                />
-                                <h1 className="text-center text-base font-medium mt-2">
-                                    {item.name}
-                                </h1>
+                                <div className="rounded-lg overflow-hidden relative">
+                                    <img
+                                        src={`/storage/${item.thumbnail}`}
+                                        alt={item.slug}
+                                    />
+                                    {item.is_out_of_stock ? (
+                                        <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
+                                            <h1 className="text-base font-bold text-white uppercase">
+                                                out of stock
+                                            </h1>
+                                        </div>
+                                    ) : null}
+                                </div>
+                                <div className="mt-2">
+                                    <h1 className="text-center text-base font-bold">
+                                        {item.name}
+                                    </h1>
+                                    <h2 className="text-center text-sm font-normal">
+                                        {item.another_name}
+                                    </h2>
+                                </div>
                             </Link>
                         ))}
                     </div>
@@ -230,4 +282,7 @@ export default function ShowProduct({ product, teamSales, similarProducts }) {
             {/* SIMILAR PRODUCTS SECTION */}
         </div>
     );
-}
+};
+
+ShowProduct.layout = (page) => <Layout children={page} />;
+export default ShowProduct;

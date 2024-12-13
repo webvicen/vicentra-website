@@ -1,5 +1,5 @@
-import { Link } from "@inertiajs/react";
-import { useEffect, useState } from "react";
+import { Link, usePage } from "@inertiajs/react";
+import { useState } from "react";
 import {
     FaInfoCircle,
     FaFacebook,
@@ -18,7 +18,11 @@ import VicentraLogoWhite from "../assets/images/logo-vicentra-white.png";
 import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.png";
 
 export default function PagesLayout({ children }) {
-    const [isSubMenuCategoryOpen, setIsSubMenuCategoryOpen] = useState(false);
+    const { categoryPost } = usePage().props;
+    const [isSubMenuCategoryPostOpen, setIsSubMenuCategoryPostOpen] =
+        useState(false);
+    const [isSubMenuCategoryProductOpen, setIsSubMenuCategoryProductOpen] =
+        useState(false);
     const [subMenuProducts, setSubMenuProducts] = useState([
         {
             id: 1,
@@ -128,10 +132,12 @@ export default function PagesLayout({ children }) {
         },
     ]);
     const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
-    const [categoryPost, setCategoryPost] = useState([]);
 
-    const toggleSubMenuCategory = () => {
-        setIsSubMenuCategoryOpen(!isSubMenuCategoryOpen);
+    const toggleSubMenuCategoryPost = () => {
+        setIsSubMenuCategoryPostOpen(!isSubMenuCategoryPostOpen);
+    };
+    const toggleSubMenuCategoryProduct = () => {
+        setIsSubMenuCategoryProductOpen(!isSubMenuCategoryProductOpen);
     };
     const toogleSubSubMenuCategory = (productName, SubSubMenuName) => {
         setSubMenuProducts(
@@ -168,16 +174,6 @@ export default function PagesLayout({ children }) {
         );
         console.log(name);
     };
-
-    const fetchSiteData = async () => {
-        const response = await fetch("/api/helpers/get-site-data");
-        const data = await response.json();
-        setCategoryPost([...data.categoryPost]);
-    };
-
-    useEffect(() => {
-        fetchSiteData();
-    }, []);
 
     return (
         <main>
@@ -236,13 +232,13 @@ export default function PagesLayout({ children }) {
                                 </Link>
                                 <div
                                     className="text-base text-white capitalize flex items-center gap-1 hover:cursor-pointer relative"
-                                    onClick={toggleSubMenuCategory}
+                                    onClick={toggleSubMenuCategoryPost}
                                 >
                                     blog
                                     <FaCaretDown className="text-vicentra-yellow text-xl" />
                                     <ul
                                         className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                            isSubMenuCategoryOpen
+                                            isSubMenuCategoryPostOpen
                                                 ? "block"
                                                 : "hidden"
                                         }`}
@@ -275,19 +271,25 @@ export default function PagesLayout({ children }) {
                                 </Link>
                             </div>
                             <div className="bg-white relative rounded-md">
-                                <input
-                                    type="text"
-                                    placeholder="Cari produk vicentra..."
-                                    className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
-                                />
-                                <button className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1">
-                                    <FaSearch className="text-white text-sm font-semibold" />
-                                </button>
+                                <form action="/product/search" method="GET">
+                                    <input
+                                        type="text"
+                                        name="q"
+                                        placeholder="Cari produk vicentra..."
+                                        className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
+                                    />
+                                    <button
+                                        type="submit"
+                                        className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                    >
+                                        <FaSearch className="text-white text-sm font-semibold" />
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="w-[80vw] mx-auto mt-[2.5rem]">
+                <div className="w-[80vw] mx-auto mt-[1rem]">
                     <div className="flex justify-between items-center">
                         <Link href="/">
                             <img
@@ -468,13 +470,13 @@ export default function PagesLayout({ children }) {
                                 <hr />
                                 <div
                                     className="text-sm font-medium text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
-                                    onClick={toggleSubMenuCategory}
+                                    onClick={toggleSubMenuCategoryPost}
                                 >
                                     blog
                                     <FaCaretDown className="text-vicentra-yellow text-xl" />
                                     <ul
                                         className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                            isSubMenuCategoryOpen
+                                            isSubMenuCategoryPostOpen
                                                 ? "block"
                                                 : "hidden"
                                         }`}
@@ -681,14 +683,6 @@ export default function PagesLayout({ children }) {
                                         className="text-white capitalize"
                                     >
                                         beranda
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link
-                                        href="/blog"
-                                        className="text-white capitalize"
-                                    >
-                                        blog
                                     </Link>
                                 </li>
                                 <li>

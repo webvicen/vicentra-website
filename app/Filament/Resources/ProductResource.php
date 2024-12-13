@@ -41,6 +41,11 @@ class ProductResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug Produk')
                             ->readOnly(),
+                        Forms\Components\TextInput::make('another_name')
+                            ->label('Nama Lain Produk')
+                            ->required(),
+                        Forms\Components\Toggle::make('is_out_of_stock')
+                            ->label('Out of Stock'),
                         Forms\Components\MorphToSelect::make('categoryable')
                             ->label('Kategori Produk')
                             ->types([

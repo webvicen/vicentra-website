@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SliderResource\Pages;
-use App\Filament\Resources\SliderResource\RelationManagers;
-use App\Models\Slider;
+use App\Filament\Resources\BrandProductResource\Pages;
+use App\Filament\Resources\BrandProductResource\RelationManagers;
+use App\Models\BrandProduct;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,13 +16,13 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Filament\Forms\Set;
 use Illuminate\Support\Str;
 
-class SliderResource extends Resource
+class BrandProductResource extends Resource
 {
-    protected static ?string $model = Slider::class;
+    protected static ?string $model = BrandProduct::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Marketing';
+    protected static ?string $navigationGroup = 'Our Products';
 
     public static function form(Form $form): Form
     {
@@ -31,35 +31,21 @@ class SliderResource extends Resource
                 Forms\Components\Grid::make(1)
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label('Nama Poster')
+                            ->label('Nama Brand')
                             ->live(debounce: 1000)
                             ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->required(),
                         Forms\Components\TextInput::make('slug')
-                            ->label('Slug Poster')
+                            ->label('Slug Brand')
                             ->readOnly(),
                         Forms\Components\FileUpload::make('image')
-                            ->label('Gambar Poster')
+                            ->label('Foto Brand')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
                             )
                             ->disk('public')
-                            ->directory('sliders')
-                            ->visibility('public')
-                            ->required(),
-                        Forms\Components\Select::make('type')
-                            ->label('Tipe Poster')
-                            ->options([
-                                'promo' => 'Promo',
-                                'other' => 'Other',
-                            ])
-                            ->default('image')
-                            ->required()
-                            ->reactive(),
-                        Forms\Components\TextInput::make('link')
-                            ->label('Link Poster')
-                            ->visible(fn(callable $get) => $get('type') === 'other')
-                            ->reactive(),
+                            ->directory('product-brands')
+                            ->visibility('public'),
                     ])
             ]);
     }
@@ -69,15 +55,12 @@ class SliderResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Nama Poster'),
+                    ->label('Nama Brand'),
                 Tables\Columns\TextColumn::make('slug')
-                    ->label('Slug Poster')
+                    ->label('Slug Brand')
                     ->badge(),
                 Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar Poster'),
-                Tables\Columns\TextColumn::make('type')
-                    ->label('Tipe Poster')
-                    ->badge(),
+                    ->label('Foto Brand'),
             ])
             ->filters([
                 //
@@ -102,9 +85,9 @@ class SliderResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSliders::route('/'),
-            'create' => Pages\CreateSlider::route('/create'),
-            'edit' => Pages\EditSlider::route('/{record}/edit'),
+            'index' => Pages\ListBrandProducts::route('/'),
+            'create' => Pages\CreateBrandProduct::route('/create'),
+            'edit' => Pages\EditBrandProduct::route('/{record}/edit'),
         ];
     }
 }

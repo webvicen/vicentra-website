@@ -44,8 +44,10 @@ class ProductController extends Controller
             ->through(function ($product) {
                 return [
                     'name' => $product->name,
+                    'another_name' => $product->another_name,
                     'slug' => $product->slug,
                     'thumbnail' => $product->thumbnail,
+                    'is_out_of_stock' => $product->is_out_of_stock,
                     'category' => [
                         'name' => $product->categoryable->category->name ?? null,
                         'slug' => $product->categoryable->category->slug ?? null,
@@ -78,8 +80,10 @@ class ProductController extends Controller
             ->map(function ($product) {
                 return [
                     'name' => $product->name,
+                    'another_name' => $product->another_name,
                     'slug' => $product->slug,
                     'thumbnail' => $product->thumbnail,
+                    'is_out_of_stock' => $product->is_out_of_stock,
                     'category' => [
                         'name' => $product->categoryable->category->name ?? null,
                         'slug' => $product->categoryable->category->slug ?? null,
@@ -92,6 +96,7 @@ class ProductController extends Controller
             });
         $formatProduct = [
             'name' => $product->name,
+            'another_name' => $product->another_name,
             'slug' => $product->slug,
             'sku' => $product->sku,
             'thumbnail' => $product->thumbnail,
@@ -114,6 +119,13 @@ class ProductController extends Controller
             'product' => $formatProduct,
             'teamSales' => $teamSales,
             'similarProducts' => $similarProducts,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        return Inertia::render('Pages/Product/Search', [
+            'keyword' => $request->q
         ]);
     }
 }

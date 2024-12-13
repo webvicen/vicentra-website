@@ -2,17 +2,13 @@ import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import ReactPlayer from "react-player/lazy";
 
+import Layout from "../../Layouts/PagesLayout";
 import Faq from "./components/Faq";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
 
-export default function Beranda({
-    sliders,
-    categoryProducts,
-    testimonials,
-    faqs,
-}) {
+const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
     return (
         <>
             <Helmet>
@@ -116,4 +112,7 @@ export default function Beranda({
             {/* FAQ SECTION */}
         </>
     );
-}
+};
+
+Beranda.layout = (page) => <Layout children={page} />;
+export default Beranda;

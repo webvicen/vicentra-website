@@ -18,8 +18,3 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-// HELPERS ROUTE API
-Route::controller(HelpersApiController::class)->prefix('helpers')->group(function () {
-    Route::get('/get-site-data', 'getSiteData');
-});

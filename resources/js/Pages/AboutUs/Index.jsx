@@ -16,9 +16,10 @@ import brandBritePaper from "../../assets/images/brand/bp.png";
 import brandNipponTech from "../../assets/images/brand/nt.png";
 import brandVTech from "../../assets/images/brand/vtech.png";
 
+import Layout from "../../Layouts/PagesLayout";
 import TeamCard from "./components/TeamCard";
 
-export default function TermsAndConditions() {
+const AboutUs = () => {
     const [brands, setBrands] = useState([
         {
             id: 1,
@@ -55,7 +56,7 @@ export default function TermsAndConditions() {
     return (
         <div>
             <Helmet>
-                <title>Halaman Tentang Kami</title>
+                <title>Vicentra - Tentang Kami</title>
             </Helmet>
 
             {/* ABOUT US SECTION */}
@@ -182,4 +183,7 @@ export default function TermsAndConditions() {
             {/* MAP SECTION */}
         </div>
     );
-}
+};
+
+AboutUs.layout = (page) => <Layout children={page} />;
+export default AboutUs;

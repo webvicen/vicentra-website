@@ -29,12 +29,21 @@ export default function Testimonial({ testimonials }) {
             >
                 {testimonials.map((testimonial, index) => (
                     <SwiperSlide key={index}>
-                        <div className="w-full h-[12rem] flex items-start rounded-xl border-2 p-5">
-                            <div>
+                        <div className="w-full min-h-[10rem] grid grid-cols-3 gap-2 rounded-xl border-2 p-5">
+                            <div className="bg-vicentra-pink h-[8rem] lg:h-[7rem] rounded-md overflow-hidden">
+                                {testimonial.image ? (
+                                    <img
+                                        src={`/storage/${testimonial.image}`}
+                                        alt={testimonial.person}
+                                        className="w-full h-full"
+                                    />
+                                ) : null}
+                            </div>
+                            <div className="col-span-2">
                                 <h1 className="text-md font-semibold">
                                     {testimonial.person}
                                 </h1>
-                                <p className="text-sm font-normal mt-3">
+                                <p className="text-sm font-normal mt-2">
                                     {testimonial.content}
                                 </p>
                             </div>

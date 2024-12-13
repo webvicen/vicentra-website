@@ -1,25 +1,20 @@
+import { usePage } from "@inertiajs/react";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function SalesCard({
-    product,
-    sales,
-    url,
-    breadcrumbUrlResult,
-}) {
+export default function SalesCard({ sales, slider }) {
+    const { url } = usePage();
     const BASE_URL = window.location.origin;
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
         sales.phone
-    }&text=Jual%20${breadcrumbUrlResult.replace(
-        /[/\s]/g,
-        "%20"
-    )}%20${encodeURIComponent(
-        product.name
-    )}%20Murah%20Surabaya%20${BASE_URL}${url}`;
+    }&text=Hallo%20Kak%20Mau%20Tanya%20${slider.name
+        .split(" ")
+        .join("%20")}%20${BASE_URL}${url}`;
+
     return (
         <a
             href={linkWhatsapp}
             target="_blank"
-            className="w-[65%] h-[5rem] flex items-center gap-[1.5rem] bg-green-600 rounded-full relative py-2 pl-[7rem]"
+            className="w-full h-[5rem] flex items-center gap-[1.5rem] bg-green-600 rounded-full relative py-2 pl-[7rem]"
         >
             <div className="absolute left-0">
                 <div className="w-[5.5rem] h-[5.5rem] rounded-full border-[0.188rem] border-white relative">
@@ -43,7 +38,7 @@ export default function SalesCard({
                     </span>
                 </div>
                 <p className="w-full text-sm font-medium text-white mt-1">
-                    {sales.additional_sentence}
+                    Ada yang bisa saya bantu terkait promo ini?
                 </p>
             </div>
         </a>

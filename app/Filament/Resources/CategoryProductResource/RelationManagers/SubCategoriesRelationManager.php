@@ -38,8 +38,7 @@ class SubCategoriesRelationManager extends RelationManager
                             )
                             ->disk('public')
                             ->directory('product-sub-category-thumbnails')
-                            ->visibility('public')
-                            ->required(),
+                            ->visibility('public'),
                         Forms\Components\Repeater::make('subSubCategories')
                             ->relationship('subSubCategories')
                             ->label('Sub Sub Kategori Produk')

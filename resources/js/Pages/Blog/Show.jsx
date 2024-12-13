@@ -1,14 +1,15 @@
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 
+import Layout from "../../Layouts/PagesLayout";
 import { dateFormatIdn } from "./constants/helpers";
 import "./styles/show.css";
 
-export default function ShowBlog({ post, latestSimilarPost }) {
+const ShowBlog = ({ post, latestSimilarPost }) => {
     return (
         <div>
             <Helmet>
-                <title>Halaman Detail Blog</title>
+                <title>Vicentra - {post.title}</title>
             </Helmet>
 
             {/* CONTENT */}
@@ -70,4 +71,7 @@ export default function ShowBlog({ post, latestSimilarPost }) {
             {/* CONTENT */}
         </div>
     );
-}
+};
+
+ShowBlog.layout = (page) => <Layout children={page} />;
+export default ShowBlog;

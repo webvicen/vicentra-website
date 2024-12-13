@@ -14,9 +14,9 @@ class BerandaController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::get(['name', 'image', 'link']);
+        $sliders = Slider::get(['name', 'slug', 'image', 'type', 'link']);
         $categoryProducts = CategoryProduct::get(['slug', 'thumbnail']);
-        $testimonials = Testimonial::get(['person', 'content']);
+        $testimonials = Testimonial::get(['person', 'content', 'image']);
         $faqs = Faq::get(['question', 'answer']);
 
         return Inertia::render('Pages/Beranda/Index', [

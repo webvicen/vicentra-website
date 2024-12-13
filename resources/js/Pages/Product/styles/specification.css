@@ -16,6 +16,7 @@
     @apply px-4 py-2;
 }
 
+.specification-table-content table tbody tr:nth-child(even) th,
 .specification-table-content table tbody tr:nth-child(even) td {
     @apply bg-gray-200;
 }

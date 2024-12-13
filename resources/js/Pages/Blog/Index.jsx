@@ -2,17 +2,24 @@ import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+import Layout from "../../Layouts/PagesLayout";
 import BlogCard from "./components/BlogCard";
 import { dateFormatIdn } from "./constants/helpers";
 
-export default function Blog({ allCategories, latestPost, posts }) {
+const Blog = ({ allCategories, latestPost, posts }) => {
     const { url } = usePage();
     const cleanUrl = url.split("?")[0];
+    const category = url
+        .split("/")[2]
+        .replace(/-/g, " ")
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 
     return (
         <div>
             <Helmet>
-                <title>Halaman Blog</title>
+                <title>Vicentra - Artikel {category}</title>
             </Helmet>
 
             {/* CONTENT */}
@@ -127,4 +134,7 @@ export default function Blog({ allCategories, latestPost, posts }) {
             {/* CONTENT */}
         </div>
     );
-}
+};
+
+Blog.layout = (page) => <Layout children={page} />;
+export default Blog;

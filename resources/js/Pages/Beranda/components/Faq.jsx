@@ -16,7 +16,7 @@ export default function Faq({ faqs }) {
                 <Accordion open={open === index} key={index}>
                     <AccordionHeader
                         onClick={() => handleOpen(index)}
-                        className="text-base border-b py-4"
+                        className="text-start text-base border-b py-4"
                     >
                         {faq.question}
                     </AccordionHeader>

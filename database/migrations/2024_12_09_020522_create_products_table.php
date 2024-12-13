@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('categoryable_id'); // ID dari tabel polymorphic
-            $table->string('categoryable_type'); // Tipe tabel polymorphic
+            $table->unsignedBigInteger('categoryable_id');
+            $table->string('categoryable_type');
             $table->string('slug')->unique();
             $table->string('name');
             $table->string('sku');

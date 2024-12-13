@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet";
 
-export default function Help() {
+import Layout from "../../Layouts/PagesLayout";
+
+const Help = () => {
     return (
         <div>
             <Helmet>
-                <title>Halaman Bantuan</title>
+                <title>Vicentra - Bantuan</title>
             </Helmet>
 
             {/* HELP SECTION */}
@@ -45,4 +47,7 @@ export default function Help() {
             {/* HELP SECTION */}
         </div>
     );
-}
+};
+
+Help.layout = (page) => <Layout children={page} />;
+export default Help;
