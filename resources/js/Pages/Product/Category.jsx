@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
 
-const Category = ({ category, subCategory }) => {
+const Category = ({ category, subSubCategory }) => {
     return (
         <div>
             <Helmet>
@@ -32,23 +32,39 @@ const Category = ({ category, subCategory }) => {
                 </h1>
                 <div className="mt-[1.875rem]">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {subCategory.data.map((item, index) => (
-                            <Link
-                                href={`/product/${item.category.slug}/${item.slug}`}
-                                key={index}
-                                className="rounded-lg shadow-md overflow-hidden"
-                            >
-                                <img
-                                    src={`/storage/${item.thumbnail}`}
-                                    alt={item.slug}
-                                />
-                            </Link>
-                        ))}
+                        {subSubCategory.data.map((item, index) => {
+                            if (item.thumbnail) {
+                                return (
+                                    <Link
+                                        href={`/product/${item.category.slug}/${item.slug}`}
+                                        key={index}
+                                        className="rounded-lg shadow-md overflow-hidden"
+                                    >
+                                        <img
+                                            src={`/storage/${item.thumbnail}`}
+                                            alt={item.slug}
+                                        />
+                                    </Link>
+                                );
+                            }
+
+                            return (
+                                <Link
+                                    href={`/product/${item.category.slug}/${item.slug}`}
+                                    key={index}
+                                    className="min-h-[18.263rem] flex justify-center items-center rounded-lg shadow-md overflow-hidden bg-[#f0f0f0]"
+                                >
+                                    <h1 className="text-lg font-semibold">
+                                        {item.name}
+                                    </h1>
+                                </Link>
+                            );
+                        })}
                     </div>
                     {/* PAGINATION */}
                     <div className="flex justify-end mt-[3.125rem]">
                         <div className="flex gap-2">
-                            {subCategory.links.map((link, index) => {
+                            {subSubCategory.links.map((link, index) => {
                                 if (index === 0) {
                                     return (
                                         <Link
@@ -65,7 +81,7 @@ const Category = ({ category, subCategory }) => {
                                     );
                                 }
 
-                                if (index === subCategory.links.length - 1) {
+                                if (index === subSubCategory.links.length - 1) {
                                     return (
                                         <Link
                                             key={index}

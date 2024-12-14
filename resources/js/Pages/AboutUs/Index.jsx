@@ -19,40 +19,7 @@ import brandVTech from "../../assets/images/brand/vtech.png";
 import Layout from "../../Layouts/PagesLayout";
 import TeamCard from "./components/TeamCard";
 
-const AboutUs = () => {
-    const [brands, setBrands] = useState([
-        {
-            id: 1,
-            name: "vulcan",
-            image: brandVulcan,
-        },
-        {
-            id: 2,
-            name: "xuli",
-            image: brandXuli,
-        },
-        {
-            id: 3,
-            name: "golden wire",
-            image: brandGoldenWire,
-        },
-        {
-            id: 4,
-            name: "brite paper",
-            image: brandBritePaper,
-        },
-        {
-            id: 5,
-            name: "nippon tech",
-            image: brandNipponTech,
-        },
-        {
-            id: 6,
-            name: "vtech",
-            image: brandVTech,
-        },
-    ]);
-
+const AboutUs = ({ brands, sales }) => {
     return (
         <div>
             <Helmet>
@@ -129,10 +96,14 @@ const AboutUs = () => {
                         onSlideChange={() => console.log("slide change")}
                         onSwiper={(swiper) => console.log(swiper)}
                     >
-                        {brands.map((brand) => (
-                            <SwiperSlide key={brand.id}>
+                        {brands.map((brand, index) => (
+                            <SwiperSlide key={index}>
                                 <div className="w-full h-[12rem] flex justify-center items-center rounded-xl border-2 p-5">
-                                    <img src={brand.image} alt={brand.name} />
+                                    <img
+                                        src={`/storage/${brand.image}`}
+                                        alt={brand.slug}
+                                        className="h-[5rem] aspect-[2/1] object-contain"
+                                    />
                                 </div>
                             </SwiperSlide>
                         ))}
@@ -153,9 +124,9 @@ const AboutUs = () => {
                         </h1>
                     </div>
                 </div>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem] mt-[1.25rem]">
-                    {[1, 2, 3, 4].map((item) => (
-                        <TeamCard key={item} />
+                <div className="lg:w-[80%] mx-auto grid grid-cols-2 lg:grid-cols-3 gap-[1.25rem] mt-[1.25rem]">
+                    {sales.map((sales, index) => (
+                        <TeamCard sales={sales} key={sales} />
                     ))}
                 </div>
             </section>

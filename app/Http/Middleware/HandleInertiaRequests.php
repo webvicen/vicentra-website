@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\CategoryPost;
+use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -36,8 +37,34 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $categoryPost = CategoryPost::get(['name', 'slug']);
+        $categoryProduct = CategoryProduct::get()->map(function ($categoryProduct, $index) {
+            return [
+                'id' => ($index + 1),
+                'name' => $categoryProduct->name,
+                'slug' => $categoryProduct->slug,
+                'isOpen' => false,
+                'subMenu' => $categoryProduct->subCategories->map(function ($subMenu, $index) {
+                    return [
+                        'id' => ($index + 1),
+                        'name' => $subMenu->name,
+                        'slug' => $subMenu->slug,
+                        'isSubSubMenuOpen' => false,
+                        'subSubMenu' => $subMenu->subSubCategories->map(function ($subSubMenu, $index) {
+                            return [
+                                'id' => ($index + 1),
+                                'name' => $subSubMenu->name,
+                                'slug' => $subSubMenu->slug,
+                            ];
+                        })
+                    ];
+                })
+            ];
+        });
+
         return array_merge(parent::share($request), [
-            'categoryPost' => CategoryPost::get(['name', 'slug']),
+            'categoryPost' => $categoryPost,
+            'categoryProduct' => $categoryProduct
         ]);
     }
 }

@@ -73,8 +73,6 @@ class SubCategoriesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Slug Sub Kategori Produk')
                     ->badge(),
-                Tables\Columns\ImageColumn::make('thumbnail')
-                    ->label('Thumbnail Sub Kategori Produk'),
             ])
             ->filters([
                 //

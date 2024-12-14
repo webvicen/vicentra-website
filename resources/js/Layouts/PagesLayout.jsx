@@ -18,119 +18,12 @@ import VicentraLogoWhite from "../assets/images/logo-vicentra-white.png";
 import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.png";
 
 export default function PagesLayout({ children }) {
-    const { categoryPost } = usePage().props;
+    const { categoryPost, categoryProduct } = usePage().props;
     const [isSubMenuCategoryPostOpen, setIsSubMenuCategoryPostOpen] =
         useState(false);
     const [isSubMenuCategoryProductOpen, setIsSubMenuCategoryProductOpen] =
         useState(false);
-    const [subMenuProducts, setSubMenuProducts] = useState([
-        {
-            id: 1,
-            isOpen: false,
-            name: "mesin",
-            subMenu: [
-                {
-                    id: 1,
-                    name: "mesin 1",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [
-                        {
-                            id: 1,
-                            name: "sub mesin 1",
-                        },
-                        {
-                            id: 2,
-                            name: "sub mesin 2",
-                        },
-                    ],
-                },
-                {
-                    id: 2,
-                    name: "mesin 2",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-            ],
-        },
-        {
-            id: 2,
-            isOpen: false,
-            name: "bahan",
-            subMenu: [
-                {
-                    id: 1,
-                    name: "bahan 1",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-                {
-                    id: 2,
-                    name: "bahan 2",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [
-                        {
-                            id: 1,
-                            name: "sub bahan 1",
-                        },
-                        {
-                            id: 2,
-                            name: "sub bahan 2",
-                        },
-                    ],
-                },
-                {
-                    id: 3,
-                    name: "bahan 3",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [
-                        {
-                            id: 1,
-                            name: "sub bahan 1",
-                        },
-                        {
-                            id: 2,
-                            name: "sub bahan 2",
-                        },
-                        {
-                            id: 3,
-                            name: "sub bahan 3",
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            id: 3,
-            isOpen: false,
-            name: "sparepart",
-            subMenu: [
-                {
-                    id: 1,
-                    name: "sparepart 1",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-                {
-                    id: 2,
-                    name: "sparepart 2",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-                {
-                    id: 3,
-                    name: "sparepart 3",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-                {
-                    id: 4,
-                    name: "sparepart 4",
-                    isSubSubMenuOpen: false,
-                    subSubMenu: [],
-                },
-            ],
-        },
-    ]);
+    const [subMenuProducts, setSubMenuProducts] = useState(categoryProduct);
     const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
 
     const toggleSubMenuCategoryPost = () => {
@@ -172,7 +65,6 @@ export default function PagesLayout({ children }) {
                 return product;
             })
         );
-        console.log(name);
     };
 
     return (
@@ -320,7 +212,7 @@ export default function PagesLayout({ children }) {
                                             if (subMenu.subSubMenu.length > 0) {
                                                 return (
                                                     <li key={subMenu.id}>
-                                                        <div className="text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative">
+                                                        <div className="w-full flex justify-between text-sm text-gray-800 capitalize gap-1 hover:cursor-pointer relative">
                                                             {subMenu.name}
                                                             <FaCaretDown
                                                                 className="text-vicentra-yellow text-xl"
@@ -332,7 +224,7 @@ export default function PagesLayout({ children }) {
                                                                 }}
                                                             />
                                                             <ul
-                                                                className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute right-[-10rem] top-[1rem] shadow-md z-50 ${
+                                                                className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${
                                                                     subMenu.isSubSubMenuOpen
                                                                         ? "block"
                                                                         : "hidden"
@@ -349,7 +241,7 @@ export default function PagesLayout({ children }) {
                                                                             className="flex justify-start"
                                                                         >
                                                                             <Link
-                                                                                href="/"
+                                                                                href={`/product/${product.slug}/${subSubMenu.slug}`}
                                                                                 className="text-sm text-gray-800"
                                                                             >
                                                                                 {
@@ -481,30 +373,16 @@ export default function PagesLayout({ children }) {
                                                 : "hidden"
                                         }`}
                                     >
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                kegiatan
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                peluang usaha
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link
-                                                href="/blog"
-                                                className="text-sm text-gray-800"
-                                            >
-                                                info
-                                            </Link>
-                                        </li>
+                                        {categoryPost.map((category, index) => (
+                                            <li key={index}>
+                                                <Link
+                                                    href={`/blog/${category.slug}`}
+                                                    className="text-sm text-gray-800"
+                                                >
+                                                    {category.name}
+                                                </Link>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </div>
                                 <hr />

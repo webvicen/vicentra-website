@@ -10,14 +10,38 @@ import {
 
 import Layout from "../../Layouts/PagesLayout";
 
-const SubCategory = ({ category, subCategory, products }) => {
-    const [open, setOpen] = useState(1);
-    const handleOpen = (value) => setOpen(open === value ? 0 : value);
+const SubCategory = ({
+    categoryProduct,
+    category,
+    subCategory,
+    subSubCategory,
+    products,
+}) => {
+    const currentAccordion = `${category.slug}/${subCategory.slug}/${subSubCategory.slug}`;
+    console.log(categoryProduct, currentAccordion);
+    const [categoryOpen, setCategoryOpen] = useState(
+        currentAccordion.split("/")[0]
+    );
+    const [subCategoryOpen, setSubCategoryOpen] = useState(
+        currentAccordion.split("/")[1]
+    );
+    const [subSubCategoryOpen, setSubSubCategoryOpen] = useState(
+        currentAccordion.split("/")[2]
+    );
+    const handleCategoryOpen = (slug) => {
+        setCategoryOpen(slug);
+    };
+    const handleSubCategoryOpen = (slug) => {
+        setSubCategoryOpen(slug);
+    };
 
     return (
         <div>
             <Helmet>
-                <title>Halaman Sub Category Produk</title>
+                <title>
+                    Vicentra - Produk {category.name} {subCategory.name}{" "}
+                    {subSubCategory.name}
+                </title>
             </Helmet>
 
             {/* LIST PRODUCT SECTION */}
@@ -28,110 +52,94 @@ const SubCategory = ({ category, subCategory, products }) => {
                         Produk Kami
                     </h1>
                     <div className="mt-[1.875rem]">
-                        <Accordion open={open === 1}>
-                            <AccordionHeader
-                                className="text-start text-sm font-semibold py-2"
-                                onClick={() => handleOpen(1)}
+                        {categoryProduct.map((category, index) => (
+                            <Accordion
+                                open={categoryOpen === category.slug}
+                                key={index}
                             >
-                                Mesin
-                            </AccordionHeader>
-                            <AccordionBody className="py-2">
-                                <div className="ml-4">
-                                    <Accordion open={open === 1}>
-                                        <AccordionHeader
-                                            className="text-start text-sm font-semibold py-2"
-                                            onClick={() => handleOpen(1)}
-                                        >
-                                            Mesin
-                                        </AccordionHeader>
-                                        <AccordionBody>
-                                            We&apos;re not always in the
-                                            position that we want to be at.
-                                            We&apos;re constantly growing.
-                                            We&apos;re constantly making
-                                            mistakes. We&apos;re constantly
-                                            trying to express ourselves and
-                                            actualize our dreams.
-                                        </AccordionBody>
-                                    </Accordion>
-                                    <Accordion open={open === 2}>
-                                        <AccordionHeader
-                                            className="text-start text-sm font-semibold py-2"
-                                            onClick={() => handleOpen(2)}
-                                        >
-                                            Consumable
-                                        </AccordionHeader>
-                                        <AccordionBody>
-                                            We&apos;re not always in the
-                                            position that we want to be at.
-                                            We&apos;re constantly growing.
-                                            We&apos;re constantly making
-                                            mistakes. We&apos;re constantly
-                                            trying to express ourselves and
-                                            actualize our dreams.
-                                        </AccordionBody>
-                                    </Accordion>
-                                    <Accordion open={open === 3}>
-                                        <AccordionHeader
-                                            className="text-start text-sm font-semibold py-2"
-                                            onClick={() => handleOpen(3)}
-                                        >
-                                            Sparepart
-                                        </AccordionHeader>
-                                        <AccordionBody>
-                                            We&apos;re not always in the
-                                            position that we want to be at.
-                                            We&apos;re constantly growing.
-                                            We&apos;re constantly making
-                                            mistakes. We&apos;re constantly
-                                            trying to express ourselves and
-                                            actualize our dreams.
-                                        </AccordionBody>
-                                    </Accordion>
-                                </div>
-                            </AccordionBody>
-                        </Accordion>
-                        <Accordion open={open === 2}>
-                            <AccordionHeader
-                                className="text-start text-sm font-semibold py-2"
-                                onClick={() => handleOpen(2)}
-                            >
-                                Consumable
-                            </AccordionHeader>
-                            <AccordionBody>
-                                We&apos;re not always in the position that we
-                                want to be at. We&apos;re constantly growing.
-                                We&apos;re constantly making mistakes.
-                                We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
-                            </AccordionBody>
-                        </Accordion>
-                        <Accordion open={open === 3}>
-                            <AccordionHeader
-                                className="text-start text-sm font-semibold py-2"
-                                onClick={() => handleOpen(3)}
-                            >
-                                Sparepart
-                            </AccordionHeader>
-                            <AccordionBody>
-                                We&apos;re not always in the position that we
-                                want to be at. We&apos;re constantly growing.
-                                We&apos;re constantly making mistakes.
-                                We&apos;re constantly trying to express
-                                ourselves and actualize our dreams.
-                            </AccordionBody>
-                        </Accordion>
+                                <AccordionHeader
+                                    className="text-start text-sm font-semibold py-2"
+                                    onClick={() =>
+                                        handleCategoryOpen(category.slug)
+                                    }
+                                >
+                                    {category.name}
+                                </AccordionHeader>
+                                <AccordionBody className="py-0">
+                                    <div className="ml-4">
+                                        {category.subMenu.map(
+                                            (subMenu, index) => (
+                                                <Accordion
+                                                    open={
+                                                        subCategoryOpen ===
+                                                        subMenu.slug
+                                                    }
+                                                    key={index}
+                                                >
+                                                    <AccordionHeader
+                                                        className={`text-start text-sm font-medium py-2 ${
+                                                            subCategoryOpen ===
+                                                            subMenu.slug
+                                                                ? "text-vicentra-blue font-semibold"
+                                                                : ""
+                                                        }`}
+                                                        onClick={() =>
+                                                            handleSubCategoryOpen(
+                                                                subMenu.slug
+                                                            )
+                                                        }
+                                                    >
+                                                        {subMenu.name}
+                                                    </AccordionHeader>
+                                                    <AccordionBody className="py-0">
+                                                        <ul className="ml-4 mt-6">
+                                                            {subMenu.subSubMenu.map(
+                                                                (
+                                                                    subSubMenu,
+                                                                    index
+                                                                ) => (
+                                                                    <li
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        className="mb-2"
+                                                                    >
+                                                                        <Link
+                                                                            href={`/product/${category.slug}/${subSubMenu.slug}`}
+                                                                            className={`${
+                                                                                subSubCategoryOpen ===
+                                                                                subSubMenu.slug
+                                                                                    ? "text-vicentra-pink font-semibold"
+                                                                                    : ""
+                                                                            }`}
+                                                                        >
+                                                                            {
+                                                                                subSubMenu.name
+                                                                            }
+                                                                        </Link>
+                                                                    </li>
+                                                                )
+                                                            )}
+                                                        </ul>
+                                                    </AccordionBody>
+                                                </Accordion>
+                                            )
+                                        )}
+                                    </div>
+                                </AccordionBody>
+                            </Accordion>
+                        ))}
                     </div>
                 </div>
                 {/* SIDEBAR */}
 
                 {/* PRODUCT CONTENT */}
-                <div className="col-span-12 lg:col-span-9 mt-[2rem] lg:mt-auto">
+                <div className="h-full flex flex-col justify-start items-start col-span-12 lg:col-span-9 mt-[2rem] lg:mt-auto">
                     <h1 className="text-xl capitalize font-semibold text-gray-800">
-                        Rekomendasi {`${category.name} ${subCategory.name}`}{" "}
+                        Rekomendasi {`${category.name} ${subSubCategory.name}`}{" "}
                         Kami
                     </h1>
-                    <div className="mt-[1.875rem]">
+                    <div className="w-full mt-[1.875rem]">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
                             {products.data.map((item, index) => (
                                 <Link
@@ -164,7 +172,7 @@ const SubCategory = ({ category, subCategory, products }) => {
                             ))}
                         </div>
                         {/* PAGINATION */}
-                        <div className="flex justify-end mt-[3.125rem]">
+                        <div className="w-full flex justify-end mt-[3.125rem]">
                             <div className="flex gap-2">
                                 {products.links.map((link, index) => {
                                     if (index === 0) {

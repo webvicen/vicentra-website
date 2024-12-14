@@ -46,6 +46,10 @@ class ProductResource extends Resource
                             ->required(),
                         Forms\Components\Toggle::make('is_out_of_stock')
                             ->label('Out of Stock'),
+                        Forms\Components\Select::make('category_post_id')
+                            ->label('Brand Produk')
+                            ->relationship('brand', 'name')
+                            ->required(),
                         Forms\Components\MorphToSelect::make('categoryable')
                             ->label('Kategori Produk')
                             ->types([
