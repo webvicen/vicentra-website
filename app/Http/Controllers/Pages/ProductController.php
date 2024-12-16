@@ -120,8 +120,8 @@ class ProductController extends Controller
                     'thumbnail' => $product->thumbnail,
                     'is_out_of_stock' => $product->is_out_of_stock,
                     'category' => [
-                        'name' => $product->categoryable->category->name ?? null,
-                        'slug' => $product->categoryable->category->slug ?? null,
+                        'name' => $product->categoryable->subCategory->category->name ?? null,
+                        'slug' => $product->categoryable->subCategory->category->slug ?? null,
                         'subCategory' => [
                             'name' => $product->categoryable->name,
                             'slug' => $product->categoryable->slug,
