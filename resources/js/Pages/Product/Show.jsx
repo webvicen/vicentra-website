@@ -1,6 +1,6 @@
 import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReactPlayer from "react-player/lazy";
 
@@ -32,20 +32,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         product.media[1]
     );
     const [listProductAssets, setListProductAssets] = useState(product.media);
-    const [tabItems, setTabsItems] = useState([
-        {
-            name: "Deskripsi",
-            isActive: true,
-        },
-        {
-            name: "Spesifikasi",
-            isActive: false,
-        },
-        {
-            name: "Hasil",
-            isActive: false,
-        },
-    ]);
+    const [tabItems, setTabsItems] = useState([]);
     const [activeTab, setActiveTab] = useState("Deskripsi");
 
     const toggleActiveTab = (index) => {
@@ -71,10 +58,36 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         setActiveProductItem(updatedListProductAssets[index]);
     };
 
+    useEffect(() => {
+        const tabsItemsProduct = [
+            {
+                name: "Deskripsi",
+                isActive: true,
+            },
+        ];
+
+        if (product.specification != null) {
+            tabsItemsProduct.push({
+                name: "Spesifikasi",
+                isActive: false,
+            });
+        }
+        if (product.work_result != null) {
+            tabsItemsProduct.push({
+                name: "Hasil",
+                isActive: false,
+            });
+        }
+
+        setTabsItems(tabsItemsProduct);
+    }, []);
+
     return (
         <div>
             <Helmet>
-                <title>Halaman Produk</title>
+                <title>
+                    Vicentra - Produk {product.name} {product.another_name}
+                </title>
             </Helmet>
 
             {/* PRODUCT SECTION */}
@@ -103,7 +116,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         <Swiper
                             spaceBetween="5rem"
                             slidesPerView={3}
-                            className="w-[29rem] lg:w-auto"
+                            className="w-[29.3rem] lg:w-auto"
                         >
                             {listProductAssets.map((item, index) => {
                                 if (item.type === "image") {
@@ -239,7 +252,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     {activeTab === "Spesifikasi" && (
                         <Specification product={product} />
                     )}
-                    {activeTab === "Hasil" && <Results product={product} />}
+                    {activeTab === "Hasil" && product.work_result != null ? (
+                        <Results product={product} />
+                    ) : null}
                 </div>
             </section>
             {/* TAB SECTION SECTION */}

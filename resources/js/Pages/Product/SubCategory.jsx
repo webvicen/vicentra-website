@@ -101,21 +101,28 @@ const SubCategory = ({
                                                                         key={
                                                                             index
                                                                         }
-                                                                        className="mb-2"
+                                                                        className="w-full flex justify-between mb-2"
                                                                     >
                                                                         <Link
                                                                             href={`/product/${category.slug}/${subSubMenu.slug}`}
                                                                             className={`${
                                                                                 subSubCategoryOpen ===
                                                                                 subSubMenu.slug
-                                                                                    ? "text-vicentra-pink font-semibold"
-                                                                                    : ""
+                                                                                    ? "w-[90%] text-vicentra-pink font-semibold pl-3 rounded-sm bg-[#acacac1f]"
+                                                                                    : "w-full"
                                                                             }`}
                                                                         >
                                                                             {
                                                                                 subSubMenu.name
                                                                             }
                                                                         </Link>
+                                                                        <span>
+                                                                            (
+                                                                            {
+                                                                                subSubMenu.count
+                                                                            }
+                                                                            )
+                                                                        </span>
                                                                     </li>
                                                                 )
                                                             )}

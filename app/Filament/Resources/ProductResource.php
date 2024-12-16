@@ -86,8 +86,7 @@ class ProductResource extends Resource
                             )
                             ->disk('public')
                             ->directory('product-work-results')
-                            ->visibility('public')
-                            ->required(),
+                            ->visibility('public'),
                     ])
             ]);
     }

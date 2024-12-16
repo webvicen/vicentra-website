@@ -61,13 +61,13 @@ class ProductController extends Controller
                                 'id' => ($index + 1),
                                 'name' => $subSubMenu->name,
                                 'slug' => $subSubMenu->slug,
+                                'count' => $subSubMenu->products->count(),
                             ];
                         })
                     ];
                 })
             ];
         });
-
         $category = CategoryProduct::where('slug', $category)->first();
         $subSubCategory = SubSubCategoryProduct::where('slug', $subCategory)->first();
         $subCategory = SubCategoryProduct::where('id', $subSubCategory->sub_category_product_id)->first();
@@ -172,8 +172,29 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
+        $products = Product::where('name', 'LIKE', "%{$request->q}%")
+            ->orWhere('another_name', 'LIKE', "%{$request->q}%")
+            ->paginate(8)
+            ->through(function ($product) {
+                return [
+                    'name' => $product->name,
+                    'another_name' => $product->another_name,
+                    'slug' => $product->slug,
+                    'thumbnail' => $product->thumbnail,
+                    'category' => [
+                        'name' => $product->categoryable->subCategory->category->name ?? null,
+                        'slug' => $product->categoryable->subCategory->category->slug ?? null,
+                        'subCategory' => [
+                            'name' => $product->categoryable->name ?? null,
+                            'slug' => $product->categoryable->slug ?? null
+                        ]
+                    ]
+                ];
+            });
+
         return Inertia::render('Pages/Product/Search', [
-            'keyword' => $request->q
+            'keyword' => $request->q,
+            'products' => $products
         ]);
     }
 }
