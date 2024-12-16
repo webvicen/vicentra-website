@@ -1,12 +1,12 @@
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import ReactPlayer from "react-player/lazy";
 
 import Layout from "../../Layouts/PagesLayout";
 import Faq from "./components/Faq";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
+import Youtube from "./components/Youtube";
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
     return (
@@ -54,30 +54,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
 
             {/* YOUTUBE SECTION */}
             <section className="bg-gray-100 my-[3.125rem] lg:my-[6.25rem] p-5 rounded-lg">
-                <div className="grid lg:grid-cols-2 gap-5 items-center">
-                    <div>
-                        <h1 className="text-lg font-semibold">
-                            Galery Vicentra
-                        </h1>
-                        <p className="lg:w-[60%] text-sm font-normal mt-[0.625rem] mb-4">
-                            Subscribe chanel Youtube kami untuk demo mesin dan
-                            promo - promo Terbaru.
-                        </p>
-                        <a
-                            href="#"
-                            className="capitalize font-medium text-md px-4 py-2 bg-red-500 text-white rounded-full"
-                        >
-                            subscribe
-                        </a>
-                    </div>
-                    <div className="rounded-lg overflow-hidden order-first lg:order-none">
-                        <ReactPlayer
-                            url="https://www.youtube.com/watch?v=XnqEhpgT2Gk"
-                            width={"100%"}
-                            controls={true}
-                        />
-                    </div>
-                </div>
+                <Youtube />
             </section>
             {/* YOUTUBE SECTION */}
 

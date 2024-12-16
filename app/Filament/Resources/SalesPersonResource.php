@@ -44,6 +44,10 @@ class SalesPersonResource extends Resource
                             ->label('Nomor Sales')
                             ->prefixIcon('heroicon-o-phone')
                             ->required(),
+                        Forms\Components\TextInput::make('order')
+                            ->label('Urutan Sales')
+                            ->numeric()
+                            ->required(),
                         Forms\Components\TextInput::make('additional_sentence')
                             ->label('Kalimat Tambahan')
                             ->required(),
@@ -57,6 +61,10 @@ class SalesPersonResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->label('Nama Sales'),
+                Tables\Columns\TextColumn::make('order')
+                    ->sortable()
+                    ->badge()
+                    ->label('Urutan Sales'),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Foto Sales'),
                 Tables\Columns\TextColumn::make('phone')

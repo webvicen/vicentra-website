@@ -46,7 +46,7 @@ class ProductResource extends Resource
                             ->required(),
                         Forms\Components\Toggle::make('is_out_of_stock')
                             ->label('Out of Stock'),
-                        Forms\Components\Select::make('category_post_id')
+                        Forms\Components\Select::make('brand_product_id')
                             ->label('Brand Produk')
                             ->relationship('brand', 'name')
                             ->required(),

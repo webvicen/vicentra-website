@@ -18,7 +18,6 @@ const SubCategory = ({
     products,
 }) => {
     const currentAccordion = `${category.slug}/${subCategory.slug}/${subSubCategory.slug}`;
-    console.log(categoryProduct, currentAccordion);
     const [categoryOpen, setCategoryOpen] = useState(
         currentAccordion.split("/")[0]
     );

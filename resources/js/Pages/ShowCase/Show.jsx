@@ -41,12 +41,17 @@ export default function Show({ slider, teamSales }) {
                 </div>
                 <div className="w-[90vw] lg:w-[50vw] flex flex-col space-y-4 mt-10">
                     {teamSales.map((sales, index) => (
-                        <SalesCard key={index} sales={sales} slider={slider} />
+                        <SalesCard
+                            key={index}
+                            sales={sales}
+                            slider={slider}
+                            order={index + 1}
+                        />
                     ))}
                 </div>
                 <div>
                     <p className="text-sm text-white mt-10">
-                        Copyright 2024 vicentra.com
+                        Copyright {new Date().getFullYear()} vicentra.com
                     </p>
                 </div>
             </div>

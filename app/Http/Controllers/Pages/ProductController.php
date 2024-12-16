@@ -74,9 +74,24 @@ class ProductController extends Controller
         $products = Product::with(['categoryable'])
             ->where('categoryable_id', $subSubCategory->id)
             ->where('categoryable_type', $subSubCategory->getMorphClass())
-            ->paginate(8);
+            ->paginate(8)
+            ->through(function ($product) {
+                return [
+                    'name' => $product->name,
+                    'another_name' => $product->another_name,
+                    'slug' => $product->slug,
+                    'thumbnail' => $product->thumbnail,
+                    'category' => [
+                        'name' => $product->categoryable->subCategory->category->name ?? null,
+                        'slug' => $product->categoryable->subCategory->category->slug ?? null,
+                        'subCategory' => [
+                            'name' => $product->categoryable->name ?? null,
+                            'slug' => $product->categoryable->slug ?? null
+                        ]
+                    ]
+                ];
+            });
 
-        // dd($category, $subCategory, $subSubCategory);
         return Inertia::render('Pages/Product/SubCategory', [
             'categoryProduct' => $categoryProduct,
             'category' => $category,
@@ -89,12 +104,12 @@ class ProductController extends Controller
     public function show($category, $subCategory, $slug)
     {
         $category = CategoryProduct::where('slug', $category)->first();
-        $subCategory = SubCategoryProduct::where('slug', $subCategory)->first();
-        $product = Product::with(['categoryable', 'media'])->where('slug', $slug)->first();
-        $teamSales = SalesPerson::get(['name', 'image', 'phone', 'additional_sentence']);
-        $similarProducts = Product::with(['categoryable'])
-            ->where('categoryable_id', $subCategory->id)
-            ->where('categoryable_type', $subCategory->getMorphClass())
+        $subSubCategory = SubSubCategoryProduct::where('slug', $subCategory)->first();
+        $product = Product::with(['categoryable', 'brand', 'media'])->where('slug', $slug)->first();
+        $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
+        $similarProducts = Product::with(['categoryable', 'brand'])
+            ->where('categoryable_id', $subSubCategory->id)
+            ->where('categoryable_type', $subSubCategory->getMorphClass())
             ->limit(4)
             ->get()
             ->map(function ($product) {
@@ -119,11 +134,24 @@ class ProductController extends Controller
             'another_name' => $product->another_name,
             'slug' => $product->slug,
             'sku' => $product->sku,
+            'brand' => $product->brand->name,
             'thumbnail' => $product->thumbnail,
             'shortDescription' => $product->short_description,
             'description' => $product->description,
             'specification' => $product->specification,
             'work_result' => $product->work_result,
+            'category' => [
+                'name' => $product->categoryable->subCategory->category->name ?? null,
+                'slug' => $product->categoryable->subCategory->category->slug ?? null,
+                'subCategory' => [
+                    'name' => $product->categoryable->subCategory->name ?? null,
+                    'slug' => $product->categoryable->subCategory->slug ?? null,
+                    'subSubCategory' => [
+                        'name' => $product->categoryable->name ?? null,
+                        'slug' => $product->categoryable->slug ?? null,
+                    ]
+                ]
+            ],
             'media' => $product->media->map(function ($media, $index) {
                 return [
                     'id' => ($index + 1),

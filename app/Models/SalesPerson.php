@@ -13,6 +13,7 @@ class SalesPerson extends Model
         'name',
         'image',
         'phone',
+        'order',
         'additional_sentence',
     ];
 }

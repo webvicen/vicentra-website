@@ -186,14 +186,17 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     ></div>
                     <div className="mt-[1.25rem]">
                         <h2 className="text-base font-semibold">
-                            {breadcrumbUrlResult}
+                            {product.category.name}/
+                            {product.category.subCategory.name}/
+                            {product.category.subCategory.subSubCategory.name}
                         </h2>
                         <h2 className="text-base">
                             <span className="font-semibold">SKU: </span>
                             {product.sku}
                         </h2>
                         <h2 className="text-base">
-                            <span className="font-semibold">Brand: </span>Xuli
+                            <span className="font-semibold">Brand: </span>
+                            {product.brand}
                         </h2>
                     </div>
                     <div className="space-y-4 mt-[1.25rem]">
@@ -204,6 +207,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                 url={url}
                                 breadcrumbUrlResult={breadcrumbUrlResult}
                                 key={index}
+                                order={index + 1}
                             />
                         ))}
                     </div>

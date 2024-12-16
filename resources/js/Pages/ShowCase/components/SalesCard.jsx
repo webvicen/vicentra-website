@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/react";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function SalesCard({ sales, slider }) {
+export default function SalesCard({ sales, slider, order }) {
     const { url } = usePage();
     const BASE_URL = window.location.origin;
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
@@ -14,7 +14,9 @@ export default function SalesCard({ sales, slider }) {
         <a
             href={linkWhatsapp}
             target="_blank"
-            className="w-full h-[5rem] flex items-center gap-[1.5rem] bg-green-600 rounded-full relative py-2 pl-[7rem]"
+            className={`w-full h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
+                order == 1 ? "bg-vicentra-blue" : "bg-green-600"
+            }`}
         >
             <div className="absolute left-0">
                 <div className="w-[5.5rem] h-[5.5rem] rounded-full border-[0.188rem] border-white relative">

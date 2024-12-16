@@ -5,6 +5,7 @@ export default function SalesCard({
     sales,
     url,
     breadcrumbUrlResult,
+    order,
 }) {
     const BASE_URL = window.location.origin;
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
@@ -19,7 +20,9 @@ export default function SalesCard({
         <a
             href={linkWhatsapp}
             target="_blank"
-            className="w-[65%] h-[5rem] flex items-center gap-[1.5rem] bg-green-600 rounded-full relative py-2 pl-[7rem]"
+            className={`w-[80%] h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
+                order == 1 ? "bg-vicentra-blue" : "bg-green-600"
+            }`}
         >
             <div className="absolute left-0">
                 <div className="w-[5.5rem] h-[5.5rem] rounded-full border-[0.188rem] border-white relative">

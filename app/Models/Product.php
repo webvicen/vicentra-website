@@ -36,7 +36,7 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo(BrandProduct::class);
+        return $this->belongsTo(BrandProduct::class, 'brand_product_id');
     }
 
     public function media()

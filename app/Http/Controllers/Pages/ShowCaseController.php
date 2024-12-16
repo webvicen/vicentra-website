@@ -13,7 +13,7 @@ class ShowCaseController extends Controller
     public function show($slug)
     {
         $slider = Slider::where('slug', $slug)->first();
-        $teamSales = SalesPerson::get(['name', 'image', 'phone', 'additional_sentence']);
+        $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
 
         return Inertia::render('Pages/ShowCase/Show', [
             'slider' => $slider,
