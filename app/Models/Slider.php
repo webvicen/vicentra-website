@@ -14,6 +14,7 @@ class Slider extends Model
         'slug',
         'image',
         'type',
+        'ended_at',
         'link',
     ];
 }

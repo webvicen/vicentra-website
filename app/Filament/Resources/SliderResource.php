@@ -47,6 +47,9 @@ class SliderResource extends Resource
                             ->directory('sliders')
                             ->visibility('public')
                             ->required(),
+                        Forms\Components\DatePicker::make('ended_at')
+                            ->label('Tanggal Berakhir')
+                            ->native(false),
                         Forms\Components\Select::make('type')
                             ->label('Tipe Poster')
                             ->options([
@@ -73,6 +76,9 @@ class SliderResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->label('Slug Poster')
                     ->badge(),
+                Tables\Columns\TextColumn::make('ended_at')
+                    ->label('Tanggal Berakhir')
+                    ->date(),
                 Tables\Columns\ImageColumn::make('image')
                     ->label('Gambar Poster'),
                 Tables\Columns\TextColumn::make('type')

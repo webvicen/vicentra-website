@@ -9,13 +9,6 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "../../assets/css/custom.css";
 
-import brandVulcan from "../../assets/images/brand/vulcan.png";
-import brandXuli from "../../assets/images/brand/xl.png";
-import brandGoldenWire from "../../assets/images/brand/gw.png";
-import brandBritePaper from "../../assets/images/brand/bp.png";
-import brandNipponTech from "../../assets/images/brand/nt.png";
-import brandVTech from "../../assets/images/brand/vtech.png";
-
 import Layout from "../../Layouts/PagesLayout";
 import TeamCard from "./components/TeamCard";
 
@@ -93,8 +86,6 @@ const AboutUs = ({ brands, sales }) => {
                             el: ".swiper-brand-section-custom-pagination",
                             clickable: true,
                         }}
-                        onSlideChange={() => console.log("slide change")}
-                        onSwiper={(swiper) => console.log(swiper)}
                     >
                         {brands.map((brand, index) => (
                             <SwiperSlide key={index}>
@@ -126,7 +117,7 @@ const AboutUs = ({ brands, sales }) => {
                 </div>
                 <div className="lg:w-[80%] mx-auto grid grid-cols-2 lg:grid-cols-3 gap-[1.25rem] mt-[1.25rem]">
                     {sales.map((sales, index) => (
-                        <TeamCard sales={sales} key={sales} />
+                        <TeamCard sales={sales} key={index} />
                     ))}
                 </div>
             </section>

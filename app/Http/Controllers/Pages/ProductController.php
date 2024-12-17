@@ -16,31 +16,60 @@ class ProductController extends Controller
     public function category($category)
     {
         $category = CategoryProduct::where('slug', $category)->first();
-        $subSubCategory = SubSubCategoryProduct::with(['subCategory.category'])
-            ->whereHas('subCategory.category', function ($query) use ($category) {
-                $query->where('slug', $category->slug);
-            })
-            ->whereNotNull('thumbnail')
-            ->paginate(8)
-            ->through(function ($subSubCategory) {
-                return [
-                    'name' => $subSubCategory->name,
-                    'slug' => $subSubCategory->slug,
-                    'thumbnail' => $subSubCategory->thumbnail,
-                    'category' => [
-                        'name' => $subSubCategory->subCategory->category->name,
-                        'slug' => $subSubCategory->subCategory->category->slug,
-                    ],
-                    'subCategory' => [
-                        'name' => $subSubCategory->subCategory->name,
-                        'slug' => $subSubCategory->subCategory->slug
-                    ]
-                ];
-            });
+
+        if ($category->slug == 'mesin') {
+            $productCategory = SubSubCategoryProduct::with(['subCategory.category'])
+                ->whereHas('subCategory.category', function ($query) use ($category) {
+                    $query->where('slug', $category->slug);
+                })
+                ->whereNotNull('thumbnail')
+                ->paginate(8)
+                ->through(function ($subSubCategory) {
+                    return [
+                        'name' => $subSubCategory->name,
+                        'slug' => $subSubCategory->slug,
+                        'thumbnail' => $subSubCategory->thumbnail,
+                        'category' => [
+                            'name' => $subSubCategory->subCategory->category->name,
+                            'slug' => $subSubCategory->subCategory->category->slug,
+                            'subCategory' => [
+                                'name' => $subSubCategory->subCategory->name,
+                                'slug' => $subSubCategory->subCategory->slug,
+                                'subSubCategory' => [
+                                    'name' => $subSubCategory->name,
+                                    'slug' => $subSubCategory->slug,
+                                ]
+                            ]
+                        ],
+                    ];
+                });
+        } else if ($category->slug == 'consumable') {
+            $productCategory = SubCategoryProduct::with(['category'])
+                ->whereHas('category', function ($query) use ($category) {
+                    $query->where('slug', $category->slug);
+                })
+                ->whereNotNull('thumbnail')
+                ->paginate(8)
+                ->through(function ($subCategory) {
+                    return [
+                        'name' => $subCategory->name,
+                        'slug' => $subCategory->slug,
+                        'thumbnail' => $subCategory->thumbnail,
+                        'category' => [
+                            'name' => $subCategory->category->name,
+                            'slug' => $subCategory->category->slug,
+                            'subCategory' => [
+                                'name' => $subCategory->name,
+                                'slug' => $subCategory->slug,
+                            ]
+                        ],
+                    ];
+                });
+        }
 
         return Inertia::render('Pages/Product/Category', [
             'category' => $category,
-            'subSubCategory' => $subSubCategory
+            'productCategory' => $productCategory
         ]);
     }
 
@@ -69,7 +98,41 @@ class ProductController extends Controller
             ];
         });
         $category = CategoryProduct::where('slug', $category)->first();
-        $subSubCategory = SubSubCategoryProduct::where('slug', $subCategory)->first();
+        $subCategory = SubCategoryProduct::where('slug', $subCategory)->first();
+
+        return Inertia::render('Pages/Product/SubCategory', [
+            'categoryProduct' => $categoryProduct,
+            'category' => $category,
+            'subCategory' => $subCategory,
+        ]);
+    }
+
+    public function subSubCategory($category, $subCategory, $subSubCategory)
+    {
+        $categoryProduct = CategoryProduct::get()->map(function ($categoryProduct, $index) {
+            return [
+                'id' => ($index + 1),
+                'name' => $categoryProduct->name,
+                'slug' => $categoryProduct->slug,
+                'subMenu' => $categoryProduct->subCategories->map(function ($subMenu, $index) {
+                    return [
+                        'id' => ($index + 1),
+                        'name' => $subMenu->name,
+                        'slug' => $subMenu->slug,
+                        'subSubMenu' => $subMenu->subSubCategories->map(function ($subSubMenu, $index) {
+                            return [
+                                'id' => ($index + 1),
+                                'name' => $subSubMenu->name,
+                                'slug' => $subSubMenu->slug,
+                                'count' => $subSubMenu->products->count(),
+                            ];
+                        })
+                    ];
+                })
+            ];
+        });
+        $category = CategoryProduct::where('slug', $category)->first();
+        $subSubCategory = SubSubCategoryProduct::where('slug', $subSubCategory)->first();
         $subCategory = SubCategoryProduct::where('id', $subSubCategory->sub_category_product_id)->first();
         $products = Product::with(['categoryable'])
             ->where('categoryable_id', $subSubCategory->id)
@@ -85,14 +148,18 @@ class ProductController extends Controller
                         'name' => $product->categoryable->subCategory->category->name ?? null,
                         'slug' => $product->categoryable->subCategory->category->slug ?? null,
                         'subCategory' => [
-                            'name' => $product->categoryable->name ?? null,
-                            'slug' => $product->categoryable->slug ?? null
-                        ]
-                    ]
+                            'name' => $product->categoryable->subCategory->name,
+                            'slug' => $product->categoryable->subCategory->slug,
+                            'subSubCategory' => [
+                                'name' => $product->categoryable->name,
+                                'slug' => $product->categoryable->slug,
+                            ]
+                        ],
+                    ],
                 ];
             });
 
-        return Inertia::render('Pages/Product/SubCategory', [
+        return Inertia::render('Pages/Product/SubSubCategory', [
             'categoryProduct' => $categoryProduct,
             'category' => $category,
             'subCategory' => $subCategory,
@@ -101,10 +168,10 @@ class ProductController extends Controller
         ]);
     }
 
-    public function show($category, $subCategory, $slug)
+    public function show($category, $subCategory, $subSubCategory, $slug)
     {
         $category = CategoryProduct::where('slug', $category)->first();
-        $subSubCategory = SubSubCategoryProduct::where('slug', $subCategory)->first();
+        $subSubCategory = SubSubCategoryProduct::where('slug', $subSubCategory)->first();
         $product = Product::with(['categoryable', 'brand', 'media'])->where('slug', $slug)->first();
         $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
         $similarProducts = Product::with(['categoryable', 'brand'])
@@ -123,8 +190,12 @@ class ProductController extends Controller
                         'name' => $product->categoryable->subCategory->category->name ?? null,
                         'slug' => $product->categoryable->subCategory->category->slug ?? null,
                         'subCategory' => [
-                            'name' => $product->categoryable->name,
-                            'slug' => $product->categoryable->slug,
+                            'name' => $product->categoryable->subCategory->name,
+                            'slug' => $product->categoryable->subCategory->slug,
+                            'subSubCategory' => [
+                                'name' => $product->categoryable->name,
+                                'slug' => $product->categoryable->slug,
+                            ]
                         ],
                     ],
                 ];

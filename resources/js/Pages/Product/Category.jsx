@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
 
-const Category = ({ category, subSubCategory }) => {
+const Category = ({ category, productCategory }) => {
     return (
         <div>
             <Helmet>
@@ -32,20 +32,35 @@ const Category = ({ category, subSubCategory }) => {
                 </h1>
                 <div className="mt-[1.875rem]">
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {subSubCategory.data.map((item, index) => {
+                        {productCategory.data.map((item, index) => {
                             if (item.thumbnail) {
-                                return (
-                                    <Link
-                                        href={`/product/${item.category.slug}/${item.slug}`}
-                                        key={index}
-                                        className="rounded-lg shadow-md overflow-hidden"
-                                    >
-                                        <img
-                                            src={`/storage/${item.thumbnail}`}
-                                            alt={item.slug}
-                                        />
-                                    </Link>
-                                );
+                                if (category.slug === "mesin") {
+                                    return (
+                                        <Link
+                                            href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}`}
+                                            key={index}
+                                            className="rounded-lg shadow-md overflow-hidden"
+                                        >
+                                            <img
+                                                src={`/storage/${item.thumbnail}`}
+                                                alt={item.slug}
+                                            />
+                                        </Link>
+                                    );
+                                } else if (category.slug === "consumable") {
+                                    return (
+                                        <Link
+                                            href={`/product/${item.category.slug}/${item.category.subCategory.slug}`}
+                                            key={index}
+                                            className="rounded-lg shadow-md overflow-hidden"
+                                        >
+                                            <img
+                                                src={`/storage/${item.thumbnail}`}
+                                                alt={item.slug}
+                                            />
+                                        </Link>
+                                    );
+                                }
                             }
 
                             return (
@@ -64,7 +79,7 @@ const Category = ({ category, subSubCategory }) => {
                     {/* PAGINATION */}
                     <div className="flex justify-end mt-[3.125rem]">
                         <div className="flex gap-2">
-                            {subSubCategory.links.map((link, index) => {
+                            {productCategory.links.map((link, index) => {
                                 if (index === 0) {
                                     return (
                                         <Link
@@ -81,7 +96,10 @@ const Category = ({ category, subSubCategory }) => {
                                     );
                                 }
 
-                                if (index === subSubCategory.links.length - 1) {
+                                if (
+                                    index ===
+                                    productCategory.links.length - 1
+                                ) {
                                     return (
                                         <Link
                                             key={index}
