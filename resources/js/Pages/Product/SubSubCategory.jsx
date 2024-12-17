@@ -88,7 +88,12 @@ const SubCategory = ({
                                                             )
                                                         }
                                                     >
-                                                        {subMenu.name}
+                                                        <Link
+                                                            href={`/product/${category.slug}/${subMenu.slug}`}
+                                                            className="w-full"
+                                                        >
+                                                            {subMenu.name}
+                                                        </Link>
                                                     </AccordionHeader>
                                                     <AccordionBody className="py-0">
                                                         <ul className="ml-4 mt-6">
@@ -142,7 +147,8 @@ const SubCategory = ({
                 {/* PRODUCT CONTENT */}
                 <div className="h-full flex flex-col justify-start items-start col-span-12 lg:col-span-9 mt-[2rem] lg:mt-auto">
                     <h1 className="text-xl capitalize font-semibold text-gray-800">
-                        Rekomendasi {`${category.name} ${subSubCategory.name}`}{" "}
+                        Rekomendasi{" "}
+                        {`${category.name} ${subCategory.name} ${subSubCategory.name}`}{" "}
                         Kami
                     </h1>
                     <div className="w-full mt-[1.875rem]">
@@ -171,7 +177,7 @@ const SubCategory = ({
                                             {item.name}
                                         </h1>
                                         <h2 className="text-center text-sm font-normal">
-                                            {item.another_name}
+                                            {item.another_name ?? ""}
                                         </h2>
                                     </div>
                                 </Link>

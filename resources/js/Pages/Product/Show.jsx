@@ -29,7 +29,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         .join("/");
 
     const [activeProductItem, setActiveProductItem] = useState(
-        product.media[1]
+        product.media[1] || product.media[0]
     );
     const [listProductAssets, setListProductAssets] = useState(product.media);
     const [tabItems, setTabsItems] = useState([]);
@@ -86,7 +86,8 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         <div>
             <Helmet>
                 <title>
-                    Vicentra - Produk {product.name} {product.another_name}
+                    Vicentra - Produk {product.name}{" "}
+                    {product.another_name ?? ""}
                 </title>
             </Helmet>
 
@@ -184,10 +185,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 </div>
                 <div>
                     <div>
-                        <h1 className="text-sm font-bold text-gray-800">
+                        <h1 className="text-2xl font-bold text-gray-800">
                             {product.name}
                         </h1>
-                        <h2 className="text-2xl font-normal text-gray-600">
+                        <h2 className="text-sm font-normal text-gray-600">
                             {product.another_name}
                         </h2>
                     </div>
@@ -269,7 +270,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         {similarProducts.map((item, index) => (
                             <Link
                                 key={index}
-                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`}
+                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
                                 className="rounded-lg overflow-hidden"
                             >
                                 <div className="rounded-lg overflow-hidden relative">

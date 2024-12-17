@@ -42,8 +42,7 @@ class ProductResource extends Resource
                             ->label('Slug Produk')
                             ->readOnly(),
                         Forms\Components\TextInput::make('another_name')
-                            ->label('Nama Lain Produk')
-                            ->required(),
+                            ->label('Nama Lain Produk'),
                         Forms\Components\Toggle::make('is_out_of_stock')
                             ->label('Out of Stock'),
                         Forms\Components\Select::make('brand_product_id')
@@ -96,7 +95,8 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->label('Nama Produk'),
+                    ->label('Nama Produk')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('sku')
                     ->label('SKU Produk'),
                 Tables\Columns\TextColumn::make('categoryable.name')

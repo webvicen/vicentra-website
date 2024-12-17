@@ -99,11 +99,38 @@ class ProductController extends Controller
         });
         $category = CategoryProduct::where('slug', $category)->first();
         $subCategory = SubCategoryProduct::where('slug', $subCategory)->first();
+        $products = Product::with(['categoryable'])
+            ->whereHas('categoryable', function ($query) use ($subCategory) {
+                $query->where('sub_category_product_id', $subCategory->id);
+            })
+            ->paginate(8)
+            ->through(function ($product) {
+                return [
+                    'name' => $product->name,
+                    'another_name' => $product->another_name,
+                    'slug' => $product->slug,
+                    'thumbnail' => $product->thumbnail,
+                    'is_out_of_stock' => $product->is_out_of_stock,
+                    'category' => [
+                        'name' => $product->categoryable->subCategory->category->name ?? null,
+                        'slug' => $product->categoryable->subCategory->category->slug ?? null,
+                        'subCategory' => [
+                            'name' => $product->categoryable->subCategory->name,
+                            'slug' => $product->categoryable->subCategory->slug,
+                            'subSubCategory' => [
+                                'name' => $product->categoryable->name,
+                                'slug' => $product->categoryable->slug,
+                            ]
+                        ],
+                    ],
+                ];
+            });
 
         return Inertia::render('Pages/Product/SubCategory', [
             'categoryProduct' => $categoryProduct,
             'category' => $category,
             'subCategory' => $subCategory,
+            'products' => $products
         ]);
     }
 
@@ -144,6 +171,7 @@ class ProductController extends Controller
                     'another_name' => $product->another_name,
                     'slug' => $product->slug,
                     'thumbnail' => $product->thumbnail,
+                    'is_out_of_stock' => $product->is_out_of_stock,
                     'category' => [
                         'name' => $product->categoryable->subCategory->category->name ?? null,
                         'slug' => $product->categoryable->subCategory->category->slug ?? null,
@@ -243,7 +271,7 @@ class ProductController extends Controller
 
     public function search(Request $request)
     {
-        $products = Product::where('name', 'LIKE', "%{$request->q}%")
+        $products = Product::with(['categoryable'])->where('name', 'LIKE', "%{$request->q}%")
             ->orWhere('another_name', 'LIKE', "%{$request->q}%")
             ->paginate(8)
             ->through(function ($product) {
@@ -252,14 +280,19 @@ class ProductController extends Controller
                     'another_name' => $product->another_name,
                     'slug' => $product->slug,
                     'thumbnail' => $product->thumbnail,
+                    'is_out_of_stock' => $product->is_out_of_stock,
                     'category' => [
                         'name' => $product->categoryable->subCategory->category->name ?? null,
                         'slug' => $product->categoryable->subCategory->category->slug ?? null,
                         'subCategory' => [
-                            'name' => $product->categoryable->name ?? null,
-                            'slug' => $product->categoryable->slug ?? null
-                        ]
-                    ]
+                            'name' => $product->categoryable->subCategory->name,
+                            'slug' => $product->categoryable->subCategory->slug,
+                            'subSubCategory' => [
+                                'name' => $product->categoryable->name,
+                                'slug' => $product->categoryable->slug,
+                            ]
+                        ],
+                    ],
                 ];
             });
 

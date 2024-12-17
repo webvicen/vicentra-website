@@ -241,7 +241,7 @@ export default function PagesLayout({ children }) {
                                                                             className="flex justify-start border-b border-gray-200 py-1"
                                                                         >
                                                                             <Link
-                                                                                href={`/product/${product.slug}/${subSubMenu.slug}`}
+                                                                                href={`/product/${product.slug}/${subMenu.slug}/${subSubMenu.slug}`}
                                                                                 className="text-sm text-gray-800"
                                                                             >
                                                                                 {
@@ -475,7 +475,7 @@ export default function PagesLayout({ children }) {
                                                                                 className="flex justify-start border-b border-gray-200 py-1"
                                                                             >
                                                                                 <Link
-                                                                                    href={`/product/${product.slug}/${subSubMenu.slug}`}
+                                                                                    href={`/product/${product.slug}/${subMenu.slug}/${subSubMenu.slug}`}
                                                                                     className="text-sm text-gray-800"
                                                                                 >
                                                                                     {

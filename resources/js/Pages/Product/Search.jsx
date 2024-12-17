@@ -30,7 +30,7 @@ const Search = ({ keyword, products }) => {
                         {products.data.map((item, index) => (
                             <Link
                                 key={index}
-                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`}
+                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
                                 className="rounded-lg overflow-hidden"
                             >
                                 <div className="rounded-lg overflow-hidden relative">
