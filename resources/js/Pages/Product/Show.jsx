@@ -117,7 +117,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         <Swiper
                             spaceBetween={10}
                             slidesPerView={"auto"}
-                            className="w-[22.3rem] lg:w-auto"
+                            className="w-[20.5rem] lg:w-auto"
                         >
                             {listProductAssets.map((item, index) => {
                                 if (item.type === "image") {
