@@ -99,10 +99,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             <img
                                 src={`/storage/${activeProductItem.file}`}
                                 alt={activeProductItem.slug}
-                                className="w-[22.3rem] lg:w-full h-full lg:h-[37.5rem] object-contain"
+                                className="w-full h-full lg:h-[37.5rem] object-contain"
                             />
                         ) : (
-                            <div className="w-[22.3rem] lg:w-full h-full lg:h-[37.5rem]">
+                            <div className="w-full h-full lg:h-[37.5rem]">
                                 <ReactPlayer
                                     url={activeProductItem.file}
                                     light={true}
@@ -115,8 +115,8 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     </div>
                     <div className="mt-[1.875rem]">
                         <Swiper
-                            spaceBetween="5rem"
-                            slidesPerView={3}
+                            spaceBetween={10}
+                            slidesPerView={"auto"}
                             className="w-[22.3rem] lg:w-auto"
                         >
                             {listProductAssets.map((item, index) => {
