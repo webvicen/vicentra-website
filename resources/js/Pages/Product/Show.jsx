@@ -113,74 +113,25 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             </div>
                         )}
                     </div>
-                    <div className="mt-[1.875rem]">
-                        <Swiper
-                            spaceBetween={10}
-                            slidesPerView={"auto"}
-                            className="w-[20.5rem] lg:w-auto"
-                        >
-                            {listProductAssets.map((item, index) => {
-                                if (item.type === "image") {
-                                    return (
-                                        <SwiperSlide
-                                            key={index}
-                                            style={{
-                                                width: "10rem",
-                                                height: "10rem",
-                                            }}
-                                        >
-                                            <img
-                                                src={`/storage/${item.file}`}
-                                                alt="mesin-xuli-eco-solvent"
-                                                className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
-                                                    item.isActive
-                                                        ? "border-2 border-gray-600"
-                                                        : "border-2 border-white"
-                                                } object-contain`}
-                                                onClick={() =>
-                                                    toogleActiveProductItem(
-                                                        index
-                                                    )
-                                                }
-                                            />
-                                        </SwiperSlide>
-                                    );
-                                } else if (item.type === "video") {
-                                    return (
-                                        <SwiperSlide
-                                            key={index}
-                                            style={{
-                                                width: "10rem",
-                                                height: "10rem",
-                                            }}
-                                        >
-                                            <div
-                                                className={`hover:cursor-pointer ${
-                                                    item.isActive
-                                                        ? "border-2 border-gray-600"
-                                                        : "border-2 border-white"
-                                                }`}
-                                                onClick={() =>
-                                                    toogleActiveProductItem(
-                                                        index
-                                                    )
-                                                }
-                                            >
-                                                <ReactPlayer
-                                                    url={item.file}
-                                                    light={true}
-                                                    width={"100%"}
-                                                    height={"100%"}
-                                                    style={{
-                                                        pointerEvents: "none",
-                                                    }}
-                                                />
-                                            </div>
-                                        </SwiperSlide>
-                                    );
-                                }
-                            })}
-                        </Swiper>
+                    <div className="flex gap-x-2 mt-[1.875rem] overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+                        {listProductAssets.map((item, index) => {
+                            if (item.type === "image") {
+                                return (
+                                    <img
+                                        src={`/storage/${item.file}`}
+                                        alt="mesin-xuli-eco-solvent"
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
+                                            item.isActive
+                                                ? "border-2 border-gray-600"
+                                                : "border-2 border-white"
+                                        } object-contain`}
+                                        onClick={() =>
+                                            toogleActiveProductItem(index)
+                                        }
+                                    />
+                                );
+                            }
+                        })}
                     </div>
                 </div>
                 <div>
