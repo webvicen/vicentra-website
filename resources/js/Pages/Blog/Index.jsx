@@ -70,7 +70,7 @@ const Blog = ({ allCategories, latestPost, posts }) => {
 
                 {/* BLOG CONTENT */}
                 <div className="col-span-12 lg:col-span-9 mt-[2rem] lg:mt-auto">
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-[1.25rem]">
+                    <div className="grid lg:grid-cols-3 gap-[1.25rem]">
                         {posts.data.map((item, index) => (
                             <BlogCard key={index} post={item} />
                         ))}

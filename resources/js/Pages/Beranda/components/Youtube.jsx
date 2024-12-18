@@ -54,11 +54,14 @@ export default function Youtube() {
                 </a>
             </div>
             <div className="rounded-lg overflow-hidden order-first lg:order-none">
-                <ReactPlayer
-                    url={latestVideoLink}
-                    width={"100%"}
-                    controls={true}
-                />
+                <div className="h-[10rem] lg:h-[20rem]">
+                    <ReactPlayer
+                        url={latestVideoLink}
+                        width={"100%"}
+                        height={"100%"}
+                        controls={true}
+                    />
+                </div>
             </div>
         </div>
     );

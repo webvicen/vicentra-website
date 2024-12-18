@@ -30,7 +30,7 @@ export default function Testimonial({ testimonials }) {
                 {testimonials.map((testimonial, index) => (
                     <SwiperSlide key={index}>
                         <div className="w-full min-h-[10rem] grid grid-cols-3 gap-2 rounded-xl border-2 p-5">
-                            <div className="bg-vicentra-pink h-[8rem] lg:h-[7rem] rounded-md overflow-hidden">
+                            <div className="bg-vicentra-pink h-[6.5rem] lg:h-[7rem] rounded-md overflow-hidden">
                                 {testimonial.image ? (
                                     <img
                                         src={`/storage/${testimonial.image}`}

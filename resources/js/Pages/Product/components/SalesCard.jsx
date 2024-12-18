@@ -20,7 +20,7 @@ export default function SalesCard({
         <a
             href={linkWhatsapp}
             target="_blank"
-            className={`w-[80%] h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
+            className={`lg:w-[80%] h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
                 order == 1 ? "bg-vicentra-blue" : "bg-green-600"
             }`}
         >
