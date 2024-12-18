@@ -33,9 +33,14 @@ export default function Show({ slider, teamSales }) {
                     </h2>
                     <div className="w-[90vw] lg:w-[50vw] h-[15rem] lg:h-[20rem] bg-vicentra-blue rounded-md overflow-hidden mt-5">
                         <img
-                            src={`/storage/${slider.image}`}
-                            alt={slider.slug}
-                            className="w-full h-full"
+                            src={`/storage/${slider.image_desktop}`}
+                            alt={slider.name}
+                            className="w-full h-full hidden lg:block"
+                        />
+                        <img
+                            src={`/storage/${slider.image_mobile}`}
+                            alt={slider.name}
+                            className="w-full h-full lg:hidden"
                         />
                     </div>
                 </div>

@@ -38,8 +38,17 @@ class SliderResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->label('Slug Poster')
                             ->readOnly(),
-                        Forms\Components\FileUpload::make('image')
-                            ->label('Gambar Poster')
+                        Forms\Components\FileUpload::make('image_desktop')
+                            ->label('Gambar Poster Desktop')
+                            ->getUploadedFileNameForStorageUsing(
+                                fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
+                            )
+                            ->disk('public')
+                            ->directory('sliders')
+                            ->visibility('public')
+                            ->required(),
+                        Forms\Components\FileUpload::make('image_mobile')
+                            ->label('Gambar Poster Mobile')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
                             )
@@ -79,8 +88,6 @@ class SliderResource extends Resource
                 Tables\Columns\TextColumn::make('ended_at')
                     ->label('Tanggal Berakhir')
                     ->date(),
-                Tables\Columns\ImageColumn::make('image')
-                    ->label('Gambar Poster'),
                 Tables\Columns\TextColumn::make('type')
                     ->label('Tipe Poster')
                     ->badge(),

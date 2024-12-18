@@ -15,7 +15,7 @@ class BerandaController extends Controller
 {
     public function index()
     {
-        $sliders = Slider::where('ended_at', '>=', Carbon::now())->get(['name', 'slug', 'image', 'type', 'ended_at', 'link']);
+        $sliders = Slider::where('ended_at', '>=', Carbon::now())->get(['name', 'slug', 'image_desktop', 'image_mobile', 'type', 'ended_at', 'link']);
         $categoryProducts = CategoryProduct::get(['slug', 'thumbnail']);
         $testimonials = Testimonial::get(['person', 'content', 'image']);
         $faqs = Faq::get(['question', 'answer']);

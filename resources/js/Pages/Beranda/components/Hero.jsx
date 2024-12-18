@@ -32,9 +32,14 @@ export default function Hero({ sliders }) {
                             className="w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
                         >
                             <img
-                                src={`/storage/${slider.image}`}
+                                src={`/storage/${slider.image_desktop}`}
                                 alt={slider.name}
-                                className="h-full"
+                                className="h-full hidden lg:block"
+                            />
+                            <img
+                                src={`/storage/${slider.image_mobile}`}
+                                alt={slider.name}
+                                className="h-full lg:hidden"
                             />
                         </a>
                     </SwiperSlide>
