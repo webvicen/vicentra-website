@@ -5,7 +5,6 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Layout from "../../Layouts/PagesLayout";
 
 const Search = ({ keyword, products }) => {
-    console.log(products);
     return (
         <div>
             <Helmet>
@@ -65,7 +64,7 @@ const Search = ({ keyword, products }) => {
                                     return (
                                         <Link
                                             key={index}
-                                            href={link.url}
+                                            href={`${link.url}&q=${keyword}`}
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
@@ -81,7 +80,7 @@ const Search = ({ keyword, products }) => {
                                     return (
                                         <Link
                                             key={index}
-                                            href={link.url}
+                                            href={`${link.url}&q=${keyword}`}
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
@@ -96,7 +95,7 @@ const Search = ({ keyword, products }) => {
                                 return (
                                     <Link
                                         key={index}
-                                        href={link.url}
+                                        href={`${link.url}&q=${keyword}`}
                                         className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                             link.active
                                                 ? `bg-vicentra-blue text-white`
