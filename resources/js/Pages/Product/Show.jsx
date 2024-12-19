@@ -118,6 +118,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             if (item.type === "image") {
                                 return (
                                     <img
+                                        key={index}
                                         src={`/storage/${item.file}`}
                                         alt="mesin-xuli-eco-solvent"
                                         className={`w-[10rem] h-[10rem] hover:cursor-pointer ${

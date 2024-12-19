@@ -64,7 +64,11 @@ const Search = ({ keyword, products }) => {
                                     return (
                                         <Link
                                             key={index}
-                                            href={`${link.url}&q=${keyword}`}
+                                            href={
+                                                link.url != null
+                                                    ? `${link.url}&q=${keyword}`
+                                                    : null
+                                            }
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
@@ -80,7 +84,11 @@ const Search = ({ keyword, products }) => {
                                     return (
                                         <Link
                                             key={index}
-                                            href={`${link.url}&q=${keyword}`}
+                                            href={
+                                                link.url != null
+                                                    ? `${link.url}&q=${keyword}`
+                                                    : null
+                                            }
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
