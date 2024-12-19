@@ -102,7 +102,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                 className="w-full h-full lg:h-[37.5rem] object-contain"
                             />
                         ) : (
-                            <div className="w-full h-full lg:h-[37.5rem]">
+                            <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                 <ReactPlayer
                                     url={activeProductItem.file}
                                     light={true}
@@ -120,6 +120,22 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                     <img
                                         key={index}
                                         src={`/storage/${item.file}`}
+                                        alt="mesin-xuli-eco-solvent"
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
+                                            item.isActive
+                                                ? "border-2 border-gray-600"
+                                                : "border-2 border-white"
+                                        } object-contain`}
+                                        onClick={() =>
+                                            toogleActiveProductItem(index)
+                                        }
+                                    />
+                                );
+                            } else if (item.type === "video") {
+                                return (
+                                    <img
+                                        key={index}
+                                        src={`/storage/${item.youtube_thumbnail}`}
                                         alt="mesin-xuli-eco-solvent"
                                         className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
                                             item.isActive

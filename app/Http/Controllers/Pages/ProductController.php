@@ -256,6 +256,7 @@ class ProductController extends Controller
                     'id' => ($index + 1),
                     'slug' => $media->slug,
                     'type' => $media->type,
+                    'youtube_thumbnail' => $media->video_thumbnail ?? null,
                     'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
                     'isActive' => $index === 1 ? true : false
                 ];
