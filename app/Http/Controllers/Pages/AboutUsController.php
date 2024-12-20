@@ -12,7 +12,7 @@ class AboutUsController extends Controller
 {
     public function index()
     {
-        $brands = BrandProduct::get(['name', 'slug', 'image']);
+        $brands = BrandProduct::whereNotNull('image')->get(['name', 'slug', 'image']);
         $sales = SalesPerson::get(['name']);
 
         return Inertia::render('Pages/AboutUs/Index', [

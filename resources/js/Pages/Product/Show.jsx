@@ -29,7 +29,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         .join("/");
 
     const [activeProductItem, setActiveProductItem] = useState(
-        product.media[1] || product.media[0]
+        product.category.slug === "mesin"
+            ? product.media[1] || product.media[0]
+            : product.media[0]
     );
     const [listProductAssets, setListProductAssets] = useState(product.media);
     const [tabItems, setTabsItems] = useState([]);

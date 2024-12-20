@@ -126,8 +126,7 @@ class ProductResource extends Resource
                             ->label('Deskripsi Lengkap Produk')
                             ->required(),
                         Forms\Components\TextArea::make('specification')
-                            ->label('Spesifikasi Produk')
-                            ->required(),
+                            ->label('Spesifikasi Produk'),
                         Forms\Components\FileUpload::make('work_result')
                             ->label('Hasil Produk')
                             ->getUploadedFileNameForStorageUsing(

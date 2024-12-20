@@ -1,0 +1,11 @@
+.faq_content p {
+    @apply mb-2;
+}
+
+.faq_content ul {
+    @apply list-disc list-inside mb-4;
+}
+
+.faq_content ul:last-child {
+    @apply mb-0;
+}

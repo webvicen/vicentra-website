@@ -7,3 +7,12 @@
 .swiper.swiper-initialized.swiper-horizontal {
     @apply mx-0;
 }
+
+.product_description p,
+.product_description ul {
+    @apply mb-2;
+}
+
+.product_description ul {
+    @apply list-disc list-inside;
+}

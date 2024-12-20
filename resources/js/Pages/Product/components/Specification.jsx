@@ -7,7 +7,7 @@ export default function Specification({ product }) {
                 Spesifikasi Mesin
             </h1>
             <div
-                className="specification-table-content mt-4"
+                className="specification_table_content mt-4"
                 dangerouslySetInnerHTML={{ __html: product.specification }}
             ></div>
             <div className="mt-[1rem]">

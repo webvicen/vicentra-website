@@ -251,15 +251,26 @@ class ProductController extends Controller
                     ]
                 ]
             ],
-            'media' => $product->media->map(function ($media, $index) {
-                return [
-                    'id' => ($index + 1),
-                    'slug' => $media->slug,
-                    'type' => $media->type,
-                    'youtube_thumbnail' => $media->video_thumbnail ?? null,
-                    'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
-                    'isActive' => $index === 1 ? true : false
-                ];
+            'media' => $product->media->map(function ($media, $index) use ($product) {
+                if ($product->categoryable->subCategory->category->slug === 'mesin') {
+                    return [
+                        'id' => ($index + 1),
+                        'slug' => $media->slug,
+                        'type' => $media->type,
+                        'youtube_thumbnail' => $media->video_thumbnail ?? null,
+                        'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
+                        'isActive' => $index === 1 ? true : false
+                    ];
+                } else {
+                    return [
+                        'id' => ($index + 1),
+                        'slug' => $media->slug,
+                        'type' => $media->type,
+                        'youtube_thumbnail' => $media->video_thumbnail ?? null,
+                        'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
+                        'isActive' => $index === 0 ? true : false
+                    ];
+                }
             }),
         ];
 

@@ -5,7 +5,7 @@ export default function Descriptions({ product }) {
                 Deskripsi Mesin
             </h1>
             <div
-                className="text-sm font-normal text-gray-500 mt-4"
+                className="product_description text-sm font-normal text-gray-500 mt-4"
                 dangerouslySetInnerHTML={{ __html: product.description }}
             ></div>
         </div>

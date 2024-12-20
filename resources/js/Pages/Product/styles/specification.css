@@ -1,22 +1,22 @@
-.specification-table-content table {
-    @apply w-full;
+.specification_table_content table {
+    @apply w-full mb-4;
 }
 
-.specification-table-content table,
-.specification-table-content table tr th,
-.specification-table-content table tr td {
+.specification_table_content table,
+.specification_table_content table tr th,
+.specification_table_content table tr td {
     @apply border border-gray-300;
 }
 
-.specification-table-content table tr th {
+.specification_table_content table tr th {
     @apply px-4 py-2 text-start;
 }
 
-.specification-table-content table tr td {
+.specification_table_content table tr td {
     @apply px-4 py-2;
 }
 
-.specification-table-content table tbody tr:nth-child(even) th,
-.specification-table-content table tbody tr:nth-child(even) td {
+.specification_table_content table tbody tr:nth-child(even) th,
+.specification_table_content table tbody tr:nth-child(even) td {
     @apply bg-gray-200;
 }
