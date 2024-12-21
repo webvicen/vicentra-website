@@ -125,7 +125,7 @@ class ProductResource extends Resource
                         Forms\Components\RichEditor::make('description')
                             ->label('Deskripsi Lengkap Produk')
                             ->required(),
-                        Forms\Components\TextArea::make('specification')
+                        Forms\Components\Textarea::make('specification')
                             ->label('Spesifikasi Produk'),
                         Forms\Components\FileUpload::make('work_result')
                             ->label('Hasil Produk')
