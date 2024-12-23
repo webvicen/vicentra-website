@@ -131,18 +131,21 @@ export default function PagesLayout({ children }) {
                                         <a
                                             href="https://www.facebook.com/vicentra"
                                             target="_blank"
+                                            aria-label="Kunjungi halaman Facebook Vicentra"
                                         >
                                             <FaFacebook className="text-white text-xl font-semibold" />
                                         </a>
                                         <a
                                             href="https://www.instagram.com/vicentra.co.id"
                                             target="_blank"
+                                            aria-label="Kunjungi halaman Instagram Vicentra"
                                         >
                                             <FaInstagramSquare className="text-white text-xl font-semibold" />
                                         </a>
                                         <a
                                             href="https://www.youtube.com/@galeryvicentra"
                                             target="_blank"
+                                            aria-label="Kunjungi kanal YouTube Galery Vicentra"
                                         >
                                             <FaYoutube className="text-white text-xl font-semibold" />
                                         </a>
@@ -159,6 +162,7 @@ export default function PagesLayout({ children }) {
                                         <button
                                             type="submit"
                                             className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                            aria-label="Cari"
                                         >
                                             <FaSearch className="text-white text-sm font-semibold" />
                                         </button>
@@ -278,18 +282,21 @@ export default function PagesLayout({ children }) {
                                 <a
                                     href="https://www.facebook.com/vicentra"
                                     target="_blank"
+                                    aria-label="Kunjungi halaman Facebook Vicentra"
                                 >
                                     <FaFacebook className="text-white text-xl font-semibold" />
                                 </a>
                                 <a
                                     href="https://www.instagram.com/vicentra.co.id"
                                     target="_blank"
+                                    aria-label="Kunjungi halaman Instagram Vicentra"
                                 >
                                     <FaInstagramSquare className="text-white text-xl font-semibold" />
                                 </a>
                                 <a
                                     href="https://www.youtube.com/@galeryvicentra"
                                     target="_blank"
+                                    aria-label="Kunjungi kanal YouTube Galery Vicentra"
                                 >
                                     <FaYoutube className="text-white text-xl font-semibold" />
                                 </a>
@@ -306,6 +313,7 @@ export default function PagesLayout({ children }) {
                                 <button
                                     type="submit"
                                     className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                    aria-label="Cari"
                                 >
                                     <FaSearch className="text-white text-sm font-semibold" />
                                 </button>
@@ -602,6 +610,7 @@ export default function PagesLayout({ children }) {
                                         href="https://www.facebook.com/vicentra"
                                         target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi halaman Facebook Vicentra"
                                     >
                                         <FaFacebook className="text-white" />
                                     </a>
@@ -609,6 +618,7 @@ export default function PagesLayout({ children }) {
                                         href="https://www.instagram.com/vicentra.co.id"
                                         target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi halaman Instagram Vicentra"
                                     >
                                         <FaInstagramSquare className="text-white" />
                                     </a>
@@ -616,6 +626,7 @@ export default function PagesLayout({ children }) {
                                         href="https://www.youtube.com/@galeryvicentra"
                                         target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi channel YouTube Galery Vicentra"
                                     >
                                         <FaYoutube className="text-white" />
                                     </a>
