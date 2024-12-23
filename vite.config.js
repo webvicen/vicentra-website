@@ -12,7 +12,6 @@ export default defineConfig({
         }),
         visualizer({
             filename: './bundle-visualizer.html',
-            open: true, // Membuka file hasil visualisasi secara otomatis
         }),
     ],
     build: {
