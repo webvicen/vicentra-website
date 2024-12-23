@@ -39,7 +39,7 @@ const TermsAndConditions = () => {
             {/* TERMS AND CONDITIONS SECTION */}
             <section>
                 <h1 className="text-xl text-center font-semibold text-gray-800">
-                    Syarat & Ketentuan Perbaikan Mesin
+                    Layanan Dan Perbaikan Mesin
                 </h1>
                 <form
                     ref={form}
