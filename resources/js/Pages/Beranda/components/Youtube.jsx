@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import ReactPlayer from "react-player/lazy";
+import { useEffect, useState, lazy, Suspense } from "react";
+const ReactPlayer = lazy(() => import("react-player"));
 
 export default function Youtube() {
     const channelId = "UCo21YDF0Z6uBsGcOKdIJBMQ";
@@ -55,12 +55,15 @@ export default function Youtube() {
             </div>
             <div className="rounded-lg overflow-hidden order-first lg:order-none">
                 <div className="h-[10rem] lg:h-[20rem]">
-                    <ReactPlayer
-                        url={latestVideoLink}
-                        width={"100%"}
-                        height={"100%"}
-                        controls={true}
-                    />
+                    <Suspense fallback={<div>Loading player...</div>}>
+                        <ReactPlayer
+                            url={latestVideoLink}
+                            width={"100%"}
+                            height={"100%"}
+                            controls
+                            light
+                        />
+                    </Suspense>
                 </div>
             </div>
         </div>

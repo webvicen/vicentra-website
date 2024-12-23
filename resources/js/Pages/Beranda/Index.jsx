@@ -1,4 +1,3 @@
-import { lazy, Suspense } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 
@@ -7,7 +6,7 @@ import Faq from "./components/Faq";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
-const Youtube = lazy(() => import("./components/Youtube"));
+import Youtube from "./components/Youtube";
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
     return (
@@ -55,9 +54,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
 
             {/* YOUTUBE SECTION */}
             <section className="bg-gray-100 my-[3.125rem] lg:my-[6.25rem] p-5 rounded-lg">
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Youtube />
-                </Suspense>
+                <Youtube />
             </section>
             {/* YOUTUBE SECTION */}
 
