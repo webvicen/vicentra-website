@@ -128,13 +128,22 @@ export default function PagesLayout({ children }) {
                                         ikuti kami di
                                     </p>
                                     <div className="flex items-center gap-1">
-                                        <a href="#">
+                                        <a
+                                            href="https://www.facebook.com/vicentra"
+                                            target="_blank"
+                                        >
                                             <FaFacebook className="text-white text-xl font-semibold" />
                                         </a>
-                                        <a href="#">
+                                        <a
+                                            href="https://www.instagram.com/vicentra.co.id"
+                                            target="_blank"
+                                        >
                                             <FaInstagramSquare className="text-white text-xl font-semibold" />
                                         </a>
-                                        <a href="#">
+                                        <a
+                                            href="https://www.youtube.com/@galeryvicentra"
+                                            target="_blank"
+                                        >
                                             <FaYoutube className="text-white text-xl font-semibold" />
                                         </a>
                                     </div>
@@ -266,13 +275,22 @@ export default function PagesLayout({ children }) {
                                 ikuti kami di
                             </p>
                             <div className="flex items-center gap-1">
-                                <a href="#">
+                                <a
+                                    href="https://www.facebook.com/vicentra"
+                                    target="_blank"
+                                >
                                     <FaFacebook className="text-white text-xl font-semibold" />
                                 </a>
-                                <a href="#">
+                                <a
+                                    href="https://www.instagram.com/vicentra.co.id"
+                                    target="_blank"
+                                >
                                     <FaInstagramSquare className="text-white text-xl font-semibold" />
                                 </a>
-                                <a href="#">
+                                <a
+                                    href="https://www.youtube.com/@galeryvicentra"
+                                    target="_blank"
+                                >
                                     <FaYoutube className="text-white text-xl font-semibold" />
                                 </a>
                             </div>
@@ -581,19 +599,22 @@ export default function PagesLayout({ children }) {
                                 </h1>
                                 <div className="flex items-center gap-1 mt-[1.25rem]">
                                     <a
-                                        href="#"
+                                        href="https://www.facebook.com/vicentra"
+                                        target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaFacebook className="text-white" />
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://www.instagram.com/vicentra.co.id"
+                                        target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaInstagramSquare className="text-white" />
                                     </a>
                                     <a
-                                        href="#"
+                                        href="https://www.youtube.com/@galeryvicentra"
+                                        target="_blank"
                                         className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                     >
                                         <FaYoutube className="text-white" />
