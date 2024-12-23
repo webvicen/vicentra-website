@@ -11,8 +11,14 @@ import "../../../assets/css/custom.css";
 export default function Hero({ sliders }) {
     return (
         <div className="swiper-container">
-            <button className="swiper-button-prev"></button>
-            <button className="swiper-button-next"></button>
+            <button
+                className="swiper-button-prev"
+                aria-label="Slide ke sebelumnya"
+            ></button>
+            <button
+                className="swiper-button-next"
+                aria-label="Slide ke berikutnya"
+            ></button>
             <Swiper
                 modules={[Pagination, Autoplay, Navigation]}
                 spaceBetween={50}
