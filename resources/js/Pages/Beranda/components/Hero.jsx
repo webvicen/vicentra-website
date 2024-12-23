@@ -1,20 +1,27 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules";
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
+import "swiper/css/navigation";
 import "../../../assets/css/custom.css";
 
 export default function Hero({ sliders }) {
     return (
-        <div>
+        <div className="swiper-container">
+            <button className="swiper-button-prev"></button>
+            <button className="swiper-button-next"></button>
             <Swiper
-                modules={[Pagination, Autoplay]}
+                modules={[Pagination, Autoplay, Navigation]}
                 spaceBetween={50}
                 slidesPerView={1}
                 autoplay
+                navigation={{
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }}
                 pagination={{
                     el: ".swiper-hero-section-custom-pagination",
                     clickable: true,

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Filament\Resources\ProductResource\RelationManagers\MediaRelationManager;
+use App\Filament\Resources\ProductResource\RelationManagers\RecomendationsRelationManager;
 use App\Models\Product;
 use App\Models\SubCategoryProduct;
 use App\Models\SubSubCategoryProduct;
@@ -219,6 +220,7 @@ class ProductResource extends Resource
     public static function getRelations(): array
     {
         return [
+            RecomendationsRelationManager::class,
             MediaRelationManager::class,
         ];
     }

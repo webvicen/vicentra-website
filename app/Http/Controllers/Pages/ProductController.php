@@ -202,32 +202,53 @@ class ProductController extends Controller
         $subSubCategory = SubSubCategoryProduct::where('slug', $subSubCategory)->first();
         $product = Product::with(['categoryable', 'brand', 'media'])->where('slug', $slug)->first();
         $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
-        $similarProducts = Product::with(['categoryable', 'brand'])
-            ->where('categoryable_id', $subSubCategory->id)
-            ->where('categoryable_type', $subSubCategory->getMorphClass())
-            ->limit(4)
-            ->get()
-            ->map(function ($product) {
-                return [
-                    'name' => $product->name,
-                    'another_name' => $product->another_name,
-                    'slug' => $product->slug,
-                    'thumbnail' => $product->thumbnail,
-                    'is_out_of_stock' => $product->is_out_of_stock,
-                    'category' => [
-                        'name' => $product->categoryable->subCategory->category->name ?? null,
-                        'slug' => $product->categoryable->subCategory->category->slug ?? null,
-                        'subCategory' => [
-                            'name' => $product->categoryable->subCategory->name,
-                            'slug' => $product->categoryable->subCategory->slug,
-                            'subSubCategory' => [
-                                'name' => $product->categoryable->name,
-                                'slug' => $product->categoryable->slug,
-                            ]
-                        ],
+        // $similarProducts = Product::with(['categoryable', 'brand'])
+        //     ->where('categoryable_id', $subSubCategory->id)
+        //     ->where('categoryable_type', $subSubCategory->getMorphClass())
+        //     ->limit(4)
+        //     ->get()
+        //     ->map(function ($product) {
+        //         return [
+        //             'name' => $product->name,
+        //             'another_name' => $product->another_name,
+        //             'slug' => $product->slug,
+        //             'thumbnail' => $product->thumbnail,
+        //             'is_out_of_stock' => $product->is_out_of_stock,
+        //             'category' => [
+        //                 'name' => $product->categoryable->subCategory->category->name ?? null,
+        //                 'slug' => $product->categoryable->subCategory->category->slug ?? null,
+        //                 'subCategory' => [
+        //                     'name' => $product->categoryable->subCategory->name,
+        //                     'slug' => $product->categoryable->subCategory->slug,
+        //                     'subSubCategory' => [
+        //                         'name' => $product->categoryable->name,
+        //                         'slug' => $product->categoryable->slug,
+        //                     ]
+        //                 ],
+        //             ],
+        //         ];
+        //     });
+        $similarProducts = $product->recomendations->map(function ($recomendation) {
+            return [
+                'name' => $recomendation->recomendationProduct->name,
+                'another_name' => $recomendation->recomendationProduct->another_name,
+                'slug' => $recomendation->recomendationProduct->slug,
+                'thumbnail' => $recomendation->recomendationProduct->thumbnail,
+                'is_out_of_stock' => $recomendation->recomendationProduct->is_out_of_stock,
+                'category' => [
+                    'name' => $recomendation->recomendationProduct->categoryable->subCategory->category->name ?? null,
+                    'slug' => $recomendation->recomendationProduct->categoryable->subCategory->category->slug ?? null,
+                    'subCategory' => [
+                        'name' => $recomendation->recomendationProduct->categoryable->subCategory->name,
+                        'slug' => $recomendation->recomendationProduct->categoryable->subCategory->slug,
+                        'subSubCategory' => [
+                            'name' => $recomendation->recomendationProduct->categoryable->name,
+                            'slug' => $recomendation->recomendationProduct->categoryable->slug,
+                        ]
                     ],
-                ];
-            });
+                ],
+            ];
+        });
         $formatProduct = [
             'name' => $product->name,
             'another_name' => $product->another_name,
@@ -252,25 +273,14 @@ class ProductController extends Controller
                 ]
             ],
             'media' => $product->media->map(function ($media, $index) use ($product) {
-                if ($product->categoryable->subCategory->category->slug === 'mesin') {
-                    return [
-                        'id' => ($index + 1),
-                        'slug' => $media->slug,
-                        'type' => $media->type,
-                        'youtube_thumbnail' => $media->video_thumbnail ?? null,
-                        'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
-                        'isActive' => $index === 1 ? true : false
-                    ];
-                } else {
-                    return [
-                        'id' => ($index + 1),
-                        'slug' => $media->slug,
-                        'type' => $media->type,
-                        'youtube_thumbnail' => $media->video_thumbnail ?? null,
-                        'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
-                        'isActive' => $index === 0 ? true : false
-                    ];
-                }
+                return [
+                    'id' => ($index + 1),
+                    'slug' => $media->slug,
+                    'type' => $media->type,
+                    'youtube_thumbnail' => $media->video_thumbnail ?? null,
+                    'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
+                    'isActive' => $index === 0 ? true : false
+                ];
             }),
         ];
 

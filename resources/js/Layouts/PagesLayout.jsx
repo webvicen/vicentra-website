@@ -13,9 +13,9 @@ import { MdEmail } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { HiMiniXMark } from "react-icons/hi2";
 
-import VicentraLogoBlack from "../assets/images/logo-vicentra-black.png";
-import VicentraLogoWhite from "../assets/images/logo-vicentra-white.png";
-import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.png";
+import VicentraLogoBlack from "../assets/images/logo-vicentra-black.webp";
+import VicentraLogoWhite from "../assets/images/logo-vicentra-white.webp";
+import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.webp";
 
 export default function PagesLayout({ children }) {
     const { categoryPost, categoryProduct } = usePage().props;
@@ -74,47 +74,7 @@ export default function PagesLayout({ children }) {
             <header className="hidden lg:block shadow pb-[1rem]">
                 <div className="bg-vicentra-blue">
                     <div className="w-[80vw] mx-auto py-[1rem]">
-                        <div className="flex items-center gap-2">
-                            <Link
-                                href="/help"
-                                className="flex items-center gap-2 text-sm text-white capitalize"
-                            >
-                                <FaInfoCircle className="text-xl font-semibold" />
-                                bantuan
-                            </Link>
-                            <svg
-                                width={2}
-                                height={14}
-                                viewBox="0 0 2 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M1 1L1 13"
-                                    stroke="white"
-                                    strokeOpacity="0.5"
-                                    strokeWidth="0.8"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
-                            <div className="flex items-center gap-2">
-                                <p className="text-sm capitalize text-white">
-                                    ikuti kami di
-                                </p>
-                                <div className="flex items-center gap-1">
-                                    <a href="#">
-                                        <FaFacebook className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a href="#">
-                                        <FaInstagramSquare className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a href="#">
-                                        <FaYoutube className="text-white text-xl font-semibold" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="mt-[1rem] flex justify-between items-end">
+                        <div className="flex justify-between items-end">
                             <div className="flex items-center gap-[1.875rem]">
                                 <Link
                                     href="/"
@@ -162,21 +122,39 @@ export default function PagesLayout({ children }) {
                                     tentang kami
                                 </Link>
                             </div>
-                            <div className="bg-white relative rounded-md">
-                                <form action="/product/search" method="GET">
-                                    <input
-                                        type="text"
-                                        name="q"
-                                        placeholder="Cari produk vicentra..."
-                                        className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
-                                    >
-                                        <FaSearch className="text-white text-sm font-semibold" />
-                                    </button>
-                                </form>
+                            <div className="flex items-end gap-[1.875rem]">
+                                <div className="flex items-center gap-2">
+                                    <p className="text-sm capitalize text-white">
+                                        ikuti kami di
+                                    </p>
+                                    <div className="flex items-center gap-1">
+                                        <a href="#">
+                                            <FaFacebook className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a href="#">
+                                            <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a href="#">
+                                            <FaYoutube className="text-white text-xl font-semibold" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="bg-white relative rounded-md">
+                                    <form action="/product/search" method="GET">
+                                        <input
+                                            type="text"
+                                            name="q"
+                                            placeholder="Cari produk vicentra..."
+                                            className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                        >
+                                            <FaSearch className="text-white text-sm font-semibold" />
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -284,43 +262,19 @@ export default function PagesLayout({ children }) {
                 <div className="bg-vicentra-blue">
                     <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[1rem] relative z-50">
                         <div className="flex items-center gap-2">
-                            <Link
-                                href="/help"
-                                className="flex items-center gap-2 text-sm text-white capitalize"
-                            >
-                                <FaInfoCircle className="text-xl font-semibold" />
-                                bantuan
-                            </Link>
-                            <svg
-                                width={2}
-                                height={14}
-                                viewBox="0 0 2 14"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M1 1L1 13"
-                                    stroke="white"
-                                    strokeOpacity="0.5"
-                                    strokeWidth="0.8"
-                                    strokeLinecap="round"
-                                />
-                            </svg>
-                            <div className="flex items-center gap-2">
-                                <p className="text-sm capitalize text-white">
-                                    ikuti kami di
-                                </p>
-                                <div className="flex items-center gap-1">
-                                    <a href="#">
-                                        <FaFacebook className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a href="#">
-                                        <FaInstagramSquare className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a href="#">
-                                        <FaYoutube className="text-white text-xl font-semibold" />
-                                    </a>
-                                </div>
+                            <p className="text-sm capitalize text-white">
+                                ikuti kami di
+                            </p>
+                            <div className="flex items-center gap-1">
+                                <a href="#">
+                                    <FaFacebook className="text-white text-xl font-semibold" />
+                                </a>
+                                <a href="#">
+                                    <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                </a>
+                                <a href="#">
+                                    <FaYoutube className="text-white text-xl font-semibold" />
+                                </a>
                             </div>
                         </div>
                         <div className="relative mt-[1rem]">
@@ -517,7 +471,7 @@ export default function PagesLayout({ children }) {
             {/* HEADER */}
 
             {/* PAGES CONTENT */}
-            <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto my-[3.125rem] lg:my-[6.25rem]">
+            <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto my-[3.125rem]">
                 {children}
             </div>
             {/* PAGES CONTENT */}
@@ -599,18 +553,26 @@ export default function PagesLayout({ children }) {
                                     Hubungi Kami
                                 </h1>
                                 <div className="mt-[1.25rem]">
-                                    <div className="flex items-center gap-1">
+                                    <a
+                                        href="https://api.whatsapp.com/send?phone=6281232548368"
+                                        target="_blank"
+                                        className="flex items-center gap-1"
+                                    >
                                         <FaWhatsappSquare className="text-white text-xl" />
                                         <span className="text-white">
-                                            083158793334
+                                            081232548368
                                         </span>
-                                    </div>
-                                    <div className="flex items-center gap-1">
+                                    </a>
+                                    <a
+                                        href="mailto:info@vicentra.co.id"
+                                        target="_blank"
+                                        className="flex items-center gap-1"
+                                    >
                                         <MdEmail className="text-white text-xl" />
                                         <span className="text-white">
                                             info@vicentra.co.id
                                         </span>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
                             <div className="mt-[1.25rem]">

@@ -43,4 +43,9 @@ class Product extends Model
     {
         return $this->hasMany(MediaProduct::class);
     }
+
+    public function recomendations()
+    {
+        return $this->hasMany(ProductRecomendation::class, 'product_id', 'id');
+    }
 }

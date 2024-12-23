@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
@@ -10,7 +9,6 @@ import "swiper/css/autoplay";
 import "../../assets/css/custom.css";
 
 import Layout from "../../Layouts/PagesLayout";
-import TeamCard from "./components/TeamCard";
 
 const AboutUs = ({ brands, sales }) => {
     return (
@@ -105,23 +103,6 @@ const AboutUs = ({ brands, sales }) => {
                 </div>
             </section>
             {/* BRANDS SECTION */}
-
-            {/* OUR TEAM SECTION */}
-            <section className="mt-[6.25rem]">
-                <div className="flex justify-center">
-                    <div className="bg-vicentra-yellow rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-gray-800 font-semibold capitalize">
-                            tim vicentra
-                        </h1>
-                    </div>
-                </div>
-                <div className="lg:w-[80%] mx-auto grid grid-cols-2 lg:grid-cols-3 gap-[1.25rem] mt-[1.25rem]">
-                    {sales.map((sales, index) => (
-                        <TeamCard sales={sales} key={index} />
-                    ))}
-                </div>
-            </section>
-            {/* OUR TEAM SECTION */}
 
             {/* MAP SECTION */}
             <section className="mt-[6.25rem]">

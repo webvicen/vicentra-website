@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet";
 
-import PatternShowcasePage from "../../assets/images/pattern-showcase-page.jpg";
-import VicentraLogoOutline from "../../assets/images/logo-vicentra-outline.png";
+import PatternShowcasePage from "../../assets/images/pattern-showcase-page.webp";
+import VicentraLogoOutline from "../../assets/images/logo-vicentra-outline.webp";
 import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {

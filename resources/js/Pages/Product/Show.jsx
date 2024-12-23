@@ -1,7 +1,6 @@
 import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useState } from "react";
 import ReactPlayer from "react-player/lazy";
 
 // Import Swiper styles
@@ -29,12 +28,19 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         .join("/");
 
     const [activeProductItem, setActiveProductItem] = useState(
-        product.category.slug === "mesin"
-            ? product.media[1] || product.media[0]
-            : product.media[0]
+        product.media[0]
     );
     const [listProductAssets, setListProductAssets] = useState(product.media);
-    const [tabItems, setTabsItems] = useState([]);
+    const [tabItems, setTabsItems] = useState([
+        {
+            name: "Deskripsi",
+            isActive: true,
+        },
+        {
+            name: "Rekomendasi Produk",
+            isActive: false,
+        },
+    ]);
     const [activeTab, setActiveTab] = useState("Deskripsi");
 
     const toggleActiveTab = (index) => {
@@ -59,30 +65,6 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         setListProductAssets(updatedListProductAssets);
         setActiveProductItem(updatedListProductAssets[index]);
     };
-
-    useEffect(() => {
-        const tabsItemsProduct = [
-            {
-                name: "Deskripsi",
-                isActive: true,
-            },
-        ];
-
-        if (product.specification != null) {
-            tabsItemsProduct.push({
-                name: "Spesifikasi",
-                isActive: false,
-            });
-        }
-        if (product.work_result != null) {
-            tabsItemsProduct.push({
-                name: "Hasil",
-                isActive: false,
-            });
-        }
-
-        setTabsItems(tabsItemsProduct);
-    }, []);
 
     return (
         <div>
@@ -218,58 +200,59 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 </div>
                 <div className="mt-[1.875rem]">
                     {activeTab === "Deskripsi" && (
-                        <Descriptions product={product} />
+                        <>
+                            <Descriptions product={product} />
+                            {product.specification != null && (
+                                <Specification product={product} />
+                            )}
+                            {product.work_result != null && (
+                                <Results product={product} />
+                            )}
+                        </>
                     )}
-                    {activeTab === "Spesifikasi" && (
-                        <Specification product={product} />
+                    {activeTab === "Rekomendasi Produk" && (
+                        <>
+                            <h1 className="text-base font-semibold text-gray-800">
+                                Rekomendasi Produk
+                            </h1>
+                            <div className="mt-4">
+                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
+                                    {similarProducts.map((item, index) => (
+                                        <Link
+                                            key={index}
+                                            href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
+                                            className="rounded-lg overflow-hidden"
+                                        >
+                                            <div className="rounded-lg overflow-hidden relative">
+                                                <img
+                                                    src={`/storage/${item.thumbnail}`}
+                                                    alt={item.slug}
+                                                />
+                                                {item.is_out_of_stock ? (
+                                                    <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
+                                                        <h1 className="text-base font-bold text-white uppercase">
+                                                            out of stock
+                                                        </h1>
+                                                    </div>
+                                                ) : null}
+                                            </div>
+                                            <div className="mt-2">
+                                                <h1 className="text-center text-base font-bold">
+                                                    {item.name}
+                                                </h1>
+                                                <h2 className="text-center text-sm font-normal">
+                                                    {item.another_name}
+                                                </h2>
+                                            </div>
+                                        </Link>
+                                    ))}
+                                </div>
+                            </div>
+                        </>
                     )}
-                    {activeTab === "Hasil" && product.work_result != null ? (
-                        <Results product={product} />
-                    ) : null}
                 </div>
             </section>
             {/* TAB SECTION SECTION */}
-
-            {/* SIMILAR PRODUCTS SECTION */}
-            <section className="mt-[3.125rem] lg:mt-[6.25rem]">
-                <h1 className="text-xl capitalize font-semibold text-gray-800">
-                    Rekomendasi Produk Yang Serupa
-                </h1>
-                <div className="mt-[1.875rem]">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                        {similarProducts.map((item, index) => (
-                            <Link
-                                key={index}
-                                href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
-                                className="rounded-lg overflow-hidden"
-                            >
-                                <div className="rounded-lg overflow-hidden relative">
-                                    <img
-                                        src={`/storage/${item.thumbnail}`}
-                                        alt={item.slug}
-                                    />
-                                    {item.is_out_of_stock ? (
-                                        <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                            <h1 className="text-base font-bold text-white uppercase">
-                                                out of stock
-                                            </h1>
-                                        </div>
-                                    ) : null}
-                                </div>
-                                <div className="mt-2">
-                                    <h1 className="text-center text-base font-bold">
-                                        {item.name}
-                                    </h1>
-                                    <h2 className="text-center text-sm font-normal">
-                                        {item.another_name}
-                                    </h2>
-                                </div>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            {/* SIMILAR PRODUCTS SECTION */}
         </div>
     );
 };

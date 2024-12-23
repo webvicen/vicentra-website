@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 
@@ -6,7 +7,7 @@ import Faq from "./components/Faq";
 import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
-import Youtube from "./components/Youtube";
+const Youtube = lazy(() => import("./components/Youtube"));
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
     return (
@@ -54,7 +55,9 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
 
             {/* YOUTUBE SECTION */}
             <section className="bg-gray-100 my-[3.125rem] lg:my-[6.25rem] p-5 rounded-lg">
-                <Youtube />
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Youtube />
+                </Suspense>
             </section>
             {/* YOUTUBE SECTION */}
 
@@ -74,7 +77,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
             {/* CUSTOMER TESTIMONIALS SECTION */}
 
             {/* FAQ SECTION */}
-            <section className="my-[3.125rem] lg:my-[6.25rem]">
+            <section className="my-[3.125rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-black rounded-full px-4 py-2 shadow-md">
                         <h1 className="text-white font-semibold capitalize">
