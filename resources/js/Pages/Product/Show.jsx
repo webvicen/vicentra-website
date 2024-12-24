@@ -37,7 +37,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
             isActive: true,
         },
         {
-            name: "Rekomendasi Produk",
+            name: "Rekomendasi",
             isActive: false,
         },
     ]);
@@ -210,7 +210,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             )}
                         </>
                     )}
-                    {activeTab === "Rekomendasi Produk" && (
+                    {activeTab === "Rekomendasi" && (
                         <>
                             <h1 className="text-base font-semibold text-gray-800">
                                 Rekomendasi Produk
