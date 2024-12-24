@@ -14,6 +14,7 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
+    console.log(product);
     const { url } = usePage();
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
@@ -80,11 +81,20 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <div>
                     <div>
                         {activeProductItem.type === "image" ? (
-                            <img
-                                src={`/storage/${activeProductItem.file}`}
-                                alt={activeProductItem.slug}
-                                className="w-full h-full lg:h-[37.5rem] object-contain"
-                            />
+                            <div className="relative">
+                                <img
+                                    src={`/storage/${activeProductItem.file}`}
+                                    alt={activeProductItem.slug}
+                                    className="w-full h-full lg:h-[37.5rem] object-contain"
+                                />
+                                {product.is_out_of_stock ? (
+                                    <div className="w-full h-[2rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
+                                        <h1 className="text-base font-bold text-white uppercase">
+                                            out of stock
+                                        </h1>
+                                    </div>
+                                ) : null}
+                            </div>
                         ) : (
                             <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                 <ReactPlayer

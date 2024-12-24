@@ -256,6 +256,7 @@ class ProductController extends Controller
             'sku' => $product->sku,
             'brand' => $product->brand->name,
             'thumbnail' => $product->thumbnail,
+            'is_out_of_stock' => $product->is_out_of_stock,
             'shortDescription' => $product->short_description,
             'description' => $product->description,
             'specification' => $product->specification,
