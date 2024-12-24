@@ -14,7 +14,6 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
-    console.log(product);
     const { url } = usePage();
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
