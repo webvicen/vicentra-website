@@ -58,7 +58,8 @@ class ProductResource extends Resource
                                     ->titleAttribute('name'),
                                 Forms\Components\MorphToSelect\Type::make(SubSubCategoryProduct::class)
                                     ->titleAttribute('name'),
-                            ]),
+                            ])
+                            ->required(),
                         Forms\Components\TextInput::make('sku')
                             ->label('SKU Produk')
                             ->required(),

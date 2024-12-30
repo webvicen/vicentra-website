@@ -8,7 +8,7 @@ export default function Results({ product }) {
                 <img
                     src={`/storage/${product.work_result}`}
                     alt={product.slug}
-                    className="lg:w-[50%]"
+                    className="w-full"
                 />
             </div>
         </div>

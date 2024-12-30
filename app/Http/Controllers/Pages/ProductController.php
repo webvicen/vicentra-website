@@ -103,7 +103,7 @@ class ProductController extends Controller
             ->whereHas('categoryable', function ($query) use ($subCategory) {
                 $query->where('sub_category_product_id', $subCategory->id);
             })
-            ->paginate(8)
+            ->paginate(20)
             ->through(function ($product) {
                 return [
                     'name' => $product->name,
@@ -164,7 +164,7 @@ class ProductController extends Controller
         $products = Product::with(['categoryable'])
             ->where('categoryable_id', $subSubCategory->id)
             ->where('categoryable_type', $subSubCategory->getMorphClass())
-            ->paginate(8)
+            ->paginate(20)
             ->through(function ($product) {
                 return [
                     'name' => $product->name,
@@ -296,7 +296,7 @@ class ProductController extends Controller
     {
         $products = Product::with(['categoryable'])->where('name', 'LIKE', "%{$request->q}%")
             ->orWhere('another_name', 'LIKE', "%{$request->q}%")
-            ->paginate(8)
+            ->paginate(20)
             ->through(function ($product) {
                 return [
                     'name' => $product->name,
