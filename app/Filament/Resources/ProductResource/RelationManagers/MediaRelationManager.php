@@ -101,7 +101,7 @@ class MediaRelationManager extends RelationManager
                             ->visibility('public')
                             ->reactive(),
                         Forms\Components\FileUpload::make('video_thumbnail')
-                            ->label('Masukan Thumbnail Youtube')
+                            ->label('Masukan Thumbnail Video')
                             ->visible(fn(callable $get) => $get('type') === 'video')
                             ->getUploadedFileNameForStorageUsing(
                                 fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
@@ -159,9 +159,23 @@ class MediaRelationManager extends RelationManager
                             ->directory('product-medias')
                             ->visibility('public')
                             ->reactive(),
+                        Forms\Components\Select::make('type_source_link')
+                            ->label('Tipe Source Video')
+                            ->options([
+                                'youtube' => 'Youtube',
+                                'gdrive' => 'Google Drive',
+                            ])
+                            ->visible(fn(callable $get) => $get('type') === 'video')
+                            ->default('youtube')
+                            ->required()
+                            ->reactive(),
                         Forms\Components\TextInput::make('video_link')
                             ->label('Masukan Link Youtube')
-                            ->visible(fn(callable $get) => $get('type') === 'video')
+                            ->visible(fn(callable $get) => ($get('type') === 'video' && $get('type_source_link') === 'youtube'))
+                            ->reactive(),
+                        Forms\Components\TextInput::make('gdrive_link')
+                            ->label('Masukan Link Google Drive')
+                            ->visible(fn(callable $get) => ($get('type') === 'video' && $get('type_source_link') === 'gdrive'))
                             ->reactive(),
                     ])
             ]);

@@ -65,6 +65,17 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         setListProductAssets(updatedListProductAssets);
         setActiveProductItem(updatedListProductAssets[index]);
     };
+    const convertToPreviewUrl = (shareUrl) => {
+        const match = shareUrl.match(
+            /https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/view/
+        );
+        if (match && match[1]) {
+            const fileId = match[1];
+            return `https://drive.google.com/file/d/${fileId}/preview`;
+        } else {
+            throw new Error("Invalid Google Drive share URL format");
+        }
+    };
 
     return (
         <div>
@@ -96,17 +107,31 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             </div>
                         ) : (
                             <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
-                                <ReactPlayer
-                                    url={activeProductItem.file}
-                                    light={true}
-                                    width={"100%"}
-                                    height={"100%"}
-                                    controls={true}
-                                />
+                                {activeProductItem.type_source_link ===
+                                "youtube" ? (
+                                    <ReactPlayer
+                                        url={activeProductItem.file}
+                                        light={true}
+                                        width={"100%"}
+                                        height={"100%"}
+                                        controls={true}
+                                    />
+                                ) : (
+                                    <iframe
+                                        src={convertToPreviewUrl(
+                                            activeProductItem.file
+                                        )}
+                                        width={"100%"}
+                                        height={"100%"}
+                                        allow="autoplay"
+                                        allowFullScreen=""
+                                        title="Google Drive Video Player"
+                                    />
+                                )}
                             </div>
                         )}
                     </div>
-                    <div className="flex gap-x-2 mt-[1.875rem] overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
+                    <div className="flex gap-x-2 mt-[1rem] overflow-x-scroll scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
                         {listProductAssets.map((item, index) => {
                             if (item.type === "image") {
                                 return (
@@ -128,7 +153,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                 return (
                                     <img
                                         key={index}
-                                        src={`/storage/${item.youtube_thumbnail}`}
+                                        src={`/storage/${item.video_thumbnail}`}
                                         alt="mesin-xuli-eco-solvent"
                                         className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
                                             item.isActive

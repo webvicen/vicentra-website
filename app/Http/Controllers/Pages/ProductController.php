@@ -278,8 +278,9 @@ class ProductController extends Controller
                     'id' => ($index + 1),
                     'slug' => $media->slug,
                     'type' => $media->type,
-                    'youtube_thumbnail' => $media->video_thumbnail ?? null,
-                    'file' => $media->type === 'image' ? $media->image_file : $media->video_link,
+                    'video_thumbnail' => $media->video_thumbnail ?? null,
+                    'type_source_link' => $media->type_source_link ?? null,
+                    'file' => $media->type === 'image' ? $media->image_file : ($media->type_source_link === 'youtube' ? $media->video_link : $media->gdrive_link),
                     'isActive' => $index === 0 ? true : false
                 ];
             }),
