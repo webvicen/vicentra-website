@@ -48,7 +48,7 @@ export default function Youtube() {
                 <a
                     href="https://www.youtube.com/@galeryvicentra?sub_confirmation=1"
                     target="_blank"
-                    className="capitalize font-medium text-md px-4 py-2 bg-red-500 text-white rounded-full"
+                    className="capitalize font-medium text-md px-4 py-2 bg-[#AB0F0F] text-white rounded-full"
                 >
                     subscribe
                 </a>

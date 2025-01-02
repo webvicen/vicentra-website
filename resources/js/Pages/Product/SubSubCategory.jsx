@@ -192,6 +192,7 @@ const SubCategory = ({
                                             <Link
                                                 key={index}
                                                 href={link.url}
+                                                aria-label="link prev"
                                                 className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                     link.active
                                                         ? `bg-vicentra-blue text-white`
@@ -208,6 +209,7 @@ const SubCategory = ({
                                             <Link
                                                 key={index}
                                                 href={link.url}
+                                                aria-label="link next"
                                                 className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                     link.active
                                                         ? `bg-vicentra-blue text-white`
@@ -223,6 +225,7 @@ const SubCategory = ({
                                         <Link
                                             key={index}
                                             href={link.url}
+                                            aria-label={`link pagination ${link.label}`}
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`

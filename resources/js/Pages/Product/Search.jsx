@@ -69,6 +69,7 @@ const Search = ({ keyword, products }) => {
                                                     ? `${link.url}&q=${keyword}`
                                                     : null
                                             }
+                                            aria-label="link prev"
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
@@ -89,6 +90,7 @@ const Search = ({ keyword, products }) => {
                                                     ? `${link.url}&q=${keyword}`
                                                     : null
                                             }
+                                            aria-label="link next"
                                             className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                                 link.active
                                                     ? `bg-vicentra-blue text-white`
@@ -104,6 +106,7 @@ const Search = ({ keyword, products }) => {
                                     <Link
                                         key={index}
                                         href={`${link.url}&q=${keyword}`}
+                                        aria-label={`link pagination ${link.label}`}
                                         className={`w-[2.5rem] h-[2.5rem] font-medium flex justify-center items-center ${
                                             link.active
                                                 ? `bg-vicentra-blue text-white`
