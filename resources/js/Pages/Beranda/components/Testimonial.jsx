@@ -12,6 +12,7 @@ export default function Testimonial({ testimonials }) {
         <div>
             <Swiper
                 modules={[Pagination, Autoplay]}
+                loop={true}
                 spaceBetween={50}
                 breakpoints={{
                     576: {

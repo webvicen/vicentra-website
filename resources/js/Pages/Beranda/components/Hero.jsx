@@ -21,6 +21,7 @@ export default function Hero({ sliders }) {
             ></button>
             <Swiper
                 modules={[Pagination, Autoplay, Navigation]}
+                loop={true}
                 spaceBetween={50}
                 slidesPerView={1}
                 autoplay

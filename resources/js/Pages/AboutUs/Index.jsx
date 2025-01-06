@@ -10,7 +10,7 @@ import "../../assets/css/custom.css";
 
 import Layout from "../../Layouts/PagesLayout";
 
-const AboutUs = ({ brands, sales }) => {
+const AboutUs = ({ brands }) => {
     return (
         <div>
             <Helmet>
@@ -70,6 +70,7 @@ const AboutUs = ({ brands, sales }) => {
                 <div className="mt-[1.25rem]">
                     <Swiper
                         modules={[Pagination, Autoplay]}
+                        loop={true}
                         spaceBetween={50}
                         breakpoints={{
                             576: {
