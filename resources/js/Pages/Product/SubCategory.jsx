@@ -34,6 +34,10 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                 <title>
                     Vicentra - Produk {category.name} {subCategory.name}
                 </title>
+                <meta
+                    name="description"
+                    content={`Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                />
             </Helmet>
 
             {/* LIST PRODUCT SECTION */}

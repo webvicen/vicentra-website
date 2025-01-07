@@ -15,6 +15,10 @@ const AboutUs = ({ brands }) => {
         <div>
             <Helmet>
                 <title>Vicentra - Tentang Kami</title>
+                <meta
+                    name="description"
+                    content="Selamat datang di Vicentra, sumber nomor satu Anda untuk semua kebutuhan percetakan. Kami berdedikasi untuk memberikan Anda produk mesin dan bahan baku percetakan yang terbaik, dengan fokus pada kualitas, dukungan, dan purna jual.Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah menempuh perjalanan jauh dari awal di Tambakrejo Sidoarjo- Jawa Timur. Ketika pertama kali dimulai, semangat Founder Vicentra tentang dunia percetakan, mendorong untuk menyediakan produk percetakan terbaik. Sehingga Vicentra dapat menawarkan Anda produk-produk percetakan dengan layanan edukasi dan purna jual terbaik. Kami sekarang melayani pelanggan di seluruh Indonesia.Kami berharap Anda menikmati produk kami seperti halnya kami senang menawarkannya kepada Anda. Jika Anda memiliki pertanyaan atau komentar, jangan ragu untuk menghubungi kami."
+                />
             </Helmet>
 
             {/* ABOUT US SECTION */}

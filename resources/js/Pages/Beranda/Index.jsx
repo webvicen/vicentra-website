@@ -15,6 +15,10 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 <title>
                     Vicentra - Supplier Mesin Dan Bahan Percetakan Surabaya
                 </title>
+                <meta
+                    name="description"
+                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                />
             </Helmet>
 
             {/* HERO SECTION */}

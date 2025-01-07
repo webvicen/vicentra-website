@@ -34,6 +34,10 @@ const TermsAndConditions = () => {
         <div>
             <Helmet>
                 <title>Vicentra - Syarat & Ketentuan Perbaikan Mesin</title>
+                <meta
+                    name="description"
+                    content="Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!"
+                />
             </Helmet>
 
             {/* TERMS AND CONDITIONS SECTION */}

@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\CategoryPost;
 use App\Models\CategoryProduct;
+use App\Models\SubSubCategoryProduct;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -37,6 +38,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $keywords = [];
         $categoryPost = CategoryPost::get(['name', 'slug']);
         $categoryProduct = CategoryProduct::get()->map(function ($categoryProduct, $index) {
             return [
@@ -61,8 +63,19 @@ class HandleInertiaRequests extends Middleware
                 })
             ];
         });
+        $subSubCategory = SubSubCategoryProduct::get()->map(function ($subSubCategory, $index) {
+            return [
+                'name' => $subSubCategory->name,
+                'subCategory' => $subSubCategory->subCategory->name,
+                'category' => $subSubCategory->subCategory->category->name
+            ];
+        })->toArray();
+        foreach ($subSubCategory as $key) {
+            $keywords[] = $key['category'] . ' ' . $key['subCategory'] . ' ' . $key['name'];
+        }
 
         return array_merge(parent::share($request), [
+            'keywords' => implode(', ', $keywords),
             'categoryPost' => $categoryPost,
             'categoryProduct' => $categoryProduct
         ]);

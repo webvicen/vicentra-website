@@ -12,6 +12,13 @@ const Search = ({ keyword, products }) => {
                     Vicentra - Cari{" "}
                     {keyword.replace(/\b\w/g, (char) => char.toUpperCase())}
                 </title>
+                <meta
+                    name="description"
+                    content={`Hasil pencarian Anda dengan keyword ${keyword.replace(
+                        /\b\w/g,
+                        (char) => char.toUpperCase()
+                    )} telah kami temukan! Berikut adalah produk-produk pilihan yang sesuai untuk memenuhi kebutuhan Anda. Temukan kualitas terbaik, penawaran menarik, dan solusi yang tepat hanya dalam satu kali klik!`}
+                />
             </Helmet>
 
             {/* SEARCHING SECTION */}

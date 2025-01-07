@@ -20,6 +20,10 @@ const Blog = ({ allCategories, latestPost, posts }) => {
         <div>
             <Helmet>
                 <title>Vicentra - Artikel {category}</title>
+                <meta
+                    name="description"
+                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                />
             </Helmet>
 
             {/* CONTENT */}

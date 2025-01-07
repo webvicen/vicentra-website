@@ -10,6 +10,10 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
         <div>
             <Helmet>
                 <title>Vicentra - {post.title}</title>
+                <meta
+                    name="description"
+                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                />
             </Helmet>
 
             {/* CONTENT */}

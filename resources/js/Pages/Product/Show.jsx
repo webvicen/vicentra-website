@@ -84,6 +84,12 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     Vicentra - Produk {product.name}{" "}
                     {product.another_name ?? ""}
                 </title>
+                <meta
+                    name="description"
+                    content={
+                        product.shortDescription.replace(/<[^>]*>/g, "") ?? ""
+                    }
+                />
             </Helmet>
 
             {/* PRODUCT SECTION */}

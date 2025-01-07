@@ -1,14 +1,23 @@
 import { Helmet } from "react-helmet";
+import { usePage } from "@inertiajs/react";
 
 import PatternShowcasePage from "../../assets/images/pattern-showcase-page.webp";
 import VicentraLogoOutline from "../../assets/images/logo-vicentra-outline.webp";
 import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {
+    const { keywords } = usePage().props;
     return (
         <>
             <Helmet>
                 <title>Vicentra - {slider.name}</title>
+                <meta
+                    name="description"
+                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                />
+                <meta name="keywords" content={keywords} />
+                <meta property="og:locale" content="ID_id" />
+                <meta property="og:type" content="website" />
             </Helmet>
             <div
                 className="w-screen flex flex-col justify-center items-center bg-red-400 overflow-x-hidden py-10"
