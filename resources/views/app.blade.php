@@ -34,7 +34,7 @@
   <!-- End Google Tag Manager (noscript) -->
   @inertia
 
-  <script defer>
+  {{-- <script defer>
     setTimeout(() => {
       document.querySelectorAll('.sales_cta_link').forEach(function(el){
         el.addEventListener('click', function(e){
@@ -45,7 +45,7 @@
         });
       });
     }, 1000);
-  </script>
+  </script> --}}
 </body>
 
 </html>
