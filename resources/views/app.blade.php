@@ -20,6 +20,19 @@
 
 <body>
   @inertia
+
+  <script defer>
+    setTimeout(() => {
+      document.querySelectorAll('.sales_cta_link').forEach(function(el){
+        el.addEventListener('click', function(e){
+          gtag('event', 'button_click', {
+            'event_category': 'user_interaction',
+            'event_label': `click button sales ${el.dataset['sales']}`
+          });
+        });
+      });
+    }, 1000);
+  </script>
 </body>
 
 </html>

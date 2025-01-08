@@ -14,7 +14,8 @@ export default function SalesCard({ sales, slider, order }) {
         <a
             href={linkWhatsapp}
             target="_blank"
-            className={`w-full h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
+            data-sales={sales.name.toLowerCase()}
+            className={`sales_cta_link h-[5rem] flex items-center gap-[1.5rem] rounded-full relative py-2 pl-[7rem] ${
                 order == 1 ? "bg-vicentra-blue" : "bg-green-600"
             }`}
         >
