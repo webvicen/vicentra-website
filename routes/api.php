@@ -4,6 +4,11 @@ use App\Http\Controllers\Api\HelpersApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// API CONTROLLERS
+use App\Http\Controllers\Api\{
+    ProductController,
+};
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+// API PRODUCT ROUTE
+Route::controller(ProductController::class)->prefix('products')->group(function () {
+    Route::get('/{subSubCategory}', 'getSubSubCategoryProducts');
 });
