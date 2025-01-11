@@ -34,10 +34,10 @@ Route::get('/help', [HelpController::class, 'index'])->name('help.index');
 Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');
 Route::get('/product/{category}', [ProductController::class, 'category'])->name('product.category.index');
 Route::get('/product/{category}/{subCategory}', [ProductController::class, 'subCategory'])->name('product.sub-category.index');
-Route::get('/product/{category}/{subCategory}/{subSubCategory}', [ProductController::class, 'subSubCategory'])
-  ->where('subSubCategory', '[a-zA-Z]+')
-  ->name('product.sub-sub-category.index');
 Route::get('/product/{category}/{subCategory}/{subSubCategory}/{slug}', [ProductController::class, 'show'])->name('product.show');
 Route::get('/product/{category}/{subCategory}/{slug}', [ProductController::class, 'showSparepart'])
+  ->where('category', 'sparepart')
   ->name('product.show.sparepart');
+Route::get('/product/{category}/{subCategory}/{subSubCategory}', [ProductController::class, 'subSubCategory'])
+  ->name('product.sub-sub-category.index');
 Route::get('/showcase/{slug}', [ShowCaseController::class, 'show'])->name('showcase.show');
