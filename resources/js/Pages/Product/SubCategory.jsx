@@ -149,35 +149,43 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                     </h1>
                     <div className="w-full mt-[1.875rem]">
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                            {products.data.map((item, index) => (
-                                <Link
-                                    key={index}
-                                    href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
-                                    className="rounded-lg overflow-hidden"
-                                >
-                                    <div className="rounded-lg overflow-hidden relative">
-                                        <img
-                                            src={`/storage/${item.thumbnail}`}
-                                            alt={item.slug}
-                                        />
-                                        {item.is_out_of_stock ? (
-                                            <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                                <h1 className="text-base font-bold text-white uppercase">
-                                                    out of stock
-                                                </h1>
-                                            </div>
-                                        ) : null}
-                                    </div>
-                                    <div className="mt-2">
-                                        <h1 className="text-center text-base font-bold">
-                                            {item.name}
-                                        </h1>
-                                        <h2 className="text-center text-sm font-normal">
-                                            {item.another_name}
-                                        </h2>
-                                    </div>
-                                </Link>
-                            ))}
+                            {products.data.map((item, index) => {
+                                const linkProduct =
+                                    item.category.slug === "mesin" ||
+                                    item.category.slug === "consumable"
+                                        ? `/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`
+                                        : `/product/${item.category.slug}/${item.category.subCategory.slug}/${item.slug}`;
+
+                                return (
+                                    <Link
+                                        key={index}
+                                        href={linkProduct}
+                                        className="rounded-lg overflow-hidden"
+                                    >
+                                        <div className="rounded-lg overflow-hidden relative">
+                                            <img
+                                                src={`/storage/${item.thumbnail}`}
+                                                alt={item.slug}
+                                            />
+                                            {item.is_out_of_stock ? (
+                                                <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
+                                                    <h1 className="text-base font-bold text-white uppercase">
+                                                        out of stock
+                                                    </h1>
+                                                </div>
+                                            ) : null}
+                                        </div>
+                                        <div className="mt-2">
+                                            <h1 className="text-center text-base font-bold">
+                                                {item.name}
+                                            </h1>
+                                            <h2 className="text-center text-sm font-normal">
+                                                {item.another_name}
+                                            </h2>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
                         </div>
                         {/* PAGINATION */}
                         <div className="w-full flex justify-end mt-[3.125rem]">

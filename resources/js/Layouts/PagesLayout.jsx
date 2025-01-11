@@ -287,7 +287,7 @@ export default function PagesLayout({ children }) {
                                                             className="flex justify-start"
                                                         >
                                                             <Link
-                                                                href="/"
+                                                                href={`/product/${product.slug}/${subMenu.slug}`}
                                                                 className="text-sm text-gray-800 capitalize"
                                                             >
                                                                 {subMenu.name}

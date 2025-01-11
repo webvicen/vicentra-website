@@ -34,18 +34,19 @@
   <!-- End Google Tag Manager (noscript) -->
   @inertia
 
-  {{-- <script defer>
+  <script defer>
     setTimeout(() => {
       document.querySelectorAll('.sales_cta_link').forEach(function(el){
         el.addEventListener('click', function(e){
-          gtag('event', 'button_click', {
+          gtag('event', `click_link_sales_${el.dataset['sales'].toLowerCase().replace(/\s+/g, '_')}`, {
             'event_category': 'user_interaction',
-            'event_label': `click button sales ${el.dataset['sales']}`
+            'event_label': `click button sales ${el.dataset['sales'].toLowerCase()}`
           });
+          console.log(`click_link_sales_${el.dataset['sales'].toLowerCase().replace(/\s+/g, '_')}`);
         });
       });
     }, 1000);
-  </script> --}}
+  </script>
 </body>
 
 </html>
