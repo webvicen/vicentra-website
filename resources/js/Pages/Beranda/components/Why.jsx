@@ -17,9 +17,10 @@ export default function Why() {
                         key={index}
                     >
                         <div className="flex justify-center">
-                            <div className="w-[100px] h-[100px] flex justify-center items-center bg-vicentra-blue rounded-xl">
+                            {item.icon}
+                            {/* <div className="w-[100px] h-[100px] flex justify-center items-center bg-vicentra-blue rounded-xl">
                                 {item.icon}
-                            </div>
+                            </div> */}
                         </div>
                         <div>
                             <h1 className="text-md text-center lg:text-start font-semibold">

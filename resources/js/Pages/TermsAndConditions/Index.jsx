@@ -50,35 +50,53 @@ const TermsAndConditions = () => {
                     onSubmit={sendEmail}
                     className="lg:w-[50%] mx-auto space-y-4 mt-[2.5rem]"
                 >
-                    <input
-                        type="text"
-                        placeholder="Masukan nama lengkap anda"
-                        name="user_name"
-                        className="w-full border-2 border-gray-500 focus:outline-none px-4 py-2 rounded-md"
-                    />
-                    <input
-                        type="text"
-                        placeholder="Masukan email atau nomor telepon anda"
-                        name="user_email_or_phone"
-                        className="w-full border-2 border-gray-500 focus:outline-none px-4 py-2 rounded-md"
-                    />
-                    <select
-                        name="type_of_assistance"
-                        defaultValue="Perbaikan Ringan"
-                        className="w-full border-2 border-gray-500 focus:outline-none px-4 py-2 rounded-md"
-                    >
-                        <option value="Perbaikan Ringan">
-                            Perbaikan Ringan
-                        </option>
-                        <option value="Perbaikan Berat">Perbaikan Berat</option>
-                    </select>
-                    <textarea
-                        placeholder="Tuliskan isi pesan anda disini"
-                        name="message"
-                        cols="30"
-                        rows="10"
-                        className="w-full border-2 border-gray-500 focus:outline-none px-4 py-2 rounded-md"
-                    ></textarea>
+                    <div>
+                        <label htmlFor="user_name">Nama Lengkap</label>
+                        <input
+                            type="text"
+                            placeholder="Masukan nama lengkap anda"
+                            id="user_name"
+                            name="user_name"
+                            className="w-full border-2 border-gray-500 focus:outline-none mt-2 px-4 py-2 rounded-md"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="user_email_or_phone">
+                            Email atau No Telepon
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Masukan email atau nomor telepon anda"
+                            id="user_email_or_phone"
+                            name="user_email_or_phone"
+                            className="w-full border-2 border-gray-500 focus:outline-none mt-2 px-4 py-2 rounded-md"
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="type_of_assistance">
+                            Kategori Service
+                        </label>
+                        <select
+                            id="type_of_assistance"
+                            name="type_of_assistance"
+                            defaultValue="Garansi"
+                            className="w-full border-2 border-gray-500 focus:outline-none mt-2 px-4 py-2 rounded-md"
+                        >
+                            <option value="Garansi">Garansi</option>
+                            <option value="Non Garansi">Non Garansi</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor="type_of_assistance">Isi Keluhan</label>
+                        <textarea
+                            placeholder="Isi keluhan keluhan anda disini"
+                            id="message"
+                            name="message"
+                            cols="30"
+                            rows="10"
+                            className="w-full border-2 border-gray-500 focus:outline-none mt-2 px-4 py-2 rounded-md"
+                        ></textarea>
+                    </div>
                     <button
                         type="submit"
                         className="bg-vicentra-blue text-white text-base font-medium px-5 py-2 rounded-md"
