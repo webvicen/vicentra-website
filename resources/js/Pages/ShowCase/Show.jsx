@@ -3,6 +3,7 @@ import { usePage } from "@inertiajs/react";
 
 import PatternShowcasePage from "../../assets/images/pattern-showcase-page.webp";
 import VicentraLogoOutline from "../../assets/images/logo-vicentra-outline.webp";
+import VicentraLogoShowcase from "../../assets/images/logo-vicentra-showcase.webp";
 import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {
@@ -23,17 +24,22 @@ export default function Show({ slider, teamSales }) {
                 className="w-screen flex flex-col justify-center items-center bg-red-400 overflow-x-hidden py-10"
                 style={{
                     backgroundImage: `url(${PatternShowcasePage})`,
-                    backgroundSize: "cover",
+                    // backgroundSize: "cover",
                 }}
             >
                 <div className="flex flex-col items-center">
-                    <div className="w-[10rem] h-[10rem] bg-vicentra-blue flex justify-center items-center rounded-full">
+                    {/* <div className="w-[10rem] h-[10rem] bg-vicentra-blue flex justify-center items-center rounded-full">
                         <img
                             src={VicentraLogoOutline}
                             alt="vicentra-logo-outline"
                             className="h-[2.5rem]"
                         />
-                    </div>
+                    </div> */}
+                    <img
+                        src={VicentraLogoShowcase}
+                        alt="vicentra-logo-showcase"
+                        className="w-[10rem] h-[10rem] rounded-full"
+                    />
                     <h1 className="text-center text-2xl font-bold uppercase text-white mt-4">
                         vicentra
                     </h1>
