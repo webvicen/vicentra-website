@@ -16,8 +16,8 @@ class ProductController extends Controller
             $products = $subSubCategory->products->map(function ($product, $index) {
                 return [
                     'name' => $product->name,
-                    'tagline' => $product->ra_tagline,
-                    'photo' => Storage::url($product->ra_photo),
+                    'tagline' => $product->ra_tagline ? $product->ra_tagline : ($product->another_name ? $product->another_name : null),
+                    'photo' => $product->ra_photo ? Storage::url($product->ra_photo) : Storage::url($product->thumbnail),
                     'short_description' => $product->short_description,
                     'link_product' => route('product.show', [$product->categoryable->subCategory->category->slug, $product->categoryable->subCategory->slug, $product->categoryable->slug, $product->slug]),
                 ];
