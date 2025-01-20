@@ -28,55 +28,52 @@ export default function PagesLayout({ children }) {
         setIsSubMenuCategoryPostOpen(!isSubMenuCategoryPostOpen);
     };
     const toogleSubSubMenuCategory = (e, productName, SubSubMenuName) => {
-        if (e.target.classList.contains("sub_category")) {
-            setSubMenuProducts(
-                subMenuProducts.map((product) => {
-                    if (product.name === productName) {
-                        return {
-                            ...product,
-                            subMenu: product.subMenu.map((subMenu) => {
-                                if (subMenu.name === SubSubMenuName) {
-                                    return {
-                                        ...subMenu,
-                                        isSubSubMenuOpen:
-                                            !subMenu.isSubSubMenuOpen,
-                                    };
-                                }
-                                return {
-                                    ...subMenu,
-                                    isSubSubMenuOpen: false,
-                                };
-                            }),
-                        };
-                    }
-                    return product;
-                })
-            );
-        }
-    };
-    const toggleSubMenuProduct = (e, name) => {
-        if (e.target.classList.contains("main_category")) {
-            setSubMenuProducts(
-                subMenuProducts.map((product) => {
-                    if (product.name === name) {
-                        return {
-                            ...product,
-                            isOpen: !product.isOpen,
-                            subMenu: product.subMenu.map((subMenu) => {
-                                return {
-                                    ...subMenu,
-                                    isSubSubMenuOpen: false,
-                                };
-                            }),
-                        };
-                    }
+        e.stopPropagation();
+        setSubMenuProducts(
+            subMenuProducts.map((product) => {
+                if (product.name === productName) {
                     return {
                         ...product,
-                        isOpen: false,
+                        subMenu: product.subMenu.map((subMenu) => {
+                            if (subMenu.name === SubSubMenuName) {
+                                return {
+                                    ...subMenu,
+                                    isSubSubMenuOpen: !subMenu.isSubSubMenuOpen,
+                                };
+                            }
+                            return {
+                                ...subMenu,
+                                isSubSubMenuOpen: false,
+                            };
+                        }),
                     };
-                })
-            );
-        }
+                }
+                return product;
+            })
+        );
+    };
+    const toggleSubMenuProduct = (e, name) => {
+        e.stopPropagation();
+        setSubMenuProducts(
+            subMenuProducts.map((product) => {
+                if (product.name === name) {
+                    return {
+                        ...product,
+                        isOpen: !product.isOpen,
+                        subMenu: product.subMenu.map((subMenu) => {
+                            return {
+                                ...subMenu,
+                                isSubSubMenuOpen: false,
+                            };
+                        }),
+                    };
+                }
+                return {
+                    ...product,
+                    isOpen: false,
+                };
+            })
+        );
     };
 
     useEffect(() => {
@@ -100,7 +97,7 @@ export default function PagesLayout({ children }) {
                                 <div className="flex items-center gap-[1.875rem]">
                                     <Link
                                         href="/"
-                                        className="text-base text-white capitalize"
+                                        className="beranda text-base text-white capitalize"
                                     >
                                         beranda
                                     </Link>
@@ -133,13 +130,13 @@ export default function PagesLayout({ children }) {
                                     </div>
                                     <Link
                                         href="/terms-and-conditions"
-                                        className="text-base text-white capitalize"
+                                        className="layanan_dan_perbaikan text-base text-white capitalize"
                                     >
                                         layanan dan perbaikan
                                     </Link>
                                     <Link
                                         href="/about-us"
-                                        className="text-base text-white capitalize"
+                                        className="tentang_kami text-base text-white capitalize"
                                     >
                                         tentang kami
                                     </Link>
@@ -153,6 +150,7 @@ export default function PagesLayout({ children }) {
                                             <a
                                                 href="https://www.facebook.com/vicentra"
                                                 target="_blank"
+                                                className="facebook"
                                                 aria-label="Kunjungi halaman Facebook Vicentra"
                                             >
                                                 <FaFacebook className="text-white text-xl font-semibold" />
@@ -160,6 +158,7 @@ export default function PagesLayout({ children }) {
                                             <a
                                                 href="https://www.instagram.com/vicentra.co.id"
                                                 target="_blank"
+                                                className="instagram"
                                                 aria-label="Kunjungi halaman Instagram Vicentra"
                                             >
                                                 <FaInstagramSquare className="text-white text-xl font-semibold" />
@@ -167,6 +166,7 @@ export default function PagesLayout({ children }) {
                                             <a
                                                 href="https://www.youtube.com/@galeryvicentra"
                                                 target="_blank"
+                                                className="youtube"
                                                 aria-label="Kunjungi kanal YouTube Galery Vicentra"
                                             >
                                                 <FaYoutube className="text-white text-xl font-semibold" />
@@ -316,6 +316,7 @@ export default function PagesLayout({ children }) {
                                     <a
                                         href="https://www.facebook.com/vicentra"
                                         target="_blank"
+                                        className="facebook"
                                         aria-label="Kunjungi halaman Facebook Vicentra"
                                     >
                                         <FaFacebook className="text-white text-xl font-semibold" />
@@ -323,6 +324,7 @@ export default function PagesLayout({ children }) {
                                     <a
                                         href="https://www.instagram.com/vicentra.co.id"
                                         target="_blank"
+                                        className="instagram"
                                         aria-label="Kunjungi halaman Instagram Vicentra"
                                     >
                                         <FaInstagramSquare className="text-white text-xl font-semibold" />
@@ -330,6 +332,7 @@ export default function PagesLayout({ children }) {
                                     <a
                                         href="https://www.youtube.com/@galeryvicentra"
                                         target="_blank"
+                                        className="youtube"
                                         aria-label="Kunjungi kanal YouTube Galery Vicentra"
                                     >
                                         <FaYoutube className="text-white text-xl font-semibold" />
@@ -389,7 +392,7 @@ export default function PagesLayout({ children }) {
                                 <div className="flex flex-col gap-[0.5rem]">
                                     <Link
                                         href="/"
-                                        className="text-sm font-medium text-gray-800 capitalize"
+                                        className="beranda text-sm font-medium text-gray-800 capitalize"
                                     >
                                         beranda
                                     </Link>
@@ -424,14 +427,14 @@ export default function PagesLayout({ children }) {
                                     <hr />
                                     <Link
                                         href="/terms-and-conditions"
-                                        className="text-sm font-medium text-gray-800 capitalize"
+                                        className="layanan_dan_perbaikan text-sm font-medium text-gray-800 capitalize"
                                     >
                                         layanan dan perbaikan
                                     </Link>
                                     <hr />
                                     <Link
                                         href="/about-us"
-                                        className="text-sm font-medium text-gray-800 capitalize"
+                                        className="tentang_kami text-sm font-medium text-gray-800 capitalize"
                                     >
                                         tentang kami
                                     </Link>
@@ -596,7 +599,7 @@ export default function PagesLayout({ children }) {
                                     <li>
                                         <Link
                                             href="/"
-                                            className="text-white capitalize"
+                                            className="beranda text-white capitalize"
                                         >
                                             beranda
                                         </Link>
@@ -604,7 +607,7 @@ export default function PagesLayout({ children }) {
                                     <li>
                                         <Link
                                             href="/terms-and-conditions"
-                                            className="text-white capitalize"
+                                            className="layanan_dan_perbaikan text-white capitalize"
                                         >
                                             layanan dan perbaikan
                                         </Link>
@@ -612,17 +615,9 @@ export default function PagesLayout({ children }) {
                                     <li>
                                         <Link
                                             href="/about-us"
-                                            className="text-white capitalize"
+                                            className="tentang_kami text-white capitalize"
                                         >
                                             tentang kami
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/help"
-                                            className="text-white capitalize"
-                                        >
-                                            bantuan
                                         </Link>
                                     </li>
                                 </ul>
@@ -663,7 +658,7 @@ export default function PagesLayout({ children }) {
                                         <a
                                             href="https://www.facebook.com/vicentra"
                                             target="_blank"
-                                            className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                            className="facebook w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                             aria-label="Kunjungi halaman Facebook Vicentra"
                                         >
                                             <FaFacebook className="text-white" />
@@ -671,7 +666,7 @@ export default function PagesLayout({ children }) {
                                         <a
                                             href="https://www.instagram.com/vicentra.co.id"
                                             target="_blank"
-                                            className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                            className="instagram w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                             aria-label="Kunjungi halaman Instagram Vicentra"
                                         >
                                             <FaInstagramSquare className="text-white" />
@@ -679,7 +674,7 @@ export default function PagesLayout({ children }) {
                                         <a
                                             href="https://www.youtube.com/@galeryvicentra"
                                             target="_blank"
-                                            className="w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                            className="youtube w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
                                             aria-label="Kunjungi channel YouTube Galery Vicentra"
                                         >
                                             <FaYoutube className="text-white" />

@@ -43,7 +43,8 @@ export default function Hero({ sliders }) {
                                     : slider.link
                             }
                             target="_blank"
-                            className="w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
+                            data-promo-name={slider.slug.replace(/-/g, "_")}
+                            className="slider_promo_link w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
                         >
                             <img
                                 src={`/storage/${slider.image_desktop}`}
