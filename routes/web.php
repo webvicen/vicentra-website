@@ -12,6 +12,7 @@ use App\Http\Controllers\Pages\{
   ShowCaseController,
   TermsAndConditionsController
 };
+use App\Http\Controllers\SitemapController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,6 @@ Route::get('/product/{category}/{subCategory}/{slug}', [ProductController::class
 Route::get('/product/{category}/{subCategory}/{subSubCategory}', [ProductController::class, 'subSubCategory'])
   ->name('product.sub-sub-category.index');
 Route::get('/showcase/{slug}', [ShowCaseController::class, 'show'])->name('showcase.show');
+
+// SITEMAP ROUTE
+Route::get('/sitemap.xml', [SitemapController::class, 'generateSitemap']);
