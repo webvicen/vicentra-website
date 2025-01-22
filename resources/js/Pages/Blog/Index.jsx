@@ -6,7 +6,7 @@ import Layout from "../../Layouts/PagesLayout";
 import BlogCard from "./components/BlogCard";
 import { dateFormatIdn } from "./constants/helpers";
 
-const Blog = ({ allCategories, latestPost, posts }) => {
+const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
     const { url } = usePage();
     const cleanUrl = url.split("?")[0];
     const category = url
@@ -23,6 +23,45 @@ const Blog = ({ allCategories, latestPost, posts }) => {
                 <meta
                     name="description"
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content={`Vicentra - Artikel ${category}`}
+                />
+                <meta
+                    property="og:description"
+                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                />
+                <meta
+                    property="og:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    property="og:url"
+                    content={`https://vicentra.co.id/blog/${categorySlug}`}
+                />
+                <meta property="og:site_name" content="Vicentra" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content={`Vicentra - Artikel ${category}`}
+                />
+                <meta
+                    name="twitter:description"
+                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    name="twitter:site"
+                    content={`https://vicentra.co.id/blog/${categorySlug}`}
                 />
             </Helmet>
 

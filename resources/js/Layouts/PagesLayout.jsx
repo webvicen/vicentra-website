@@ -84,8 +84,6 @@ export default function PagesLayout({ children }) {
         <>
             <Head>
                 <meta name="keywords" content={keywords} />
-                <meta property="og:locale" content="ID_id" />
-                <meta property="og:type" content="website" />
             </Head>
             <main>
                 {/* HEADER */}

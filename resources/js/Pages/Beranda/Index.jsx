@@ -19,6 +19,39 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                     name="description"
                     content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
                 />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content="Vicentra - Supplier Mesin Dan Bahan Percetakan Surabaya"
+                />
+                <meta
+                    property="og:description"
+                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                />
+                <meta
+                    property="og:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta property="og:url" content="https://vicentra.co.id" />
+                <meta property="og:site_name" content="Vicentra" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content="Vicentra - Supplier Mesin Dan Bahan Percetakan Surabaya"
+                />
+                <meta
+                    name="twitter:description"
+                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta name="twitter:site" content="https://vicentra.co.id" />
             </Helmet>
 
             {/* HERO SECTION */}

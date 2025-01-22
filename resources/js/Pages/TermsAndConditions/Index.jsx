@@ -38,6 +38,45 @@ const TermsAndConditions = () => {
                     name="description"
                     content="Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!"
                 />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content="Vicentra - Syarat & Ketentuan Perbaikan Mesin"
+                />
+                <meta
+                    property="og:description"
+                    content="Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!"
+                />
+                <meta
+                    property="og:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    property="og:url"
+                    content="https://vicentra.co.id/terms-and-conditions"
+                />
+                <meta property="og:site_name" content="Vicentra" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content="Vicentra - Syarat & Ketentuan Perbaikan Mesin"
+                />
+                <meta
+                    name="twitter:description"
+                    content="Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!"
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    name="twitter:site"
+                    content="https://vicentra.co.id/terms-and-conditions"
+                />
             </Helmet>
 
             {/* TERMS AND CONDITIONS SECTION */}

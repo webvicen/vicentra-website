@@ -13,6 +13,45 @@ const Category = ({ category, productCategory }) => {
                     name="description"
                     content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
                 />
+
+                {/* Open Graph / Facebook */}
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content={`Vicentra - Produk ${category.name}`}
+                />
+                <meta
+                    property="og:description"
+                    content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                />
+                <meta
+                    property="og:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    property="og:url"
+                    content={`https://vicentra.co.id/product/${category.slug}`}
+                />
+                <meta property="og:site_name" content="Vicentra" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content={`Vicentra - Produk ${category.name}`}
+                />
+                <meta
+                    name="twitter:description"
+                    content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    name="twitter:site"
+                    content={`https://vicentra.co.id/product/${category.slug}`}
+                />
             </Helmet>
 
             {/* HERO SECTION */}

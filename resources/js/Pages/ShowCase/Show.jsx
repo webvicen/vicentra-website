@@ -17,8 +17,45 @@ export default function Show({ slider, teamSales }) {
                     content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
                 />
                 <meta name="keywords" content={keywords} />
-                <meta property="og:locale" content="ID_id" />
+
+                {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
+                <meta
+                    property="og:title"
+                    content={`Vicentra - ${slider.name}`}
+                />
+                <meta
+                    property="og:description"
+                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                />
+                <meta
+                    property="og:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    property="og:url"
+                    content={`https://vicentra.co.id/showcase/${slider.slug}`}
+                />
+                <meta property="og:site_name" content="Vicentra" />
+
+                {/* Twitter */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta
+                    name="twitter:title"
+                    content={`Vicentra - ${slider.name}`}
+                />
+                <meta
+                    name="twitter:description"
+                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                />
+                <meta
+                    name="twitter:image"
+                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                />
+                <meta
+                    name="twitter:site"
+                    content={`https://vicentra.co.id/showcase/${slider.slug}`}
+                />
             </Helmet>
             <div
                 className="w-screen flex flex-col justify-center items-center bg-red-400 overflow-x-hidden py-10"

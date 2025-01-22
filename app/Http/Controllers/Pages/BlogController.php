@@ -46,6 +46,7 @@ class BlogController extends Controller
         return Inertia::render('Pages/Blog/Index', [
             'allCategories' => $allCategories,
             'latestPost' => $latestPost,
+            'categorySlug' => $category->slug,
             'posts' => $posts
         ]);
     }
@@ -73,6 +74,7 @@ class BlogController extends Controller
             'created_at' => $post->created_at,
             'category' => [
                 'name' => $post->categoryPost->name,
+                'slug' => $post->categoryPost->slug,
             ],
             'author' => [
                 'name' => $post->user->name,
