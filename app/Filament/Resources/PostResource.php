@@ -108,7 +108,7 @@ class PostResource extends Resource
                             ->label('Deskripsi Singkat Post')
                             ->maxLength(150)
                             ->required(),
-                        Forms\Components\RichEditor::make('content')
+                        Forms\Components\MarkdownEditor::make('content')
                             ->label('Isi Post')
                             ->required(),
                     ])
