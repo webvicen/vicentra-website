@@ -1,3 +1,7 @@
+.post-main-content h1 {
+    @apply text-2xl font-semibold text-gray-800 mb-4;
+}
+
 .post-main-content p,
 .post-main-content {
     @apply text-sm font-normal text-gray-800 mb-4;
@@ -9,4 +13,8 @@
 
 .post-main-content figure figcaption {
     @apply text-xs font-normal text-center text-gray-800;
+}
+
+.post-main-content a {
+    @apply text-sm font-semibold text-gray-800 underline;
 }

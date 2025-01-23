@@ -1,5 +1,7 @@
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 
 import Layout from "../../Layouts/PagesLayout";
 import { dateFormatIdn } from "./constants/helpers";
@@ -104,10 +106,18 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                             {post.category.name}
                         </div>
                     </div>
-                    <div
-                        className="post-main-content mt-[1.875rem]"
-                        dangerouslySetInnerHTML={{ __html: post.content }}
-                    ></div>
+                    <div className="post-main-content mt-[1.875rem]">
+                        <ReactMarkdown
+                            rehypePlugins={[rehypeRaw]}
+                            components={{
+                                iframe: ({ node, ...props }) => (
+                                    <iframe {...props} />
+                                ),
+                            }}
+                        >
+                            {post.content}
+                        </ReactMarkdown>
+                    </div>
                 </div>
                 {/* BLOG CONTENT */}
             </main>
