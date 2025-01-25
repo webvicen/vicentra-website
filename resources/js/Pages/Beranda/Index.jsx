@@ -55,7 +55,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
             </Helmet>
 
             {/* HERO SECTION */}
-            <section>
+            <section className="sticky lg:relative top-0 z-[999] bg-white">
                 <Hero sliders={sliders} />
             </section>
             {/* HERO SECTION */}
