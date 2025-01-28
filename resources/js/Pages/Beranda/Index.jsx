@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 
@@ -9,6 +10,29 @@ import Why from "./components/Why";
 import Youtube from "./components/Youtube";
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const heroSection = document.querySelector(".sticky");
+            if (heroSection) {
+                const isDesktop = window.innerWidth >= 1280;
+                if (window.scrollY > heroSection.offsetHeight && isDesktop) {
+                    setIsSticky(true);
+                } else {
+                    setIsSticky(false);
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Cleanup event listener saat komponen unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []); // Empty dependency array berarti useEffect hanya dijalankan sekali saat mount
+
     return (
         <>
             <Helmet>
@@ -55,8 +79,8 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
             </Helmet>
 
             {/* HERO SECTION */}
-            <section className="sticky lg:relative top-0 z-[999] bg-white">
-                <Hero sliders={sliders} />
+            <section className="sticky lg:relative top-0 z-[10] bg-white">
+                <Hero sliders={sliders} isSticky={isSticky} />
             </section>
             {/* HERO SECTION */}
 

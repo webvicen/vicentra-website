@@ -2,11 +2,9 @@ import { useState } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import {
-    Accordion,
-    AccordionHeader,
-    AccordionBody,
-} from "@material-tailwind/react";
+import Accordion from "@material-tailwind/react/components/Accordion";
+import AccordionHeader from "@material-tailwind/react/components/Accordion/AccordionHeader";
+import AccordionBody from "@material-tailwind/react/components/Accordion/AccordionBody";
 
 import Layout from "../../Layouts/PagesLayout";
 

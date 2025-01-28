@@ -385,7 +385,7 @@ export default function PagesLayout({ children }) {
                             <div
                                 className={`${
                                     toggleMobileMenu ? "block" : "hidden"
-                                } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md`}
+                                } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md z-[999]`}
                             >
                                 <div className="flex flex-col gap-[0.5rem]">
                                     <Link

@@ -8,9 +8,9 @@ import "swiper/css/autoplay";
 import "swiper/css/navigation";
 import "../../../assets/css/custom.css";
 
-export default function Hero({ sliders }) {
+export default function Hero({ sliders, isSticky }) {
     return (
-        <div className="swiper-container">
+        <div className={`swiper-container ${isSticky ? "sticky-slider" : ""}`}>
             <button
                 className="swiper-button-prev"
                 aria-label="Slide ke sebelumnya"
@@ -24,7 +24,7 @@ export default function Hero({ sliders }) {
                 loop={true}
                 spaceBetween={50}
                 slidesPerView={1}
-                autoplay
+                autoplay={{ delay: 5000 }}
                 navigation={{
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
@@ -60,7 +60,7 @@ export default function Hero({ sliders }) {
                     </SwiperSlide>
                 ))}
             </Swiper>
-            <div className="flex gap-2 justify-center items-center mt-4">
+            <div className="pagination flex gap-2 justify-center items-center mt-4">
                 <div className="swiper-hero-section-custom-pagination w-fit" />
             </div>
         </div>

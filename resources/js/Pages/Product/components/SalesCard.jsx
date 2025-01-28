@@ -10,12 +10,12 @@ export default function SalesCard({
     const BASE_URL = window.location.origin;
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
         sales.phone
-    }&text=Jual%20${breadcrumbUrlResult.replace(
+    }&text=Halo%20Vicentra,%20Saya%20mau%20tanya%20untuk%20${breadcrumbUrlResult.replace(
         /[/\s]/g,
         "%20"
     )}%20${encodeURIComponent(
         product.name
-    )}%20Murah%20Surabaya%20${BASE_URL}${url}`;
+    )}%20tolong%20dibantu%20ya.%20${BASE_URL}${url}`;
     return (
         <a
             href={linkWhatsapp}

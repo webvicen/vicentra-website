@@ -9,20 +9,12 @@ export default defineConfig({
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
             ssr: 'resources/js/ssr.js',
+            refresh: true,
         }),
         visualizer({
             filename: './bundle-visualizer.html',
         }),
     ],
-    build: {
-        rollupOptions: {
-            output: {
-                chunkFileNames: 'assets/js/[name]-[hash].js',
-                entryFileNames: 'assets/js/[name]-[hash].js',
-                assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
-            },
-        },
-    },
     esbuild: {
         loader: 'jsx',
         include: /.*\.jsx?$/,

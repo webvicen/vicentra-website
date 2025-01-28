@@ -1,17 +1,18 @@
-import { createServer } from 'http';
-import { renderToString } from 'react-dom/server';
-import createInertiaApp from '@inertiajs/server';
+import { createInertiaApp } from '@inertiajs/react'
+import createServer from '@inertiajs/react/server'
+import ReactDOMServer from 'react-dom/server'
+import { hydrateRoot } from 'react-dom/client'
 
-createServer((req, res) => {
+createServer(page =>
   createInertiaApp({
-    page: JSON.parse(req.body), // Pastikan ini sesuai dengan data yang dikirim
-    render: renderToString,
-    resolve: name => require(`./Pages/${name}`), // Atur path komponen halaman
-    setup: ({ App, props }) => <App {...props} />,
-  }).then(html => {
-    res.setHeader('Content-Type', 'text/html');
-    res.end(html);
-  });
-}).listen(8000, () => {
-  console.log('Server is running on http://127.0.0.1:8000');
-});
+    page,
+    render: ReactDOMServer.renderToString,
+    resolve: name => {
+      const pages = import.meta.glob('./Pages/**/*.jsx', { eager: true })
+      return pages[`./Pages/${name}.jsx`]
+    },
+    setup({ el, App, props }) {
+      hydrateRoot(el, <App {...props} />)
+    },
+  }),
+)
