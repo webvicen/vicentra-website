@@ -2,7 +2,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { Helmet } from "react-helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
-/* empty css                  *//* empty css                  */import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+/* empty css                  *//* empty css                  */import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import "@inertiajs/react";
 import "react";
 import "react-icons/fa";

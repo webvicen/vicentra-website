@@ -6,7 +6,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Accordion from "@material-tailwind/react/components/Accordion/index.js";
 import AccordionHeader from "@material-tailwind/react/components/Accordion/AccordionHeader.js";
 import AccordionBody from "@material-tailwind/react/components/Accordion/AccordionBody.js";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import "react-icons/md";
 import "react-icons/io5";
 import "react-icons/hi2";

@@ -2,7 +2,7 @@ import { jsxs, Fragment, jsx } from "react/jsx-runtime";
 import { useState, useEffect } from "react";
 import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import Faq from "./Faq-416bdf32.mjs";
 import Testimonial from "./Testimonial-6a44bcce.mjs";
 import Hero from "./Hero-1be23699.mjs";

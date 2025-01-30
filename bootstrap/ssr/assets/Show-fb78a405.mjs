@@ -3,7 +3,7 @@ import { Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import { d as dateFormatIdn } from "./helpers-0a343f18.mjs";
 import "react";
 import "react-icons/fa";

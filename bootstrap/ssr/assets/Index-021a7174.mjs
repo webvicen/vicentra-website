@@ -2,7 +2,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { useRef } from "react";
 import { Helmet } from "react-helmet";
 import emailjs from "@emailjs/browser";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import "@inertiajs/react";
 import "react-icons/fa";
 import "react-icons/md";

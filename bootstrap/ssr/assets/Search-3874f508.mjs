@@ -2,7 +2,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { Helmet } from "react-helmet";
 import { Link } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import "react";
 import "react-icons/md";
 import "react-icons/io5";

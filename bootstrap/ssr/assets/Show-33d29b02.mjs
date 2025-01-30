@@ -2,7 +2,7 @@ import { jsxs, jsx, Fragment } from "react/jsx-runtime";
 import { usePage, Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import require$$0, { useState, Suspense } from "react";
-/* empty css                  *//* empty css                */import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+/* empty css                  *//* empty css                */import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import Descriptions from "./Descriptions-1fdc4a2c.mjs";
 import Specification from "./Specification-82f3db92.mjs";
 import Results from "./Results-12c7c414.mjs";

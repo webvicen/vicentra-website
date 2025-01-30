@@ -1035,7 +1035,7 @@ var import_utils = utils;
 var import_Player = __toESM$1(Player_1);
 const Preview = (0, import_utils.lazy)(() => import(
   /* webpackChunkName: 'reactPlayerPreview' */
-  "./Preview-f180f858.mjs"
+  "./Preview-50d753ad.mjs"
 ).then((n) => n.P));
 const IS_BROWSER = typeof window !== "undefined" && window.document && typeof document !== "undefined";
 const IS_GLOBAL = typeof commonjsGlobal !== "undefined" && commonjsGlobal.window && commonjsGlobal.window.document;

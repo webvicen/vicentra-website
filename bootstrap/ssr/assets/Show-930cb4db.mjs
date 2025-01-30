@@ -4,8 +4,8 @@ import { usePage } from "@inertiajs/react";
 import SalesCard from "./SalesCard-7c7ab82b.mjs";
 import "react";
 import "react-icons/fa";
-const PatternShowcasePage = "http://127.0.0.1:8000/build/assets/pattern-showcase-page-d4023bd1.webp";
-const VicentraLogoShowcase = "http://127.0.0.1:8000/build/assets/logo-vicentra-showcase-d76398cc.webp";
+const PatternShowcasePage = "https://vicentra.co.id/build/assets/pattern-showcase-page-d4023bd1.webp";
+const VicentraLogoShowcase = "https://vicentra.co.id/build/assets/logo-vicentra-showcase-d76398cc.webp";
 function Show({ slider, teamSales }) {
   const { keywords } = usePage().props;
   return /* @__PURE__ */ jsxs(Fragment, { children: [

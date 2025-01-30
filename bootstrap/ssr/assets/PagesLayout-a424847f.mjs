@@ -5,9 +5,9 @@ import { FaCaretDown, FaFacebook, FaInstagramSquare, FaYoutube, FaSearch, FaWhat
 import { MdEmail } from "react-icons/md";
 import { IoMenu } from "react-icons/io5";
 import { HiMiniXMark } from "react-icons/hi2";
-const VicentraLogoBlack = "http://127.0.0.1:8000/build/assets/logo-vicentra-black-35a77328.webp";
-const VicentraLogoWhite = "http://127.0.0.1:8000/build/assets/logo-vicentra-white-79c1ce97.webp";
-const VicentraLogoOutline = "http://127.0.0.1:8000/build/assets/logo-vicentra-outline-d96dfc44.webp";
+const VicentraLogoBlack = "https://vicentra.co.id/build/assets/logo-vicentra-black-35a77328.webp";
+const VicentraLogoWhite = "https://vicentra.co.id/build/assets/logo-vicentra-white-79c1ce97.webp";
+const VicentraLogoOutline = "https://vicentra.co.id/build/assets/logo-vicentra-outline-d96dfc44.webp";
 function PagesLayout({ children }) {
   const { url } = usePage();
   const { keywords, categoryPost, categoryProduct } = usePage().props;

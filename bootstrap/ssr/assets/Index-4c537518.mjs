@@ -2,7 +2,7 @@ import { jsxs, jsx } from "react/jsx-runtime";
 import { usePage, Link } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { P as PagesLayout } from "./PagesLayout-02df36db.mjs";
+import { P as PagesLayout } from "./PagesLayout-a424847f.mjs";
 import BlogCard from "./BlogCard-ab9b2423.mjs";
 import { d as dateFormatIdn } from "./helpers-0a343f18.mjs";
 import "react";
