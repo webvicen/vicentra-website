@@ -2,6 +2,7 @@ import { useEffect, useState, lazy, Suspense } from "react";
 const ReactPlayer = lazy(() => import("react-player"));
 
 export default function Youtube() {
+    const isServer = typeof window === "undefined";
     const channelId = "UCo21YDF0Z6uBsGcOKdIJBMQ";
     const apiKey = import.meta.env.VITE_YOUTUBE_API_KEY;
     const [latestVideoLink, setLatestVideoLink] = useState();
@@ -55,15 +56,19 @@ export default function Youtube() {
             </div>
             <div className="rounded-lg overflow-hidden order-first lg:order-none">
                 <div className="h-[10rem] lg:h-[20rem]">
-                    <Suspense fallback={<div>Loading player...</div>}>
-                        <ReactPlayer
-                            url={latestVideoLink}
-                            width={"100%"}
-                            height={"100%"}
-                            controls
-                            light
-                        />
-                    </Suspense>
+                    {!isServer ? (
+                        <Suspense fallback={<div>Loading player...</div>}>
+                            <ReactPlayer
+                                url={latestVideoLink}
+                                width={"100%"}
+                                height={"100%"}
+                                controls
+                                light
+                            />
+                        </Suspense>
+                    ) : (
+                        <div>Loading...</div>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,14 +1,19 @@
+import { useEffect, useState } from "react";
 import { usePage } from "@inertiajs/react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function SalesCard({ sales, slider, order }) {
     const { url } = usePage();
-    const BASE_URL = window.location.origin;
+    const [baseUrl, setBaseUrl] = useState("");
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
         sales.phone
     }&text=Hallo%20Kak%20Mau%20Tanya%20${slider.name
         .split(" ")
-        .join("%20")}%20${BASE_URL}${url}`;
+        .join("%20")}%20${baseUrl}${url}`;
+
+    useEffect(() => {
+        setBaseUrl(window.location.origin);
+    }, []);
 
     return (
         <a

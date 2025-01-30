@@ -10,6 +10,7 @@ import Why from "./components/Why";
 import Youtube from "./components/Youtube";
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
+    const isServer = typeof window === "undefined";
     const [isSticky, setIsSticky] = useState(false);
 
     useEffect(() => {
@@ -144,7 +145,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
-                    <Faq faqs={faqs} />
+                    {!isServer ? <Faq faqs={faqs} /> : <div>Loading...</div>}
                 </div>
             </section>
             {/* FAQ SECTION */}

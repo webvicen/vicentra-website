@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function SalesCard({
@@ -7,7 +8,7 @@ export default function SalesCard({
     breadcrumbUrlResult,
     order,
 }) {
-    const BASE_URL = window.location.origin;
+    const [baseUrl, setBaseUrl] = useState("");
     const linkWhatsapp = `https://api.whatsapp.com/send?phone=${
         sales.phone
     }&text=Halo%20Vicentra,%20Saya%20mau%20tanya%20untuk%20${breadcrumbUrlResult.replace(
@@ -15,7 +16,12 @@ export default function SalesCard({
         "%20"
     )}%20${encodeURIComponent(
         product.name
-    )}%20tolong%20dibantu%20ya.%20${BASE_URL}${url}`;
+    )}%20tolong%20dibantu%20ya.%20${baseUrl}${url}`;
+
+    useEffect(() => {
+        setBaseUrl(window.location.origin);
+    }, []);
+
     return (
         <a
             href={linkWhatsapp}

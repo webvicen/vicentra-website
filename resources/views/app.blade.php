@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="author" content="Vicentra Dev" />
   @viteReactRefresh
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
   @inertiaHead
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
   <!-- Google Tag Manager -->
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

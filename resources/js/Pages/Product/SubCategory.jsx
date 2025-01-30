@@ -8,7 +8,7 @@ import AccordionBody from "@material-tailwind/react/components/Accordion/Accordi
 
 import Layout from "../../Layouts/PagesLayout";
 
-const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
+const SidebarAccordion = ({ category, subCategory, categoryProduct }) => {
     const currentAccordion = `${category.slug}/${subCategory.slug}`;
     const [categoryOpen, setCategoryOpen] = useState(
         currentAccordion.split("/")[0]
@@ -25,6 +25,80 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
     const handleSubCategoryOpen = (slug) => {
         setSubCategoryOpen(slug);
     };
+
+    return (
+        <>
+            {categoryProduct.map((category, index) => (
+                <Accordion open={categoryOpen === category.slug} key={index}>
+                    <AccordionHeader
+                        className="text-start text-sm font-semibold py-2"
+                        onClick={() => handleCategoryOpen(category.slug)}
+                    >
+                        {category.name}
+                    </AccordionHeader>
+                    <AccordionBody className="py-0">
+                        <div className="ml-4">
+                            {category.subMenu.map((subMenu, index) => (
+                                <Accordion
+                                    open={subCategoryOpen === subMenu.slug}
+                                    key={index}
+                                >
+                                    <AccordionHeader
+                                        className={`text-start text-sm font-medium py-2 ${
+                                            subCategoryOpen === subMenu.slug
+                                                ? "text-vicentra-blue font-semibold"
+                                                : ""
+                                        }`}
+                                        onClick={() =>
+                                            handleSubCategoryOpen(subMenu.slug)
+                                        }
+                                    >
+                                        <Link
+                                            href={`/product/${category.slug}/${subMenu.slug}`}
+                                            className="w-full"
+                                        >
+                                            {subMenu.name}
+                                        </Link>
+                                    </AccordionHeader>
+                                    <AccordionBody className="py-0">
+                                        <ul className="ml-4 mt-6">
+                                            {subMenu.subSubMenu.map(
+                                                (subSubMenu, index) => (
+                                                    <li
+                                                        key={index}
+                                                        className="w-full flex justify-between mb-2"
+                                                    >
+                                                        <Link
+                                                            href={`/product/${category.slug}/${subMenu.slug}/${subSubMenu.slug}`}
+                                                            className={`${
+                                                                subSubCategoryOpen ===
+                                                                subSubMenu.slug
+                                                                    ? "w-[90%] text-vicentra-pink font-semibold pl-3 rounded-sm bg-[#acacac1f]"
+                                                                    : "w-full"
+                                                            }`}
+                                                        >
+                                                            {subSubMenu.name}
+                                                        </Link>
+                                                        <span>
+                                                            ({subSubMenu.count})
+                                                        </span>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </AccordionBody>
+                                </Accordion>
+                            ))}
+                        </div>
+                    </AccordionBody>
+                </Accordion>
+            ))}
+        </>
+    );
+};
+
+const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
+    const isServer = typeof window === "undefined";
 
     return (
         <div>
@@ -85,95 +159,15 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                         Produk Kami
                     </h1>
                     <div className="mt-[1.875rem]">
-                        {categoryProduct.map((category, index) => (
-                            <Accordion
-                                open={categoryOpen === category.slug}
-                                key={index}
-                            >
-                                <AccordionHeader
-                                    className="text-start text-sm font-semibold py-2"
-                                    onClick={() =>
-                                        handleCategoryOpen(category.slug)
-                                    }
-                                >
-                                    {category.name}
-                                </AccordionHeader>
-                                <AccordionBody className="py-0">
-                                    <div className="ml-4">
-                                        {category.subMenu.map(
-                                            (subMenu, index) => (
-                                                <Accordion
-                                                    open={
-                                                        subCategoryOpen ===
-                                                        subMenu.slug
-                                                    }
-                                                    key={index}
-                                                >
-                                                    <AccordionHeader
-                                                        className={`text-start text-sm font-medium py-2 ${
-                                                            subCategoryOpen ===
-                                                            subMenu.slug
-                                                                ? "text-vicentra-blue font-semibold"
-                                                                : ""
-                                                        }`}
-                                                        onClick={() =>
-                                                            handleSubCategoryOpen(
-                                                                subMenu.slug
-                                                            )
-                                                        }
-                                                    >
-                                                        <Link
-                                                            href={`/product/${category.slug}/${subMenu.slug}`}
-                                                            className="w-full"
-                                                        >
-                                                            {subMenu.name}
-                                                        </Link>
-                                                    </AccordionHeader>
-                                                    <AccordionBody className="py-0">
-                                                        <ul className="ml-4 mt-6">
-                                                            {subMenu.subSubMenu.map(
-                                                                (
-                                                                    subSubMenu,
-                                                                    index
-                                                                ) => (
-                                                                    <li
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        className="w-full flex justify-between mb-2"
-                                                                    >
-                                                                        <Link
-                                                                            href={`/product/${category.slug}/${subMenu.slug}/${subSubMenu.slug}`}
-                                                                            className={`${
-                                                                                subSubCategoryOpen ===
-                                                                                subSubMenu.slug
-                                                                                    ? "w-[90%] text-vicentra-pink font-semibold pl-3 rounded-sm bg-[#acacac1f]"
-                                                                                    : "w-full"
-                                                                            }`}
-                                                                        >
-                                                                            {
-                                                                                subSubMenu.name
-                                                                            }
-                                                                        </Link>
-                                                                        <span>
-                                                                            (
-                                                                            {
-                                                                                subSubMenu.count
-                                                                            }
-                                                                            )
-                                                                        </span>
-                                                                    </li>
-                                                                )
-                                                            )}
-                                                        </ul>
-                                                    </AccordionBody>
-                                                </Accordion>
-                                            )
-                                        )}
-                                    </div>
-                                </AccordionBody>
-                            </Accordion>
-                        ))}
+                        {!isServer ? (
+                            <SidebarAccordion
+                                category={category}
+                                subCategory={subCategory}
+                                categoryProduct={categoryProduct}
+                            />
+                        ) : (
+                            <div>Loading...</div>
+                        )}
                     </div>
                 </div>
                 {/* SIDEBAR */}

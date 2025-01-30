@@ -1,7 +1,7 @@
 import { Link, usePage } from "@inertiajs/react";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
-import ReactPlayer from "react-player/lazy";
+import React, { Suspense, useState } from "react";
+const ReactPlayer = React.lazy(() => import("react-player/lazy"));
 
 // Import Swiper styles
 import "swiper/css";
@@ -14,6 +14,7 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
+    const isServer = typeof window === "undefined";
     const { url } = usePage();
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
@@ -162,13 +163,25 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                 {activeProductItem.type_source_link ===
                                 "youtube" ? (
-                                    <ReactPlayer
-                                        url={activeProductItem.file}
-                                        light={true}
-                                        width={"100%"}
-                                        height={"100%"}
-                                        controls={true}
-                                    />
+                                    <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
+                                        {!isServer ? (
+                                            <Suspense
+                                                fallback={
+                                                    <div>Loading player...</div>
+                                                }
+                                            >
+                                                <ReactPlayer
+                                                    url={activeProductItem.file}
+                                                    light={true}
+                                                    width={"100%"}
+                                                    height={"100%"}
+                                                    controls={true}
+                                                />
+                                            </Suspense>
+                                        ) : (
+                                            <div>Loading...</div>
+                                        )}
+                                    </div>
                                 ) : (
                                     <iframe
                                         src={convertToPreviewUrl(

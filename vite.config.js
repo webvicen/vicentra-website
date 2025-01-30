@@ -15,6 +15,12 @@ export default defineConfig({
             filename: './bundle-visualizer.html',
         }),
     ],
+    ssr: {
+        noExternal: [
+            "swiper/react",
+            "react-player",
+        ],
+    },
     esbuild: {
         loader: 'jsx',
         include: /.*\.jsx?$/,
