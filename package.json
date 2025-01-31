@@ -4,7 +4,7 @@
         "dev": "vite",
         "build": "vite build",
         "build:ssr": "vite build && vite build --ssr",
-        "start:ssr": "node bootstrap/ssr/ssr.mjs"
+        "start:ssr": "node --experimental-modules bootstrap/ssr/ssr.mjs"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.3.4",

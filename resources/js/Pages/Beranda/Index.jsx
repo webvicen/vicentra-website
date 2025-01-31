@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head } from "@inertiajs/react";
 
 import Layout from "../../Layouts/PagesLayout";
 import Faq from "./components/Faq";
@@ -36,7 +35,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
 
     return (
         <>
-            <Helmet>
+            <Head>
                 <title>
                     Vicentra - Supplier Mesin Dan Bahan Percetakan Surabaya
                 </title>
@@ -77,7 +76,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                     content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
                 />
                 <meta name="twitter:site" content="https://vicentra.co.id" />
-            </Helmet>
+            </Head>
 
             {/* HERO SECTION */}
             <section className="sticky lg:relative top-0 z-[10] bg-white">

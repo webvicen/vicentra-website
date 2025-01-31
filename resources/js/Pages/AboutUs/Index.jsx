@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import { Head } from "@inertiajs/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
@@ -13,7 +13,7 @@ import Layout from "../../Layouts/PagesLayout";
 const AboutUs = ({ brands }) => {
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>Vicentra - Tentang Kami</title>
                 <meta
                     name="description"
@@ -52,7 +52,7 @@ const AboutUs = ({ brands }) => {
                     name="twitter:site"
                     content="https://vicentra.co.id/about-us"
                 />
-            </Helmet>
+            </Head>
 
             {/* ABOUT US SECTION */}
             <section>

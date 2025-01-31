@@ -1,5 +1,4 @@
-import { Link } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head } from "@inertiajs/react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
@@ -10,7 +9,7 @@ import "./styles/show.css";
 const ShowBlog = ({ post, latestSimilarPost }) => {
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>Vicentra - {post.title}</title>
                 <meta
                     name="description"
@@ -55,7 +54,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                     name="twitter:site"
                     content={`https://vicentra.co.id/blog/${post.category.slug}/${post.slug}`}
                 />
-            </Helmet>
+            </Head>
 
             {/* CONTENT */}
             <main className="grid lg:grid-cols-12 lg:gap-4">

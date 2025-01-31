@@ -1,8 +1,6 @@
-import { Helmet } from "react-helmet";
-import { usePage } from "@inertiajs/react";
+import { usePage, Head } from "@inertiajs/react";
 
 import PatternShowcasePage from "../../assets/images/pattern-showcase-page.webp";
-import VicentraLogoOutline from "../../assets/images/logo-vicentra-outline.webp";
 import VicentraLogoShowcase from "../../assets/images/logo-vicentra-showcase.webp";
 import SalesCard from "./components/SalesCard";
 
@@ -10,11 +8,14 @@ export default function Show({ slider, teamSales }) {
     const { keywords } = usePage().props;
     return (
         <>
-            <Helmet>
-                <title>Vicentra - {slider.name}</title>
+            <Head>
+                <title>{`Vicentra - ${slider.name}` ?? ""}</title>
                 <meta
                     name="description"
-                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                    content={
+                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        ""
+                    }
                 />
                 <meta name="keywords" content={keywords} />
 
@@ -22,11 +23,14 @@ export default function Show({ slider, teamSales }) {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - ${slider.name}`}
+                    content={`Vicentra - ${slider.name}` ?? ""}
                 />
                 <meta
                     property="og:description"
-                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                    content={
+                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        ""
+                    }
                 />
                 <meta
                     property="og:image"
@@ -34,7 +38,9 @@ export default function Show({ slider, teamSales }) {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/showcase/${slider.slug}`}
+                    content={
+                        `https://vicentra.co.id/showcase/${slider.slug}` ?? ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -42,11 +48,14 @@ export default function Show({ slider, teamSales }) {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content={`Vicentra - ${slider.name}`}
+                    content={`Vicentra - ${slider.name}` ?? ""}
                 />
                 <meta
                     name="twitter:description"
-                    content={`Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!`}
+                    content={
+                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        ""
+                    }
                 />
                 <meta
                     name="twitter:image"
@@ -54,9 +63,11 @@ export default function Show({ slider, teamSales }) {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/showcase/${slider.slug}`}
+                    content={
+                        `https://vicentra.co.id/showcase/${slider.slug}` ?? ""
+                    }
                 />
-            </Helmet>
+            </Head>
             <div
                 className="w-screen flex flex-col justify-center items-center bg-red-400 overflow-x-hidden py-10"
                 style={{

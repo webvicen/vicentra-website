@@ -1,5 +1,5 @@
+import { Head } from "@inertiajs/react";
 import { useRef } from "react";
-import { Helmet } from "react-helmet";
 import emailjs from "@emailjs/browser";
 
 import Layout from "../../Layouts/PagesLayout";
@@ -32,7 +32,7 @@ const TermsAndConditions = () => {
 
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>Vicentra - Syarat & Ketentuan Perbaikan Mesin</title>
                 <meta
                     name="description"
@@ -77,7 +77,7 @@ const TermsAndConditions = () => {
                     name="twitter:site"
                     content="https://vicentra.co.id/terms-and-conditions"
                 />
-            </Helmet>
+            </Head>
 
             {/* TERMS AND CONDITIONS SECTION */}
             <section>

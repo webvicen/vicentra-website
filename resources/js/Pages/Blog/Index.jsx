@@ -1,5 +1,4 @@
-import { Link, usePage } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
@@ -18,7 +17,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
 
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>Vicentra - Artikel {category}</title>
                 <meta
                     name="description"
@@ -63,7 +62,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                     name="twitter:site"
                     content={`https://vicentra.co.id/blog/${categorySlug}`}
                 />
-            </Helmet>
+            </Head>
 
             {/* CONTENT */}
             <main className="grid grid-cols-12 lg:gap-4">

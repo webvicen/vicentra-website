@@ -1,5 +1,4 @@
-import { Link } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
@@ -7,7 +6,7 @@ import Layout from "../../Layouts/PagesLayout";
 const Category = ({ category, productCategory }) => {
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>Vicentra - Produk {category.name}</title>
                 <meta
                     name="description"
@@ -52,7 +51,7 @@ const Category = ({ category, productCategory }) => {
                     name="twitter:site"
                     content={`https://vicentra.co.id/product/${category.slug}`}
                 />
-            </Helmet>
+            </Head>
 
             {/* HERO SECTION */}
             <section>

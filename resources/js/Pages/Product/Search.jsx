@@ -1,5 +1,4 @@
-import { Helmet } from "react-helmet";
-import { Link } from "@inertiajs/react";
+import { Link, Head } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
@@ -7,7 +6,7 @@ import Layout from "../../Layouts/PagesLayout";
 const Search = ({ keyword, products }) => {
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>
                     Vicentra - Cari{" "}
                     {keyword.replace(/\b\w/g, (char) => char.toUpperCase())}
@@ -19,7 +18,7 @@ const Search = ({ keyword, products }) => {
                         (char) => char.toUpperCase()
                     )} telah kami temukan! Berikut adalah produk-produk pilihan yang sesuai untuk memenuhi kebutuhan Anda. Temukan kualitas terbaik, penawaran menarik, dan solusi yang tepat hanya dalam satu kali klik!`}
                 />
-            </Helmet>
+            </Head>
 
             {/* SEARCHING SECTION */}
             <section>

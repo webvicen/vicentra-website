@@ -27,7 +27,7 @@ export default defineConfig({
         exclude: []
     },
     optimizeDeps: {
-        include: ['react', 'react-dom', '@inertiajs/react'],
+        include: ['react', 'react-dom', '@inertiajs/react', 'react-helmet-async'],
         esbuildOptions: {
             loader: {
                 '.js': 'jsx',

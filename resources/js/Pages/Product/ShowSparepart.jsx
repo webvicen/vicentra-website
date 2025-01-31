@@ -1,5 +1,4 @@
-import { Link, usePage } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { useState } from "react";
 import ReactPlayer from "react-player/lazy";
 
@@ -79,10 +78,11 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
 
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>
-                    Vicentra - Produk {product.name}{" "}
-                    {product.another_name ?? ""}
+                    {`Vicentra - Produk ${product.name} ${
+                        product.another_name ?? ""
+                    }` ?? ""}
                 </title>
                 <meta
                     name="description"
@@ -95,9 +95,11 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - Produk ${product.name} ${
-                        product.another_name ?? ""
-                    }`}
+                    content={
+                        `Vicentra - Produk ${product.name} ${
+                            product.another_name ?? ""
+                        }` ?? ""
+                    }
                 />
                 <meta
                     property="og:description"
@@ -111,7 +113,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/product/${product.category.slug}/${product.category.subCategory.slug}/${product.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${product.category.slug}/${product.category.subCategory.slug}/${product.slug}` ??
+                        ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -119,9 +124,11 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content={`Vicentra - Produk ${product.name} ${
-                        product.another_name ?? ""
-                    }`}
+                    content={
+                        `Vicentra - Produk ${product.name} ${
+                            product.another_name ?? ""
+                        }` ?? ""
+                    }
                 />
                 <meta
                     name="twitter:description"
@@ -135,9 +142,12 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/product/${product.category.slug}/${product.category.subCategory.slug}/${product.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${product.category.slug}/${product.category.subCategory.slug}/${product.slug}` ??
+                        ""
+                    }
                 />
-            </Helmet>
+            </Head>
 
             {/* PRODUCT SECTION */}
             <section className="grid lg:grid-cols-2 gap-[1.25rem]">

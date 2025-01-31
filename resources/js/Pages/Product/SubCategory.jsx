@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Link } from "@inertiajs/react";
-import { Helmet } from "react-helmet";
+import { Link, Head } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Accordion from "@material-tailwind/react/components/Accordion";
 import AccordionHeader from "@material-tailwind/react/components/Accordion/AccordionHeader";
@@ -102,24 +101,34 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
 
     return (
         <div>
-            <Helmet>
+            <Head>
                 <title>
-                    Vicentra - Produk {category.name} {subCategory.name}
+                    {`Vicentra - Produk ${category.name} ${subCategory.name}` ??
+                        ""}
                 </title>
                 <meta
                     name="description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - Produk ${category.name} ${subCategory.name}`}
+                    content={
+                        `Vicentra - Produk ${category.name} ${subCategory.name}` ??
+                        ""
+                    }
                 />
                 <meta
                     property="og:description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
                 <meta
                     property="og:image"
@@ -127,7 +136,10 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/product/${category.slug}/${subCategory.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${category.slug}/${subCategory.slug}` ??
+                        ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -135,11 +147,17 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content={`Vicentra - Produk ${category.name} ${subCategory.name}`}
+                    content={
+                        `Vicentra - Produk ${category.name} ${subCategory.name}` ??
+                        ""
+                    }
                 />
                 <meta
                     name="twitter:description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
                 <meta
                     name="twitter:image"
@@ -147,9 +165,12 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/product/${category.slug}/${subCategory.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${category.slug}/${subCategory.slug}` ??
+                        ""
+                    }
                 />
-            </Helmet>
+            </Head>
 
             {/* LIST PRODUCT SECTION */}
             <section className="grid grid-cols-12 lg:gap-4">
