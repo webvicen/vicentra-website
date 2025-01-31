@@ -7,21 +7,27 @@ const Category = ({ category, productCategory }) => {
     return (
         <div>
             <Head>
-                <title>Vicentra - Produk {category.name}</title>
+                <title>{`Vicentra - Produk ${category.name}` ?? ""}</title>
                 <meta
                     name="description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - Produk ${category.name}`}
+                    content={`Vicentra - Produk ${category.name}` ?? ""}
                 />
                 <meta
                     property="og:description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
                 <meta
                     property="og:image"
@@ -29,7 +35,9 @@ const Category = ({ category, productCategory }) => {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/product/${category.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${category.slug}` ?? ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -37,11 +45,14 @@ const Category = ({ category, productCategory }) => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content={`Vicentra - Produk ${category.name}`}
+                    content={`Vicentra - Produk ${category.name}` ?? ""}
                 />
                 <meta
                     name="twitter:description"
-                    content={`Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!`}
+                    content={
+                        `Vicentra menyediakan berbagai produk ${category.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+                        ""
+                    }
                 />
                 <meta
                     name="twitter:image"
@@ -49,7 +60,9 @@ const Category = ({ category, productCategory }) => {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/product/${category.slug}`}
+                    content={
+                        `https://vicentra.co.id/product/${category.slug}` ?? ""
+                    }
                 />
             </Head>
 
