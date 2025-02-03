@@ -10,7 +10,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
     return (
         <div>
             <Head>
-                <title>Vicentra - {post.title}</title>
+                <title>{`Vicentra - ${post.title}` ?? ""}</title>
                 <meta
                     name="description"
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
@@ -20,7 +20,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - ${post.title}`}
+                    content={`Vicentra - ${post.title}` ?? ""}
                 />
                 <meta
                     property="og:description"
@@ -32,7 +32,10 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/blog/${post.category.slug}/${post.slug}`}
+                    content={
+                        `https://vicentra.co.id/blog/${post.category.slug}/${post.slug}` ??
+                        ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -40,7 +43,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta
                     name="twitter:title"
-                    content={`Vicentra - ${post.title}`}
+                    content={`Vicentra - ${post.title}` ?? ""}
                 />
                 <meta
                     name="twitter:description"
@@ -52,7 +55,10 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/blog/${post.category.slug}/${post.slug}`}
+                    content={
+                        `https://vicentra.co.id/blog/${post.category.slug}/${post.slug}` ??
+                        ""
+                    }
                 />
             </Head>
 
