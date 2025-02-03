@@ -24,7 +24,7 @@ export default function Hero({ sliders, isSticky }) {
                 loop={true}
                 spaceBetween={50}
                 slidesPerView={1}
-                autoplay={{ delay: 5000 }}
+                autoplay={{ delay: 3000 }}
                 navigation={{
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",

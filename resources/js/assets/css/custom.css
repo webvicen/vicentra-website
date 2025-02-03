@@ -77,8 +77,8 @@
     position: fixed;
     top: 1rem;
     right: 3rem;
-    width: 25rem;
-    height: 15rem;
+    width: 44rem;
+    height: 20rem;
     z-index: 1000;
     transition: all 0.3s ease;
 }
@@ -95,13 +95,13 @@
 
 .sticky-slider .swiper-wrapper,
 .sticky-slider .swiper-wrapper a {
-    width: 25rem;
-    height: 15rem;
+    width: 44rem;
+    height: 20rem;
 }
 
 .sticky-slider .swiper-wrapper a img:nth-child(1) {
-    width: 25rem;
-    height: 15rem;
+    width: 44rem;
+    height: 20rem;
     object-fit: fill;
 }
 
