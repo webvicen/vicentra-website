@@ -41,7 +41,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 </title>
                 <meta
                     name="description"
-                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
 
                 {/* Open Graph / Facebook */}
@@ -52,7 +52,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 />
                 <meta
                     property="og:description"
-                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta
                     property="og:image"
@@ -69,7 +69,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 />
                 <meta
                     name="twitter:description"
-                    content="Selamat datang di Vicentra, destinasi utama Anda untuk semua kebutuhan percetakan. Kami menyediakan produk mesin dan bahan baku percetakan terbaik, dengan fokus pada kualitas, dukungan pelanggan, dan layanan purna jual yang unggul. Sejak 2012, kami telah melayani pelanggan di seluruh Indonesia dengan dedikasi penuh terhadap produk percetakan berkualitas tinggi. Hubungi kami untuk informasi lebih lanjut atau dukungan."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta
                     name="twitter:image"
