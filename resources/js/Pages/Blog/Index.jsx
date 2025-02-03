@@ -18,7 +18,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
     return (
         <div>
             <Head>
-                <title>Vicentra - Artikel {category}</title>
+                <title>{`Vicentra - Artikel ${category}` ?? ""}</title>
                 <meta
                     name="description"
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
@@ -28,7 +28,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:title"
-                    content={`Vicentra - Artikel ${category}`}
+                    content={`Vicentra - Artikel ${category}` ?? ""}
                 />
                 <meta
                     property="og:description"
@@ -40,7 +40,9 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                 />
                 <meta
                     property="og:url"
-                    content={`https://vicentra.co.id/blog/${categorySlug}`}
+                    content={
+                        `https://vicentra.co.id/blog/${categorySlug}` ?? ""
+                    }
                 />
                 <meta property="og:site_name" content="Vicentra" />
 
@@ -60,7 +62,9 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                 />
                 <meta
                     name="twitter:site"
-                    content={`https://vicentra.co.id/blog/${categorySlug}`}
+                    content={
+                        `https://vicentra.co.id/blog/${categorySlug}` ?? ""
+                    }
                 />
             </Head>
 
