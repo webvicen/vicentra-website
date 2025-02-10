@@ -50,11 +50,13 @@ export default function Hero({ sliders, isSticky }) {
                                 src={`/storage/${slider.image_desktop}`}
                                 alt={slider.name}
                                 className="h-full hidden lg:block"
+                                loading="lazy"
                             />
                             <img
                                 src={`/storage/${slider.image_mobile}`}
                                 alt={slider.name}
                                 className="h-full lg:hidden"
+                                loading="lazy"
                             />
                         </a>
                     </SwiperSlide>
