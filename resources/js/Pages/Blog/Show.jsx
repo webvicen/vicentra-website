@@ -1,4 +1,4 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 
@@ -7,6 +7,8 @@ import { dateFormatIdn } from "./constants/helpers";
 import "./styles/show.css";
 
 const ShowBlog = ({ post, latestSimilarPost }) => {
+    const { keywords } = usePage().props;
+
     return (
         <div>
             <Head>
@@ -15,6 +17,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                     name="description"
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
                 />
+                <meta name="keywords" content={post.keywords ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
@@ -123,6 +126,16 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                             {post.content}
                         </ReactMarkdown>
                     </div>
+                    {post.keywords && (
+                        <div className="mt-[1.875rem]">
+                            <h2 className="text-sm font-semibold">
+                                Keywords:{" "}
+                                <span className="font-normal">
+                                    {post.keywords}
+                                </span>
+                            </h2>
+                        </div>
+                    )}
                 </div>
                 {/* BLOG CONTENT */}
             </main>

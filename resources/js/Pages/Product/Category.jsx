@@ -1,9 +1,11 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
 
 const Category = ({ category, productCategory }) => {
+    const { keywords } = usePage().props;
+
     return (
         <div>
             <Head>
@@ -15,6 +17,7 @@ const Category = ({ category, productCategory }) => {
                         ""
                     }
                 />
+                <meta name="keywords" content={keywords} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

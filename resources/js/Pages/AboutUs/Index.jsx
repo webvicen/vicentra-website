@@ -1,4 +1,4 @@
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 
@@ -11,6 +11,8 @@ import "../../assets/css/custom.css";
 import Layout from "../../Layouts/PagesLayout";
 
 const AboutUs = ({ brands }) => {
+    const { keywords } = usePage().props;
+
     return (
         <div>
             <Head>
@@ -19,6 +21,7 @@ const AboutUs = ({ brands }) => {
                     name="description"
                     content="Selamat datang di Vicentra, sumber nomor satu Anda untuk semua kebutuhan percetakan. Kami berdedikasi untuk memberikan Anda produk mesin dan bahan baku percetakan yang terbaik, dengan fokus pada kualitas, dukungan, dan purna jual.Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah menempuh perjalanan jauh dari awal di Tambakrejo Sidoarjo- Jawa Timur. Ketika pertama kali dimulai, semangat Founder Vicentra tentang dunia percetakan, mendorong untuk menyediakan produk percetakan terbaik. Sehingga Vicentra dapat menawarkan Anda produk-produk percetakan dengan layanan edukasi dan purna jual terbaik. Kami sekarang melayani pelanggan di seluruh Indonesia.Kami berharap Anda menikmati produk kami seperti halnya kami senang menawarkannya kepada Anda. Jika Anda memiliki pertanyaan atau komentar, jangan ragu untuk menghubungi kami."
                 />
+                <meta name="keywords" content={keywords} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

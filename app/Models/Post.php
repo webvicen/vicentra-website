@@ -17,6 +17,7 @@ class Post extends Model
         'image',
         'content',
         'short_description',
+        'keywords',
     ];
 
     public function user()

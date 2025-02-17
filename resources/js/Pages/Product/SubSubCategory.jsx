@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Accordion from "@material-tailwind/react/components/Accordion";
 import AccordionHeader from "@material-tailwind/react/components/Accordion/AccordionHeader";
@@ -108,6 +108,7 @@ const SubCategory = ({
     subSubCategory,
     products,
 }) => {
+    const { keywords } = usePage().props;
     const isServer = typeof window === "undefined";
 
     return (
@@ -123,6 +124,7 @@ const SubCategory = ({
                         ""
                     }
                 />
+                <meta name="keywords" content={keywords} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

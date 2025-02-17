@@ -69,6 +69,7 @@ class BlogController extends Controller
         $formatPost = [
             'title' => $post->title,
             'slug' => $post->slug,
+            'keywords' => $post->keywords,
             'content' => $post->content,
             'image' => $post->image,
             'created_at' => $post->created_at,

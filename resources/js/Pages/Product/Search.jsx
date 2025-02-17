@@ -1,9 +1,11 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import Layout from "../../Layouts/PagesLayout";
 
 const Search = ({ keyword, products }) => {
+    const { keywords } = usePage().props;
+
     return (
         <div>
             <Head>
@@ -22,6 +24,7 @@ const Search = ({ keyword, products }) => {
                         ""
                     }
                 />
+                <meta name="keywords" content={keywords} />
             </Head>
 
             {/* SEARCHING SECTION */}

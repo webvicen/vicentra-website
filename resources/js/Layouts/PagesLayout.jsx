@@ -1,4 +1,4 @@
-import { Head, Link, usePage } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import {
     FaFacebook,
@@ -82,9 +82,6 @@ export default function PagesLayout({ children }) {
 
     return (
         <>
-            <Head>
-                <meta name="keywords" content={keywords} />
-            </Head>
             <main>
                 {/* HEADER */}
                 {/* DESKTOP HEADER */}

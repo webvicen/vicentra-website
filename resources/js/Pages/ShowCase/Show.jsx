@@ -6,6 +6,7 @@ import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {
     const { keywords } = usePage().props;
+
     return (
         <>
             <Head>

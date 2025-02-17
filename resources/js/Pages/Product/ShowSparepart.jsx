@@ -13,7 +13,7 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
-    const { url } = usePage();
+    const { url, keywords } = usePage();
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
     const breadcrumbUrlResult = urlTarget
@@ -90,6 +90,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         product.shortDescription.replace(/<[^>]*>/g, "") ?? ""
                     }
                 />
+                <meta name="keywords" content={keywords} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

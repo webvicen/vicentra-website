@@ -1,10 +1,11 @@
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
 import Layout from "../../Layouts/PagesLayout";
 
 const TermsAndConditions = () => {
+    const { keywords } = usePage().props;
     const form = useRef();
 
     const sendEmail = (e) => {
@@ -38,6 +39,7 @@ const TermsAndConditions = () => {
                     name="description"
                     content="Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!"
                 />
+                <meta name="keywords" content={keywords} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
