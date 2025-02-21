@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Layout from "../../Layouts/PagesLayout";
 
 const Category = ({ category, productCategory }) => {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
 
     return (
         <div>
@@ -18,6 +18,7 @@ const Category = ({ category, productCategory }) => {
                     }
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

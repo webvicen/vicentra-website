@@ -14,7 +14,8 @@ import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
     const isServer = typeof window === "undefined";
-    const { url, keywords } = usePage();
+    const { url } = usePage();
+    const { currentUrl, keywords } = usePage().props;
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
     const breadcrumbUrlResult = urlTarget
@@ -92,6 +93,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     }
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

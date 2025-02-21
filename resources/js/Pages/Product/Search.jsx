@@ -4,7 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Layout from "../../Layouts/PagesLayout";
 
 const Search = ({ keyword, products }) => {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
 
     return (
         <div>
@@ -25,6 +25,7 @@ const Search = ({ keyword, products }) => {
                     }
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
             </Head>
 
             {/* SEARCHING SECTION */}

@@ -11,7 +11,7 @@ import "../../assets/css/custom.css";
 import Layout from "../../Layouts/PagesLayout";
 
 const AboutUs = ({ brands }) => {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
 
     return (
         <div>
@@ -19,16 +19,17 @@ const AboutUs = ({ brands }) => {
                 <title>Vicentra - Tentang Kami</title>
                 <meta
                     name="description"
-                    content="Selamat datang di Vicentra, sumber nomor satu Anda untuk semua kebutuhan percetakan. Kami berdedikasi untuk memberikan Anda produk mesin dan bahan baku percetakan yang terbaik, dengan fokus pada kualitas, dukungan, dan purna jual.Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah menempuh perjalanan jauh dari awal di Tambakrejo Sidoarjo- Jawa Timur. Ketika pertama kali dimulai, semangat Founder Vicentra tentang dunia percetakan, mendorong untuk menyediakan produk percetakan terbaik. Sehingga Vicentra dapat menawarkan Anda produk-produk percetakan dengan layanan edukasi dan purna jual terbaik. Kami sekarang melayani pelanggan di seluruh Indonesia.Kami berharap Anda menikmati produk kami seperti halnya kami senang menawarkannya kepada Anda. Jika Anda memiliki pertanyaan atau komentar, jangan ragu untuk menghubungi kami."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
                 <meta property="og:title" content="Vicentra - Tentang Kami" />
                 <meta
                     property="og:description"
-                    content="Selamat datang di Vicentra, sumber nomor satu Anda untuk semua kebutuhan percetakan. Kami berdedikasi untuk memberikan Anda produk mesin dan bahan baku percetakan yang terbaik, dengan fokus pada kualitas, dukungan, dan purna jual.Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah menempuh perjalanan jauh dari awal di Tambakrejo Sidoarjo- Jawa Timur. Ketika pertama kali dimulai, semangat Founder Vicentra tentang dunia percetakan, mendorong untuk menyediakan produk percetakan terbaik. Sehingga Vicentra dapat menawarkan Anda produk-produk percetakan dengan layanan edukasi dan purna jual terbaik. Kami sekarang melayani pelanggan di seluruh Indonesia.Kami berharap Anda menikmati produk kami seperti halnya kami senang menawarkannya kepada Anda. Jika Anda memiliki pertanyaan atau komentar, jangan ragu untuk menghubungi kami."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta
                     property="og:image"
@@ -45,7 +46,7 @@ const AboutUs = ({ brands }) => {
                 <meta name="twitter:title" content="Vicentra - Tentang Kami" />
                 <meta
                     name="twitter:description"
-                    content="Selamat datang di Vicentra, sumber nomor satu Anda untuk semua kebutuhan percetakan. Kami berdedikasi untuk memberikan Anda produk mesin dan bahan baku percetakan yang terbaik, dengan fokus pada kualitas, dukungan, dan purna jual.Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah menempuh perjalanan jauh dari awal di Tambakrejo Sidoarjo- Jawa Timur. Ketika pertama kali dimulai, semangat Founder Vicentra tentang dunia percetakan, mendorong untuk menyediakan produk percetakan terbaik. Sehingga Vicentra dapat menawarkan Anda produk-produk percetakan dengan layanan edukasi dan purna jual terbaik. Kami sekarang melayani pelanggan di seluruh Indonesia.Kami berharap Anda menikmati produk kami seperti halnya kami senang menawarkannya kepada Anda. Jika Anda memiliki pertanyaan atau komentar, jangan ragu untuk menghubungi kami."
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta
                     name="twitter:image"

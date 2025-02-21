@@ -75,6 +75,7 @@ class HandleInertiaRequests extends Middleware
         }
 
         return array_merge(parent::share($request), [
+            'currentUrl' => url()->current(),
             'keywords' => implode(', ', $keywords),
             'categoryPost' => $categoryPost,
             'categoryProduct' => $categoryProduct

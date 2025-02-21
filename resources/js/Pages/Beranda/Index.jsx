@@ -9,7 +9,8 @@ import Why from "./components/Why";
 import Youtube from "./components/Youtube";
 
 const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
-    const { keywords } = usePage().props;
+    const { url } = usePage();
+    const { currentUrl, keywords } = usePage().props;
     const isServer = typeof window === "undefined";
     const [isSticky, setIsSticky] = useState(false);
 
@@ -45,6 +46,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                     content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

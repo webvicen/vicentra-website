@@ -7,7 +7,7 @@ import { dateFormatIdn } from "./constants/helpers";
 import "./styles/show.css";
 
 const ShowBlog = ({ post, latestSimilarPost }) => {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
 
     return (
         <div>
@@ -18,6 +18,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
                 />
                 <meta name="keywords" content={post.keywords ?? ""} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

@@ -97,7 +97,7 @@ const SidebarAccordion = ({ category, subCategory, categoryProduct }) => {
 };
 
 const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
     const isServer = typeof window === "undefined";
 
     return (
@@ -115,6 +115,7 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                     }
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

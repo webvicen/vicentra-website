@@ -5,7 +5,7 @@ import VicentraLogoShowcase from "../../assets/images/logo-vicentra-showcase.web
 import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {
-    const { keywords } = usePage().props;
+    const { currentUrl, keywords } = usePage().props;
 
     return (
         <>
@@ -19,6 +19,7 @@ export default function Show({ slider, teamSales }) {
                     }
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />

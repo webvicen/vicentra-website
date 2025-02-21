@@ -6,7 +6,8 @@ import BlogCard from "./components/BlogCard";
 import { dateFormatIdn } from "./constants/helpers";
 
 const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
-    const { url, keywords } = usePage();
+    const { url } = usePage();
+    const { currentUrl, keywords } = usePage().props;
     const cleanUrl = url.split("?")[0];
     const category = url
         .split("/")[2]
@@ -24,6 +25,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                     content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
                 />
                 <meta name="keywords" content={keywords} />
+                <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
