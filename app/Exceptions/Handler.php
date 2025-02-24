@@ -46,8 +46,8 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (NotFoundHttpException $e, $request) {
-            return redirect()->route('beranda.index');
-        });
+        // $this->renderable(function (NotFoundHttpException $e, $request) {
+        //     return redirect()->route('beranda.index');
+        // });
     }
 }
