@@ -186,71 +186,73 @@ class ProductResource extends Resource
                             ->disk('public')
                             ->directory('product-work-results')
                             ->visibility('public'),
+                        Forms\Components\TextInput::make('keywords')
+                            ->label('Keywords Produk'),
                     ]),
-                Forms\Components\Section::make('Kebutuhan Rest Api')
-                    ->description('Data yang dibutuhkan untuk rest api, data tidak di tampilkan di website utama.')
-                    ->schema([
-                        Forms\Components\TextInput::make('ra_tagline')
-                            ->label('Tagline Produk')
-                            ->placeholder('ex: Cetak Tanpa Batas dengan Harga Terjangkau.'),
-                        Forms\Components\FileUpload::make('ra_photo')
-                            ->label('Gambar Produk')
-                            ->getUploadedFileNameForStorageUsing(
-                                fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
-                            )
-                            ->saveUploadedFileUsing(function (TemporaryUploadedFile $file) {
-                                // Tentukan nama file
-                                $filename = str()->slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.webp';
+                // Forms\Components\Section::make('Kebutuhan Rest Api')
+                //     ->description('Data yang dibutuhkan untuk rest api, data tidak di tampilkan di website utama.')
+                //     ->schema([
+                //         Forms\Components\TextInput::make('ra_tagline')
+                //             ->label('Tagline Produk')
+                //             ->placeholder('ex: Cetak Tanpa Batas dengan Harga Terjangkau.'),
+                //         Forms\Components\FileUpload::make('ra_photo')
+                //             ->label('Gambar Produk')
+                //             ->getUploadedFileNameForStorageUsing(
+                //                 fn(TemporaryUploadedFile $file): string => (string) str()->slug($file->getClientOriginalName()) . '.' . $file->getClientOriginalExtension(),
+                //             )
+                //             ->saveUploadedFileUsing(function (TemporaryUploadedFile $file) {
+                //                 // Tentukan nama file
+                //                 $filename = str()->slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME)) . '.webp';
 
-                                // Tentukan lokasi penyimpanan
-                                $directory = 'ra-product-photo/';
-                                $path = $directory . $filename;
+                //                 // Tentukan lokasi penyimpanan
+                //                 $directory = 'ra-product-photo/';
+                //                 $path = $directory . $filename;
 
-                                // Path untuk penyimpanan final
-                                $finalPath = storage_path('app/public/' . $path);
+                //                 // Path untuk penyimpanan final
+                //                 $finalPath = storage_path('app/public/' . $path);
 
-                                // Awal: Proses file dengan Spatie Image
-                                $image = Image::load($file->getRealPath())
-                                    ->format(\Spatie\Image\Manipulations::FORMAT_WEBP) // Ubah format ke WEBP
-                                    ->fit(\Spatie\Image\Manipulations::FIT_MAX, 1920, 1080) // Resize ke max 1920x1080
-                                    ->quality(90) // Mulai dengan kualitas tinggi 90%
-                                    ->optimize()
-                                    ->save($finalPath);
+                //                 // Awal: Proses file dengan Spatie Image
+                //                 $image = Image::load($file->getRealPath())
+                //                     ->format(\Spatie\Image\Manipulations::FORMAT_WEBP) // Ubah format ke WEBP
+                //                     ->fit(\Spatie\Image\Manipulations::FIT_MAX, 1920, 1080) // Resize ke max 1920x1080
+                //                     ->quality(90) // Mulai dengan kualitas tinggi 90%
+                //                     ->optimize()
+                //                     ->save($finalPath);
 
-                                // Periksa ukuran file setelah langkah awal
-                                $fileSize = filesize($finalPath);
-                                $quality = 90; // Awal kualitas
+                //                 // Periksa ukuran file setelah langkah awal
+                //                 $fileSize = filesize($finalPath);
+                //                 $quality = 90; // Awal kualitas
 
-                                // Jika ukuran masih lebih dari 130KB, optimalkan bertahap
-                                while ($fileSize > 130 * 1024 && $quality > 50) { // Target < 130KB, minimal kualitas 50%
-                                    $quality -= 1; // Kurangi kualitas sebesar 1%
+                //                 // Jika ukuran masih lebih dari 130KB, optimalkan bertahap
+                //                 while ($fileSize > 130 * 1024 && $quality > 50) { // Target < 130KB, minimal kualitas 50%
+                //                     $quality -= 1; // Kurangi kualitas sebesar 1%
 
-                                    $image = Image::load($file->getRealPath())
-                                        ->format(\Spatie\Image\Manipulations::FORMAT_WEBP)
-                                        ->fit(\Spatie\Image\Manipulations::FIT_MAX, 1280, 720) // Resize ke resolusi lebih kecil
-                                        ->quality($quality)
-                                        ->optimize()
-                                        ->save($finalPath);
+                //                     $image = Image::load($file->getRealPath())
+                //                         ->format(\Spatie\Image\Manipulations::FORMAT_WEBP)
+                //                         ->fit(\Spatie\Image\Manipulations::FIT_MAX, 1280, 720) // Resize ke resolusi lebih kecil
+                //                         ->quality($quality)
+                //                         ->optimize()
+                //                         ->save($finalPath);
 
-                                    $fileSize = filesize($finalPath); // Periksa ukuran file
+                //                     $fileSize = filesize($finalPath); // Periksa ukuran file
 
-                                    // Hentikan iterasi jika ukuran file sudah memenuhi target
-                                    if ($fileSize <= 130 * 1024) {
-                                        break;
-                                    }
-                                }
+                //                     // Hentikan iterasi jika ukuran file sudah memenuhi target
+                //                     if ($fileSize <= 130 * 1024) {
+                //                         break;
+                //                     }
+                //                 }
 
-                                // Jika ukuran masih terlalu besar meskipun kualitas sudah minimum
-                                if ($fileSize > 130 * 1024) {
-                                    throw new \Exception('File size cannot be reduced below 130KB while maintaining acceptable quality.');
-                                }
+                //                 // Jika ukuran masih terlalu besar meskipun kualitas sudah minimum
+                //                 if ($fileSize > 130 * 1024) {
+                //                     throw new \Exception('File size cannot be reduced below 130KB while maintaining acceptable quality.');
+                //                 }
 
-                                return $path;
-                            })
-                            ->disk('public')
-                            ->directory('ra-product-photo')
-                            ->visibility('public'),
-                    ])
+                //                 return $path;
+                //             })
+                //             ->disk('public')
+                //             ->directory('ra-product-photo')
+                //             ->visibility('public'),
+                //     ])
             ]);
     }
 

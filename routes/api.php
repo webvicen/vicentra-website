@@ -23,9 +23,9 @@ use App\Http\Controllers\Api\{
 
 
 // API PRODUCT ROUTE
-Route::controller(ProductController::class)->prefix('products')->group(function () {
-    Route::get('/{subSubCategory}', 'getSubSubCategoryProducts');
-});
+// Route::controller(ProductController::class)->prefix('products')->group(function () {
+//     Route::get('/{subSubCategory}', 'getSubSubCategoryProducts');
+// });
 
 // API POST ROUTE
 Route::controller(PostController::class)->prefix('posts')->group(function () {

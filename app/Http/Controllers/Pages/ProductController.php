@@ -311,6 +311,7 @@ class ProductController extends Controller
             'description' => $product->description,
             'specification' => $product->specification,
             'work_result' => $product->work_result,
+            'keywords' => $product->keywords,
             'category' => [
                 'name' => $product->categoryable->subCategory->category->name ?? null,
                 'slug' => $product->categoryable->subCategory->category->slug ?? null,
@@ -384,6 +385,7 @@ class ProductController extends Controller
             'description' => $product->description,
             'specification' => $product->specification,
             'work_result' => $product->work_result,
+            'keywords' => $product->keywords,
             'category' => [
                 'name' => $product->categoryable->category->name ?? null,
                 'slug' => $product->categoryable->category->slug ?? null,

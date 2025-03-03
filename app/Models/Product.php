@@ -23,8 +23,9 @@ class Product extends Model
         'description',
         'specification',
         'work_result',
-        'ra_tagline',
-        'ra_photo',
+        'keywords',
+        // 'ra_tagline',
+        // 'ra_photo',
     ];
 
     protected $casts = [
