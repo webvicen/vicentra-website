@@ -189,9 +189,9 @@ const SubCategory = ({
             <section className="grid grid-cols-12 lg:gap-4">
                 {/* SIDEBAR */}
                 <div className="col-span-12 lg:col-span-3">
-                    <h1 className="text-xl capitalize font-semibold text-gray-800">
+                    <h2 className="text-xl capitalize font-semibold text-gray-800">
                         Produk Kami
-                    </h1>
+                    </h2>
                     <div className="mt-[1.875rem]">
                         {!isServer ? (
                             <SidebarAccordion
@@ -229,19 +229,19 @@ const SubCategory = ({
                                         />
                                         {item.is_out_of_stock ? (
                                             <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                                <h1 className="text-base font-bold text-white uppercase">
+                                                <h2 className="text-base font-bold text-white uppercase">
                                                     out of stock
-                                                </h1>
+                                                </h2>
                                             </div>
                                         ) : null}
                                     </div>
                                     <div className="mt-2">
-                                        <h1 className="text-center text-base font-bold">
+                                        <h2 className="text-center text-base font-bold">
                                             {item.name}
-                                        </h1>
-                                        <h2 className="text-center text-sm font-normal">
-                                            {item.another_name ?? ""}
                                         </h2>
+                                        <h3 className="text-center text-sm font-normal">
+                                            {item.another_name ?? ""}
+                                        </h3>
                                     </div>
                                 </Link>
                             ))}

@@ -96,16 +96,16 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                         </div>
                     </div>
                     <div className="mt-[1.875rem]">
-                        <h1 className="capitalize text-gray-800 font-semibold text-xl">
+                        <h2 className="capitalize text-gray-800 font-semibold text-xl">
                             Artikel Terbaru
-                        </h1>
+                        </h2>
                         <div className="flex flex-col items-start gap-[0.625rem] mt-[1.875rem]">
                             {latestPost.map((item, index) => (
                                 <Link
                                     key={index}
                                     href={`/blog/${item.category.slug}/${item.slug}`}
                                 >
-                                    <h1 className="text-base">{item.title}</h1>
+                                    <h2 className="text-base">{item.title}</h2>
                                     <p className="text-xs text-gray-500">
                                         {dateFormatIdn(item.created_at)}
                                     </p>

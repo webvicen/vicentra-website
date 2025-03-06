@@ -18,9 +18,9 @@ export default function BlogCard({ post }) {
                 />
             </div>
             <div className="p-4">
-                <h1 className="text-base font-semibold text-gray-800">
+                <h2 className="text-base font-semibold text-gray-800">
                     {post.title}
-                </h1>
+                </h2>
                 <p className="text-sm text-justify font-normal text-gray-500 mt-[0.5rem]">
                     {post.short_description}
                 </p>

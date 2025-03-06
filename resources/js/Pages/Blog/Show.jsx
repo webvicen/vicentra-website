@@ -71,9 +71,9 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 {/* SIDEBAR */}
                 <div className="col-span-12 lg:col-span-3 mt-[2rem] lg:mt-0">
                     <div>
-                        <h1 className="capitalize text-gray-800 font-semibold text-xl">
+                        <h2 className="capitalize text-gray-800 font-semibold text-xl">
                             Artikel Serupa
-                        </h1>
+                        </h2>
                         <div className="flex flex-col items-start gap-[0.625rem] mt-[1.875rem]">
                             {latestSimilarPost.map((item, index) => (
                                 <Link

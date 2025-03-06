@@ -3,9 +3,9 @@ import "../styles/specification.css";
 export default function Specification({ product }) {
     return (
         <div className="mt-[1.875rem]">
-            <h1 className="text-base font-semibold text-gray-800">
+            <h2 className="text-base font-semibold text-gray-800">
                 Spesifikasi Mesin
-            </h1>
+            </h2>
             <div
                 className="specification_table_content mt-4"
                 dangerouslySetInnerHTML={{ __html: product.specification }}

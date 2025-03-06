@@ -45,9 +45,9 @@ export default function SalesCard({
             </div>
             <div className="mr-4">
                 <div className="flex gap-2">
-                    <h1 className="text-sm font-medium text-white/50 capitalize">
+                    <h2 className="text-sm font-medium text-white/50 capitalize">
                         {sales.name}
-                    </h1>
+                    </h2>
                     <span className="flex justify-center items-center text-xs font-semibold text-white bg-white/20 px-2 rounded-md capitalize">
                         online
                     </span>

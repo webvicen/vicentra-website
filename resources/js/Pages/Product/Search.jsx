@@ -60,19 +60,19 @@ const Search = ({ keyword, products }) => {
                                         />
                                         {item.is_out_of_stock ? (
                                             <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                                <h1 className="text-base font-bold text-white uppercase">
+                                                <h2 className="text-base font-bold text-white uppercase">
                                                     out of stock
-                                                </h1>
+                                                </h2>
                                             </div>
                                         ) : null}
                                     </div>
                                     <div className="mt-2">
-                                        <h1 className="text-center text-base font-bold">
+                                        <h2 className="text-center text-base font-bold">
                                             {item.name}
-                                        </h1>
-                                        <h2 className="text-center text-sm font-normal">
-                                            {item.another_name}
                                         </h2>
+                                        <h3 className="text-center text-sm font-normal">
+                                            {item.another_name}
+                                        </h3>
                                     </div>
                                 </Link>
                             );

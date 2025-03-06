@@ -67,9 +67,9 @@ const AboutUs = ({ brands }) => {
                         </h1>
                     </div>
                 </div>
-                <h1 className="text-xl text-center font-semibold text-gray-800 mt-[1.25rem]">
+                <h2 className="text-xl text-center font-semibold text-gray-800 mt-[1.25rem]">
                     Penyedia Kebutuhan Percetakan Terlengkap
-                </h1>
+                </h2>
                 <div className="lg:w-[80%] mx-auto text-base text-justify text-gray-500 mt-[1.875rem] space-y-4">
                     <p>
                         Selamat datang di Vicentra, sumber nomor satu Anda untuk

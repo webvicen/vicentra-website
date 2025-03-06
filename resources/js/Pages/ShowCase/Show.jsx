@@ -14,7 +14,7 @@ export default function Show({ slider, teamSales }) {
                 <meta
                     name="description"
                     content={
-                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        `Nikmati promo ${slider.name} di Vicentra! Belanja hemat dan bawa pulang produk impian Anda. Buruan, promo terbatas hingga stok habis!` ??
                         ""
                     }
                 />
@@ -30,7 +30,7 @@ export default function Show({ slider, teamSales }) {
                 <meta
                     property="og:description"
                     content={
-                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        `Nikmati promo ${slider.name} di Vicentra! Belanja hemat dan bawa pulang produk impian Anda. Buruan, promo terbatas hingga stok habis!` ??
                         ""
                     }
                 />
@@ -55,7 +55,7 @@ export default function Show({ slider, teamSales }) {
                 <meta
                     name="twitter:description"
                     content={
-                        `Silakan nikmati promo ${slider.name}, hanya di Vicentra! Jangan lewatkan kesempatan emas untuk berbelanja hemat dan membawa pulang produk impian Anda. Buruan, promo terbatas sampai stok habis!` ??
+                        `Nikmati promo ${slider.name} di Vicentra! Belanja hemat dan bawa pulang produk impian Anda. Buruan, promo terbatas hingga stok habis!` ??
                         ""
                     }
                 />
