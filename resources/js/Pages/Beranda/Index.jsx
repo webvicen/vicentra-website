@@ -43,7 +43,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 </title>
                 <meta
                     name="description"
-                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas dengan layanan purna jual terbaik di Indonesia."
                 />
                 <meta name="keywords" content={keywords} />
                 <link rel="canonical" href={currentUrl ?? ""} />
@@ -56,7 +56,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 />
                 <meta
                     property="og:description"
-                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas dengan layanan purna jual terbaik di Indonesia."
                 />
                 <meta
                     property="og:image"
@@ -73,7 +73,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 />
                 <meta
                     name="twitter:description"
-                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas tinggi, didukung layanan purna jual terbaik. Melayani seluruh Indonesia dengan komitmen pada kualitas & kepuasan pelanggan. Hubungi kami sekarang!"
+                    content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas dengan layanan purna jual terbaik di Indonesia."
                 />
                 <meta
                     name="twitter:image"
