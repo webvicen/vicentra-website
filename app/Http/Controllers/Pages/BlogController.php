@@ -70,6 +70,7 @@ class BlogController extends Controller
             'title' => $post->title,
             'slug' => $post->slug,
             'keywords' => $post->keywords,
+            'short_description' => $post->short_description,
             'content' => $post->content,
             'image' => $post->image,
             'created_at' => $post->created_at,

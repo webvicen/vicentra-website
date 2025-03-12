@@ -15,7 +15,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 <title>{`Vicentra - ${post.title}` ?? ""}</title>
                 <meta
                     name="description"
-                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                    content={post.short_description ?? ""}
                 />
                 <meta name="keywords" content={post.keywords ?? ""} />
                 <link rel="canonical" href={currentUrl ?? ""} />
@@ -28,7 +28,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     property="og:description"
-                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                    content={post.short_description ?? ""}
                 />
                 <meta
                     property="og:image"
@@ -51,7 +51,7 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     name="twitter:description"
-                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                    content={post.short_description ?? ""}
                 />
                 <meta
                     name="twitter:image"

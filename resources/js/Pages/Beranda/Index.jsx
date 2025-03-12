@@ -7,8 +7,9 @@ import Testimonial from "./components/Testimonial";
 import Hero from "./components/Hero";
 import Why from "./components/Why";
 import Youtube from "./components/Youtube";
+import Brands from "./components/Brands";
 
-const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
+const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
     const { url } = usePage();
     const { currentUrl, keywords } = usePage().props;
     const isServer = typeof window === "undefined";
@@ -39,7 +40,8 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
         <>
             <Head>
                 <title>
-                    Vicentra - Supplier Mesin Dan Bahan Percetakan Surabaya
+                    Vicentra - Distributor dan Supplier Mesin Dan Bahan
+                    Percetakan Surabaya
                 </title>
                 <meta
                     name="description"
@@ -138,6 +140,21 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
             </section>
             {/* CUSTOMER TESTIMONIALS SECTION */}
 
+            {/* BRANDS SECTION */}
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
+                <div className="flex justify-center">
+                    <div className="bg-vicentra-pink rounded-full px-4 py-2 shadow-md">
+                        <h1 className="text-white font-semibold capitalize">
+                            Brand Kami
+                        </h1>
+                    </div>
+                </div>
+                <div className="mt-[1.875rem]">
+                    <Brands brands={brands} />
+                </div>
+            </section>
+            {/* BRANDS SECTION */}
+
             {/* FAQ SECTION */}
             <section className="my-[3.125rem]">
                 <div className="flex justify-center">
@@ -152,6 +169,50 @@ const Beranda = ({ sliders, categoryProducts, testimonials, faqs }) => {
                 </div>
             </section>
             {/* FAQ SECTION */}
+
+            {/* ABOUT SECTION */}
+            <section className="my-[3.125rem] lg:my-[6.25rem]">
+                <div className="flex justify-center">
+                    <h1 className="font-semibold">vicentra.co.id</h1>
+                </div>
+                <div className="mt-[1.875rem]">
+                    <p className="text-justify lg:text-left text-sm leading-5">
+                        Distributor dan Supplier Mesin Dan Bahan Percetakan
+                        Terlengkap Dengan Harga Terbaik, Rekomendasi Distributor
+                        dan Supplier Termurah dan Terpercaya. Showroom
+                        (Distributor fisik) tersedia di Surabaya , Distributor
+                        dan Supplier Mesin Dan Bahan Usaha Digital Printing
+                        Terlengkap. CV VICENTRA INDO PERKASA Supplier Mesin Dan
+                        Bahan Percetakan Terlengkap dan Termurah memiliki
+                        rekanan di beberapa kota yang tersebar{" "}
+                        <span className="font-semibold">
+                            Sulawesi Utara, Bali, Malang, Jogja Yogyakarta,
+                            Bandung, Semarang, Ambon, Nusa Tenggara Timur,
+                            Makassar, Medan, Surabaya, Denpasar, Lombok, Kupang,
+                            Kalimantan, Balikpapan, Banjarmasin, Pontianak,
+                            Samarinda, Palangkaraya, Sulawesi, Manado, Palu,
+                            Gorontalo, Gresik, Probolinggo, Jawa Timur, Jawa
+                            Barat, Bogor
+                        </span>
+                        . Distributor dan Supplier Aneka Mesin Dan Bahan Usaha
+                        Indonesia Harga Murah Terpercaya yang menjual{" "}
+                        <span className="font-semibold">{keywords}</span>.
+                        Vicentra Distributor dan Supplier Mesin Dan Bahan
+                        Percetakan Menjual Berbagai Mesin Dan Bahan Percetakan
+                        Terlengkap dengan Harga Terbaik.
+                        <br />
+                        <br />
+                        Sebagai Distributor, Importir Dan Supplier Mesin dan
+                        Bahan Percetakan yang Menjual Produk Mesin dan Bahan
+                        dengan Harga Murah Hampir Di Seluruh Indonesia, Vicentra
+                        Selalu Melayani Pelanggan dan Melengkapi Ketersediaan
+                        Barang Kami dengan Produk Terbaru, Produk Utama, Bahan
+                        Pelengkap, dan Produk Pelengkap untuk menjunjang semua
+                        kebutuhan pelanggan kami di Seluruh Indonesia.
+                    </p>
+                </div>
+            </section>
+            {/* ABOUT SECTION */}
         </>
     );
 };
