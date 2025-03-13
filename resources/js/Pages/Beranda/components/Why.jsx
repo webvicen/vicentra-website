@@ -23,9 +23,9 @@ export default function Why() {
                             </div> */}
                         </div>
                         <div>
-                            <h3 className="text-md text-center lg:text-start font-semibold">
+                            <h2 className="text-md text-center lg:text-start font-semibold">
                                 {item.title}
-                            </h3>
+                            </h2>
                             <p className="text-sm font-normal text-justify mt-[0.625rem]">
                                 {item.subTitle}
                             </p>
