@@ -47,7 +47,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
                     name="description"
                     content="Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas dengan layanan purna jual terbaik di Indonesia."
                 />
-                <meta name="keywords" content={keywords} />
+                <meta name="keywords" content={keywords ?? ""} />
                 <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
@@ -196,7 +196,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
                         </span>
                         . Distributor dan Supplier Aneka Mesin Dan Bahan Usaha
                         Indonesia Harga Murah Terpercaya yang menjual{" "}
-                        <span className="font-semibold">{keywords}</span>.
+                        <span className="font-semibold">{keywords ?? ""}</span>.
                         Vicentra Distributor dan Supplier Mesin Dan Bahan
                         Percetakan Menjual Berbagai Mesin Dan Bahan Percetakan
                         Terlengkap dengan Harga Terbaik.
