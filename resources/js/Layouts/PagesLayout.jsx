@@ -1,4 +1,4 @@
-import { Link, usePage } from "@inertiajs/react";
+import { Link, usePage, Head } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 import {
     FaFacebook,
@@ -18,7 +18,56 @@ import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.webp";
 
 export default function PagesLayout({ children }) {
     const { url } = usePage();
-    const { keywords, categoryPost, categoryProduct } = usePage().props;
+    const { categoryPost, categoryProduct } = usePage().props;
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Vicentra - Distributor dan Supplier Mesin Dan Bahan Percetakan Surabaya",
+        url: "https://vicentra.co.id",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
+
     const [isSubMenuCategoryPostOpen, setIsSubMenuCategoryPostOpen] =
         useState(false);
     const [subMenuProducts, setSubMenuProducts] = useState(categoryProduct);
@@ -82,128 +131,137 @@ export default function PagesLayout({ children }) {
 
     return (
         <>
-            <main>
-                {/* HEADER */}
-                {/* DESKTOP HEADER */}
-                <header className="hidden lg:block shadow pb-[1rem]">
-                    <div className="bg-vicentra-blue">
-                        <div className="w-[80vw] mx-auto py-[1rem]">
-                            <div className="flex justify-between items-end">
-                                <div className="flex items-center gap-[1.875rem]">
+            <Head>
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
+            </Head>
+
+            {/* HEADER */}
+            {/* DESKTOP HEADER */}
+            <header className="hidden lg:block shadow pb-[1rem]">
+                <div className="bg-vicentra-blue">
+                    <div className="w-[80vw] mx-auto py-[1rem]">
+                        <nav className="flex justify-between items-end">
+                            <ul className="flex items-center gap-[1.875rem]">
+                                <li>
                                     <Link
                                         href="/"
                                         className="beranda text-base text-white capitalize"
                                     >
                                         beranda
                                     </Link>
-                                    <div
-                                        className="text-base text-white capitalize flex items-center gap-1 hover:cursor-pointer relative"
-                                        onClick={toggleSubMenuCategoryPost}
+                                </li>
+                                <li
+                                    className="text-base text-white capitalize flex items-center gap-1 hover:cursor-pointer relative"
+                                    onClick={toggleSubMenuCategoryPost}
+                                >
+                                    blog
+                                    <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                    <ul
+                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
+                                            isSubMenuCategoryPostOpen
+                                                ? "block"
+                                                : "hidden"
+                                        }`}
                                     >
-                                        blog
-                                        <FaCaretDown className="text-vicentra-yellow text-xl" />
-                                        <ul
-                                            className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                                isSubMenuCategoryPostOpen
-                                                    ? "block"
-                                                    : "hidden"
-                                            }`}
-                                        >
-                                            {categoryPost?.map(
-                                                (category, index) => (
-                                                    <li key={index}>
-                                                        <Link
-                                                            href={`/blog/${category.slug}`}
-                                                            className="text-sm text-gray-800"
-                                                        >
-                                                            {category.name}
-                                                        </Link>
-                                                    </li>
-                                                )
-                                            )}
-                                        </ul>
-                                    </div>
+                                        {categoryPost?.map(
+                                            (category, index) => (
+                                                <li key={index}>
+                                                    <Link
+                                                        href={`/blog/${category.slug}`}
+                                                        className="text-sm text-gray-800"
+                                                    >
+                                                        {category.name}
+                                                    </Link>
+                                                </li>
+                                            )
+                                        )}
+                                    </ul>
+                                </li>
+                                <li>
                                     <Link
                                         href="/terms-and-conditions"
                                         className="layanan_dan_perbaikan text-base text-white capitalize"
                                     >
                                         layanan dan perbaikan
                                     </Link>
+                                </li>
+                                <li>
                                     <Link
                                         href="/about-us"
                                         className="tentang_kami text-base text-white capitalize"
                                     >
                                         tentang kami
                                     </Link>
-                                </div>
-                                <div className="flex items-end gap-[1.875rem]">
-                                    <div className="flex items-center gap-2">
-                                        <p className="text-sm capitalize text-white">
-                                            ikuti kami di
-                                        </p>
-                                        <div className="flex items-center gap-1">
-                                            <a
-                                                href="https://www.facebook.com/vicentra"
-                                                target="_blank"
-                                                className="facebook"
-                                                aria-label="Kunjungi halaman Facebook Vicentra"
-                                            >
-                                                <FaFacebook className="text-white text-xl font-semibold" />
-                                            </a>
-                                            <a
-                                                href="https://www.instagram.com/vicentra.co.id"
-                                                target="_blank"
-                                                className="instagram"
-                                                aria-label="Kunjungi halaman Instagram Vicentra"
-                                            >
-                                                <FaInstagramSquare className="text-white text-xl font-semibold" />
-                                            </a>
-                                            <a
-                                                href="https://www.youtube.com/@galeryvicentra"
-                                                target="_blank"
-                                                className="youtube"
-                                                aria-label="Kunjungi kanal YouTube Galery Vicentra"
-                                            >
-                                                <FaYoutube className="text-white text-xl font-semibold" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div className="bg-white relative rounded-md">
-                                        <form
-                                            action="/product/search"
-                                            method="GET"
+                                </li>
+                            </ul>
+                            <div className="flex items-end gap-[1.875rem]">
+                                <div className="flex items-center gap-2">
+                                    <p className="text-sm capitalize text-white">
+                                        ikuti kami di
+                                    </p>
+                                    <div className="flex items-center gap-1">
+                                        <a
+                                            href="https://www.facebook.com/vicentra"
+                                            target="_blank"
+                                            className="facebook"
+                                            aria-label="Kunjungi halaman Facebook Vicentra"
                                         >
-                                            <input
-                                                type="text"
-                                                name="q"
-                                                placeholder="Cari produk vicentra..."
-                                                className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
-                                            />
-                                            <button
-                                                type="submit"
-                                                className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
-                                                aria-label="Cari"
-                                            >
-                                                <FaSearch className="text-white text-sm font-semibold" />
-                                            </button>
-                                        </form>
+                                            <FaFacebook className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a
+                                            href="https://www.instagram.com/vicentra.co.id"
+                                            target="_blank"
+                                            className="instagram"
+                                            aria-label="Kunjungi halaman Instagram Vicentra"
+                                        >
+                                            <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a
+                                            href="https://www.youtube.com/@galeryvicentra"
+                                            target="_blank"
+                                            className="youtube"
+                                            aria-label="Kunjungi kanal YouTube Galery Vicentra"
+                                        >
+                                            <FaYoutube className="text-white text-xl font-semibold" />
+                                        </a>
                                     </div>
+                                </div>
+                                <div className="bg-white relative rounded-md">
+                                    <form action="/product/search" method="GET">
+                                        <input
+                                            type="text"
+                                            name="q"
+                                            placeholder="Cari produk vicentra..."
+                                            className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                            aria-label="Cari"
+                                        >
+                                            <FaSearch className="text-white text-sm font-semibold" />
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
+                        </nav>
                     </div>
-                    <div className="w-[80vw] mx-auto mt-[1rem]">
-                        <div className="flex justify-between items-center">
-                            <Link href="/">
-                                <img
-                                    src={VicentraLogoBlack}
-                                    alt="vicentra logo black"
-                                    className="h-[3.75rem]"
-                                />
-                            </Link>
-                            <div className="flex items-start gap-[1.875rem]">
+                </div>
+                <div className="w-[80vw] mx-auto mt-[1rem]">
+                    <div className="flex justify-between items-center">
+                        <Link href="/">
+                            <img
+                                src={VicentraLogoBlack}
+                                alt="vicentra logo black"
+                                className="h-[3.75rem]"
+                            />
+                        </Link>
+                        <nav>
+                            <ul className="flex items-start gap-[1.875rem]">
                                 {subMenuProducts.map((product) => (
-                                    <div
+                                    <li
                                         key={product.id}
                                         className="main_category text-base text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
                                         onClick={(e) => {
@@ -292,99 +350,97 @@ export default function PagesLayout({ children }) {
                                                 }
                                             })}
                                         </ul>
-                                    </div>
+                                    </li>
                                 ))}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+            {/* DESKTOP HEADER */}
+            {/* MOBILE HEADER */}
+            <header className="lg:hidden">
+                <div className="bg-vicentra-blue">
+                    <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[1rem] relative z-50">
+                        <div className="flex items-center gap-2">
+                            <p className="text-sm capitalize text-white">
+                                ikuti kami di
+                            </p>
+                            <div className="flex items-center gap-1">
+                                <a
+                                    href="https://www.facebook.com/vicentra"
+                                    target="_blank"
+                                    className="facebook"
+                                    aria-label="Kunjungi halaman Facebook Vicentra"
+                                >
+                                    <FaFacebook className="text-white text-xl font-semibold" />
+                                </a>
+                                <a
+                                    href="https://www.instagram.com/vicentra.co.id"
+                                    target="_blank"
+                                    className="instagram"
+                                    aria-label="Kunjungi halaman Instagram Vicentra"
+                                >
+                                    <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                </a>
+                                <a
+                                    href="https://www.youtube.com/@galeryvicentra"
+                                    target="_blank"
+                                    className="youtube"
+                                    aria-label="Kunjungi kanal YouTube Galery Vicentra"
+                                >
+                                    <FaYoutube className="text-white text-xl font-semibold" />
+                                </a>
                             </div>
                         </div>
-                    </div>
-                </header>
-                {/* DESKTOP HEADER */}
-                {/* MOBILE HEADER */}
-                <header className="lg:hidden">
-                    <div className="bg-vicentra-blue">
-                        <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[1rem] relative z-50">
-                            <div className="flex items-center gap-2">
-                                <p className="text-sm capitalize text-white">
-                                    ikuti kami di
-                                </p>
-                                <div className="flex items-center gap-1">
-                                    <a
-                                        href="https://www.facebook.com/vicentra"
-                                        target="_blank"
-                                        className="facebook"
-                                        aria-label="Kunjungi halaman Facebook Vicentra"
-                                    >
-                                        <FaFacebook className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a
-                                        href="https://www.instagram.com/vicentra.co.id"
-                                        target="_blank"
-                                        className="instagram"
-                                        aria-label="Kunjungi halaman Instagram Vicentra"
-                                    >
-                                        <FaInstagramSquare className="text-white text-xl font-semibold" />
-                                    </a>
-                                    <a
-                                        href="https://www.youtube.com/@galeryvicentra"
-                                        target="_blank"
-                                        className="youtube"
-                                        aria-label="Kunjungi kanal YouTube Galery Vicentra"
-                                    >
-                                        <FaYoutube className="text-white text-xl font-semibold" />
-                                    </a>
-                                </div>
-                            </div>
-                            <div className="relative mt-[1rem]">
-                                <form action="/product/search" method="GET">
-                                    <input
-                                        type="text"
-                                        name="q"
-                                        placeholder="Cari produk vicentra..."
-                                        className="w-full py-2 px-2 focus:outline-none rounded-sm"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
-                                        aria-label="Cari"
-                                    >
-                                        <FaSearch className="text-white text-sm font-semibold" />
-                                    </button>
-                                </form>
-                            </div>
-                            <div className="flex justify-between items-end mt-[1rem]">
-                                <Link href="/">
-                                    <img
-                                        src={VicentraLogoOutline}
-                                        alt="vicentra logo black"
-                                        className="h-[2.5rem]"
-                                    />
-                                </Link>
-                                {!toggleMobileMenu ? (
-                                    <IoMenu
-                                        className="text-white text-3xl hover:cursor-pointer"
-                                        onClick={() => {
-                                            setToggleMobileMenu(
-                                                !toggleMobileMenu
-                                            );
-                                        }}
-                                    />
-                                ) : (
-                                    <HiMiniXMark
-                                        className="text-white text-3xl hover:cursor-pointer"
-                                        onClick={() => {
-                                            setToggleMobileMenu(
-                                                !toggleMobileMenu
-                                            );
-                                        }}
-                                    />
-                                )}
-                            </div>
-                            <div
-                                className={`${
-                                    toggleMobileMenu ? "block" : "hidden"
-                                } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md z-[999]`}
-                            >
-                                <div className="flex flex-col gap-[0.5rem]">
+                        <div className="relative mt-[1rem]">
+                            <form action="/product/search" method="GET">
+                                <input
+                                    type="text"
+                                    name="q"
+                                    placeholder="Cari produk vicentra..."
+                                    className="w-full py-2 px-2 focus:outline-none rounded-sm"
+                                />
+                                <button
+                                    type="submit"
+                                    className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                    aria-label="Cari"
+                                >
+                                    <FaSearch className="text-white text-sm font-semibold" />
+                                </button>
+                            </form>
+                        </div>
+                        <div className="flex justify-between items-end mt-[1rem]">
+                            <Link href="/">
+                                <img
+                                    src={VicentraLogoOutline}
+                                    alt="vicentra logo black"
+                                    className="h-[2.5rem]"
+                                />
+                            </Link>
+                            {!toggleMobileMenu ? (
+                                <IoMenu
+                                    className="text-white text-3xl hover:cursor-pointer"
+                                    onClick={() => {
+                                        setToggleMobileMenu(!toggleMobileMenu);
+                                    }}
+                                />
+                            ) : (
+                                <HiMiniXMark
+                                    className="text-white text-3xl hover:cursor-pointer"
+                                    onClick={() => {
+                                        setToggleMobileMenu(!toggleMobileMenu);
+                                    }}
+                                />
+                            )}
+                        </div>
+                        <nav
+                            className={`${
+                                toggleMobileMenu ? "block" : "hidden"
+                            } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md z-[999]`}
+                        >
+                            <ul className="flex flex-col gap-[0.5rem]">
+                                <li>
                                     <Link
                                         href="/"
                                         className="beranda text-sm font-medium text-gray-800 capitalize"
@@ -392,6 +448,8 @@ export default function PagesLayout({ children }) {
                                         beranda
                                     </Link>
                                     <hr />
+                                </li>
+                                <li>
                                     <div
                                         className="text-sm font-medium text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
                                         onClick={toggleSubMenuCategoryPost}
@@ -420,6 +478,8 @@ export default function PagesLayout({ children }) {
                                         </ul>
                                     </div>
                                     <hr />
+                                </li>
+                                <li>
                                     <Link
                                         href="/terms-and-conditions"
                                         className="layanan_dan_perbaikan text-sm font-medium text-gray-800 capitalize"
@@ -427,6 +487,8 @@ export default function PagesLayout({ children }) {
                                         layanan dan perbaikan
                                     </Link>
                                     <hr />
+                                </li>
+                                <li>
                                     <Link
                                         href="/about-us"
                                         className="tentang_kami text-sm font-medium text-gray-800 capitalize"
@@ -434,259 +496,247 @@ export default function PagesLayout({ children }) {
                                         tentang kami
                                     </Link>
                                     <hr />
-                                </div>
-                                <div className="flex flex-col gap-[0.5rem] justify-start mt-2">
-                                    {subMenuProducts.map((product) => (
-                                        <div
-                                            key={product.id}
-                                            className="main_category text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer border-b pb-2 relative"
-                                            onClick={(e) => {
-                                                toggleSubMenuProduct(
-                                                    e,
-                                                    product.name
-                                                );
-                                            }}
+                                </li>
+                            </ul>
+                            <ul className="flex flex-col gap-[0.5rem] justify-start mt-2">
+                                {subMenuProducts.map((product) => (
+                                    <li
+                                        key={product.id}
+                                        className="main_category text-sm text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer border-b pb-2 relative"
+                                        onClick={(e) => {
+                                            toggleSubMenuProduct(
+                                                e,
+                                                product.name
+                                            );
+                                        }}
+                                    >
+                                        {product.name}
+                                        <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                        <ul
+                                            className={`space-y-2 bg-white min-w-[12rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
+                                                product.isOpen
+                                                    ? "block"
+                                                    : "hidden"
+                                            } z-50`}
                                         >
-                                            {product.name}
-                                            <FaCaretDown className="text-vicentra-yellow text-xl" />
-                                            <ul
-                                                className={`space-y-2 bg-white min-w-[12rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                                    product.isOpen
-                                                        ? "block"
-                                                        : "hidden"
-                                                } z-50`}
-                                            >
-                                                {product.subMenu.map(
-                                                    (subMenu) => {
-                                                        if (
-                                                            subMenu.subSubMenu
-                                                                .length > 0
-                                                        ) {
-                                                            return (
-                                                                <li
-                                                                    key={
-                                                                        subMenu.id
-                                                                    }
+                                            {product.subMenu.map((subMenu) => {
+                                                if (
+                                                    subMenu.subSubMenu.length >
+                                                    0
+                                                ) {
+                                                    return (
+                                                        <li key={subMenu.id}>
+                                                            <div
+                                                                className="sub_category w-full flex justify-between text-sm text-gray-800 capitalize gap-1 hover:cursor-pointer relative"
+                                                                onClick={(
+                                                                    e
+                                                                ) => {
+                                                                    toogleSubSubMenuCategory(
+                                                                        e,
+                                                                        product.name,
+                                                                        subMenu.name
+                                                                    );
+                                                                }}
+                                                            >
+                                                                {subMenu.name}
+                                                                <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                                                <ul
+                                                                    className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${
+                                                                        subMenu.isSubSubMenuOpen
+                                                                            ? "block"
+                                                                            : "hidden"
+                                                                    }`}
                                                                 >
-                                                                    <div
-                                                                        className="sub_category w-full flex justify-between text-sm text-gray-800 capitalize gap-1 hover:cursor-pointer relative"
-                                                                        onClick={(
-                                                                            e
-                                                                        ) => {
-                                                                            toogleSubSubMenuCategory(
-                                                                                e,
-                                                                                product.name,
-                                                                                subMenu.name
-                                                                            );
-                                                                        }}
-                                                                    >
-                                                                        {
-                                                                            subMenu.name
-                                                                        }
-                                                                        <FaCaretDown className="text-vicentra-yellow text-xl" />
-                                                                        <ul
-                                                                            className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${
-                                                                                subMenu.isSubSubMenuOpen
-                                                                                    ? "block"
-                                                                                    : "hidden"
-                                                                            }`}
-                                                                        >
-                                                                            {subMenu.subSubMenu.map(
-                                                                                (
-                                                                                    subSubMenu
-                                                                                ) => (
-                                                                                    <li
-                                                                                        key={
-                                                                                            subSubMenu.id
-                                                                                        }
-                                                                                        className="flex justify-start border-b border-gray-200 py-1"
-                                                                                    >
-                                                                                        <Link
-                                                                                            href={`/product/${product.slug}/${subMenu.slug}/${subSubMenu.slug}`}
-                                                                                            className="text-sm text-gray-800"
-                                                                                        >
-                                                                                            {
-                                                                                                subSubMenu.name
-                                                                                            }
-                                                                                        </Link>
-                                                                                    </li>
-                                                                                )
-                                                                            )}
-                                                                        </ul>
-                                                                    </div>
-                                                                </li>
-                                                            );
-                                                        } else {
-                                                            return (
-                                                                <li
-                                                                    key={
-                                                                        subMenu.id
-                                                                    }
-                                                                    className="flex justify-start"
-                                                                >
-                                                                    <Link
-                                                                        href="/"
-                                                                        className="text-sm text-gray-800 capitalize"
-                                                                    >
-                                                                        {
-                                                                            subMenu.name
-                                                                        }
-                                                                    </Link>
-                                                                </li>
-                                                            );
-                                                        }
-                                                    }
-                                                )}
-                                            </ul>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
+                                                                    {subMenu.subSubMenu.map(
+                                                                        (
+                                                                            subSubMenu
+                                                                        ) => (
+                                                                            <li
+                                                                                key={
+                                                                                    subSubMenu.id
+                                                                                }
+                                                                                className="flex justify-start border-b border-gray-200 py-1"
+                                                                            >
+                                                                                <Link
+                                                                                    href={`/product/${product.slug}/${subMenu.slug}/${subSubMenu.slug}`}
+                                                                                    className="text-sm text-gray-800"
+                                                                                >
+                                                                                    {
+                                                                                        subSubMenu.name
+                                                                                    }
+                                                                                </Link>
+                                                                            </li>
+                                                                        )
+                                                                    )}
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    );
+                                                } else {
+                                                    return (
+                                                        <li
+                                                            key={subMenu.id}
+                                                            className="flex justify-start"
+                                                        >
+                                                            <Link
+                                                                href="/"
+                                                                className="text-sm text-gray-800 capitalize"
+                                                            >
+                                                                {subMenu.name}
+                                                            </Link>
+                                                        </li>
+                                                    );
+                                                }
+                                            })}
+                                        </ul>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
                     </div>
-                </header>
-                {/* MOBILE HEADER */}
-                {/* HEADER */}
-
-                {/* PAGES CONTENT */}
-                <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto my-[3.125rem]">
-                    {children}
                 </div>
-                {/* PAGES CONTENT */}
+            </header>
+            {/* MOBILE HEADER */}
+            {/* HEADER */}
 
-                {/* FOOTER */}
-                <footer className="bg-vicentra-black">
-                    <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[2rem]">
-                        <img
-                            src={VicentraLogoWhite}
-                            alt="vicentra logo white"
-                            className="h-[3.75rem]"
-                        />
-                        <div className="grid lg:grid-cols-3 gap-[2rem] lg:gap-[4rem] mt-[1.25rem]">
-                            <div>
-                                <div>
-                                    <h2 className="text-white font-semibold">
-                                        Tentang Kami
-                                    </h2>
-                                    <p className="text-white font-normal text-sm mt-[1.25rem]">
-                                        Vicentra Indonesia adalah perusahaan
-                                        distributor/supplier yang menjual
-                                        berbagai mesin dan perlengkapan usaha
-                                        percetakan dengan kualitas terbaik.
-                                    </p>
-                                </div>
-                                <div className="mt-[1.25rem]">
-                                    <h2 className="text-white font-semibold">
-                                        Kunjungi Kami Di
-                                    </h2>
-                                    <p className="text-white font-normal text-sm mt-[1.25rem]">
-                                        Jl. Rungkut Asri Utara XIX No.93, Kali
-                                        Rungkut, Kec. Rungkut, Kota SBY, Jawa
-                                        Timur 60293
-                                    </p>
-                                </div>
-                            </div>
+            {/* PAGES CONTENT */}
+            <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto my-[3.125rem]">
+                <main>{children}</main>
+            </div>
+            {/* PAGES CONTENT */}
+
+            {/* FOOTER */}
+            <footer className="bg-vicentra-black">
+                <div className="lg:w-[80vw] mx-[1rem] lg:mx-auto py-[2rem]">
+                    <img
+                        src={VicentraLogoWhite}
+                        alt="vicentra logo white"
+                        className="h-[3.75rem]"
+                    />
+                    <div className="grid lg:grid-cols-3 gap-[2rem] lg:gap-[4rem] mt-[1.25rem]">
+                        <div>
                             <div>
                                 <h2 className="text-white font-semibold">
-                                    Informasi
+                                    Tentang Kami
                                 </h2>
-                                <ul className="space-y-2 mt-[1.25rem]">
-                                    <li>
-                                        <Link
-                                            href="/"
-                                            className="beranda text-white capitalize"
-                                        >
-                                            beranda
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/terms-and-conditions"
-                                            className="layanan_dan_perbaikan text-white capitalize"
-                                        >
-                                            layanan dan perbaikan
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            href="/about-us"
-                                            className="tentang_kami text-white capitalize"
-                                        >
-                                            tentang kami
-                                        </Link>
-                                    </li>
-                                </ul>
+                                <p className="text-white font-normal text-sm mt-[1.25rem]">
+                                    Vicentra Indonesia adalah perusahaan
+                                    distributor/supplier yang menjual berbagai
+                                    mesin dan perlengkapan usaha percetakan
+                                    dengan kualitas terbaik.
+                                </p>
                             </div>
+                            <div className="mt-[1.25rem]">
+                                <h2 className="text-white font-semibold">
+                                    Kunjungi Kami Di
+                                </h2>
+                                <p className="text-white font-normal text-sm mt-[1.25rem]">
+                                    Jl. Rungkut Asri Utara XIX No.93, Kali
+                                    Rungkut, Kec. Rungkut, Kota SBY, Jawa Timur
+                                    60293
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className="text-white font-semibold">
+                                Informasi
+                            </h2>
+                            <ul className="space-y-2 mt-[1.25rem]">
+                                <li>
+                                    <Link
+                                        href="/"
+                                        className="beranda text-white capitalize"
+                                    >
+                                        beranda
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/terms-and-conditions"
+                                        className="layanan_dan_perbaikan text-white capitalize"
+                                    >
+                                        layanan dan perbaikan
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/about-us"
+                                        className="tentang_kami text-white capitalize"
+                                    >
+                                        tentang kami
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
                             <div>
-                                <div>
-                                    <h2 className="text-white font-semibold">
-                                        Hubungi Kami
-                                    </h2>
-                                    <div className="mt-[1.25rem]">
-                                        <a
-                                            href="https://api.whatsapp.com/send?phone=6281232548368"
-                                            target="_blank"
-                                            className="flex items-center gap-1"
-                                        >
-                                            <FaWhatsappSquare className="text-white text-xl" />
-                                            <span className="text-white">
-                                                081232548368
-                                            </span>
-                                        </a>
-                                        <a
-                                            href="mailto:info@vicentra.co.id"
-                                            target="_blank"
-                                            className="flex items-center gap-1"
-                                        >
-                                            <MdEmail className="text-white text-xl" />
-                                            <span className="text-white">
-                                                info@vicentra.co.id
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
+                                <h2 className="text-white font-semibold">
+                                    Hubungi Kami
+                                </h2>
                                 <div className="mt-[1.25rem]">
-                                    <h2 className="text-white font-semibold">
-                                        Social Media
-                                    </h2>
-                                    <div className="flex items-center gap-1 mt-[1.25rem]">
-                                        <a
-                                            href="https://www.facebook.com/vicentra"
-                                            target="_blank"
-                                            className="facebook w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
-                                            aria-label="Kunjungi halaman Facebook Vicentra"
-                                        >
-                                            <FaFacebook className="text-white" />
-                                        </a>
-                                        <a
-                                            href="https://www.instagram.com/vicentra.co.id"
-                                            target="_blank"
-                                            className="instagram w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
-                                            aria-label="Kunjungi halaman Instagram Vicentra"
-                                        >
-                                            <FaInstagramSquare className="text-white" />
-                                        </a>
-                                        <a
-                                            href="https://www.youtube.com/@galeryvicentra"
-                                            target="_blank"
-                                            className="youtube w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
-                                            aria-label="Kunjungi channel YouTube Galery Vicentra"
-                                        >
-                                            <FaYoutube className="text-white" />
-                                        </a>
-                                    </div>
+                                    <a
+                                        href="https://api.whatsapp.com/send?phone=6281232548368"
+                                        target="_blank"
+                                        className="flex items-center gap-1"
+                                    >
+                                        <FaWhatsappSquare className="text-white text-xl" />
+                                        <span className="text-white">
+                                            081232548368
+                                        </span>
+                                    </a>
+                                    <a
+                                        href="mailto:info@vicentra.co.id"
+                                        target="_blank"
+                                        className="flex items-center gap-1"
+                                    >
+                                        <MdEmail className="text-white text-xl" />
+                                        <span className="text-white">
+                                            info@vicentra.co.id
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div className="mt-[1.25rem]">
+                                <h2 className="text-white font-semibold">
+                                    Social Media
+                                </h2>
+                                <div className="flex items-center gap-1 mt-[1.25rem]">
+                                    <a
+                                        href="https://www.facebook.com/vicentra"
+                                        target="_blank"
+                                        className="facebook w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi halaman Facebook Vicentra"
+                                    >
+                                        <FaFacebook className="text-white" />
+                                    </a>
+                                    <a
+                                        href="https://www.instagram.com/vicentra.co.id"
+                                        target="_blank"
+                                        className="instagram w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi halaman Instagram Vicentra"
+                                    >
+                                        <FaInstagramSquare className="text-white" />
+                                    </a>
+                                    <a
+                                        href="https://www.youtube.com/@galeryvicentra"
+                                        target="_blank"
+                                        className="youtube w-8 h-8 bg-[#111517] flex items-center justify-center rounded-md"
+                                        aria-label="Kunjungi channel YouTube Galery Vicentra"
+                                    >
+                                        <FaYoutube className="text-white" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <p className="text-white text-center text-sm mt-[3.125rem]">
-                            Vicentra © {new Date().getFullYear()} Created By
-                            Vicentra-dev. Supplier Mesin dan Bahan Percetakan
-                            Surabaya.
-                        </p>
                     </div>
-                </footer>
-                {/* FOOTER */}
-            </main>
+                    <p className="text-white text-center text-sm mt-[3.125rem]">
+                        Vicentra © {new Date().getFullYear()} Created By
+                        Vicentra-dev. Supplier Mesin dan Bahan Percetakan
+                        Surabaya.
+                    </p>
+                </div>
+            </footer>
+            {/* FOOTER */}
         </>
     );
 }

@@ -6,6 +6,54 @@ import SalesCard from "./components/SalesCard";
 
 export default function Show({ slider, teamSales }) {
     const { currentUrl, keywords } = usePage().props;
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Vicentra - Distributor dan Supplier Mesin Dan Bahan Percetakan Surabaya",
+        url: "https://vicentra.co.id",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     return (
         <>
@@ -69,6 +117,9 @@ export default function Show({ slider, teamSales }) {
                         `https://vicentra.co.id/showcase/${slider.slug}` ?? ""
                     }
                 />
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
             <div
                 className="w-screen flex flex-col justify-center items-center bg-red-400 overflow-x-hidden py-10"
