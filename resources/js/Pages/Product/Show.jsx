@@ -82,9 +82,11 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         <div>
             <Head>
                 <title>
-                    {`Vicentra - Produk ${product.name} ${
-                        product.another_name ?? ""
-                    }` ?? ""}
+                    {`Vicentra - Produk ${product.category.name} ${
+                        product.category.subCategory.name
+                    } ${
+                        product.category.subCategory.subSubCategory.name ?? ""
+                    } ${product.name} ${product.another_name ?? ""}` ?? ""}
                 </title>
                 <meta
                     name="description"
@@ -100,9 +102,12 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     property="og:title"
                     content={
-                        `Vicentra - Produk ${product.name} ${
-                            product.another_name ?? ""
-                        }` ?? ""
+                        `Vicentra - Produk ${product.category.name} ${
+                            product.category.subCategory.name
+                        } ${
+                            product.category.subCategory.subSubCategory.name ??
+                            ""
+                        } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
                 <meta
@@ -129,9 +134,12 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     name="twitter:title"
                     content={
-                        `Vicentra - Produk ${product.name} ${
-                            product.another_name ?? ""
-                        }` ?? ""
+                        `Vicentra - Produk ${product.category.name} ${
+                            product.category.subCategory.name
+                        } ${
+                            product.category.subCategory.subSubCategory.name ??
+                            ""
+                        } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
                 <meta
