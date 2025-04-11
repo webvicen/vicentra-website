@@ -94,7 +94,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         product.shortDescription.replace(/<[^>]*>/g, "") ?? ""
                     }
                 />
-                <meta name="keywords" content={keywords} />
+                <meta name="keywords" content={product.keywords ?? keywords} />
                 <link rel="canonical" href={currentUrl ?? ""} />
 
                 {/* Open Graph / Facebook */}
@@ -225,7 +225,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                     <img
                                         key={index}
                                         src={`/storage/${item.file}`}
-                                        alt="mesin-xuli-eco-solvent"
+                                        alt={item.slug}
                                         className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
                                             item.isActive
                                                 ? "border-2 border-gray-600"
@@ -241,7 +241,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                     <img
                                         key={index}
                                         src={`/storage/${item.video_thumbnail}`}
-                                        alt="mesin-xuli-eco-solvent"
+                                        alt={item.slug}
                                         className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
                                             item.isActive
                                                 ? "border-2 border-gray-600"
