@@ -15,6 +15,7 @@ import { HiMiniXMark } from "react-icons/hi2";
 import VicentraLogoBlack from "../assets/images/logo-vicentra-black.webp";
 import VicentraLogoWhite from "../assets/images/logo-vicentra-white.webp";
 import VicentraLogoOutline from "../assets/images/logo-vicentra-outline.webp";
+import MainMenu from "./components/MainMenu";
 
 export default function PagesLayout({ children }) {
     const { url } = usePage();
@@ -259,102 +260,11 @@ export default function PagesLayout({ children }) {
                                 loading="lazy"
                             />
                         </Link>
-                        <nav>
-                            <ul className="flex items-start gap-[1.875rem]">
-                                {subMenuProducts.map((product) => (
-                                    <li
-                                        key={product.id}
-                                        className="main_category text-base text-gray-800 capitalize flex items-center gap-1 hover:cursor-pointer relative"
-                                        onClick={(e) => {
-                                            toggleSubMenuProduct(
-                                                e,
-                                                product.name
-                                            );
-                                        }}
-                                    >
-                                        {product.name}
-                                        <FaCaretDown className="text-vicentra-yellow text-xl" />
-                                        <ul
-                                            className={`space-y-2 bg-white min-w-[12rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                                product.isOpen
-                                                    ? "block"
-                                                    : "hidden"
-                                            } z-50`}
-                                        >
-                                            {product.subMenu.map((subMenu) => {
-                                                if (
-                                                    subMenu.subSubMenu.length >
-                                                    0
-                                                ) {
-                                                    return (
-                                                        <li key={subMenu.id}>
-                                                            <div
-                                                                className="sub_category w-full flex justify-between text-sm text-gray-800 capitalize gap-1 hover:cursor-pointer relative"
-                                                                onClick={(
-                                                                    e
-                                                                ) => {
-                                                                    toogleSubSubMenuCategory(
-                                                                        e,
-                                                                        product.name,
-                                                                        subMenu.name
-                                                                    );
-                                                                }}
-                                                            >
-                                                                {subMenu.name}
-                                                                <FaCaretDown className="text-vicentra-yellow text-xl" />
-                                                                <ul
-                                                                    className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${
-                                                                        subMenu.isSubSubMenuOpen
-                                                                            ? "block"
-                                                                            : "hidden"
-                                                                    }`}
-                                                                >
-                                                                    {subMenu.subSubMenu.map(
-                                                                        (
-                                                                            subSubMenu
-                                                                        ) => (
-                                                                            <li
-                                                                                key={
-                                                                                    subSubMenu.id
-                                                                                }
-                                                                                className="flex justify-start border-b border-gray-200 py-1"
-                                                                            >
-                                                                                <Link
-                                                                                    href={`/product/${product.slug}/${subMenu.slug}/${subSubMenu.slug}`}
-                                                                                    className="text-sm text-gray-800"
-                                                                                >
-                                                                                    {
-                                                                                        subSubMenu.name
-                                                                                    }
-                                                                                </Link>
-                                                                            </li>
-                                                                        )
-                                                                    )}
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    );
-                                                } else {
-                                                    return (
-                                                        <li
-                                                            key={subMenu.id}
-                                                            className="flex justify-start"
-                                                        >
-                                                            <Link
-                                                                href={`/product/${product.slug}/${subMenu.slug}`}
-                                                                className="text-sm text-gray-800 capitalize"
-                                                            >
-                                                                {subMenu.name}
-                                                            </Link>
-                                                        </li>
-                                                    );
-                                                }
-                                            })}
-                                        </ul>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
+                        <MainMenu
+                            subMenuProducts={subMenuProducts}
+                            toggleSubMenuProduct={toggleSubMenuProduct}
+                            toogleSubSubMenuCategory={toogleSubSubMenuCategory}
+                        />
                     </div>
                 </div>
             </header>
