@@ -11,22 +11,55 @@
   @inertiaHead
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <!-- Google Tag Manager -->
-  <script>
+  {{-- <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KS8JSKPD');
-  </script>
+  </script> --}}
   <!-- End Google Tag Manager -->
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-380WK6XCHD"></script>
-  <script>
+  {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-380WK6XCHD"></script> --}}
+  {{-- <script>
     window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-380WK6XCHD');
+  </script> --}}
+  <script>
+    // Or, load the script after 3 seconds
+    document.addEventListener('DOMContentLoaded', () => { setTimeout(initGTM, 5000); });
+    // Initializes Google Tag Manager
+    function initGTM () {
+        if (window.gtmDidInit) {
+        // Don't load again
+        return false;
+        }
+        window.gtmDidInit = true;
+        // Google tag (gtag.js)
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.onload = () => { 
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-380WK6XCHD');
+        }
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-380WK6XCHD';
+        // We are still deferring the script
+        script.defer = true;
+        // Append the script to the body of the document
+        document.getElementsByTagName('body')[0].appendChild(script);
+
+        // Google Tag Manager
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KS8JSKPD');
+    }
   </script>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp-boilerplate>

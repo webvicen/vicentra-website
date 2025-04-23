@@ -256,6 +256,7 @@ export default function PagesLayout({ children }) {
                                 src={VicentraLogoBlack}
                                 alt="vicentra logo black"
                                 className="h-[3.75rem]"
+                                loading="lazy"
                             />
                         </Link>
                         <nav>
