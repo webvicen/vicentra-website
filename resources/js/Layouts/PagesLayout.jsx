@@ -417,6 +417,7 @@ export default function PagesLayout({ children }) {
                                     src={VicentraLogoOutline}
                                     alt="vicentra logo black"
                                     className="h-[2.5rem]"
+                                    loading="lazy"
                                 />
                             </Link>
                             {!toggleMobileMenu ? (
