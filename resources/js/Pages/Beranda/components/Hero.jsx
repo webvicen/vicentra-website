@@ -22,7 +22,7 @@ export default function Hero({ sliders, isSticky }) {
             <Swiper
                 modules={[Pagination, Autoplay, Navigation]}
                 loop={true}
-                spaceBetween={50}
+                spaceBetween={0}
                 slidesPerView={1}
                 autoplay={{ delay: 3000 }}
                 navigation={{
@@ -44,21 +44,21 @@ export default function Hero({ sliders, isSticky }) {
                             }
                             target="_blank"
                             data-promo-name={slider.slug.replace(/-/g, "_")}
-                            className="slider_promo_link w-full lg:h-[80vh] bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
+                            className="slider_promo_link w-full bg-vicentra-blue flex justify-center items-center rounded-xl overflow-hidden"
                         >
                             {index === 0 ? (
                                 <>
                                     <img
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
-                                        className="h-full hidden lg:block"
+                                        className="w-full h-auto object-cover hidden lg:block"
                                         fetchpriority="high"
                                         loading="eager"
                                     />
                                     <img
                                         src={`/storage/${slider.image_mobile}`}
                                         alt={slider.name}
-                                        className="h-full lg:hidden"
+                                        className="w-full h-auto object-cover lg:hidden"
                                         fetchpriority="high"
                                         loading="eager"
                                     />
@@ -68,13 +68,13 @@ export default function Hero({ sliders, isSticky }) {
                                     <img
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
-                                        className="h-full hidden lg:block"
+                                        className="w-full h-auto object-cover hidden lg:block"
                                         loading="lazy"
                                     />
                                     <img
                                         src={`/storage/${slider.image_mobile}`}
                                         alt={slider.name}
-                                        className="h-full lg:hidden"
+                                        className="w-full h-auto object-cover lg:hidden"
                                         loading="lazy"
                                     />
                                 </>
