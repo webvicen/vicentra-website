@@ -52,6 +52,8 @@ export default function Hero({ sliders, isSticky }) {
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
                                         className="w-full h-auto object-cover hidden lg:block"
+                                        width="1280"
+                                        height="512"
                                         fetchpriority="high"
                                         loading="eager"
                                     />
@@ -69,6 +71,8 @@ export default function Hero({ sliders, isSticky }) {
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
                                         className="w-full h-auto object-cover hidden lg:block"
+                                        width="1280"
+                                        height="512"
                                         loading="lazy"
                                     />
                                     <img
