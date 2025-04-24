@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 
 // PAGES CONTROLLERS
 use App\Http\Controllers\Pages\{
@@ -45,3 +46,12 @@ Route::get('/showcase/{slug}', [ShowCaseController::class, 'show'])->name('showc
 
 // SITEMAP ROUTE
 // Route::get('/sitemap.xml', [SitemapController::class, 'generateSitemap']);
+
+// YOUTUBE ROUTE
+Route::get('/youtube/rss', function () {
+  $channelId = 'UCo21YDF0Z6uBsGcOKdIJBMQ';
+  $url = "https://www.youtube.com/feeds/videos.xml?channel_id={$channelId}";
+
+  $response = Http::get($url);
+  return response($response->body(), 200)->header('Content-Type', 'application/xml');
+});
