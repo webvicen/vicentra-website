@@ -172,7 +172,8 @@ export default function Show({ slider, teamSales }) {
                 </div>
                 <div>
                     <p className="text-sm text-white mt-10">
-                        Copyright {new Date().getFullYear()} vicentra.com
+                        Copyright © {new Date().getFullYear()} Created By
+                        Vicentra-dev, vicentra.co.id
                     </p>
                 </div>
             </div>
