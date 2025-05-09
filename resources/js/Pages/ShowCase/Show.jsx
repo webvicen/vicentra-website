@@ -84,7 +84,7 @@ export default function Show({ slider, teamSales }) {
                 />
                 <meta
                     property="og:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta
                     property="og:url"
@@ -109,7 +109,7 @@ export default function Show({ slider, teamSales }) {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta
                     name="twitter:site"

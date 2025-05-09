@@ -112,7 +112,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 />
                 <meta
                     property="og:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta
                     property="og:url"
@@ -141,7 +141,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta
                     name="twitter:site"

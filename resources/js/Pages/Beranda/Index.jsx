@@ -62,7 +62,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
                 />
                 <meta
                     property="og:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta property="og:url" content="https://vicentra.co.id" />
                 <meta property="og:site_name" content="Vicentra" />
@@ -79,7 +79,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://vicentra.co.id/build/assets/webp/logo-vicentra-black-35a77328.webp"
+                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta name="twitter:site" content="https://vicentra.co.id" />
             </Head>
