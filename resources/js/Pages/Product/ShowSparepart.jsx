@@ -48,9 +48,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         name:
             `Produk ${product.category.name} ${
                 product.category.subCategory.name
-            } ${product.category.subCategory.subSubCategory.name ?? ""} ${
-                product.name
-            } ${product.another_name ?? ""}` ?? "",
+            } ${product.name} ${product.another_name ?? ""}` ?? "",
         image: `https://vicentra.co.id/storage/${product.thumbnail}` ?? "",
         description: product.shortDescription.replace(/<[^>]*>/g, "") ?? "",
         sku: "",
