@@ -9,8 +9,12 @@ export default function Show({ slider, teamSales }) {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "Vicentra - Distributor dan Supplier Mesin Dan Bahan Percetakan Surabaya",
-        url: "https://vicentra.co.id",
+        name: `Vicentra - ${slider.name}` ?? "",
+        image: `https://vicentra.co.id/storage/${slider.image_desktop}` ?? "",
+        description:
+            `Nikmati promo ${slider.name} di Vicentra! Belanja hemat dan bawa pulang produk impian Anda. Buruan, promo terbatas hingga stok habis!` ??
+            "",
+        url: currentUrl ?? "",
         potentialAction: {
             "@type": "SearchAction",
             target: "https://vicentra.co.id/product/search?q={search_term}",

@@ -8,6 +8,56 @@ import "./styles/show.css";
 
 const ShowBlog = ({ post, latestSimilarPost }) => {
     const { currentUrl, keywords } = usePage().props;
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        name: `Vicentra - ${post.title}` ?? "",
+        image: `https://vicentra.co.id/storage/${post.image}` ?? "",
+        description: post.short_description ?? "",
+        url: currentUrl ?? "",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     return (
         <div>
@@ -32,7 +82,9 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     property="og:image"
-                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
+                    content={
+                        `https://vicentra.co.id/storage/${post.image}` ?? ""
+                    }
                 />
                 <meta
                     property="og:url"
@@ -55,7 +107,9 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
+                    content={
+                        `https://vicentra.co.id/storage/${post.image}` ?? ""
+                    }
                 />
                 <meta
                     name="twitter:site"
@@ -64,6 +118,10 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
                         ""
                     }
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* CONTENT */}

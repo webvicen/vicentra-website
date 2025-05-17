@@ -9,6 +9,7 @@ import Layout from "../../Layouts/PagesLayout";
 
 const SidebarAccordion = ({ category, subCategory, categoryProduct }) => {
     const currentAccordion = `${category.slug}/${subCategory.slug}`;
+
     const [categoryOpen, setCategoryOpen] = useState(
         currentAccordion.split("/")[0]
     );
@@ -99,6 +100,58 @@ const SidebarAccordion = ({ category, subCategory, categoryProduct }) => {
 const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
     const { currentUrl, keywords } = usePage().props;
     const isServer = typeof window === "undefined";
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: `Vicentra - Produk ${category.name} ${subCategory.name}` ?? "",
+        image: "https://vicentra.co.id/assets/images/logo-vicentra-black.webp",
+        description:
+            `Vicentra menyediakan berbagai produk ${category.name} ${subCategory.name} terbaik di Surabaya, dengan kualitas unggulan, harga bersaing, dan layanan yang ramah untuk memenuhi setiap kebutuhan Anda. Temukan beragam pilihan produk yang dirancang untuk memberikan kenyamanan, keandalan, dan kepuasan, hanya di Vicentra solusi terbaik untuk gaya hidup modern Anda!` ??
+            "",
+        url: currentUrl ?? "",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     return (
         <div>
@@ -173,6 +226,10 @@ const SubCategory = ({ categoryProduct, category, subCategory, products }) => {
                         ""
                     }
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* LIST PRODUCT SECTION */}

@@ -15,6 +15,57 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
         .split(" ")
         .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
         .join(" ");
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: `Vicentra - Artikel ${category}` ?? "",
+        image: "https://vicentra.co.id/assets/images/logo-vicentra-black.webp",
+        description:
+            "Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang.",
+        url: currentUrl ?? "",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     return (
         <div>
@@ -69,6 +120,10 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                         `https://vicentra.co.id/blog/${categorySlug}` ?? ""
                     }
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* CONTENT */}

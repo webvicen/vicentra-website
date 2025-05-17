@@ -14,6 +14,57 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
     const { currentUrl, keywords } = usePage().props;
     const isServer = typeof window === "undefined";
     const [isSticky, setIsSticky] = useState(false);
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Vicentra - Distributor dan Supplier Mesin Dan Bahan Percetakan Surabaya",
+        image: "https://vicentra.co.id/assets/images/logo-vicentra-black.webp",
+        description:
+            "Vicentra - Solusi Percetakan Terbaik Sejak 2012. Temukan mesin & bahan baku percetakan berkualitas dengan layanan purna jual terbaik di Indonesia.",
+        url: "https://vicentra.co.id",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -82,6 +133,10 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
                     content="https://vicentra.co.id/assets/images/logo-vicentra-black.webp"
                 />
                 <meta name="twitter:site" content="https://vicentra.co.id" />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* HERO SECTION */}

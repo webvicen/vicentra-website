@@ -7,6 +7,57 @@ import Layout from "../../Layouts/PagesLayout";
 const TermsAndConditions = () => {
     const { currentUrl, keywords } = usePage().props;
     const form = useRef();
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+        image: "https://vicentra.co.id/assets/images/logo-vicentra-black.webp",
+        description:
+            "Jangan khawatir, kami hadir untuk memberikan solusi terbaik bagi Anda! Tim profesional kami siap menangani setiap permasalahan mesin dengan layanan unggulan yang cepat dan efisien. Hubungi kami sekarang juga, dan temukan kemudahan dalam setiap perbaikan serta layanan berkualitas yang dapat Anda andalkan!",
+        url: "https://vicentra.co.id/terms-and-conditions",
+        potentialAction: {
+            "@type": "SearchAction",
+            target: "https://vicentra.co.id/product/search?q={search_term}",
+            "query-input": "required name=search_term",
+        },
+        mainEntity: [
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Syarat & Ketentuan Perbaikan Mesin",
+                url: "https://vicentra.co.id/terms-and-conditions",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Tentang Kami",
+                url: "https://vicentra.co.id/about-us",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin",
+                url: "https://vicentra.co.id/product/mesin",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Consumable",
+                url: "https://vicentra.co.id/product/consumable",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Sparepart",
+                url: "https://vicentra.co.id/product/sparepart",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing Outdoor",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/outdoor",
+            },
+            {
+                "@type": "WebPage",
+                name: "Vicentra - Produk Mesin Digital Printing UV",
+                url: "https://vicentra.co.id/product/mesin/digital-printing/uv",
+            },
+        ],
+    };
 
     const sendEmail = (e) => {
         e.preventDefault();
@@ -80,6 +131,10 @@ const TermsAndConditions = () => {
                     name="twitter:site"
                     content="https://vicentra.co.id/terms-and-conditions"
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* TERMS AND CONDITIONS SECTION */}

@@ -42,6 +42,28 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         },
     ]);
     const [activeTab, setActiveTab] = useState("Deskripsi");
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name:
+            `Produk ${product.category.name} ${
+                product.category.subCategory.name
+            } ${product.category.subCategory.subSubCategory.name ?? ""} ${
+                product.name
+            } ${product.another_name ?? ""}` ?? "",
+        image: `https://vicentra.co.id/storage/${product.thumbnail}` ?? "",
+        description: product.shortDescription.replace(/<[^>]*>/g, "") ?? "",
+        sku: "",
+        brand: {
+            "@type": "Brand",
+            name: product.brand,
+        },
+        aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "5",
+            reviewCount: "10",
+        },
+    };
 
     const toggleActiveTab = (index) => {
         const updatedTabItems = [...tabItems];
@@ -150,6 +172,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                         ""
                     }
                 />
+
+                <script type="application/ld+json">
+                    {JSON.stringify(schemaData)}
+                </script>
             </Head>
 
             {/* PRODUCT SECTION */}
