@@ -47,10 +47,8 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         "@context": "https://schema.org",
         "@type": "Product",
         name:
-            `Produk ${product.category.name} ${
-                product.category.subCategory.name
-            } ${product.category.subCategory.subSubCategory.name ?? ""} ${
-                product.name
+            `Produk ${product.category.name} ${product.category.subCategory.name
+            } ${product.category.subCategory.subSubCategory.name ?? ""} ${product.name
             } ${product.another_name ?? ""}` ?? "",
         image: `https://vicentra.co.id/storage/${product.thumbnail}` ?? "",
         description: product.shortDescription.replace(/<[^>]*>/g, "") ?? "",
@@ -104,11 +102,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         <div>
             <Head>
                 <title>
-                    {`Vicentra - Produk ${product.category.name} ${
-                        product.category.subCategory.name
-                    } ${
-                        product.category.subCategory.subSubCategory.name ?? ""
-                    } ${product.name} ${product.another_name ?? ""}` ?? ""}
+                    {`Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
+                        } ${product.category.subCategory.subSubCategory.name ?? ""
+                        } ${product.name} ${product.another_name ?? ""}` ?? ""}
                 </title>
                 <meta
                     name="description"
@@ -124,11 +120,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     property="og:title"
                     content={
-                        `Vicentra - Produk ${product.category.name} ${
-                            product.category.subCategory.name
-                        } ${
-                            product.category.subCategory.subSubCategory.name ??
-                            ""
+                        `Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
+                        } ${product.category.subCategory.subSubCategory.name ??
+                        ""
                         } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
@@ -156,11 +150,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     name="twitter:title"
                     content={
-                        `Vicentra - Produk ${product.category.name} ${
-                            product.category.subCategory.name
-                        } ${
-                            product.category.subCategory.subSubCategory.name ??
-                            ""
+                        `Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
+                        } ${product.category.subCategory.subSubCategory.name ??
+                        ""
                         } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
@@ -192,24 +184,25 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <div>
                     <div>
                         {activeProductItem.type === "image" ? (
-                            <div className="relative">
+                            <div className="relative inline-block">
                                 <img
                                     src={`/storage/${activeProductItem.file}`}
                                     alt={activeProductItem.slug}
-                                    className="w-full h-full lg:h-[37.5rem] object-contain"
+                                    className="block max-w-full h-auto object-contain rounded-xl"
                                 />
-                                {product.is_out_of_stock ? (
-                                    <div className="w-full h-[2rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
+                                {product.is_out_of_stock && (
+                                    <div className="w-full h-[2rem] flex justify-center items-center absolute top-1/2 left-0 transform -translate-y-1/2 bg-[#B31B1B] bg-opacity-80">
                                         <h1 className="text-base font-bold text-white uppercase">
-                                            out of stock
+                                            Out of Stock
                                         </h1>
                                     </div>
-                                ) : null}
+                                )}
                             </div>
+
                         ) : (
                             <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                 {activeProductItem.type_source_link ===
-                                "youtube" ? (
+                                    "youtube" ? (
                                     <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                         {!isServer ? (
                                             <Suspense
@@ -252,11 +245,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                         key={index}
                                         src={`/storage/${item.file}`}
                                         alt={item.slug}
-                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
-                                            item.isActive
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${item.isActive
                                                 ? "border-2 border-gray-600"
                                                 : "border-2 border-white"
-                                        } object-contain`}
+                                            } object-contain`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
                                         }
@@ -268,11 +260,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                         key={index}
                                         src={`/storage/${item.video_thumbnail}`}
                                         alt={item.slug}
-                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
-                                            item.isActive
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${item.isActive
                                                 ? "border-2 border-gray-600"
                                                 : "border-2 border-white"
-                                        } object-contain`}
+                                            } object-contain`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
                                         }
@@ -334,11 +325,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     {tabItems.map((item, index) => (
                         <button
                             key={index}
-                            className={`text-sm font-semibold ${
-                                item.isActive
+                            className={`text-sm font-semibold ${item.isActive
                                     ? "bg-vicentra-blue text-white"
                                     : "bg-gray-100 text-gray-500"
-                            } px-4 py-2 rounded-md`}
+                                } px-4 py-2 rounded-md`}
                             onClick={() => toggleActiveTab(index)}
                         >
                             {item.name}
