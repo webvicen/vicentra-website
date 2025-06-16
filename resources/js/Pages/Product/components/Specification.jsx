@@ -2,7 +2,7 @@ import "../styles/specification.css";
 
 export default function Specification({ product }) {
     return (
-        <div className="mt-[1.875rem]">
+        <div >
             <h2 className="text-base font-semibold text-gray-800">
                 Spesifikasi Mesin
             </h2>

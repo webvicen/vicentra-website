@@ -46,8 +46,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         "@context": "https://schema.org",
         "@type": "Product",
         name:
-            `Produk ${product.category.name} ${
-                product.category.subCategory.name
+            `Produk ${product.category.name} ${product.category.subCategory.name
             } ${product.name} ${product.another_name ?? ""}` ?? "",
         image: `https://vicentra.co.id/storage/${product.thumbnail}` ?? "",
         description: product.shortDescription.replace(/<[^>]*>/g, "") ?? "",
@@ -101,9 +100,8 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         <div>
             <Head>
                 <title>
-                    {`Vicentra - Produk ${product.category.name} ${
-                        product.category.subCategory.name
-                    } ${product.name} ${product.another_name ?? ""}` ?? ""}
+                    {`Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
+                        } ${product.name} ${product.another_name ?? ""}` ?? ""}
                 </title>
                 <meta
                     name="description"
@@ -119,8 +117,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     property="og:title"
                     content={
-                        `Vicentra - Produk ${product.category.name} ${
-                            product.category.subCategory.name
+                        `Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
                         } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
@@ -148,8 +145,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <meta
                     name="twitter:title"
                     content={
-                        `Vicentra - Produk ${product.category.name} ${
-                            product.category.subCategory.name
+                        `Vicentra - Produk ${product.category.name} ${product.category.subCategory.name
                         } ${product.name} ${product.another_name ?? ""}` ?? ""
                     }
                 />
@@ -181,24 +177,25 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 <div>
                     <div>
                         {activeProductItem.type === "image" ? (
-                            <div className="relative">
+                            <div className="relative inline-block rounded-lg overflow-hidden">
                                 <img
                                     src={`/storage/${activeProductItem.file}`}
                                     alt={activeProductItem.slug}
-                                    className="w-full h-full lg:h-[37.5rem] object-contain"
+                                    className="w-full object-contain"
                                 />
-                                {product.is_out_of_stock ? (
-                                    <div className="w-full h-[2rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                        <h1 className="text-base font-bold text-white uppercase">
+                                {product.is_out_of_stock && (
+                                    <div className="absolute top-1/2 left-0 w-full h-6 bg-[#B31B1B] flex justify-center items-center transform -translate-y-1/2">
+                                        <h2 className="text-base font-bold text-white uppercase">
                                             out of stock
-                                        </h1>
+                                        </h2>
                                     </div>
-                                ) : null}
+                                )}
                             </div>
+
                         ) : (
                             <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
                                 {activeProductItem.type_source_link ===
-                                "youtube" ? (
+                                    "youtube" ? (
                                     <ReactPlayer
                                         url={activeProductItem.file}
                                         light={true}
@@ -229,11 +226,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                         key={index}
                                         src={`/storage/${item.file}`}
                                         alt={item.slug}
-                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
-                                            item.isActive
-                                                ? "border-2 border-gray-600"
-                                                : "border-2 border-white"
-                                        } object-contain`}
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${item.isActive
+                                            ? "border-2 border-gray-600"
+                                            : "border-2 border-white"
+                                            } object-contain`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
                                         }
@@ -245,11 +241,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                                         key={index}
                                         src={`/storage/${item.video_thumbnail}`}
                                         alt={item.slug}
-                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${
-                                            item.isActive
-                                                ? "border-2 border-gray-600"
-                                                : "border-2 border-white"
-                                        } object-contain`}
+                                        className={`w-[10rem] h-[10rem] hover:cursor-pointer ${item.isActive
+                                            ? "border-2 border-gray-600"
+                                            : "border-2 border-white"
+                                            } object-contain`}
                                         onClick={() =>
                                             toogleActiveProductItem(index)
                                         }
@@ -305,76 +300,75 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
             {/* PRODUCT SECTION */}
 
             {/* TAB SECTION SECTION */}
-            <section className="mt-[3.125rem] lg:mt-[6.25rem]">
-                <div className="space-x-2">
+            <section className="mt-12 lg:mt-24">
+                {/* TAB HEADER */}
+                <div className="flex border border-gray-200 rounded-t-lg overflow-hidden bg-white">
                     {tabItems.map((item, index) => (
                         <button
                             key={index}
-                            className={`text-sm font-semibold ${
-                                item.isActive
-                                    ? "bg-vicentra-blue text-white"
-                                    : "bg-gray-100 text-gray-500"
-                            } px-4 py-2 rounded-md`}
                             onClick={() => toggleActiveTab(index)}
+                            className={`
+                    px-6 py-3 text-sm sm:text-base font-medium transition-colors duration-200
+                    ${item.isActive
+                                    ? "bg-[#F7F7F8] text-gray-900 border-b-2 border-white"
+                                    : "bg-white text-gray-500 hover:bg-gray-100"
+                                }
+                    ${index === 0 ? 'rounded-s-lg' : ''}
+                    ${index === tabItems.length - 1 ? 'rounded-e-lg' : ''}
+                `}
                         >
                             {item.name}
                         </button>
                     ))}
                 </div>
-                <div className="mt-[1.875rem]">
+
+                {/* TAB CONTENT */}
+                <div className="p-6 bg-[#F7F7F8] border border-t-0 border-gray-200 rounded-b-lg">
                     {activeTab === "Deskripsi" && (
+                        <Descriptions product={product} />
+                    )}
+
+                    {activeTab === "Spesifikasi" && (
                         <>
-                            <Descriptions product={product} />
-                            {product.specification != null && (
-                                <Specification product={product} />
-                            )}
-                            {product.work_result != null && (
-                                <Results product={product} />
-                            )}
+                            {product.specification && <Specification product={product} />}
+                            {product.work_result && <Results product={product} />}
                         </>
                     )}
+
                     {activeTab === "Rekomendasi" && (
                         <>
                             <h2 className="text-base font-semibold text-gray-800">
                                 Rekomendasi Produk
                             </h2>
-                            <div className="mt-4">
-                                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[1.25rem]">
-                                    {similarProducts.map((item, index) => (
-                                        <Link
-                                            key={index}
-                                            href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
-                                            className="rounded-lg overflow-hidden"
-                                        >
-                                            <div className="rounded-lg overflow-hidden relative">
-                                                <img
-                                                    src={`/storage/${item.thumbnail}`}
-                                                    alt={item.slug}
-                                                />
-                                                {item.is_out_of_stock ? (
-                                                    <div className="w-full h-[1.5rem] flex justify-center items-center absolute top-[50%] left-0 transform translate-y-[-50%] bg-[#B31B1B]">
-                                                        <h2 className="text-base font-bold text-white uppercase">
-                                                            out of stock
-                                                        </h2>
-                                                    </div>
-                                                ) : null}
-                                            </div>
-                                            <div className="mt-2">
-                                                <h2 className="text-center text-base font-bold">
-                                                    {item.name}
-                                                </h2>
-                                                <h3 className="text-center text-sm font-normal">
-                                                    {item.another_name}
-                                                </h3>
-                                            </div>
-                                        </Link>
-                                    ))}
-                                </div>
+                            <div className="mt-4 grid grid-cols-2 lg:grid-cols-4 gap-5">
+                                {similarProducts.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        href={`/product/${item.category.slug}/${item.category.subCategory.slug}/${item.category.subCategory.subSubCategory.slug}/${item.slug}`}
+                                        className="rounded-lg overflow-hidden"
+                                    >
+                                        <div className="rounded-lg overflow-hidden relative">
+                                            <img src={`/storage/${item.thumbnail}`} alt={item.slug} />
+                                            {item.is_out_of_stock && (
+                                                <div className="absolute top-1/2 left-0 w-full h-6 bg-[#B31B1B] flex justify-center items-center transform -translate-y-1/2">
+                                                    <h2 className="text-base font-bold text-white uppercase">
+                                                        out of stock
+                                                    </h2>
+                                                </div>
+                                            )}
+                                        </div>
+                                        <div className="mt-2 text-center">
+                                            <h2 className="text-base font-bold">{item.name}</h2>
+                                            <h3 className="text-sm font-normal">{item.another_name}</h3>
+                                        </div>
+                                    </Link>
+                                ))}
                             </div>
                         </>
                     )}
                 </div>
             </section>
+
             {/* TAB SECTION SECTION */}
         </div>
     );

@@ -1,5 +1,5 @@
 .specification_table_content table {
-    @apply w-full mb-4;
+    @apply w-full mb-4 text-sm;
 }
 
 .specification_table_content table,
