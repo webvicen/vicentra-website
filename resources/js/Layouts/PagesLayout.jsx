@@ -106,24 +106,19 @@ export default function PagesLayout({ children }) {
                                     blog
                                     <FaCaretDown className="text-vicentra-yellow text-xl" />
                                     <ul
-                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                            isSubMenuCategoryPostOpen
-                                                ? "block"
-                                                : "hidden"
-                                        }`}
+                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${isSubMenuCategoryPostOpen ? "block" : "hidden"
+                                            }`}
                                     >
-                                        {categoryPost?.map(
-                                            (category, index) => (
-                                                <li key={index}>
-                                                    <Link
-                                                        href={`/blog/${category.slug}`}
-                                                        className="text-sm text-gray-800"
-                                                    >
-                                                        {category.name}
-                                                    </Link>
-                                                </li>
-                                            )
-                                        )}
+                                        {categoryPost?.map((category, index) => (
+                                            <li key={index} className="w-full">
+                                                <Link
+                                                    href={`/blog/${category.slug}`}
+                                                    className="block w-full text-sm text-gray-800 hover:bg-gray-100 px-2 py-1 rounded-md transition"
+                                                >
+                                                    {category.name}
+                                                </Link>
+                                            </li>
+                                        ))}
                                     </ul>
                                 </li>
                                 <li>
@@ -293,9 +288,8 @@ export default function PagesLayout({ children }) {
                             )}
                         </div>
                         <nav
-                            className={`${
-                                toggleMobileMenu ? "block" : "hidden"
-                            } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md z-[999]`}
+                            className={`${toggleMobileMenu ? "block" : "hidden"
+                                } bg-white border rounded-md p-4 mt-[1rem] absolute left-0 right-0 bottom-[-17rem] shadow-md z-[999]`}
                         >
                             <ul className="flex flex-col gap-[0.5rem]">
                                 <li>
@@ -315,11 +309,10 @@ export default function PagesLayout({ children }) {
                                         blog
                                         <FaCaretDown className="text-vicentra-yellow text-xl" />
                                         <ul
-                                            className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                                isSubMenuCategoryPostOpen
+                                            className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${isSubMenuCategoryPostOpen
                                                     ? "block"
                                                     : "hidden"
-                                            }`}
+                                                }`}
                                         >
                                             {categoryPost.map(
                                                 (category, index) => (
@@ -371,11 +364,10 @@ export default function PagesLayout({ children }) {
                                         {product.name}
                                         <FaCaretDown className="text-vicentra-yellow text-xl" />
                                         <ul
-                                            className={`space-y-2 bg-white min-w-[12rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${
-                                                product.isOpen
+                                            className={`space-y-2 bg-white min-w-[12rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${product.isOpen
                                                     ? "block"
                                                     : "hidden"
-                                            } z-50`}
+                                                } z-50`}
                                         >
                                             {product.subMenu.map((subMenu) => {
                                                 if (
@@ -399,11 +391,10 @@ export default function PagesLayout({ children }) {
                                                                 {subMenu.name}
                                                                 <FaCaretDown className="text-vicentra-yellow text-xl" />
                                                                 <ul
-                                                                    className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${
-                                                                        subMenu.isSubSubMenuOpen
+                                                                    className={`space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-[9rem] top-[1rem] shadow-md z-50 ${subMenu.isSubSubMenuOpen
                                                                             ? "block"
                                                                             : "hidden"
-                                                                    }`}
+                                                                        }`}
                                                                 >
                                                                     {subMenu.subSubMenu.map(
                                                                         (
