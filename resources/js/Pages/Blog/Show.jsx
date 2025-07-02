@@ -152,9 +152,9 @@ const ShowBlog = ({ post, latestSimilarPost }) => {
 
                 {/* BLOG CONTENT */}
                 <div className="col-span-12 lg:col-span-9 order-first lg:order-none">
-                    <h1 className="text-2xl font-semibold text-gray-800">
+                    <h2 className="text-2xl font-semibold text-gray-800">
                         {post.title}
-                    </h1>
+                    </h2>
                     <img
                         src={`/storage/${post.image}`}
                         alt="surabaya-printing-expo-2022"
