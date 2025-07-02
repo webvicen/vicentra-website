@@ -30,7 +30,7 @@ export default function Youtube() {
     return (
         <div className="grid lg:grid-cols-2 gap-5 items-center">
             <div>
-                <h1 className="text-lg font-semibold">Galery Vicentra</h1>
+                <h2 className="text-lg font-semibold">Galery Vicentra</h2>
                 <p className="lg:w-[60%] text-sm font-normal mt-[0.625rem] mb-4">
                     Subscribe chanel Youtube kami untuk demo mesin dan promo -
                     promo Terbaru.

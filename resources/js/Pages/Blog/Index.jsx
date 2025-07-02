@@ -73,7 +73,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                 <title>{`Vicentra - Artikel ${category}` ?? ""}</title>
                 <meta
                     name="description"
-                    content="Artikel yang kami sediakan mencakup beragam kategori menarik, mulai dari teknologi terbaru, panduan coding yang praktis, hingga tips dan trik untuk meningkatkan produktivitas Anda. Setiap artikel dirancang untuk memberikan wawasan mendalam dan inspirasi, membantu Anda tetap unggul di dunia yang terus berkembang."
+                    content="Artikel informasi lengkap seputar mesin percetakan, mulai dari jenis, cara kerja, hingga tips memilih mesin cetak terbaik untuk kebutuhan bisnis Anda."
                 />
                 <meta name="keywords" content={keywords} />
                 <link rel="canonical" href={currentUrl ?? ""} />
@@ -132,7 +132,7 @@ const Blog = ({ allCategories, latestPost, categorySlug, posts }) => {
                 <div className="col-span-12 lg:col-span-3">
                     <div>
                         <h1 className="capitalize text-gray-800 font-semibold text-xl">
-                            kategori
+                            Kategori
                         </h1>
                         <div className="flex flex-col items-start gap-[0.625rem] mt-[1.875rem]">
                             {allCategories.map((item, index) => (

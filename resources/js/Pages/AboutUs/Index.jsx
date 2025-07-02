@@ -136,7 +136,7 @@ const AboutUs = ({ brands }) => {
                     <p>
                         Didirikan pada 2012 oleh Fifik Harianto, Vicentra telah
                         menempuh perjalanan jauh dari awal di Tambakrejo
-                        Sidoarjo- Jawa Timur. Ketika pertama kali dimulai,
+                        Sidoarjo Jawa Timur. Ketika pertama kali dimulai,
                         semangat Founder Vicentra tentang dunia percetakan,
                         mendorong untuk menyediakan produk percetakan terbaik.
                         Sehingga Vicentra dapat menawarkan Anda produk-produk
@@ -158,9 +158,9 @@ const AboutUs = ({ brands }) => {
             <section className="mt-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-pink rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-white font-semibold capitalize">
+                        <h2 className="text-white font-semibold capitalize">
                             brand kami
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="mt-[1.25rem]">
@@ -205,9 +205,9 @@ const AboutUs = ({ brands }) => {
             <section className="mt-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-black rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-white font-semibold capitalize">
+                        <h2 className="text-white font-semibold capitalize">
                             lokasi kantor kami
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="rounded-md overflow-hidden shadow-md mt-[1.25rem]">
