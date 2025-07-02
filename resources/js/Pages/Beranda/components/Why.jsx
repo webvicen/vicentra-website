@@ -6,7 +6,7 @@ export default function Why() {
             <div className="flex justify-center">
                 <div className="bg-vicentra-blue rounded-full px-4 py-2 shadow-md">
                     <h1 className="text-white font-semibold capitalize">
-                        kenapa vicentra
+                        Kenapa Vicentra
                     </h1>
                 </div>
             </div>

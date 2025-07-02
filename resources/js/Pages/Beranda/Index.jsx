@@ -155,9 +155,9 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
             <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-yellow rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-gray-800 font-semibold capitalize">
+                        <h2 className="text-gray-800 font-semibold capitalize">
                             Produk Kami
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="grid grid-cols-3 gap-3 lg:gap-[2rem] mt-[1.875rem]">
@@ -184,9 +184,9 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
             <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-pink rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-white font-semibold capitalize">
+                        <h2 className="text-white font-semibold capitalize">
                             Testimoni Customer
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
@@ -199,9 +199,9 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
             <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-pink rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-white font-semibold capitalize">
+                        <h2 className="text-white font-semibold capitalize">
                             Brand Kami
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
@@ -214,9 +214,9 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
             <section className="my-[3.125rem]">
                 <div className="flex justify-center">
                     <div className="bg-vicentra-black rounded-full px-4 py-2 shadow-md">
-                        <h1 className="text-white font-semibold capitalize">
+                        <h2 className="text-white font-semibold capitalize">
                             FAQ
-                        </h1>
+                        </h2>
                     </div>
                 </div>
                 <div className="mt-[1.875rem]">
@@ -228,7 +228,7 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
             {/* ABOUT SECTION */}
             <section className="my-[3.125rem] lg:my-[6.25rem]">
                 <div className="flex justify-center">
-                    <h1 className="font-semibold">vicentra.co.id</h1>
+                    <h2 className="font-semibold">vicentra.co.id</h2>
                 </div>
                 <div className="mt-[1.875rem]">
                     <p className="text-justify lg:text-left text-sm leading-5">

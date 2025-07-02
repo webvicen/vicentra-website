@@ -465,9 +465,9 @@ export default function PagesLayout({ children }) {
                     <div className="grid lg:grid-cols-3 gap-[2rem] lg:gap-[4rem] mt-[1.25rem]">
                         <div>
                             <div>
-                                <h2 className="text-white font-semibold">
+                                <h3 className="text-white font-semibold">
                                     Tentang Kami
-                                </h2>
+                                </h3>
                                 <p className="text-white font-normal text-sm mt-[1.25rem]">
                                     Vicentra Indonesia adalah perusahaan
                                     distributor/supplier yang menjual berbagai
@@ -476,9 +476,9 @@ export default function PagesLayout({ children }) {
                                 </p>
                             </div>
                             <div className="mt-[1.25rem]">
-                                <h2 className="text-white font-semibold">
+                                <h3 className="text-white font-semibold">
                                     Kunjungi Kami Di
-                                </h2>
+                                </h3>
                                 <p className="text-white font-normal text-sm mt-[1.25rem]">
                                     Jl. Rungkut Asri Utara XIX No.93, Kali
                                     Rungkut, Kec. Rungkut, Kota SBY, Jawa Timur
@@ -487,9 +487,9 @@ export default function PagesLayout({ children }) {
                             </div>
                         </div>
                         <div>
-                            <h2 className="text-white font-semibold">
+                            <h3 className="text-white font-semibold">
                                 Informasi
-                            </h2>
+                            </h3>
                             <ul className="space-y-2 mt-[1.25rem]">
                                 <li>
                                     <Link
@@ -519,9 +519,9 @@ export default function PagesLayout({ children }) {
                         </div>
                         <div>
                             <div>
-                                <h2 className="text-white font-semibold">
+                                <h3 className="text-white font-semibold">
                                     Hubungi Kami
-                                </h2>
+                                </h3>
                                 <div className="mt-[1.25rem]">
                                     <a
                                         href="https://api.whatsapp.com/send?phone=6281232548368"
@@ -546,9 +546,9 @@ export default function PagesLayout({ children }) {
                                 </div>
                             </div>
                             <div className="mt-[1.25rem]">
-                                <h2 className="text-white font-semibold">
+                                <h3 className="text-white font-semibold">
                                     Social Media
-                                </h2>
+                                </h3>
                                 <div className="flex items-center gap-1 mt-[1.25rem]">
                                     <a
                                         href="https://www.facebook.com/vicentra"
