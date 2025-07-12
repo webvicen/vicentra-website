@@ -9,7 +9,7 @@ const SubMenu = ({ product, toogleSubSubMenuCategory }) => {
                 <li key={subMenu.id}>
                     {subMenu.subSubMenu.length > 0 ? (
                         <div
-                            className="block w-full px-2 py-1 text-sm text-gray-800 capitalize flex justify-between items-center gap-1 hover:bg-gray-100 rounded cursor-pointer transition relative"
+                            className="w-full px-2 py-1 text-sm text-gray-800 capitalize flex justify-between items-center gap-1 hover:bg-gray-100 rounded cursor-pointer transition relative"
                             onClick={(e) =>
                                 toogleSubSubMenuCategory(
                                     e,
