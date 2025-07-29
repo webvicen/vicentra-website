@@ -13,6 +13,7 @@ class Slider extends Model
         'name',
         'slug',
         'image_desktop',
+        'image_tablet',
         'image_mobile',
         'type',
         'ended_at',

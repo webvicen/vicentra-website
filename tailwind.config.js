@@ -13,7 +13,12 @@ module.exports = {
           yellow: '#FFF100',
           black: '#1F262A'
         }
-      }
+      },
+      screens: {
+        mobile: { max: '550px' },
+        tablet: { min: '551px', max: '1329px' },
+        desktop: { min: '1330px' },
+      },
     },
     fontFamily: {
       sans: ['Poppins', 'sans-serif']

@@ -51,7 +51,16 @@ export default function Hero({ sliders, isSticky }) {
                                     <img
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
-                                        className="w-full h-auto object-cover hidden lg:block"
+                                        className="w-full h-auto object-cover desktop:block tablet:hidden mobile:hidden"
+                                        width="1280"
+                                        height="512"
+                                        fetchpriority="high"
+                                        loading="eager"
+                                    />
+                                    <img
+                                        src={`/storage/${slider.image_tablet}`}
+                                        alt={slider.name}
+                                        className="w-full h-auto object-cover hidden tablet:block desktop:hidden"
                                         width="1280"
                                         height="512"
                                         fetchpriority="high"
@@ -60,7 +69,7 @@ export default function Hero({ sliders, isSticky }) {
                                     <img
                                         src={`/storage/${slider.image_mobile}`}
                                         alt={slider.name}
-                                        className="w-full h-auto object-cover lg:hidden"
+                                        className="w-full h-auto object-cover tablet:hidden desktop:hidden"
                                         fetchpriority="high"
                                         loading="eager"
                                     />
@@ -70,15 +79,24 @@ export default function Hero({ sliders, isSticky }) {
                                     <img
                                         src={`/storage/${slider.image_desktop}`}
                                         alt={slider.name}
-                                        className="w-full h-auto object-cover hidden lg:block"
+                                        className="w-full h-auto object-cover desktop:block tablet:hidden mobile:hidden"
                                         width="1280"
                                         height="512"
                                         loading="lazy"
                                     />
                                     <img
+                                        src={`/storage/${slider.image_tablet}`}
+                                        alt={slider.name}
+                                        className="w-full h-auto object-cover hidden tablet:block desktop:hidden"
+                                        width="1280"
+                                        height="512"
+                                        fetchpriority="high"
+                                        loading="eager"
+                                    />
+                                    <img
                                         src={`/storage/${slider.image_mobile}`}
                                         alt={slider.name}
-                                        className="w-full h-auto object-cover lg:hidden"
+                                        className="w-full h-auto object-cover tablet:hidden desktop:hidden"
                                         loading="lazy"
                                     />
                                 </>

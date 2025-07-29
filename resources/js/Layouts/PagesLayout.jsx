@@ -210,6 +210,131 @@ export default function PagesLayout({ children }) {
                 </div>
             </header>
             {/* DESKTOP HEADER */}
+            {/* TABLET HEADER */}
+            <header className="hidden md:hidden lg:hidden shadow pb-[1rem]">
+                <div className="bg-vicentra-blue">
+                    <div className="w-[80vw] mx-auto py-[1rem]">
+                        <nav className="flex justify-between items-end">
+                            <ul className="flex items-center gap-[1.875rem]">
+                                <li>
+                                    <Link
+                                        href="/"
+                                        className="beranda text-base text-white capitalize"
+                                    >
+                                        beranda
+                                    </Link>
+                                </li>
+                                <li
+                                    className="text-base text-white capitalize flex items-center gap-1 hover:cursor-pointer relative"
+                                    onClick={toggleSubMenuCategoryPost}
+                                >
+                                    blog
+                                    <FaCaretDown className="text-vicentra-yellow text-xl" />
+                                    <ul
+                                        className={`flex flex-col items-start space-y-1 bg-white min-w-[10rem] px-2 py-2 rounded-md absolute left-0 top-[2rem] shadow-md ${isSubMenuCategoryPostOpen ? "block" : "hidden"
+                                            }`}
+                                    >
+                                        {categoryPost?.map((category, index) => (
+                                            <li key={index} className="w-full">
+                                                <Link
+                                                    href={`/blog/${category.slug}`}
+                                                    className="block w-full text-sm text-gray-800 hover:bg-gray-100 px-2 py-1 rounded-md transition"
+                                                >
+                                                    {category.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/terms-and-conditions"
+                                        className="layanan_dan_perbaikan text-base text-white capitalize"
+                                    >
+                                        layanan dan perbaikan
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/about-us"
+                                        className="tentang_kami text-base text-white capitalize"
+                                    >
+                                        tentang kami
+                                    </Link>
+                                </li>
+                            </ul>
+                            <div className="flex items-end gap-[1.875rem]">
+                                <div className="flex items-center gap-2">
+                                    <p className="text-sm capitalize text-white">
+                                        ikuti kami di
+                                    </p>
+                                    <div className="flex items-center gap-1">
+                                        <a
+                                            href="https://www.facebook.com/vicentra"
+                                            target="_blank"
+                                            className="facebook"
+                                            aria-label="Kunjungi halaman Facebook Vicentra"
+                                        >
+                                            <FaFacebook className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a
+                                            href="https://www.instagram.com/vicentra.co.id"
+                                            target="_blank"
+                                            className="instagram"
+                                            aria-label="Kunjungi halaman Instagram Vicentra"
+                                        >
+                                            <FaInstagramSquare className="text-white text-xl font-semibold" />
+                                        </a>
+                                        <a
+                                            href="https://www.youtube.com/@galeryvicentra"
+                                            target="_blank"
+                                            className="youtube"
+                                            aria-label="Kunjungi kanal YouTube Galery Vicentra"
+                                        >
+                                            <FaYoutube className="text-white text-xl font-semibold" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="bg-white relative rounded-md">
+                                    <form action="/product/search" method="GET">
+                                        <input
+                                            type="text"
+                                            name="q"
+                                            placeholder="Cari produk vicentra..."
+                                            className="w-[20rem] py-2 px-2 focus:outline-none rounded-sm"
+                                        />
+                                        <button
+                                            type="submit"
+                                            className="w-10 h-8 flex justify-center items-center bg-vicentra-blue absolute top-1/2 right-0 transform -translate-y-1/2 rounded-sm mr-1"
+                                            aria-label="Cari"
+                                        >
+                                            <FaSearch className="text-white text-sm font-semibold" />
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div className="w-[80vw] mx-auto mt-[1rem]">
+                    <div className="flex justify-between items-center">
+                        <Link href="/">
+                            <img
+                                src={VicentraLogoBlack}
+                                alt="vicentra logo black"
+                                className="h-[3.75rem]"
+                                loading="lazy"
+                            />
+                        </Link>
+                        <MainMenu
+                            subMenuProducts={subMenuProducts}
+                            toggleSubMenuProduct={toggleSubMenuProduct}
+                            toogleSubSubMenuCategory={toogleSubSubMenuCategory}
+                        />
+                    </div>
+                </div>
+            </header>
+            {/* TABLET HEADER */}
             {/* MOBILE HEADER */}
             <header className="lg:hidden">
                 <div className="bg-vicentra-blue">

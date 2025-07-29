@@ -70,9 +70,19 @@ const Beranda = ({ sliders, categoryProducts, testimonials, brands, faqs }) => {
         const handleScroll = () => {
             const heroSection = document.querySelector(".sticky");
             if (heroSection) {
-                const isDesktop = window.innerWidth >= 1280;
-                if (window.scrollY > heroSection.offsetHeight && isDesktop) {
-                    setIsSticky(true);
+                const width = window.innerWidth;
+                const isDesktop = window.innerWidth >= 1330;
+                const isTablet = width >= 550 && width < 1330;
+                const isMobile = width < 550;
+
+                if (window.scrollY > heroSection.offsetHeight) {
+                    if (isDesktop) {
+                        setIsSticky("desktop");
+                    } else if (isTablet) {
+                        setIsSticky("tablet");
+                    } else if (isMobile) {
+                        setIsSticky("mobile");
+                    }
                 } else {
                     setIsSticky(false);
                 }

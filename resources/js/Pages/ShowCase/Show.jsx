@@ -155,12 +155,17 @@ export default function Show({ slider, teamSales }) {
                         <img
                             src={`/storage/${slider.image_desktop}`}
                             alt={slider.name}
-                            className="w-full h-full hidden lg:block"
+                            className="w-full h-full desktop:block tablet:hidden mobile:hidden"
+                        />
+                        <img
+                            src={`/storage/${slider.image_tablet}`}
+                            alt={slider.name}
+                            className="w-full h-full hidden tablet:block desktop:hidden"
                         />
                         <img
                             src={`/storage/${slider.image_mobile}`}
                             alt={slider.name}
-                            className="w-full h-full lg:hidden"
+                            className="w-full h-full tablet:hidden desktop:hidden"
                         />
                     </div>
                 </div>
