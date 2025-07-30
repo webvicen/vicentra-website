@@ -7,9 +7,9 @@ export default function BlogCard({ post }) {
             className="rounded-md overflow-hidden shadow-md"
         >
             <div className="bg-gray-300 h-[10rem] relative">
-                <div className="bg-vicentra-black text-white px-4 py-1 absolute top-4 right-4 rounded-full z-50">
+                {/*<div className="bg-vicentra-black text-white px-4 py-1 absolute top-4 right-4 rounded-full z-50">
                     {post.category.name}
-                </div>
+                </div>*/}
                 <div className="bg-white/25 w-full h-full absolute"></div>
                 <img
                     src={`/storage/${post.image}`}
