@@ -11,7 +11,8 @@ use App\Http\Controllers\Pages\{
   HelpController,
   ProductController,
   ShowCaseController,
-  TermsAndConditionsController
+  TermsAndConditionsController,
+  PaymentMethodsController
 };
 use App\Http\Controllers\SitemapController;
 
@@ -31,6 +32,7 @@ Route::get('/', [BerandaController::class, 'index'])->name('beranda.index');
 Route::get('/blog/{category}', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{category}/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::get('/terms-and-conditions', [TermsAndConditionsController::class, 'index'])->name('terms-and-conditions.index');
+Route::get('/payment-methods', [PaymentMethodsController::class, 'index'])->name('payment-methods.index');
 Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us.index');
 Route::get('/help', [HelpController::class, 'index'])->name('help.index');
 Route::get('/product/search', [ProductController::class, 'search'])->name('product.search');

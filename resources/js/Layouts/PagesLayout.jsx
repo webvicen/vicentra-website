@@ -90,7 +90,7 @@ export default function PagesLayout({ children }) {
                 <div className="bg-vicentra-blue">
                     <div className="w-[80vw] mx-auto py-[1rem]">
                         <nav className="flex justify-between items-end">
-                            <ul className="flex items-center gap-[1.875rem]">
+                            <ul className="flex items-center gap-[1.075rem]">
                                 <li>
                                     <Link
                                         href="/"
@@ -127,6 +127,14 @@ export default function PagesLayout({ children }) {
                                         className="layanan_dan_perbaikan text-base text-white capitalize"
                                     >
                                         layanan dan perbaikan
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/payment-methods"
+                                        className="payment-methods text-base text-white capitalize"
+                                    >
+                                        pembayaran
                                     </Link>
                                 </li>
                                 <li>
@@ -252,6 +260,14 @@ export default function PagesLayout({ children }) {
                                         className="layanan_dan_perbaikan text-base text-white capitalize"
                                     >
                                         layanan dan perbaikan
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/payment-methods"
+                                        className="payment-methods text-base text-white capitalize"
+                                    >
+                                        pembayaran
                                     </Link>
                                 </li>
                                 <li>
@@ -466,6 +482,15 @@ export default function PagesLayout({ children }) {
                                 </li>
                                 <li>
                                     <Link
+                                        href="/payment-methods"
+                                        className="payment-methods text-sm font-medium text-gray-800 capitalize"
+                                    >
+                                        pembayaran
+                                    </Link>
+                                    <hr />
+                                </li>
+                                <li>
+                                    <Link
                                         href="/about-us"
                                         className="tentang_kami text-sm font-medium text-gray-800 capitalize"
                                     >
@@ -630,6 +655,14 @@ export default function PagesLayout({ children }) {
                                         className="layanan_dan_perbaikan text-white capitalize"
                                     >
                                         layanan dan perbaikan
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="/payment-methods"
+                                        className="payment-methods text-white capitalize"
+                                    >
+                                        pembayaran
                                     </Link>
                                 </li>
                                 <li>
