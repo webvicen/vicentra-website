@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaymentPageSettingResource\Pages;
 use App\Models\PaymentPageSetting;
+use Illuminate\Support\Str;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\TextInput;
@@ -40,7 +41,11 @@ class PaymentPageSettingResource extends Resource
                     ->label('Gambar Banner')
                     ->directory('payment-banners')
                     ->image()
-                    ->maxSize(2048),
+                    ->maxSize(2048)
+                    ->getUploadedFileNameForStorageUsing(function ($file) {
+                        return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+                            . '.' . $file->getClientOriginalExtension();
+                    }),
 
                 Textarea::make('description')
                     ->label('Deskripsi'),

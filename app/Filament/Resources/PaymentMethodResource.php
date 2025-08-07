@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaymentMethodResource\Pages;
 use App\Models\PaymentMethod;
+use Illuminate\Support\Str;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\FileUpload;
@@ -26,6 +27,10 @@ class PaymentMethodResource extends Resource
                 FileUpload::make('icon')
                     ->image()
                     ->directory('payment-icons')
+                    ->getUploadedFileNameForStorageUsing(function ($file) {
+                        return Str::slug(pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME))
+                            . '.' . $file->getClientOriginalExtension();
+                    })
                     ->label('Icon'),
 
                 TextInput::make('title')
