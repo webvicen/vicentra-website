@@ -16,3 +16,10 @@
 .product_description ul {
     @apply list-disc list-inside;
 }
+
+.product-player-wrapper .react-player__preview {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: black;
+    border-radius: 10px;
+}

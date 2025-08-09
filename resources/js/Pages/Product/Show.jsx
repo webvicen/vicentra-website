@@ -200,7 +200,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                             </div>
 
                         ) : (
-                            <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
+                            <div className="w-full h-[21.438rem] lg:h-[37.5rem] product-player-wrapper">
                                 {activeProductItem.type_source_link ===
                                     "youtube" ? (
                                     <div className="w-full h-[21.438rem] lg:h-[37.5rem]">
@@ -275,10 +275,10 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                 </div>
                 <div>
                     <div>
-                        <h1 className="text-2xl font-bold text-gray-800">
+                        <h1 className="text-xs font-normal text-gray-600">
                             {product.name}
                         </h1>
-                        <h2 className="text-sm font-normal text-gray-600">
+                        <h2 className="text-3xl font-bold text-gray-800">
                             {product.another_name}
                         </h2>
                     </div>
