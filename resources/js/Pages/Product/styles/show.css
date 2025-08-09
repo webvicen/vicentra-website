@@ -4,6 +4,13 @@
     height: 10rem !important;
 }
 
+.product-player-wrapper .react-player__preview {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-color: black;
+    border-radius: 10px;
+}
+
 .swiper.swiper-initialized.swiper-horizontal {
     @apply mx-0;
 }
@@ -15,11 +22,4 @@
 
 .product_description ul {
     @apply list-disc list-inside;
-}
-
-.product-player-wrapper .react-player__preview {
-    background-size: contain !important;
-    background-repeat: no-repeat !important;
-    background-color: black;
-    border-radius: 10px;
 }

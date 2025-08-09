@@ -294,10 +294,10 @@ const SubCategory = ({
                                         ) : null}
                                     </div>
                                     <div className="mt-2">
-                                        <h2 className="text-center text-base font-bold">
+                                        <h2 className="text-center text-sm font-normal">
                                             {item.name}
                                         </h2>
-                                        <h3 className="text-center text-sm font-normal">
+                                        <h3 className="text-center text-base font-bold">
                                             {item.another_name ?? ""}
                                         </h3>
                                     </div>
