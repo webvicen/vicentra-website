@@ -294,7 +294,7 @@ const SubCategory = ({
                                         ) : null}
                                     </div>
                                     <div className="mt-2">
-                                        <h2 className="text-center text-sm font-normal">
+                                        <h2 className="text-center text-[11px] font-normal">
                                             {item.name}
                                         </h2>
                                         <h3 className="text-center text-base font-bold">
