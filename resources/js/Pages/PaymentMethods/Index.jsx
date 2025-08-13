@@ -15,7 +15,7 @@ export default function PaymentMethods({ page, methods }) {
                         className="w-full h-auto object-cover rounded-lg mb-10"
                     />
                 )}
-                <h1 className="text-2xl font-bold">{page?.banner_title}</h1>
+                <h1 className="text-2xl font-bold pt-6 mb-10">{page?.banner_title}</h1>
                 {page?.banner_subtitle && (
                     <p className="text-lg text-gray-600 mt-2">{page.banner_subtitle}</p>
                 )}
@@ -42,7 +42,7 @@ export default function PaymentMethods({ page, methods }) {
                             <img
                                 src={method.icon}
                                 alt={method.title}
-                                className="w-16 h-16 mx-auto mb-4"
+                                className="w-24 h-24 mx-auto mb-5 mt-[-70px]"
                             />
                         )}
                         <h3 className="text-xl font-bold mb-2 text-center">{method.title}</h3>
