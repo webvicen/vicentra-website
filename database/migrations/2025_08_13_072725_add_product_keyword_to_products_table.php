@@ -12,8 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->string('another_name')->nullable()->after('name');
-            $table->boolean('is_out_of_stock')->default(false)->nullable()->after('product_keyword');
+            $table->string('product_keyword')->nullable()->after('another_name');
         });
     }
 
@@ -23,8 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('another_name');
-            $table->dropColumn('is_out_of_stock');
+            $table->dropColumn('product_keyword');
         });
     }
 };

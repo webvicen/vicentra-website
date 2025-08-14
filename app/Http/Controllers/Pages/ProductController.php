@@ -219,6 +219,7 @@ class ProductController extends Controller
                 return [
                     'name' => $product->name,
                     'another_name' => $product->another_name,
+                    'product_keyword' => $product->product_keyword,
                     'slug' => $product->slug,
                     'thumbnail' => $product->thumbnail,
                     'is_out_of_stock' => $product->is_out_of_stock,

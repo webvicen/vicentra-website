@@ -45,6 +45,8 @@ class ProductResource extends Resource
                             ->readOnly(),
                         Forms\Components\TextInput::make('another_name')
                             ->label('Nama Lain Produk'),
+                        Forms\Components\TextInput::make('product_keyword')
+                            ->label('Kata Kunci Produk'),
                         Forms\Components\Toggle::make('is_out_of_stock')
                             ->label('Out of Stock'),
                         Forms\Components\Select::make('brand_product_id')

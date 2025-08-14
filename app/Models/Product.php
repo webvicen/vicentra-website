@@ -16,6 +16,7 @@ class Product extends Model
         'slug',
         'name',
         'another_name',
+        'product_keyword',
         'is_out_of_stock',
         'sku',
         'thumbnail',

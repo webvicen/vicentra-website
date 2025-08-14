@@ -281,6 +281,9 @@ const SubCategory = ({
                                     className="rounded-lg overflow-hidden"
                                 >
                                     <div className="rounded-lg overflow-hidden relative">
+                                        <h2 className="text-center text-[1px] text-white font-normal">
+                                            {item.product_keyword ?? ""}
+                                        </h2>
                                         <img
                                             src={`/storage/${item.thumbnail}`}
                                             alt={item.slug}
@@ -294,11 +297,11 @@ const SubCategory = ({
                                         ) : null}
                                     </div>
                                     <div className="mt-2">
-                                        <h2 className="text-center text-[11px] font-normal">
-                                            {item.name}
-                                        </h2>
-                                        <h3 className="text-center text-base font-bold">
+                                        <h2 className="text-center text-base font-bold">
                                             {item.another_name ?? ""}
+                                        </h2>
+                                        <h3 className="text-center text-[11px] font-normal">
+                                            {item.name}
                                         </h3>
                                     </div>
                                 </Link>
