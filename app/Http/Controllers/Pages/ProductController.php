@@ -252,6 +252,9 @@ class ProductController extends Controller
         $category = CategoryProduct::where('slug', $category)->first();
         $subSubCategory = SubSubCategoryProduct::where('slug', $subSubCategory)->first();
         $product = Product::with(['categoryable', 'brand', 'media'])->where('slug', $slug)->first();
+        if (!$product) {
+            return redirect()->route('product.search', ['q' => $slug]);
+        }
         $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
         // $similarProducts = Product::with(['categoryable', 'brand'])
         //     ->where('categoryable_id', $subSubCategory->id)
