@@ -47,7 +47,7 @@ Route::get('/product/{category}/{subCategory}/{subSubCategory}', [ProductControl
 Route::get('/showcase/{slug}', [ShowCaseController::class, 'show'])->name('showcase.show');
 
 // SITEMAP ROUTE
-// Route::get('/sitemap.xml', [SitemapController::class, 'generateSitemap']);
+Route::get('/sitemap.xml', [SitemapController::class, 'generateSitemap']);
 
 // YOUTUBE ROUTE
 Route::get('/youtube/rss', function () {
