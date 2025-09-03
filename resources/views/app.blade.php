@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html amp lang="id">
+<html lang="id">
 
 <head>
   <!-- Metas -->
@@ -7,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <meta name="author" content="Vicentra Dev" />
+
+  <link rel="canonical" href="{{ url()->current() }}">
   @viteReactRefresh
   @inertiaHead
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -61,7 +63,7 @@
         })(window,document,'script','dataLayer','GTM-KS8JSKPD');
     }
   </script>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <!--<script async src="https://cdn.ampproject.org/v0.js"></script>
   <style amp-boilerplate>
     body {
       -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
@@ -128,7 +130,7 @@
         animation: none
       }
     </style>
-  </noscript>
+  </noscript>-->
 </head>
 
 <body>
