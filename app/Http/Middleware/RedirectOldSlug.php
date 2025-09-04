@@ -10,24 +10,26 @@ class RedirectOldSlug
 {
     public function handle(Request $request, Closure $next)
     {
-        $path = $request->path(); // contoh: product/category/subcategory/subsubcategory/old-slug
+        $path = $request->path(); // ambil path URL
+        $segments = explode('/', $path); // pecah menjadi array
+        $lastSegment = end($segments); // ambil slug paling akhir
 
-        // Ambil bagian slug terakhir (setelah slash terakhir)
-        $segments = explode('/', $path);
-        $oldSlug = end($segments);
-
-        // Cari di tabel redirects
-        $redirect = Redirect::where('old_slug', $oldSlug)->first();
+        // Cek apakah slug terakhir termasuk old_slug
+        $redirect = Redirect::where('old_slug', $lastSegment)->first();
 
         if ($redirect) {
-            // Ubah path dengan mengganti slug lama dengan slug baru
+            // Ganti slug terakhir dengan new_slug
             $segments[count($segments) - 1] = $redirect->new_slug;
             $newPath = implode('/', $segments);
 
-            // Redirect ke URL baru dengan status 301
-            return redirect('/' . $newPath, 301);
+            // Tambahkan query string jika ada
+            $queryString = $request->getQueryString();
+            $newUrl = '/' . $newPath . ($queryString ? '?' . $queryString : '');
+
+            return redirect($newUrl, 301);
         }
 
         return $next($request);
     }
 }
+
