@@ -19,7 +19,8 @@ class ProductController extends Controller
                     'tagline' => $product->ra_tagline ? $product->ra_tagline : ($product->another_name ? $product->another_name : null),
                     'photo' => $product->ra_photo ? Storage::url($product->ra_photo) : Storage::url($product->thumbnail),
                     'short_description' => $product->short_description,
-                    'link_product' => route('product.show', [$product->categoryable->subCategory->category->slug, $product->categoryable->subCategory->slug, $product->categoryable->slug, $product->slug]),
+                    'link_product' =>route('product.show.shortslug', ['slug' => $product->slug]),
+                    //'link_product' => route('product.show', [$product->categoryable->subCategory->category->slug, $product->categoryable->subCategory->slug, $product->categoryable->slug, $product->slug]),
                 ];
             });
 

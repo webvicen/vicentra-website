@@ -474,4 +474,100 @@ class ProductController extends Controller
             'products' => $products
         ]);
     }
+
+    public function redirectToShortSlug($category, $subCategory, $subSubCategory, $slug)
+    {
+        // Cari produk berdasarkan slug
+        $product = Product::where('slug', $slug)->first();
+
+        if (!$product) {
+            $keyword = str_replace('-', ' ', $slug);
+            return redirect()->route('product.search', ['q' => $keyword]);
+        }
+
+        // Redirect permanen (301) ke slug pendek
+        return redirect()->route('product.show.shortslug', ['slug' => $product->slug], 301);
+    }
+
+    public function showShortSlug($slug)
+    {
+        $product = Product::with(['categoryable', 'brand', 'media', 'recomendations.recomendationProduct'])->where('slug', $slug)->first();
+
+        if (!$product) {
+            $keyword = str_replace('-', ' ', $slug);
+            return redirect()->route('product.search', ['q' => $keyword]);
+        }
+
+        $teamSales = SalesPerson::orderBy('order')->get(['name', 'image', 'phone', 'additional_sentence']);
+
+        $similarProducts = $product->recomendations->map(function ($recomendation) {
+            return [
+                'name' => $recomendation->recomendationProduct->name,
+                'another_name' => $recomendation->recomendationProduct->another_name,
+                'slug' => $recomendation->recomendationProduct->slug,
+                'thumbnail' => $recomendation->recomendationProduct->thumbnail,
+                'is_out_of_stock' => $recomendation->recomendationProduct->is_out_of_stock,
+                'category' => [
+                    'name' => $recomendation->recomendationProduct->categoryable->subCategory->category->name ?? null,
+                    'slug' => $recomendation->recomendationProduct->categoryable->subCategory->category->slug ?? null,
+                    'subCategory' => [
+                        'name' => $recomendation->recomendationProduct->categoryable->subCategory->name ?? null,
+                        'slug' => $recomendation->recomendationProduct->categoryable->subCategory->slug ?? null,
+                        'subSubCategory' => [
+                            'name' => $recomendation->recomendationProduct->categoryable->name ?? null,
+                            'slug' => $recomendation->recomendationProduct->categoryable->slug ?? null,
+                        ]
+                    ]
+                ]
+            ];
+        });
+
+        $formatProduct = [
+            'name' => $product->name,
+            'another_name' => $product->another_name,
+            'slug' => $product->slug,
+            'sku' => $product->sku,
+            'brand' => $product->brand->name,
+            'thumbnail' => $product->thumbnail,
+            'is_out_of_stock' => $product->is_out_of_stock,
+            'shortDescription' => $product->short_description,
+            'description' => $product->description,
+            'specification' => $product->specification,
+            'work_result' => $product->work_result,
+            'keywords' => $product->keywords,
+            'category' => [
+                'name' => $product->categoryable->subCategory->category->name ?? null,
+                'slug' => $product->categoryable->subCategory->category->slug ?? null,
+                'subCategory' => [
+                    'name' => $product->categoryable->subCategory->name ?? null,
+                    'slug' => $product->categoryable->subCategory->slug ?? null,
+                    'subSubCategory' => [
+                        'name' => $product->categoryable->name ?? null,
+                        'slug' => $product->categoryable->slug ?? null,
+                    ]
+                ],
+            ],
+            'media' => $product->media->map(function ($media, $index) {
+                return [
+                    'id' => ($index + 1),
+                    'slug' => $media->slug,
+                    'type' => $media->type,
+                    'video_thumbnail' => $media->video_thumbnail ?? null,
+                    'type_source_link' => $media->type_source_link ?? null,
+                    'file' => $media->type === 'image'
+                        ? $media->image_file
+                        : ($media->type_source_link === 'youtube'
+                            ? $media->video_link
+                            : $media->gdrive_link),
+                    'isActive' => $index === 0,
+                ];
+            }),
+        ];
+
+        return Inertia::render('Pages/Product/Show', [
+            'product' => $formatProduct,
+            'teamSales' => $teamSales,
+            'similarProducts' => $similarProducts,
+        ]);
+    }
 }
