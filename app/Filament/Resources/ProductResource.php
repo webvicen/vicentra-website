@@ -35,6 +35,8 @@ class ProductResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(1)
                     ->schema([
+                        Forms\Components\TextInput::make('product_keyword')
+                            ->label('Judul SEO'),
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Produk')
                             ->live(debounce: 1000)
@@ -45,8 +47,6 @@ class ProductResource extends Resource
                             ->readOnly(),
                         Forms\Components\TextInput::make('another_name')
                             ->label('Nama Lain Produk'),
-                        Forms\Components\TextInput::make('product_keyword')
-                            ->label('Kata Kunci Produk'),
                         Forms\Components\Toggle::make('is_out_of_stock')
                             ->label('Out of Stock'),
                         Forms\Components\Select::make('brand_product_id')

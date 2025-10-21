@@ -286,6 +286,7 @@ class ProductController extends Controller
         //     });
         $similarProducts = $product->recomendations->map(function ($recomendation) {
             return [
+                'product_keyword' => $recomendation->recomendationProduct->product_keyword,
                 'name' => $recomendation->recomendationProduct->name,
                 'another_name' => $recomendation->recomendationProduct->another_name,
                 'slug' => $recomendation->recomendationProduct->slug,
@@ -306,6 +307,7 @@ class ProductController extends Controller
             ];
         });
         $formatProduct = [
+            'product_keyword' => $product->product_keyword,
             'name' => $product->name,
             'another_name' => $product->another_name,
             'slug' => $product->slug,
@@ -359,6 +361,7 @@ class ProductController extends Controller
 
         $similarProducts = $product->recomendations->map(function ($recomendation) {
             return [
+                'product_keyword' => $recomendation->recomendationProduct->product_keyword,
                 'name' => $recomendation->recomendationProduct->name,
                 'another_name' => $recomendation->recomendationProduct->another_name,
                 'slug' => $recomendation->recomendationProduct->slug,
@@ -380,6 +383,7 @@ class ProductController extends Controller
         });
 
         $formatProduct = [
+            'product_keyword' => $product->product_keyword,
             'name' => $product->name,
             'another_name' => $product->another_name,
             'slug' => $product->slug,
@@ -502,6 +506,7 @@ class ProductController extends Controller
 
         $similarProducts = $product->recomendations->map(function ($recomendation) {
             return [
+                'product_keyword' => $recomendation->recomendationProduct->product_keyword,
                 'name' => $recomendation->recomendationProduct->name,
                 'another_name' => $recomendation->recomendationProduct->another_name,
                 'slug' => $recomendation->recomendationProduct->slug,
@@ -523,6 +528,7 @@ class ProductController extends Controller
         });
 
         $formatProduct = [
+            'product_keyword' => $product->product_keyword,
             'name' => $product->name,
             'another_name' => $product->another_name,
             'slug' => $product->slug,
