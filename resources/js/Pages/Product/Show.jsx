@@ -1,5 +1,5 @@
 import { Link, Head, usePage } from "@inertiajs/react";
-import React, { Suspense, useState, useEffect } from "react";
+import React, { Suspense, useState } from "react";
 const ReactPlayer = React.lazy(() => import("react-player/lazy"));
 
 // Import Swiper styles
@@ -98,23 +98,9 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         }
     };
 
-    useEffect(() => {
-        if (!url) return;
-
-        // Hapus canonical lama jika ada
-        const existingCanonical = document.querySelector('link[rel="canonical"]');
-        if (existingCanonical) existingCanonical.remove();
-
-        // Tambahkan canonical baru
-        const link = document.createElement('link');
-        link.rel = 'canonical';
-        link.href = product.url ?? window.location.href; 
-        document.head.appendChild(link);
-    }, [url, product.id]);
-
     return (
-        <div key={product.id}>
-            <Head>
+        <div>
+            <Head key={product.id?.toString() ?? 'default-head'}>
                 <title>
                     {/* ${product.name}` ?? "" */}
                     {`${product.product_keyword || product.name}` ?? ""}
@@ -126,7 +112,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     }
                 />
                 <meta name="keywords" content={product.keywords ?? keywords} />
-                {/*<link rel="canonical" href={canonicalUrl} />*/}
+                <link rel="canonical" href={product.url ?? window.location.href} />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
