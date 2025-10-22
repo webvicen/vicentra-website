@@ -1,5 +1,5 @@
 import { Link, Head, usePage } from "@inertiajs/react";
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 const ReactPlayer = React.lazy(() => import("react-player/lazy"));
 
 // Import Swiper styles
@@ -13,8 +13,8 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
-    const isServer = typeof window === "undefined";
-    const { url } = usePage();
+    {/*const isServer = typeof window === "undefined";*/}
+    const { url, props  } = usePage();
     const { currentUrl, keywords } = usePage().props;
     const urlSegments = url.split("/");
     const urlTarget = `${urlSegments[2]}/${urlSegments[3]}`;
@@ -98,10 +98,25 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
         }
     };
 
+    useEffect(() => {
+        if (!url) return;
+
+        // Hapus canonical lama jika ada
+        const existingCanonical = document.querySelector('link[rel="canonical"]');
+        if (existingCanonical) existingCanonical.remove();
+
+        // Tambahkan canonical baru
+        const link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = product.url ?? window.location.href; 
+        document.head.appendChild(link);
+    }, [url, product.id]);
+
     return (
-        <div>
-            <Head>{/* ${product.name}` ?? "" */}
+        <div key={product.id}>
+            <Head>
                 <title>
+                    {/* ${product.name}` ?? "" */}
                     {`${product.product_keyword || product.name}` ?? ""}
                 </title>
                 <meta
@@ -111,7 +126,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     }
                 />
                 <meta name="keywords" content={product.keywords ?? keywords} />
-                <link rel="canonical" href="{{ url()->current() }}" />
+                {/*<link rel="canonical" href={canonicalUrl} />*/}
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
