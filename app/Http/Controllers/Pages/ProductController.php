@@ -347,6 +347,7 @@ class ProductController extends Controller
 
         return Inertia::render('Pages/Product/Show', [
             'product' => $formatProduct,
+            'currentUrl' => url()->current(),
             'teamSales' => $teamSales,
             'similarProducts' => $similarProducts,
         ]);
