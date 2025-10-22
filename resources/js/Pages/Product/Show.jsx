@@ -111,7 +111,7 @@ const ShowProduct = ({ product, teamSales, similarProducts }) => {
                     }
                 />
                 <meta name="keywords" content={product.keywords ?? keywords} />
-                <link rel="canonical" href={currentUrl} />
+                <link rel="canonical" href="{{ url()->current() }}" />
 
                 {/* Open Graph / Facebook */}
                 <meta property="og:type" content="website" />
