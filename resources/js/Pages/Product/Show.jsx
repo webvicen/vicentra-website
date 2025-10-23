@@ -13,7 +13,7 @@ import Results from "./components/Results";
 import SalesCard from "./components/SalesCard";
 
 const ShowProduct = ({ product, teamSales, similarProducts }) => {
-    {/*const isServer = typeof window === "undefined";*/}
+    const isServer = typeof window === "undefined";
     const { url, props  } = usePage();
     const { currentUrl, keywords } = usePage().props;
     const urlSegments = url.split("/");
